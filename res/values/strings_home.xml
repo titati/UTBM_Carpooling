@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="home_title">Home</string>
+    <string name="home_action_create_trip">Suggest a Trip</string>
+    <string name="home_action_find_trip">Find a Trip</string>
+    <string name="home_action_trips">My Trips</string>
+    <string name="home_action_profile">My Profile</string>
+    <string name="home_action_settings">Settings</string>
+
+</resources>

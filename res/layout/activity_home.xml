@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="#0C7DBF"
+    android:gravity="center"
+    tools:context=".HomeActivity" >
+
+    <ImageView
+        android:id="@+id/home_imageview_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="21dp"
+        android:scaleType="center"
+        android:src="@drawable/utbm" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/home_button_create_trip"
+            android:layout_width="160dip"
+            android:layout_height="160dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:drawableTop="@drawable/new_trip_128"
+            android:paddingTop="30dp"
+            android:text="@string/home_action_create_trip" />
+
+        <Button
+            android:id="@+id/home_button_find_trip"
+            android:layout_width="160dip"
+            android:layout_height="160dip"
+            android:layout_alignBaseline="@+id/home_button_create_trip"
+            android:layout_alignBottom="@+id/home_button_create_trip"
+            android:layout_toRightOf="@+id/home_button_create_trip"
+            android:drawableTop="@drawable/find_trip_128"
+            android:paddingTop="30dp"
+            android:text="@string/home_action_find_trip" />
+
+        <Button
+            android:id="@+id/home_button_trips"
+            android:layout_width="160dip"
+            android:layout_height="160dip"
+            android:layout_below="@+id/home_button_create_trip"
+            android:layout_toLeftOf="@+id/home_button_find_trip"
+            android:drawableTop="@drawable/my_trips_128"
+            android:paddingTop="30dp"
+            android:text="@string/home_action_trips" />
+
+        <Button
+            android:id="@+id/home_button_profile"
+            android:layout_width="160dip"
+            android:layout_height="160dip"
+            android:layout_alignLeft="@+id/home_button_find_trip"
+            android:layout_below="@+id/home_button_find_trip"
+            android:drawableTop="@drawable/my_profile_128"
+            android:paddingTop="30dp"
+            android:text="@string/home_action_profile" />
+    </RelativeLayout>
+
+</RelativeLayout>

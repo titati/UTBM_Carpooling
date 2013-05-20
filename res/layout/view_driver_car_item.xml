@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:stretchColumns="0,1,2,3,4" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/driver_car_item_textview_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="6"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <fr.utbm.carpooling.view.widgets.ColorCheckBox
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+            android:id="@+id/driver_car_item_colorcheckbox_color"
+            android:clickable="false" />
+
+        <ImageView
+            android:id="@+id/driver_car_item_imageview_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/seats" />
+
+        <TextView
+            android:id="@+id/driver_car_item_textview_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/driver_car_item_imageview_trunk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/trunk" />
+
+        <TextView
+            android:id="@+id/driver_car_item_textview_trunk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/driver_car_item_imageview_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/default_car" />
+    </TableRow>
+
+</TableLayout>

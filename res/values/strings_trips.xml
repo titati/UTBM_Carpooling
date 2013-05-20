@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="trips_title">My Trips</string>
+    <string name="trips_caption_today">Today</string>
+    <string name="trips_driver_title">As Driver</string>
+    <string name="trips_passenger_title">As Passenger</string>
+    <string name="trips_alerts_title">Alerts</string>
+
+</resources>

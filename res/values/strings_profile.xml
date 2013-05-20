@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="profile_title">My Profile</string>
+    <string name="profile_info_title">My Info</string>
+    <string name="profile_cars_title">My Cars</string>
+    <string name="profile_stats_title">My Stats</string>
+    <string name="profile_info_caption_name">Name</string>
+    <string name="profile_info_caption_firstname">Firstname</string>
+    <string name="profile_info_caption_phone">Phone</string>
+    <string name="profile_info_caption_email">Email</string>
+    <string name="profile_stats_caption_trips">My Trips</string>
+    <string name="profile_stats_caption_driver_trips">As driver</string>
+    <string name="profile_stats_caption_passenger_trips">As passenger</string>
+    <string name="profile_stats_caption_people_carried">People I carried</string>
+    <string name="profile_stats_caption_reputation">My Reputation</string>
+    <string name="profile_stats_caption_rating">Rating</string>
+    <string name="profile_stats_caption_comments">Comments</string>
+
+</resources>
