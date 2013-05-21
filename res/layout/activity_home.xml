@@ -28,7 +28,7 @@
             android:layout_height="160dip"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:drawableTop="@drawable/new_trip_128"
+            android:drawableTop="@drawable/new_trip"
             android:paddingTop="30dp"
             android:text="@string/home_action_create_trip" />
 
@@ -39,7 +39,7 @@
             android:layout_alignBaseline="@+id/home_button_create_trip"
             android:layout_alignBottom="@+id/home_button_create_trip"
             android:layout_toRightOf="@+id/home_button_create_trip"
-            android:drawableTop="@drawable/find_trip_128"
+            android:drawableTop="@drawable/find_trip"
             android:paddingTop="30dp"
             android:text="@string/home_action_find_trip" />
 
@@ -49,7 +49,7 @@
             android:layout_height="160dip"
             android:layout_below="@+id/home_button_create_trip"
             android:layout_toLeftOf="@+id/home_button_find_trip"
-            android:drawableTop="@drawable/my_trips_128"
+            android:drawableTop="@drawable/my_trips"
             android:paddingTop="30dp"
             android:text="@string/home_action_trips" />
 
@@ -59,7 +59,7 @@
             android:layout_height="160dip"
             android:layout_alignLeft="@+id/home_button_find_trip"
             android:layout_below="@+id/home_button_find_trip"
-            android:drawableTop="@drawable/my_profile_128"
+            android:drawableTop="@drawable/my_profile"
             android:paddingTop="30dp"
             android:text="@string/home_action_profile" />
     </RelativeLayout>

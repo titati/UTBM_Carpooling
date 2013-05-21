@@ -2,17 +2,18 @@
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/fr.utbm.carpooling"
               android:orientation="horizontal"
               android:layout_width="wrap_content"
               android:layout_height="match_parent"
 
     >
 
-    <view
+    <fr.utbm.carpooling.view.widgets.TripPathView
         android:layout_width="50dp"
         android:layout_height="100dp"
-        class="fr.utbm.carpooling.view.widgets.TripPathView"
-        android:id="@+id/passenger_trip_item_trippathview"
+        android:id="@+id/alert_item_trippathview"
+        custom:surroundBounds="false"
         android:layout_gravity="center"
         android:layout_alignTop="@+id/tableLayout"
         android:layout_alignParentLeft="true"
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/tableLayout"
-        android:layout_toRightOf="@+id/passenger_trip_item_trippathview"
+        android:layout_toRightOf="@+id/alert_item_trippathview"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true">
 
@@ -39,19 +40,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/passenger_trip_item_textview_departure_point"/>
+                android:id="@+id/alert_item_textview_departure_point"/>
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_column="1"
+                android:id="@+id/space"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/passenger_trip_item_textview_departure_time"/>
+                android:id="@+id/alert_item_textview_departure_date"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/passenger_trip_item_textview_departure_date"/>
         </TableRow>
 
         <TableRow
@@ -62,19 +64,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/passenger_trip_item_textview_arrival_point"/>
+                android:id="@+id/alert_item_textview_arrival_point"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/passenger_trip_item_textview_arrival_time"/>
+                android:id="@+id/alert_item_textview_arrival_time"/>
 
-            <Space
-                android:layout_width="20px"
-                android:layout_height="20px"
-                android:id="@+id/space"
-                android:layout_column="2"/>
+
 
         </TableRow>
 

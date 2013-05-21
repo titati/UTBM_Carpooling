@@ -81,9 +81,6 @@ public class TripsPassengerFragment extends Fragment {
                 R.id.trips_passenger_listview_trips, trips);
 
         mListView.setAdapter(adapter);
-
-
-
     }
 
 }

@@ -31,7 +31,7 @@ public class TripPathView extends View {
 
     protected boolean mFull = false;
     protected boolean mSurroundBounds = true;
-    protected List<Checkpoint> mCheckpoints;
+    protected List<Checkpoint> mCheckpoints = null;
 
     public TripPathView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -50,8 +50,9 @@ public class TripPathView extends View {
                 0, 0);
 
         try {
-            mFull = a.getBoolean(R.styleable.TripPathView_fullPath, false);
             mSurroundBounds = a.getBoolean(R.styleable.TripPathView_surroundBounds, true);
+            mFull = a.getBoolean(R.styleable.TripPathView_fullPath, false);
+
         } finally {
             a.recycle();
         }
@@ -92,8 +93,12 @@ public class TripPathView extends View {
             }
         } else {
             // Draw checkpoint
-            if (mCheckpoints.size() > 2)
-                canvas.drawCircle(mX, mH / 2, POINT_RADIUS, mBodyPainter);
+            try {
+                if (mCheckpoints.size() > 2)
+                    canvas.drawCircle(mX, mH / 2, POINT_RADIUS, mBodyPainter);
+            } catch (NullPointerException e) {
+
+            }
         }
     }
 
