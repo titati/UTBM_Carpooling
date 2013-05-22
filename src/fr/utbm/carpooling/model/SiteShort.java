@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public class SiteShort {
+import java.io.Serializable;
+
+public class SiteShort implements Serializable {
 
 	private int id;
 	private String name;

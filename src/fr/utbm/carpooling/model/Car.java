@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public class Car { 
+import java.io.Serializable;
+
+public class Car implements Serializable {
 
 	protected String id;
 	protected Brand brand;

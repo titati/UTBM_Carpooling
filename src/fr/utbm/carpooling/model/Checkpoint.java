@@ -1,9 +1,10 @@
 package fr.utbm.carpooling.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class Checkpoint {
+public class Checkpoint implements Serializable {
 
 	private SiteShort site;
 	private Date date;

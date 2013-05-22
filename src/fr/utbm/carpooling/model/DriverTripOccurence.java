@@ -1,9 +1,10 @@
 package fr.utbm.carpooling.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class DriverTripOccurence extends BaseDriverTrip { 
+public class DriverTripOccurence extends BaseDriverTrip implements Serializable {
 	
 	private List<User> passengers;
 

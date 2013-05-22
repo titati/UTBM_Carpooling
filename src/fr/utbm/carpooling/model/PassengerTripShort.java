@@ -1,4 +1,6 @@
 package fr.utbm.carpooling.model;
 
 
-public class PassengerTripShort extends BaseTrip {}
+import java.io.Serializable;
+
+public class PassengerTripShort extends BaseTrip implements Serializable {}

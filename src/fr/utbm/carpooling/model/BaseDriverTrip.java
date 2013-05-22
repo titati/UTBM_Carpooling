@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public abstract class BaseDriverTrip extends BaseTrip { 
+import java.io.Serializable;
+
+public abstract class BaseDriverTrip extends BaseTrip implements Serializable {
 	
 	protected int seats;
 	protected Trunk trunk;

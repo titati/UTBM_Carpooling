@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public class TripFeedback {
+import java.io.Serializable;
+
+public class TripFeedback implements Serializable {
 
 	private int rating;
 	private String comment;

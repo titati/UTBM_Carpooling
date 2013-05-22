@@ -1,9 +1,10 @@
 package fr.utbm.carpooling.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class TripSearch { 
+public class TripSearch implements Serializable {
 
 	private List<Checkpoint> checkpoints;
 	private Trunk minTrunk;

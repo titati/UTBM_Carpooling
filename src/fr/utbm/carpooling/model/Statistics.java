@@ -1,9 +1,10 @@
 package fr.utbm.carpooling.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Statistics { 
+public class Statistics implements Serializable {
 
 	private int driverTrips;
 	private int passengerTrips;
