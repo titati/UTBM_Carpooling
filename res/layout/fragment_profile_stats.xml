@@ -40,7 +40,8 @@
                 android:paddingRight="10dp"
                 android:text="@string/profile_stats_caption_driver_trips"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/black_overlay" />
+                android:textColor="@android:color/secondary_text_light"
+                android:enabled="false"/>
 
             <TextView
                 android:id="@+id/profile_stats_textview_driver_trips"
@@ -63,7 +64,8 @@
                 android:paddingRight="10dp"
                 android:text="@string/profile_stats_caption_passenger_trips"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/black_overlay" />
+                android:textColor="@android:color/secondary_text_light"
+                android:enabled="false"/>
 
             <TextView
                 android:id="@+id/profile_stats_textview_passenger_trips"
@@ -85,7 +87,8 @@
                 android:paddingRight="10dp"
                 android:text="@string/profile_stats_caption_people_carried"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/black_overlay" />
+                android:textColor="@android:color/secondary_text_light"
+                android:enabled="false"/>
 
             <TextView
                 android:id="@+id/profile_stats_textview_people_carried"
@@ -125,7 +128,8 @@
                 android:paddingRight="10dp"
                 android:text="@string/profile_stats_caption_rating"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/black_overlay" />
+                android:textColor="@android:color/secondary_text_light"
+                android:enabled="false"/>
 
             <RatingBar
                 android:id="@+id/profile_stats_ratingBar1"
@@ -151,7 +155,8 @@
                 android:paddingRight="10dp"
                 android:text="@string/profile_stats_caption_comments"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/black_overlay" />
+                android:textColor="@android:color/secondary_text_light"
+                android:enabled="false"/>
         </TableRow>
 
         <TableRow android:layout_height="match_parent" >

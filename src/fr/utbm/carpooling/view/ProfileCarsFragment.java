@@ -48,9 +48,9 @@ public class ProfileCarsFragment extends Fragment {
 		Model clio = new Model();
 		clio.setName("Clio");
 		Color red = new Color();
-		red.setHTMLcode("#FF0000");
+		red.setHex("#FF0000");
 		Color blue = new Color();
-		blue.setHTMLcode("0000FF");
+		blue.setHex("0000FF");
 		Trunk trunk = new Trunk();
 		trunk.setName("Regular");
 

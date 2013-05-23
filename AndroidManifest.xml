@@ -16,7 +16,6 @@
         <activity
             android:name="fr.utbm.carpooling.view.LoginActivity"
             android:label="@string/login_title"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateVisible">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -26,13 +25,11 @@
         </activity>
         <activity
             android:name="fr.utbm.carpooling.view.HomeActivity"
-            android:label="@string/home_title"
-            android:screenOrientation="portrait">
+            android:label="@string/home_title">
         </activity>
         <activity
             android:name="fr.utbm.carpooling.view.ProfileActivity"
             android:label="@string/profile_title"
-            android:screenOrientation="portrait"
             android:parentActivityName="fr.utbm.carpooling.view.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -41,12 +38,12 @@
         <activity
             android:name="fr.utbm.carpooling.view.TripsActivity"
             android:label="@string/trips_title"
-            android:screenOrientation="portrait"
             android:parentActivityName="fr.utbm.carpooling.view.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.utbm.carpooling.view.HomeActivity"/>
         </activity>
+        <activity android:name=".view.EditCarActivity"/>
     </application>
 
 </manifest>
