@@ -18,8 +18,8 @@ public class TripPathView extends View {
     private Paint mBodyPainter = new Paint();
     private Paint mFramePainter = new Paint();
     private final int COLOR = getResources().getColor(android.R.color.holo_blue_light);
-    private final int POINT_RADIUS = 12;
-    private final int CIRCLE_RADIUS = 18;
+    private final int POINT_RADIUS = 6;
+    private final int CIRCLE_RADIUS = 10;
     private final int STROKE_WIDTH = 3;
 
     private int mW = 0;
@@ -35,7 +35,10 @@ public class TripPathView extends View {
 
     public TripPathView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
+        
+        setMinimumHeight(30);
+        setMinimumWidth(20);
+        
         mBodyPainter.setStyle(Paint.Style.FILL);
         mBodyPainter.setAntiAlias(true);
         mBodyPainter.setColor(COLOR);
@@ -52,7 +55,6 @@ public class TripPathView extends View {
         try {
             mSurroundBounds = a.getBoolean(R.styleable.TripPathView_surroundBounds, true);
             mFull = a.getBoolean(R.styleable.TripPathView_fullPath, false);
-
         } finally {
             a.recycle();
         }
@@ -103,11 +105,15 @@ public class TripPathView extends View {
     }
 
     protected void drawBound1(Canvas canvas) {
+        mFramePainter.setStrokeWidth(STROKE_WIDTH - 1);
         canvas.drawCircle(mX, mY1, CIRCLE_RADIUS, mFramePainter);
+        mFramePainter.setStrokeWidth(STROKE_WIDTH);
     }
 
     protected void drawBound2(Canvas canvas) {
+        mFramePainter.setStrokeWidth(STROKE_WIDTH - 1);
         canvas.drawCircle(mX, mY2, CIRCLE_RADIUS, mFramePainter);
+        mFramePainter.setStrokeWidth(STROKE_WIDTH);
     }
 
     private void computeCoords() {
@@ -121,7 +127,6 @@ public class TripPathView extends View {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-
         mW = w;
         mH = h;
         computeCoords();
@@ -132,6 +137,10 @@ public class TripPathView extends View {
         mCheckpoints = checkpoints;
         mN = (mFull ? mCheckpoints.size() : 2);
         computeCoords();
+    }
+    
+    public void setSurroundBounds(Boolean b) {
+    	mSurroundBounds = b;
     }
 
 }
