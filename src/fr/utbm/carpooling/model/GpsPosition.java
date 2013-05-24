@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public class GpsPosition {
+import java.io.Serializable;
+
+public class GpsPosition implements Serializable {
 
 	private double latitude;
 	private double longitude;

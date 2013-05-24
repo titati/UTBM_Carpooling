@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public class Trunk {
+import java.io.Serializable;
+
+public class Trunk implements Serializable {
 
 	private int id;
 	private String name;

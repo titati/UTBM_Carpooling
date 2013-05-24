@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public class DriverCar extends Car { 
+import java.io.Serializable;
+
+public class DriverCar extends Car implements Serializable {
 
 	private boolean defaultCar;
 

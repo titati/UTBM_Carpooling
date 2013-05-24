@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public class DriverTripOccurenceShort extends BaseTrip { 
+import java.io.Serializable;
+
+public class DriverTripOccurenceShort extends BaseTrip implements Serializable {
 
 	private boolean repeat;
 

@@ -1,11 +1,13 @@
 package fr.utbm.carpooling.model;
 
 
-public class Color { 
+import java.io.Serializable;
+
+public class Color implements Serializable {
 
 	private int id;
 	private String name;
-	private String HTMLcode;
+	private String hex;
 	
 	public int getId() {
 		return id;
@@ -19,11 +21,11 @@ public class Color {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getHTMLcode() {
-		return HTMLcode;
+	public String getHex() {
+		return hex;
 	}
-	public void setHTMLcode(String HTMLcode) {
-		this.HTMLcode = HTMLcode;
+	public void setHex(String hex) {
+		this.hex = hex;
 	}
 
 }

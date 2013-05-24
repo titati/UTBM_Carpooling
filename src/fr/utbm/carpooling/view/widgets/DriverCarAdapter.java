@@ -54,7 +54,7 @@ public class DriverCarAdapter extends ArrayAdapter<DriverCar> {
 				trunk.setText(item.getTrunk().getName());
 			}
 			if (color != null) {
-				color.setColor(item.getColor().getHTMLcode());
+				color.setColor(item.getColor().getHex());
 			}
 			if (defaultCar != null) {
 				defaultCar.setVisibility(item.isDefaultCar() ? View.VISIBLE

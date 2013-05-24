@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public class Model { 
+import java.io.Serializable;
+
+public class Model implements Serializable {
 	
 	private int id;
 	private String name;

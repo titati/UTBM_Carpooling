@@ -1,9 +1,10 @@
 package fr.utbm.carpooling.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public abstract class BaseTrip {
+public abstract class BaseTrip implements Serializable {
 
 	protected String id;
 	protected List<Checkpoint> checkpoints;

@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.model;
 
 
-public class TripSearchResultShort extends BaseTrip { 
+import java.io.Serializable;
+
+public class TripSearchResultShort extends BaseTrip implements Serializable {
 	
 	private int seats;
 	private int remainingSeats;
