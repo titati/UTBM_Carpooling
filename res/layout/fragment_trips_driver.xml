@@ -1,12 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              tools:context=".TripsDriverFragment">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TripsDriverFragment"
+    android:baselineAligned="false" >
 
     <ListView
         android:id="@+id/trips_driver_listview_trips"
-        android:layout_width="match_parent"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="1">
     </ListView>

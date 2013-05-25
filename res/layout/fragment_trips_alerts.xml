@@ -2,11 +2,12 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              tools:context=".TripsAlertsFragment">
+              tools:context=".TripsAlertsFragment"
+              android:baselineAligned="false" >
 
     <ListView
         android:id="@+id/trips_alerts_listview_alerts"
-        android:layout_width="match_parent"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="1">
     </ListView>
