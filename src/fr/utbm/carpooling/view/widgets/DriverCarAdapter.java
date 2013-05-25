@@ -58,7 +58,7 @@ public class DriverCarAdapter extends ArrayAdapter<DriverCar> {
 			}
 			if (defaultCar != null) {
 				defaultCar.setVisibility(item.isDefaultCar() ? View.VISIBLE
-						: View.GONE);
+						: View.INVISIBLE);
 			}
 		}
 		return v;

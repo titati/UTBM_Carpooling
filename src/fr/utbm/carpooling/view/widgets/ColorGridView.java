@@ -6,20 +6,17 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
+import android.widget.*;
 import fr.utbm.carpooling.model.Color;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class ColorGridView extends LinearLayout {
 
-    private int mCheckedPos = -1;
     private Context mContext;
     private ArrayList<Color> mColors;
-    private ArrayList<ColorCheckBox> mCheckboxes;
     private GridView mGridView;
 
 
@@ -34,12 +31,10 @@ public class ColorGridView extends LinearLayout {
 
         if (mColors != null) {
 
-            mCheckboxes = new ArrayList<ColorCheckBox>();
-
             mGridView = new GridView(mContext);
             addView(mGridView);
-
             setClickable(true);
+
             mGridView.setColumnWidth(65);
             mGridView.setNumColumns(GridView.AUTO_FIT);
             mGridView.setVerticalSpacing(5);
@@ -47,31 +42,19 @@ public class ColorGridView extends LinearLayout {
             mGridView.setStretchMode(GridView.STRETCH_COLUMN_WIDTH);
             mGridView.setGravity(Gravity.CENTER);
             mGridView.setClickable(true);
+            mGridView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
-            final ColorAdapter adapter = new ColorAdapter();
+            ColorAdapter adapter = new ColorAdapter(mContext, mGridView.getId());
 
             mGridView.setAdapter(adapter);
-            mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    android.util.Log.e("CLICKED", "CLICKED");
-                    if (mCheckedPos >= 0) {
-                        mCheckboxes.get(mCheckedPos).setChecked(false);
-                    }
-
-                    mCheckboxes.get(position).setChecked(true);
-                    mCheckedPos = position;
-
-                    adapter.notifyDataSetChanged();
-                }
-            });
         }
 
     }
 
 
     public void setColors(ArrayList<Color> colors) {
+
+        Collections.sort(colors);
         mColors = colors;
         init();
     }
@@ -79,20 +62,19 @@ public class ColorGridView extends LinearLayout {
 
     public Color getSelectedColor() {
 
-        return mColors.get(mCheckedPos);
+        return mColors.get(mGridView.getSelectedItemPosition());
     }
 
     public void setSelectedColor(Color color) {
-        int pos = mColors.indexOf(color);
-        ColorCheckBox checkbox = mCheckboxes.get(pos);
 
-        checkbox.setChecked(true);
-        mGridView.performItemClick(checkbox, pos, checkbox.getId());
     }
 
 
+    class ColorAdapter extends ArrayAdapter<Color> {
 
-    class ColorAdapter extends BaseAdapter {
+        public ColorAdapter(Context context, int textViewResourceId) {
+            super(context, textViewResourceId);
+        }
 
         @Override
         public boolean isEnabled(int position) {
@@ -105,7 +87,7 @@ public class ColorGridView extends LinearLayout {
         }
 
         @Override
-        public Object getItem(int position) {
+        public Color getItem(int position) {
             return mColors.get(position);
         }
 
@@ -117,21 +99,17 @@ public class ColorGridView extends LinearLayout {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            if (convertView == null) {
-                convertView = new ColorCheckBox(mContext);
-            }
-
             ColorCheckBox ccb = (ColorCheckBox) convertView;
 
-            mCheckboxes.add(position, ccb);
-            ccb.setColor(mColors.get(position).getHex());
-
-            ccb.setClickable(false);
-            ccb.setFocusable(false);
-            ccb.setFocusableInTouchMode(false);
+            if (ccb == null) {
+                ccb = new ColorCheckBox(mContext);
+                ccb.setColor(mColors.get(position).getHex());
+                ccb.setClickable(false);
+                ccb.setFocusable(false);
+                ccb.setFocusableInTouchMode(false);
+            }
 
             return ccb;
-
         }
     }
 
