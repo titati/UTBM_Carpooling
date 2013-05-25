@@ -7,7 +7,13 @@ public class SiteShort implements Serializable {
 
 	private int id;
 	private String name;
-	
+
+
+    public SiteShort(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
 	public int getId() {
 		return id;
 	}
