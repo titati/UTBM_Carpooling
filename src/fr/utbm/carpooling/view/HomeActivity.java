@@ -19,7 +19,7 @@ public class HomeActivity extends Activity {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-                        Intent intent = new Intent(HomeActivity.this, EditCarActivity.class);
+                        Intent intent = new Intent(HomeActivity.this, EditInfoActivity.class);
                         startActivity(intent);
 					}
 				});

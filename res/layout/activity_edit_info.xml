@@ -1,17 +1,17 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:shrinkColumns="0"
-    android:stretchColumns="1"
-    tools:context=".ProfileInfoFragment"
-    android:padding="20dp"
-    android:focusableInTouchMode="true"
-    android:gravity="center_horizontal|top">
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:shrinkColumns="0"
+             android:stretchColumns="1"
+             tools:context=".EditInfoActivity"
+             android:padding="20dp"
+             android:focusableInTouchMode="true"
+             android:gravity="center_horizontal|top">
 
     <TableRow
         android:layout_gravity="center_vertical"
-        android:paddingBottom="20dp">
+        android:paddingBottom="5dp">
 
         <TextView
             android:id="@+id/profile_info_stextview_name"
@@ -26,7 +26,7 @@
             android:enabled="false"
             android:layout_column="0"/>
 
-        <TextView
+        <EditText
             android:id="@+id/profile_info_textview_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,13 +34,15 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_weight="1"
             android:layout_column="1"
+            android:inputType="textPersonName"
+            android:editable="true"
             android:layout_gravity="center_vertical"/>
 
     </TableRow>
 
     <TableRow
         android:layout_gravity="center_vertical"
-        android:paddingBottom="20dp">
+        android:paddingBottom="5dp">
 
         <TextView
             android:id="@+id/profile_info_stextview_firstname"
@@ -55,7 +57,7 @@
             android:enabled="false"
             android:layout_column="0"/>
 
-        <TextView
+        <EditText
             android:id="@+id/profile_info_textview_firstname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,13 +65,15 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_weight="1"
             android:layout_column="1"
+            android:inputType="textPersonName"
+            android:editable="true"
             android:layout_gravity="center_vertical"/>
 
     </TableRow>
 
     <TableRow
         android:layout_gravity="center_vertical"
-        android:paddingBottom="20dp">
+        android:paddingBottom="5dp">
 
         <TextView
             android:id="@+id/profile_info_stextview_phone"
@@ -84,7 +88,7 @@
             android:enabled="false"
             android:layout_column="0"/>
 
-        <TextView
+        <EditText
             android:id="@+id/profile_info_textview_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,12 +97,14 @@
             android:typeface="normal"
             android:layout_weight="1"
             android:layout_column="1"
+            android:inputType="phone"
+            android:editable="true"
             android:layout_gravity="center_vertical"/>
 
     </TableRow>
 
     <TableRow android:layout_gravity="center_vertical"
-              android:paddingBottom="20dp">
+              android:paddingBottom="5dp">
 
         <TextView
             android:id="@+id/profile_info_stextview_email"
@@ -114,7 +120,7 @@
             android:editable="false"
             android:layout_column="0"/>
 
-        <TextView
+        <EditText
             android:id="@+id/profile_info_textview_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -122,6 +128,8 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_weight="1"
             android:layout_column="1"
+            android:inputType="textEmailAddress"
+            android:editable="true"
             android:layout_gravity="center_vertical"/>
 
     </TableRow>

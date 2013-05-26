@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="#0C7DBF"
+    android:background="@drawable/home_selector"
     android:gravity="center"
     tools:context=".HomeActivity" >
 
@@ -15,7 +15,8 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="21dp"
         android:scaleType="center"
-        android:src="@drawable/utbm" />
+        android:src="@drawable/utbm"
+        android:contentDescription=""/>
 
     <RelativeLayout
         android:layout_width="match_parent"
