@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
+import fr.utbm.carpooling.view.widgets.TripFeedbackDialog;
 
 public class HomeActivity extends Activity {
 
@@ -19,8 +20,7 @@ public class HomeActivity extends Activity {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-                        Intent intent = new Intent(HomeActivity.this, EditInfoActivity.class);
-                        startActivity(intent);
+                        (new TripFeedbackDialog(HomeActivity.this)).show();
 					}
 				});
 		
