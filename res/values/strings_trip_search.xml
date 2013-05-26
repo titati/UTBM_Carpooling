@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="trip_search_title">Find a Trip</string>
+    <string name="trip_search_prompt_departure_site">From</string>
+    <string name="trip_search_prompt_arrival_site">To</string>
+    <string name="trip_search_prompt_arrival_date">Arrival</string>
+    <string name="trip_search_prompt_arrival_time">At</string>
+    <string name="trip_search_prompt_select_departure_site">Depature Site</string>
+    <string name="trip_search_prompt_select_arrival_site">Arrival Site</string>
+    <string name="trip_search_prompt_select_arrival_date">Arrival Date</string>
+    <string name="trip_search_prompt_select_arrival_time">Arrival Time</string>
+
+</resources>

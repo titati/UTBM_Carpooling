@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 
 public class EditCarActivity extends Activity {
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_car);
