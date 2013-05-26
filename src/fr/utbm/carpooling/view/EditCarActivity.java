@@ -1,11 +1,7 @@
 package fr.utbm.carpooling.view;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.Color;
