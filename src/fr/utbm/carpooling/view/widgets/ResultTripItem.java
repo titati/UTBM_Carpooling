@@ -3,6 +3,7 @@ package fr.utbm.carpooling.view.widgets;
 import java.text.DateFormat;
 
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.TripSearchResultShort;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public abstract class ResultTripItem extends LinearLayout {
+public class ResultTripItem extends LinearLayout {
 	
 	protected TripSearchResultShort data = null;
 	
@@ -24,7 +25,6 @@ public abstract class ResultTripItem extends LinearLayout {
 	protected TextView trunkSize = null;
 			
     protected final DateFormat TIME_FORMAT = android.text.format.DateFormat.getTimeFormat(getContext());
-    protected final DateFormat DATE_FORMAT = android.text.format.DateFormat.getDateFormat(getContext());
 	
 	public ResultTripItem(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -52,16 +52,15 @@ public abstract class ResultTripItem extends LinearLayout {
 	
 	protected void initView() {
 		if (pathView != null) {
-			//pathView.setLimits(null, null);
-			//pathView.setCheckpoints(null);
+			pathView.setCheckpoints(data.getCheckpoints(), data.getArrivalIsEnd());
 		}
 		
 		if (departurePoint != null) {
-			departurePoint.setText("");
+			departurePoint.setText(Resources.getSiteShort(0).getName());
 		}
 		
 		if (departureTime != null) {
-			departureTime.setText("");
+			departureTime.setText(TIME_FORMAT.format(data.getCheckpoints().get(0).getDate()));
 		}
 		
 		if (nbSeats != null) {
@@ -69,11 +68,11 @@ public abstract class ResultTripItem extends LinearLayout {
 		}
 		
 		if (arrivalPoint != null) {
-			arrivalPoint.setText("");
+			arrivalPoint.setText(Resources.getSiteShort(0).getName());
 		}
 		
 		if (arrivalTime != null) {
-			arrivalTime.setText("");
+			arrivalTime.setText(TIME_FORMAT.format(data.getCheckpoints().get(0).getDate()));
 		}
 		
 		if (trunkSize != null) {

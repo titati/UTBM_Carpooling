@@ -23,6 +23,7 @@ public class DriverCarAdapter extends ArrayAdapter<DriverCar> {
 		DriverCarItem v = (DriverCarItem) convertView;
 		
 		if (v == null) {
+			
 			v = new DriverCarItem(getContext(), null);
 		}
 		

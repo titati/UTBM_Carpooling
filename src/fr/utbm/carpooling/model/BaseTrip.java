@@ -1,24 +1,27 @@
 package fr.utbm.carpooling.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
 
 public abstract class BaseTrip implements Serializable {
 
 	protected String id;
-	protected List<Checkpoint> checkpoints;
+	protected ArrayList<? extends CheckpointShort> checkpoints;
 	
 	public String getId() {
 		return id;
 	}
+	
 	public void setId(String id) {
 		this.id = id;
 	}
-	public List<Checkpoint> getCheckpoints() {
+	
+	public ArrayList<? extends CheckpointShort> getCheckpoints() {
 		return checkpoints;
 	}
-	public void setCheckpoints(List<Checkpoint> checkpoints) {
+	
+	public void setCheckpoints(ArrayList<? extends CheckpointShort> checkpoints) {
 		this.checkpoints = checkpoints;
 	}
 

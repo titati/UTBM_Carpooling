@@ -1,6 +1,5 @@
 package fr.utbm.carpooling.model;
 
-
 import java.io.Serializable;
 
 public class TripSearchResultShort extends BaseTrip implements Serializable {
@@ -8,6 +7,7 @@ public class TripSearchResultShort extends BaseTrip implements Serializable {
 	private int seats;
 	private int remainingSeats;
 	private Trunk trunk;
+	private boolean arrivalIsEnd;
 	
 	public int getSeats() {
 		return seats;
@@ -31,6 +31,14 @@ public class TripSearchResultShort extends BaseTrip implements Serializable {
 	
 	public void setTrunk(Trunk trunk) {
 		this.trunk = trunk;
+	}
+
+	public boolean getArrivalIsEnd() {
+		return arrivalIsEnd;
+	}
+	
+	public void setArrivalIsEnd(boolean arrivalIsEnd) {
+		this.arrivalIsEnd = arrivalIsEnd;
 	}
 
 }

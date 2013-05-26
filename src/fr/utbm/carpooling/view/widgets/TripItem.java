@@ -22,7 +22,7 @@ public abstract class TripItem<E> extends LinearLayout {
 	protected TextView arrivalPoint = null;
 	protected TextView arrivalTime = null;
 	protected ImageView repeat = null;
-			
+	
     protected final DateFormat TIME_FORMAT = android.text.format.DateFormat.getTimeFormat(getContext());
     protected final DateFormat DATE_FORMAT = android.text.format.DateFormat.getDateFormat(getContext());
 	

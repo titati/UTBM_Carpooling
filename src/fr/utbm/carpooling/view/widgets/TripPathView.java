@@ -9,9 +9,9 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.model.Checkpoint;
+import fr.utbm.carpooling.model.CheckpointShort;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class TripPathView extends View {
 
@@ -29,15 +29,15 @@ public class TripPathView extends View {
     private int mY2 = 0;
     private int mN = 0;
 
-    protected boolean mFull = false;
+    protected boolean mDrawAllCheckpoints = false;
     protected boolean mSurroundBounds = true;
-    protected List<Checkpoint> mCheckpoints = null;
+    protected ArrayList<? extends CheckpointShort> mCheckpoints = null;
 
     public TripPathView(Context context, AttributeSet attrs) {
         super(context, attrs);
         
         setMinimumHeight(30);
-        setMinimumWidth(20);
+        setMinimumWidth(30);
         
         mBodyPainter.setStyle(Paint.Style.FILL);
         mBodyPainter.setAntiAlias(true);
@@ -54,7 +54,7 @@ public class TripPathView extends View {
 
         try {
             mSurroundBounds = a.getBoolean(R.styleable.TripPathView_surroundBounds, true);
-            mFull = a.getBoolean(R.styleable.TripPathView_fullPath, false);
+            mDrawAllCheckpoints = a.getBoolean(R.styleable.TripPathView_fullPath, false);
         } finally {
             a.recycle();
         }
@@ -84,7 +84,7 @@ public class TripPathView extends View {
 
         float y = 0;
 
-        if (mFull) {
+        if (mDrawAllCheckpoints) {
             // Draw checkpoints
             for (int n = 1; n < mN - 1; ++n) {
 
@@ -95,12 +95,8 @@ public class TripPathView extends View {
             }
         } else {
             // Draw checkpoint
-            try {
-                if (mCheckpoints.size() > 2)
-                    canvas.drawCircle(mX, mH / 2, POINT_RADIUS, mBodyPainter);
-            } catch (NullPointerException e) {
-
-            }
+            if (mCheckpoints.get(1).getNumCheckpoint() - mCheckpoints.get(0).getNumCheckpoint() > 1)
+            	canvas.drawCircle(mX, mH / 2, POINT_RADIUS, mBodyPainter);
         }
     }
 
@@ -132,10 +128,10 @@ public class TripPathView extends View {
         computeCoords();
     }
 
-    public void setCheckpoints(List<Checkpoint> checkpoints) {
+    public void setCheckpoints(ArrayList<? extends CheckpointShort> checkpoints) {
 
         mCheckpoints = checkpoints;
-        mN = (mFull ? mCheckpoints.size() : 2);
+        mN = (mDrawAllCheckpoints ? mCheckpoints.size() : 2);
         computeCoords();
     }
     

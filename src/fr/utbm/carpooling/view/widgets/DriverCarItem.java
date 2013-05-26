@@ -27,6 +27,11 @@ public class DriverCarItem extends TableLayout {
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.view_driver_car_item, this, true);
         
+        setColumnStretchable(0, true);
+        setColumnStretchable(1, true);
+        setColumnStretchable(2, true);
+        setPadding(10, 10, 10, 10);
+        
 		initItems();
 	}
 	
@@ -38,9 +43,9 @@ public class DriverCarItem extends TableLayout {
 	protected void initItems() {
 		mName = (TextView) ((ViewGroup) getChildAt(0)).getChildAt(0);
         mColor = (ColorCheckBox) ((ViewGroup) getChildAt(1)).getChildAt(0);
-        mSeats = (TextView) ((ViewGroup) getChildAt(1)).getChildAt(2);
-        mTrunkSize = (TextView) ((ViewGroup) getChildAt(1)).getChildAt(4);
-        mDefaultCar = (ImageView) ((ViewGroup) getChildAt(1)).getChildAt(5);
+        mSeats = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(1)).getChildAt(1);
+        mTrunkSize = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(2)).getChildAt(1);
+        mDefaultCar = (ImageView) ((ViewGroup) getChildAt(1)).getChildAt(3);
 	}
 	
 	protected void initView() {
@@ -61,7 +66,7 @@ public class DriverCarItem extends TableLayout {
 		}
 		
 		if (mDefaultCar != null) {
-			mDefaultCar.setVisibility(mCar.isDefaultCar() ? View.VISIBLE : View.GONE);
+			mDefaultCar.setVisibility(mCar.isDefaultCar() ? View.VISIBLE : View.INVISIBLE);
 		}
 	}
 }

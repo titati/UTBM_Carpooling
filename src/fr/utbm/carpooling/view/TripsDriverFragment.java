@@ -40,28 +40,23 @@ public class TripsDriverFragment extends Fragment {
 
         mListView = (ListView) getView().findViewById(R.id.trips_driver_listview_trips);
 
-        SiteShort A = new SiteShort(0,"");
-        A.setName("Belfort");
-        SiteShort B = new SiteShort(1,"");
-        B.setName("Sevenans");
-        SiteShort C = new SiteShort(3,"");
-        C.setName("Montbeliard");
-
         Checkpoint c1 = new Checkpoint();
-        c1.setSite(A);
+        c1.setSiteId(0);
+        c1.setNumCheckpoint(0);
         c1.setDate(new Date(113, 4, 20, 13, 0));
 
         Checkpoint c2 = new Checkpoint();
-        c2.setSite(B);
+        c2.setSiteId(1);
+        c2.setNumCheckpoint(1);
         c2.setDate(new Date(113, 4, 20, 13, 15));
 
         Checkpoint c3 = new Checkpoint();
-        c3.setSite(C);
+        c3.setSiteId(2);
+        c3.setNumCheckpoint(2);
         c3.setDate(new Date(113, 4, 20, 13, 40));
 
         ArrayList<Checkpoint> checkpoints1 = new ArrayList<Checkpoint>();
         checkpoints1.add(c1);
-        checkpoints1.add(c2);
         checkpoints1.add(c3);
 
         ArrayList<Checkpoint> checkpoints2 = new ArrayList<Checkpoint>();

@@ -1,25 +1,16 @@
 package fr.utbm.carpooling.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
+public class Checkpoint extends CheckpointShort implements Serializable {
 
-public class Checkpoint implements Serializable {
-
-	private SiteShort site;
-	private Date date;
+	private int siteId;
 	
-	public SiteShort getSite() {
-		return site;
+	public int getSiteId() {
+		return siteId;
 	}
-	public void setSite(SiteShort site) {
-		this.site = site;
+	
+	public void setSiteId(int siteId) {
+		this.siteId = siteId;
 	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 }

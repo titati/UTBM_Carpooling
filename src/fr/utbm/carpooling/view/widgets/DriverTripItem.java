@@ -1,6 +1,7 @@
 package fr.utbm.carpooling.view.widgets;
 
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.model.DriverTripOccurenceShort;
 import android.content.Context;
@@ -16,8 +17,8 @@ public class DriverTripItem extends TripItem<DriverTripOccurenceShort> {
 
 	@Override
 	protected void initView() {
-		Checkpoint from = data.getCheckpoints().get(0);
-        Checkpoint to = data.getCheckpoints().get(data.getCheckpoints().size() - 1);
+		Checkpoint from = (Checkpoint) data.getCheckpoints().get(0);
+        Checkpoint to = (Checkpoint) data.getCheckpoints().get(1);
 
         if (pathView != null) {
         	pathView.setSurroundBounds(true);
@@ -25,7 +26,7 @@ public class DriverTripItem extends TripItem<DriverTripOccurenceShort> {
         }
         
         if (departurePoint != null) {
-            departurePoint.setText(from.getSite().getName());
+            departurePoint.setText(Resources.getSiteShort(from.getSiteId()).getName());
         }
         
         if (departureTime != null) {
@@ -40,7 +41,7 @@ public class DriverTripItem extends TripItem<DriverTripOccurenceShort> {
         }
         
         if (arrivalPoint != null) {
-            arrivalPoint.setText(to.getSite().getName());
+            arrivalPoint.setText(Resources.getSiteShort(to.getSiteId()).getName());
         }
         
         if (arrivalTime != null) {
