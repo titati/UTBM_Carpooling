@@ -95,8 +95,10 @@ public class TripPathView extends View {
             }
         } else {
             // Draw checkpoint
-            if (mCheckpoints.get(1).getNumCheckpoint() - mCheckpoints.get(0).getNumCheckpoint() > 1)
-            	canvas.drawCircle(mX, mH / 2, POINT_RADIUS, mBodyPainter);
+        	try {
+        		if (mCheckpoints.get(1).getNumCheckpoint() - mCheckpoints.get(0).getNumCheckpoint() > 1)
+        			canvas.drawCircle(mX, mH / 2, POINT_RADIUS, mBodyPainter);
+        	} catch(Exception e) {}
         }
     }
 

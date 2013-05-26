@@ -21,7 +21,7 @@
     </declare-styleable>
 
     <declare-styleable name="TimePickerSpinner">
-        <attr name="prompt" format="string" />
+        <!-- <attr name="prompt" format="string" />  -->
     </declare-styleable>
 
 </resources>

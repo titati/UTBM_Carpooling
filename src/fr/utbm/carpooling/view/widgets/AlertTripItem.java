@@ -1,7 +1,5 @@
 package fr.utbm.carpooling.view.widgets;
 
-import java.util.List;
-
 import android.content.Context;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;

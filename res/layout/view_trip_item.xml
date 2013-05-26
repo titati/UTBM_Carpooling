@@ -10,7 +10,7 @@
     <fr.utbm.carpooling.view.widgets.TripPathView
         android:id="@+id/item_trippathview"
         android:layout_height="match_parent"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         custom:surroundBounds="false"
         android:layout_gravity="fill_vertical" />
 	

@@ -44,7 +44,7 @@ public class TimePickerSpinner extends Button {
 
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.TimePickerSpinner, 0, 0);
         try {
-            dialog.setTitle(a.getString(R.styleable.TimePickerSpinner_prompt));
+            //dialog.setTitle(a.getString(R.styleable.TimePickerSpinner_prompt));
         } finally {
             a.recycle();
         }

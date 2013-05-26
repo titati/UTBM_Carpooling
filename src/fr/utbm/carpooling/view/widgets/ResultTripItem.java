@@ -23,7 +23,7 @@ public class ResultTripItem extends LinearLayout {
 	protected TextView arrivalTime = null;
 	protected TextView nbSeats = null;
 	protected TextView trunkSize = null;
-			
+	
     protected final DateFormat TIME_FORMAT = android.text.format.DateFormat.getTimeFormat(getContext());
 	
 	public ResultTripItem(Context context, AttributeSet attrs) {
@@ -76,7 +76,7 @@ public class ResultTripItem extends LinearLayout {
 		}
 		
 		if (trunkSize != null) {
-			trunkSize.setText(data.getTrunk().getName());
+			trunkSize.setText(Resources.getTrunk(data.getTrunkId()).getName());
 		}
 	}
 }

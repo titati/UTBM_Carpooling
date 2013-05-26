@@ -28,7 +28,8 @@ public class HomeActivity extends Activity {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						
+						Intent intent = new Intent(HomeActivity.this, TripSearchResultsActivity.class);
+                        startActivity(intent);
 					}
 				});
 		

@@ -6,7 +6,7 @@ public class TripSearchResultShort extends BaseTrip implements Serializable {
 	
 	private int seats;
 	private int remainingSeats;
-	private Trunk trunk;
+	private int trunkId;
 	private boolean arrivalIsEnd;
 	
 	public int getSeats() {
@@ -25,12 +25,12 @@ public class TripSearchResultShort extends BaseTrip implements Serializable {
 		this.remainingSeats = remainingSeats;
 	}
 	
-	public Trunk getTrunk() {
-		return trunk;
+	public int getTrunkId() {
+		return trunkId;
 	}
 	
-	public void setTrunk(Trunk trunk) {
-		this.trunk = trunk;
+	public void setTrunkId(int trunkId) {
+		this.trunkId = trunkId;
 	}
 
 	public boolean getArrivalIsEnd() {
