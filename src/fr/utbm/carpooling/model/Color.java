@@ -11,9 +11,9 @@ public class Color implements Serializable, Comparable {
 
 
     public Color(int id, String name, String hex) {
-        this.id = id;
-        this.name = name;
-        this.hex = hex;
+        setId(id);
+        setName(name);
+        setHex(hex);
     }
 
 

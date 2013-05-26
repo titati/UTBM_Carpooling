@@ -9,8 +9,8 @@ public class Trunk implements Serializable {
 	private String name;
 
     public Trunk(int id, String name) {
-        this.id = id;
-        this.name = name;
+        setId(id);
+        setName(name);
     }
 
 

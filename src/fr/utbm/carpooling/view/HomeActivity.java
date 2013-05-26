@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.Resources;
 
 public class HomeActivity extends Activity {
 
@@ -48,6 +49,15 @@ public class HomeActivity extends Activity {
 						startActivity(intent);
 					}
 				});
+
+        Resources.init();
+
+        if (Resources.login == null) {
+
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+
 	}
 
 	@Override
