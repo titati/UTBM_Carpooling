@@ -10,8 +10,8 @@ public class SiteShort implements Serializable {
 
 
     public SiteShort(int id, String name) {
-        this.id = id;
-        this.name = name;
+        setId(id);
+        setName(name);
     }
 
 	public int getId() {

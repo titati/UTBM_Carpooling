@@ -7,6 +7,8 @@ import java.util.*;
 
 public class Resources {
 
+    public static String login = null;
+
     private static Map<Integer, Color> colors = new HashMap<Integer, Color>();
     private static Map<Integer, Trunk> trunks = new HashMap<Integer, Trunk>();
     private static Map<Integer, SiteShort> sitesShort = new HashMap<Integer, SiteShort>();
@@ -15,6 +17,8 @@ public class Resources {
     private static List<Color> colorsSorted;
 
     public static void init() {
+
+        login = "plop";
 
         colors.put(0, new Color(0, "", "000000"));
         colors.put(1, new Color(1, "", "808080"));
@@ -29,7 +33,8 @@ public class Resources {
         colors.put(10, new Color(10, "", "00FFFF"));
         colors.put(11, new Color(11, "", "FF00FF"));
 
-        colorsSorted = (List<Color>) colors.values();
+        colorsSorted = new ArrayList<Color>();
+        colorsSorted.addAll(colors.values());
         Collections.sort(colorsSorted);
 
         trunks.put(0, new Trunk(0, "tiny"));
@@ -95,7 +100,7 @@ public class Resources {
         return sitesShort.values();
     }
 
-    public static SiteShort getSite(int id) {
+    public static SiteShort getSiteShort(int id) {
         return sitesShort.get(id);
     }
 

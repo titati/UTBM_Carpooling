@@ -17,15 +17,14 @@
             android:name="fr.utbm.carpooling.view.LoginActivity"
             android:label="@string/login_title"
             android:windowSoftInputMode="adjustResize|stateVisible">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
             android:name="fr.utbm.carpooling.view.HomeActivity"
             android:label="@string/home_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
             android:name="fr.utbm.carpooling.view.ProfileActivity"

@@ -190,8 +190,8 @@ public class LoginActivity extends Activity {
 
 			if (success) {
 				finish();
-				Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-				startActivity(intent);
+//				Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+//				startActivity(intent);
 			} else {
 				findViewById(R.id.login_textview_invalid_data).setVisibility(View.VISIBLE);
 			}

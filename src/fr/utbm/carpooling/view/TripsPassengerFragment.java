@@ -39,11 +39,11 @@ public class TripsPassengerFragment extends Fragment {
 
         mListView = (ListView) getView().findViewById(R.id.trips_passenger_listview_trips);
 
-        SiteShort A = new SiteShort();
+        SiteShort A = new SiteShort(0, "Belfort");
         A.setName("Belfort");
-        SiteShort B = new SiteShort();
+        SiteShort B = new SiteShort(1, "Sevenans");
         B.setName("Sevenans");
-        SiteShort C = new SiteShort();
+        SiteShort C = new SiteShort(2, "Montbeliard");
         C.setName("Montbeliard");
 
         Checkpoint c1 = new Checkpoint();
