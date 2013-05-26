@@ -35,10 +35,6 @@ public class ColorCheckBox extends CheckBox {
 
     public void setColor(String htmlColor) {
 
-        if (!htmlColor.startsWith("#")) {
-            htmlColor = "#".concat(htmlColor);
-        }
-
         int bodyColor;
         int frameColor;
 

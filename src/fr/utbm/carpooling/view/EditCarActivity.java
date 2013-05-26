@@ -1,7 +1,9 @@
 package fr.utbm.carpooling.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import fr.utbm.carpooling.R;
@@ -39,5 +41,7 @@ public class EditCarActivity extends Activity {
         colors.add(white);
 
         ((ColorGridView) findViewById(R.id.edit_car_gridview_colors)).setColors(colors);
+        ((ColorGridView) findViewById(R.id.edit_car_gridview_colors)).setSelectedColor(green);
     }
+
 }
