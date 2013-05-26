@@ -9,6 +9,14 @@ public class Color implements Serializable, Comparable {
     private String name;
     private String hex;
 
+
+    public Color(int id, String name, String hex) {
+        this.id = id;
+        this.name = name;
+        this.hex = hex;
+    }
+
+
     public int getId() {
         return id;
     }
