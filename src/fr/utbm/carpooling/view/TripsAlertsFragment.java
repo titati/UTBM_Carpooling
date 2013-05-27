@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.adapter.AlertAdapter;
 import fr.utbm.carpooling.model.Alert;
 import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.model.SiteShort;
-import fr.utbm.carpooling.view.widgets.AlertAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;

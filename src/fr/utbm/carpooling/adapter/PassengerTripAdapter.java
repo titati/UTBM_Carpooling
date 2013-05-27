@@ -1,10 +1,11 @@
-package fr.utbm.carpooling.view.widgets;
+package fr.utbm.carpooling.adapter;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import fr.utbm.carpooling.model.PassengerTripShort;
+import fr.utbm.carpooling.view.widgets.PassengerTripItem;
 
 import java.util.ArrayList;
 

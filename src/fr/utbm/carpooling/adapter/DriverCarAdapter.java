@@ -1,4 +1,4 @@
-package fr.utbm.carpooling.view.widgets;
+package fr.utbm.carpooling.adapter;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import fr.utbm.carpooling.model.DriverCar;
+import fr.utbm.carpooling.view.widgets.DriverCarItem;
 
 public class DriverCarAdapter extends ArrayAdapter<DriverCar> {
 

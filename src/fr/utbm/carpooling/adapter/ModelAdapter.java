@@ -1,4 +1,4 @@
-package fr.utbm.carpooling.view.widgets;
+package fr.utbm.carpooling.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,17 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import fr.utbm.carpooling.model.Brand;
+import fr.utbm.carpooling.model.Model;
 
 import java.util.List;
 
 
-public class BrandAdapter extends ArrayAdapter<Brand> {
+public class ModelAdapter extends ArrayAdapter<Model> {
 
-    private List<Brand> mItems;
+    private List<Model> mItems;
     private int mDisabled;
 
-    public BrandAdapter(Context context, int textViewResourceId, List<Brand> items) {
+    public ModelAdapter(Context context, int textViewResourceId, List<Model> items) {
         super(context, textViewResourceId, items);
         mItems = items;
     }
@@ -25,7 +25,7 @@ public class BrandAdapter extends ArrayAdapter<Brand> {
         return mItems.size();
     }
 
-    public Brand getItem(int position) {
+    public Model getItem(int position) {
         return mItems.get(position);
     }
 

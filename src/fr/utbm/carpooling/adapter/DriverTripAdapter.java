@@ -1,10 +1,11 @@
-package fr.utbm.carpooling.view.widgets;
+package fr.utbm.carpooling.adapter;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import fr.utbm.carpooling.model.DriverTripOccurenceShort;
+import fr.utbm.carpooling.view.widgets.DriverTripItem;
 
 import java.util.ArrayList;
 

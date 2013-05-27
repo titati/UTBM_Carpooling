@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.adapter.ResultTripAdapter;
 import fr.utbm.carpooling.model.CheckpointShort;
 import fr.utbm.carpooling.model.TripSearchResultShort;
-import fr.utbm.carpooling.view.widgets.ResultTripAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;

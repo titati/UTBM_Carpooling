@@ -12,10 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.adapter.DriverTripAdapter;
 import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.model.DriverTripOccurenceShort;
 import fr.utbm.carpooling.model.SiteShort;
-import fr.utbm.carpooling.view.widgets.DriverTripAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;

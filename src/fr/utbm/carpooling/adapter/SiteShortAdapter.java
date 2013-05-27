@@ -1,4 +1,4 @@
-package fr.utbm.carpooling.view.widgets;
+package fr.utbm.carpooling.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,17 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import fr.utbm.carpooling.model.Model;
+import fr.utbm.carpooling.model.SiteShort;
 
 import java.util.List;
 
 
-public class ModelAdapter extends ArrayAdapter<Model> {
+public class SiteShortAdapter extends ArrayAdapter<SiteShort> {
 
-    private List<Model> mItems;
+    private List<SiteShort> mItems;
     private int mDisabled;
 
-    public ModelAdapter(Context context, int textViewResourceId, List<Model> items) {
+    public SiteShortAdapter(Context context, int textViewResourceId, List<SiteShort> items) {
         super(context, textViewResourceId, items);
         mItems = items;
     }
@@ -25,7 +25,7 @@ public class ModelAdapter extends ArrayAdapter<Model> {
         return mItems.size();
     }
 
-    public Model getItem(int position) {
+    public SiteShort getItem(int position) {
         return mItems.get(position);
     }
 
@@ -34,7 +34,7 @@ public class ModelAdapter extends ArrayAdapter<Model> {
     }
 
     public void disableItem(int position) {
-        mDisabled = position;
+         mDisabled = position;
     }
 
 

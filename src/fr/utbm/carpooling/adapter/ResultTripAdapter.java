@@ -1,4 +1,4 @@
-package fr.utbm.carpooling.view.widgets;
+package fr.utbm.carpooling.adapter;
 
 import java.util.ArrayList;
 

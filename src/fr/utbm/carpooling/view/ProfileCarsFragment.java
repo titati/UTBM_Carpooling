@@ -13,12 +13,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.adapter.DriverCarAdapter;
 import fr.utbm.carpooling.model.Brand;
 import fr.utbm.carpooling.model.Color;
 import fr.utbm.carpooling.model.DriverCar;
 import fr.utbm.carpooling.model.Model;
 import fr.utbm.carpooling.model.Trunk;
-import fr.utbm.carpooling.view.widgets.DriverCarAdapter;
 
 
 public class ProfileCarsFragment extends Fragment {

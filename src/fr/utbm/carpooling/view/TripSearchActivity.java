@@ -10,8 +10,8 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
+import fr.utbm.carpooling.adapter.SiteShortAdapter;
 import fr.utbm.carpooling.view.widgets.DatePickerSpinner;
-import fr.utbm.carpooling.view.widgets.SiteShortAdapter;
 import fr.utbm.carpooling.view.widgets.TimePickerSpinner;
 
 
@@ -78,7 +78,7 @@ public class TripSearchActivity extends Activity {
             }
         });
 
-        mMoreButton.setDrawa
+        
 
         mMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
