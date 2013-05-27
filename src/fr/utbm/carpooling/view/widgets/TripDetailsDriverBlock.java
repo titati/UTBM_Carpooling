@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import fr.utbm.carpooling.Resources;
-import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.model.DriverTripOccurence;
 
 public class TripDetailsDriverBlock extends TripDetailBlock<DriverTripOccurence> {
@@ -17,15 +16,6 @@ public class TripDetailsDriverBlock extends TripDetailBlock<DriverTripOccurence>
 
 	@Override
 	protected void finishBuildView() {
-		if (mRootCheckpoint != null) {
-			for(int i = 0; i < mData.getCheckpoints().size(); ++i) {
-				TripCheckpoint t = new TripCheckpoint(getContext(), null);
-				t.setCheckpoint((Checkpoint) mData.getCheckpoints().get(i));
-				mListCheckpoint.add(t);
-				mRootCheckpoint.addView(t, i);
-			}
-		}
-		
 		sub = new TripSubscriberBlock(getContext());
 		sub.setData(mData.getPassengers(), mData.getCar().getSeats());
 		addView(sub, 2);

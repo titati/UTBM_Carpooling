@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.model.BaseTrip;
+import fr.utbm.carpooling.model.Checkpoint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -12,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-public abstract class TripDetailBlock<E> extends LinearLayout {
+public abstract class TripDetailBlock<E extends BaseTrip> extends LinearLayout {
 	
 	protected E mData = null;
 	
@@ -59,6 +61,15 @@ public abstract class TripDetailBlock<E> extends LinearLayout {
         mColor = (ColorCheckBox) ((ViewGroup) getChildAt(3)).getChildAt(2);
         mTrunkSize = (TextView) ((ViewGroup) getChildAt(3)).getChildAt(4);
         mDesc = (TextView) getChildAt(5);
+
+		if (mRootCheckpoint != null) {
+			for(int i = 0; i < mData.getCheckpoints().size(); ++i) {
+				TripCheckpoint t = new TripCheckpoint(getContext(), null);
+				t.setCheckpoint((Checkpoint) mData.getCheckpoints().get(i));
+				mListCheckpoint.add(t);
+				mRootCheckpoint.addView(t, i);
+			}
+		}
 	}
 	
 	protected abstract void finishBuildView();
