@@ -46,8 +46,7 @@
         <activity android:name="fr.utbm.carpooling.view.TripSearchResultsActivity"/>
         <activity
             android:name="fr.utbm.carpooling.view.TripSearchActivity"
-            android:label="@string/trip_search_title"
-            />
+            android:label="@string/trip_search_title" />
         <activity
             android:name="fr.utbm.carpooling.view.TripDetailsDriverActivity"
             android:label="@string/title_activity_trip_details_driver" >

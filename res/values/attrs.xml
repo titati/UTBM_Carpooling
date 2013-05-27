@@ -16,12 +16,14 @@
         <attr name="fullPath" format="boolean"/>
     </declare-styleable>
 
+    <attr name="prompt" format="string"/>
+
     <declare-styleable name="DatePickerSpinner">
-        <attr name="prompt" format="string" />
+        <attr name="prompt"/>
     </declare-styleable>
 
     <declare-styleable name="TimePickerSpinner">
-        <!-- <attr name="prompt" format="string" />  -->
+        <attr name="prompt"/>
     </declare-styleable>
 
 </resources>

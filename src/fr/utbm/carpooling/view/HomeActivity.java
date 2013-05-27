@@ -20,7 +20,8 @@ public class HomeActivity extends Activity {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-                        (new TripFeedbackDialog(HomeActivity.this)).show();
+                        Intent intent = new Intent(HomeActivity.this, TripSearchActivity.class);
+                        startActivity(intent);
 					}
 				});
 		

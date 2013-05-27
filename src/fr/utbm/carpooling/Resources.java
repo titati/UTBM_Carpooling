@@ -80,7 +80,7 @@ public class Resources {
     }
 
 
-    public static Collection<Color> getColors() {
+    public static List<Color> getColors() {
         return colorsSorted;
     }
 
@@ -88,32 +88,32 @@ public class Resources {
         return colors.get(id);
     }
 
-    public static Collection<Trunk> getTrunks() {
-        return trunks.values();
+    public static List<Trunk> getTrunks() {
+        return new ArrayList<Trunk>(trunks.values());
     }
 
     public static Trunk getTrunk(int id) {
         return trunks.get(id);
     }
 
-    public static Collection<SiteShort> getSitesShort() {
-        return sitesShort.values();
+    public static List<SiteShort> getSitesShort() {
+        return new ArrayList<SiteShort>(sitesShort.values());
     }
 
     public static SiteShort getSiteShort(int id) {
         return sitesShort.get(id);
     }
 
-    public static Collection<Brand> getBrands() {
-        return brands.values();
+    public static List<Brand> getBrands() {
+        return new ArrayList<Brand>(brands.values());
     }
 
     public static Brand getBrand(int id) {
         return brands.get(id);
     }
 
-    public static Collection<Model> getModels(int brand_id) {
-        return models.get(brand_id).values();
+    public static List<Model> getModels(int brand_id) {
+        return new ArrayList<Model>(models.get(brand_id).values());
     }
 
     public static Model getModel(int brand_id, int id) {
