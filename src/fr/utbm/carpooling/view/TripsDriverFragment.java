@@ -1,12 +1,16 @@
 package fr.utbm.carpooling.view;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.model.DriverTripOccurenceShort;
@@ -79,8 +83,15 @@ public class TripsDriverFragment extends Fragment {
                 R.id.trips_driver_listview_trips, trips);
 
         mListView.setAdapter(adapter);
+        
+        mListView.setOnItemClickListener(new OnItemClickListener() {
 
-
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				Intent intent = new Intent(getActivity().getApplicationContext(), TripDetailsDriverActivity.class);
+                startActivity(intent);
+			}
+		});
 
     }
 

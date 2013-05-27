@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:custom="http://schemas.android.com/apk/res/fr.utbm.carpooling"
     android:id="@+id/LinearLayout"
@@ -8,12 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".TripDetailsActivity" >
+        android:layout_height="wrap_content" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,7 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/textView1" >
+            android:layout_toLeftOf="@+id/textView1"
+            android:gravity="center_vertical" >
 
             <ImageView
                 android:id="@+id/imageView1"
@@ -59,17 +55,19 @@
         <fr.utbm.carpooling.view.widgets.TripPathView
             android:id="@+id/tripPathView1"
             android:layout_width="30dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="fill_vertical"
-            custom:surroundBounds="true" />
+            custom:surroundBounds="true"
+            custom:fullPath="true" />
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        	android:stretchColumns="0,1" >
 
             
         </TableLayout>
+
     </LinearLayout>
 
     <RelativeLayout
@@ -81,19 +79,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:paddingRight="5dp"
+            android:text="Car" />
         
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/trip_details_car" />
+            android:layout_toRightOf="@+id/trip_details_car"
+            android:text="carName" />
         
         <fr.utbm.carpooling.view.widgets.ColorCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/trip_details_car_trunk_img" />
+            android:layout_toLeftOf="@+id/trip_details_car_trunk_img" />
         
         <ImageView
             android:id="@+id/trip_details_car_trunk_img"
@@ -101,14 +102,15 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@drawable/trunk"
-            android:layout_toRightOf="@+id/trip_details_car_trunk" />
+            android:layout_toLeftOf="@+id/trip_details_car_trunk" />
         
         <TextView
             android:id="@+id/trip_details_car_trunk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:text="Trunk" />
     </RelativeLayout>
 
     <TextView
@@ -123,4 +125,4 @@
         android:layout_height="wrap_content"
         android:text="desc" />
 
-</LinearLayout>
+</merge>

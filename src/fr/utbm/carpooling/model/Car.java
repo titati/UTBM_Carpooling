@@ -1,52 +1,61 @@
 package fr.utbm.carpooling.model;
 
-
 import java.io.Serializable;
 
 public class Car implements Serializable {
 
 	protected String id;
-	protected Brand brand;
-	protected Model model;
-	protected Color color;
+	protected int brandId;
+	protected int modelId;
+	protected int colorId;
 	protected int seats;
-	protected Trunk trunk;
+	protected int trunkId;
 	
 	public String getId() {
 		return id;
 	}
+	
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Brand getBrand() {
-		return brand;
+	
+	public int getBrandId() {
+		return brandId;
 	}
-	public void setBrand(Brand brand) {
-		this.brand = brand;
+	
+	public void setBrandId(int brandId) {
+		this.brandId = brandId;
 	}
-	public Model getModel() {
-		return model;
+	
+	public int getModelId() {
+		return modelId;
 	}
-	public void setModel(Model model) {
-		this.model = model;
+	
+	public void setModelId(int modelId) {
+		this.modelId = modelId;
 	}
-	public Color getColor() {
-		return color;
+	
+	public int getColorId() {
+		return colorId;
 	}
-	public void setColor(Color color) {
-		this.color = color;
+	
+	public void setColorId(int colorId) {
+		this.colorId = colorId;
 	}
+	
 	public int getSeats() {
 		return seats;
 	}
+	
 	public void setSeats(int seats) {
 		this.seats = seats;
 	}
-	public Trunk getTrunk() {
-		return trunk;
+	
+	public int getTrunkId() {
+		return trunkId;
 	}
-	public void setTrunk(Trunk trunk) {
-		this.trunk = trunk;
+	
+	public void setTrunkId(int trunkId) {
+		this.trunkId = trunkId;
 	}
-
 }

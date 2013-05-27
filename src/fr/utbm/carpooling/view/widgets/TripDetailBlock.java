@@ -1,5 +1,6 @@
 package fr.utbm.carpooling.view.widgets;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 import fr.utbm.carpooling.R;
@@ -11,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-public abstract class TripDetailItem<E> extends LinearLayout {
+public abstract class TripDetailBlock<E> extends LinearLayout {
 	
 	protected E mData = null;
 	
@@ -23,26 +24,31 @@ public abstract class TripDetailItem<E> extends LinearLayout {
 	protected TextView mTrunkSize = null;
 	protected TextView mDesc = null;
 	protected TableLayout mRootCheckpoint = null;
-	protected ArrayList<TripCheckpoint> mListCheckpoint = null;
+	protected ArrayList<TripCheckpoint> mListCheckpoint = new ArrayList<TripCheckpoint>();
+
+    protected final DateFormat TIME_FORMAT = android.text.format.DateFormat.getTimeFormat(getContext());
+    protected final DateFormat DATE_FORMAT = android.text.format.DateFormat.getDateFormat(getContext());
 	
-	public TripDetailItem(Context context, AttributeSet attrs) {
+	public TripDetailBlock(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.view_trip_details, this, true);
         
+        setOrientation(VERTICAL);
+        
 		initItems();
-		finishBuildView();
-		initSecondItems();
 	}
 	
 	public void setData(E data) {
 		mData = data;
+		finishBuildView();
+		initSecondItems();
 		initView();
 	}
 	
 	protected void initItems() {
-		mTripPath = (TripPathRestrictedView) getChildAt(0);
+		mTripPath = (TripPathView) ((ViewGroup) getChildAt(1)).getChildAt(0);
         mSeats = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(0)).getChildAt(1)).getChildAt(1);
         mDate = (TextView) ((ViewGroup) getChildAt(0)).getChildAt(2);
         mRootCheckpoint = (TableLayout) ((ViewGroup) getChildAt(1)).getChildAt(1);

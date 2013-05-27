@@ -7,6 +7,7 @@ import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.Checkpoint;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,6 +29,8 @@ public class TripCheckpoint extends TableRow {
 		
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.view_checkpoint_trip, this, true);
+        
+        setGravity(Gravity.CENTER_VERTICAL);
         
 		initItems();
 	}

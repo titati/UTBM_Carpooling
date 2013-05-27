@@ -1,8 +1,14 @@
 package fr.utbm.carpooling.view.widgets;
 
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.DriverCar;
+import fr.utbm.carpooling.view.HomeActivity;
+import fr.utbm.carpooling.view.ProfileCarsFragment;
+import fr.utbm.carpooling.view.TripDetailsDriverActivity;
+import fr.utbm.carpooling.view.TripSearchResultsActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +37,7 @@ public class DriverCarItem extends TableLayout {
         setColumnStretchable(1, true);
         setColumnStretchable(2, true);
         setPadding(10, 10, 10, 10);
+        setClickable(true);
         
 		initItems();
 	}
@@ -50,7 +57,7 @@ public class DriverCarItem extends TableLayout {
 	
 	protected void initView() {
 		if (mName != null) {
-			mName.setText(mCar.getBrand().getName() + ' ' + mCar.getModel().getName());
+			mName.setText(Resources.getBrand(mCar.getBrandId()).getName() + " " + Resources.getModel(mCar.getBrandId(), mCar.getModelId()).getName());
 		}
 	
 		if (mSeats != null) {
@@ -58,11 +65,11 @@ public class DriverCarItem extends TableLayout {
 		}
 		
 		if (mTrunkSize != null) {
-			mTrunkSize.setText(mCar.getTrunk().getName());
+			mTrunkSize.setText(Resources.getTrunk(mCar.getTrunkId()).getName());
 		}
 		
 		if (mColor != null) {
-			mColor.setColor(mCar.getColor().getHex());
+			mColor.setColor(Resources.getColor(mCar.getColorId()).getHex());
 		}
 		
 		if (mDefaultCar != null) {

@@ -2,11 +2,15 @@ package fr.utbm.carpooling.view;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.Brand;
@@ -41,34 +45,21 @@ public class ProfileCarsFragment extends Fragment {
         mListView = (ListView) getView().findViewById(
                 R.id.profile_cars_listview_cars);
 
-        Brand renault = new Brand(0, "");
-        renault.setName("Renault");
-        Model megane = new Model(0, 1, "");
-        megane.setName("Megane");
-        Model clio = new Model(0, 2, "");
-        clio.setName("Clio");
-        Color red = new Color(3, "", "");
-        red.setHex("#FF0000");
-        Color blue = new Color(4, "", "");
-        blue.setHex("0000FF");
-        Trunk trunk = new Trunk(5, "");
-        trunk.setName("Regular");
-
         DriverCar m = new DriverCar();
-        m.setBrand(renault);
-        m.setModel(megane);
-        m.setColor(red);
+        m.setBrandId(0);
+        m.setModelId(2);
+        m.setColorId(8);
         m.setDefaultCar(true);
         m.setSeats(4);
-        m.setTrunk(trunk);
+        m.setTrunkId(2);
 
         DriverCar c = new DriverCar();
-        c.setBrand(renault);
-        c.setModel(clio);
-        c.setColor(blue);
-        c.setDefaultCar(false);
-        c.setSeats(4);
-        c.setTrunk(trunk);
+        m.setBrandId(1);
+        m.setModelId(3);
+        m.setColorId(6);
+        m.setDefaultCar(false);
+        m.setSeats(3);
+        m.setTrunkId(2);
 
         ArrayList<DriverCar> cars = new ArrayList<DriverCar>();
         cars.add(0, m);
@@ -78,7 +69,6 @@ public class ProfileCarsFragment extends Fragment {
                 R.id.profile_cars_listview_cars, cars);
 
         mListView.setAdapter(adapter);
-
     }
 
 }
