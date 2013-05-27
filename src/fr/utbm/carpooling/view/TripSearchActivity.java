@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import fr.utbm.carpooling.R;
@@ -20,6 +21,8 @@ public class TripSearchActivity extends Activity {
     private Spinner mArrivalSiteSpinner;
     private DatePickerSpinner mArrivalDateSpinner;
     private TimePickerSpinner mArrivalTimeSpinner;
+    private Button mLessButton;
+    private Button mMoreButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,8 @@ public class TripSearchActivity extends Activity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         mArrivalSiteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -57,10 +61,33 @@ public class TripSearchActivity extends Activity {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
+        mLessButton = (Button) findViewById(R.id.trip_search_button_less);
+        mLessButton.setVisibility(View.GONE);
+        mMoreButton = (Button) findViewById(R.id.trip_search_button_more);
 
+        mLessButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mLessButton.setVisibility(View.GONE);
+                mMoreButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+        mMoreButton.setDrawa
+
+        mMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mMoreButton.setVisibility(View.GONE);
+                mLessButton.setVisibility(View.VISIBLE);
+            }
+        });
 
 
     }

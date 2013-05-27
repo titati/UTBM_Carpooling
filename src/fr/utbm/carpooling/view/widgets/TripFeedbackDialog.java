@@ -18,17 +18,17 @@ public class TripFeedbackDialog extends AlertDialog {
 
         setCancelable(true);
         setTitle(R.string.trip_details_feedback_dialog_title);
-        setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new OnClickListener() {
+        setButton(AlertDialog.BUTTON_NEGATIVE, context.getText(R.string.action_cancel), new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //To change body of implemented methods use File | Settings | File Templates.
+
             }
         });
 
-        setButton(AlertDialog.BUTTON_POSITIVE, "OK", new OnClickListener() {
+        setButton(AlertDialog.BUTTON_POSITIVE, context.getText(R.string.action_ok), new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //To change body of implemented methods use File | Settings | File Templates.
+
             }
         });
 

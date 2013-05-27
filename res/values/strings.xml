@@ -7,4 +7,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_trip_details_driver">TripDetailsDriverActivity</string>
 
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_less">Less</string>
+    <string name="action_more">More</string>
+
 </resources>
