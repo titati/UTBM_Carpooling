@@ -1,9 +1,11 @@
 package fr.utbm.carpooling.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.Serializable;
+import fr.utbm.carpooling.JSONParsable;
 
-public class Brand implements Serializable {
+public class Brand extends JSONParsable {
 
 	private int id;
 	private String name;
@@ -24,6 +26,21 @@ public class Brand implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	protected void deserializeJSON(JSONObject object) {
+		try {
+			setId(object.getInt("id"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setName(object.getString("name"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

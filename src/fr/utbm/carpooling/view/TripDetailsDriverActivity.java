@@ -8,7 +8,6 @@ import fr.utbm.carpooling.model.Car;
 import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.model.DriverCar;
 import fr.utbm.carpooling.model.DriverTripOccurence;
-import fr.utbm.carpooling.model.DriverTripOccurenceShort;
 import fr.utbm.carpooling.model.User;
 import fr.utbm.carpooling.view.widgets.TripDetailsDriverBlock;
 import android.os.Bundle;

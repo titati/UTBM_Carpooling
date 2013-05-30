@@ -1,22 +1,57 @@
 package fr.utbm.carpooling.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
+import java.util.Locale;
 
-public class CheckpointShort {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import fr.utbm.carpooling.JSONParsable;
+
+public class CheckpointShort extends JSONParsable {
 
 	protected int numCheckpoint;
 	protected Date date;
 	
+	public CheckpointShort(JSONObject object) {
+		super(object);
+	}
+	
+	public CheckpointShort() {}
+	
 	public int getNumCheckpoint() {
 		return numCheckpoint;
 	}
+	
 	public void setNumCheckpoint(int numCheckpoint) {
 		this.numCheckpoint = numCheckpoint;
 	}
+	
 	public Date getDate() {
 		return date;
 	}
+	
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	@Override
+	protected void deserializeJSON(JSONObject object) {
+		try {
+			setNumCheckpoint(object.getInt("numCheckpoint"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.ENGLISH);
+		try {
+			setDate(df.parse((object.getString("date"))));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 }

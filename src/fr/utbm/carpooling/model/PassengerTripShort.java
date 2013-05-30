@@ -1,6 +1,11 @@
 package fr.utbm.carpooling.model;
 
+import org.json.JSONObject;
 
-import java.io.Serializable;
-
-public class PassengerTripShort extends BaseTrip implements Serializable {}
+public class PassengerTripShort extends BaseTrip {
+	public PassengerTripShort(JSONObject object) {
+		super(object);
+	}
+	
+	public PassengerTripShort() {}
+}

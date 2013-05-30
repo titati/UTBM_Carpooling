@@ -1,9 +1,9 @@
 package fr.utbm.carpooling.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.Serializable;
-
-public class DriverTripOccurenceShort extends BaseTrip implements Serializable {
+public class DriverTripOccurenceShort extends BaseTrip {
 
 	private boolean repeat;
 
@@ -14,5 +14,15 @@ public class DriverTripOccurenceShort extends BaseTrip implements Serializable {
 	public void setRepeat(boolean repeat) {
 		this.repeat = repeat;
 	}
-
+	
+	@Override
+	public void deserializeJSON(JSONObject object) {
+		super.deserializeJSON(object);
+		
+		try {
+			setRepeat(object.getBoolean("repeat"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 }

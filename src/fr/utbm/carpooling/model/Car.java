@@ -1,8 +1,11 @@
 package fr.utbm.carpooling.model;
 
-import java.io.Serializable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class Car implements Serializable {
+import fr.utbm.carpooling.JSONParsable;
+
+public class Car extends JSONParsable {
 
 	protected String id;
 	protected int brandId;
@@ -10,7 +13,13 @@ public class Car implements Serializable {
 	protected int colorId;
 	protected int seats;
 	protected int trunkId;
+
+	public Car() {}
 	
+	public Car(JSONObject object) {
+		super(object);
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -57,5 +66,44 @@ public class Car implements Serializable {
 	
 	public void setTrunkId(int trunkId) {
 		this.trunkId = trunkId;
+	}
+
+	@Override
+	protected void deserializeJSON(JSONObject object) {
+		try {
+			setId(object.getString("id"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setBrandId(object.getInt("brandId"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setModelId(object.getInt("modelId"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setColorId(object.getInt("colorId"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setSeats(object.getInt("seats"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setTrunkId(object.getInt("trunkId"));
+		} catch(JSONException e) {
+			e.printStackTrace();
+		}
 	}
 }

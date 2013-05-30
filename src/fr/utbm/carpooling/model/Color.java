@@ -1,9 +1,11 @@
 package fr.utbm.carpooling.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.Serializable;
+import fr.utbm.carpooling.JSONParsable;
 
-public class Color implements Serializable, Comparable {
+public class Color extends JSONParsable implements Comparable<Color> {
 
     private int id;
     private String name;
@@ -47,9 +49,7 @@ public class Color implements Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object another) {
-
-        Color color = (Color) another;
+    public int compareTo(Color color) {
 
         int C1 = android.graphics.Color.parseColor(getHex());
         int C2 = android.graphics.Color.parseColor(color.getHex());
@@ -74,5 +74,21 @@ public class Color implements Serializable, Comparable {
             return 1;
         return 0;
     }
+
+
+	@Override
+	protected void deserializeJSON(JSONObject object) {
+		try {
+			setId(object.getInt("id"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setHex(object.getString("hex"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

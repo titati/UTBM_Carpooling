@@ -1,10 +1,12 @@
 package fr.utbm.carpooling.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class DriverTripOccurence extends BaseTrip implements Serializable {
+
+public class DriverTripOccurence extends BaseTrip {
 	
 	private ArrayList<User> passengers;
 	private Car car;
@@ -24,5 +26,26 @@ public class DriverTripOccurence extends BaseTrip implements Serializable {
 	public void setCar(Car car) {
 		this.car = car;
 	}
-
+	
+	@Override
+	public void deserializeJSON(JSONObject object) {
+		super.deserializeJSON(object);
+		
+		try {
+			setCar(new Car(object.getJSONObject("car")));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		ArrayList<User> passengers = new ArrayList<User>();
+		
+		try {
+			for(int i = 0; i < object.getJSONArray("passengers").length(); ++i) {
+				User u = new User((JSONObject) object.getJSONArray("passengers").get(i));
+				passengers.add(u);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 }

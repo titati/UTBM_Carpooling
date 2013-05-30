@@ -1,30 +1,33 @@
 package fr.utbm.carpooling.model;
 
-import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
+public class TripSearch {
 
-public class TripSearch implements Serializable {
-
-	private List<Checkpoint> checkpoints;
-	private Trunk minTrunk;
+	private ArrayList<Checkpoint> checkpoints;
+	private int minTrunk;
 	private int minSeats;
 	
-	public List<Checkpoint> getCheckpoints() {
+	public ArrayList<Checkpoint> getCheckpoints() {
 		return checkpoints;
 	}
-	public void setCheckpoints(List<Checkpoint> checkpoints) {
+	
+	public void setCheckpoints(ArrayList<Checkpoint> checkpoints) {
 		this.checkpoints = checkpoints;
 	}
-	public Trunk getMinTrunk() {
+	
+	public int getMinTrunk() {
 		return minTrunk;
 	}
-	public void setMinTrunk(Trunk minTrunk) {
+	
+	public void setMinTrunk(int minTrunk) {
 		this.minTrunk = minTrunk;
 	}
+	
 	public int getMinSeats() {
 		return minSeats;
 	}
+	
 	public void setMinSeats(int minSeats) {
 		this.minSeats = minSeats;
 	}

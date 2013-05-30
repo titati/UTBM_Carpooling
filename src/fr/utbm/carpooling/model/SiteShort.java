@@ -1,9 +1,11 @@
 package fr.utbm.carpooling.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.Serializable;
+import fr.utbm.carpooling.JSONParsable;
 
-public class SiteShort implements Serializable {
+public class SiteShort extends JSONParsable {
 
 	private int id;
 	private String name;
@@ -12,6 +14,10 @@ public class SiteShort implements Serializable {
     public SiteShort(int id, String name) {
         setId(id);
         setName(name);
+    }
+    
+    public SiteShort(JSONObject object) {
+    	super(object);
     }
 
 	public int getId() {
@@ -25,6 +31,21 @@ public class SiteShort implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	protected void deserializeJSON(JSONObject object) {
+		try {
+			setId(object.getInt("id"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setName(object.getString("name"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
