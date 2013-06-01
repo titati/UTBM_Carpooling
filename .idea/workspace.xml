@@ -30,28 +30,16 @@
   <component name="ChangeListManager">
     <list default="true" id="398ba21b-9ebe-4110-9219-8e65927f1bf9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/DriverCarItem.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/DriverCarItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripCheckpoint.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripCheckpoint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripDetailBlock.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripDetailBlock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/TripDetailsDriverActivity.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/TripDetailsDriverActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripDetailsDriverBlock.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripDetailsDriverBlock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripFeedbackDialog.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripFeedbackDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/TripSearchActivity.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/TripSearchActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripSubscriber.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripSubscriber.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripSubscriberBlock.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripSubscriberBlock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_trip_details_driver.xml" afterPath="$PROJECT_DIR$/res/layout/activity_trip_details_driver.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/HomeActivity.java" afterPath="$PROJECT_DIR$/src/fr/utbm/carpooling/view/HomeActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_trip_search.xml" afterPath="$PROJECT_DIR$/res/layout/activity_trip_search.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/colors.xml" afterPath="$PROJECT_DIR$/res/values/colors.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/trip_details_driver.xml" afterPath="$PROJECT_DIR$/res/menu/trip_details_driver.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/view_checkpoint_trip.xml" afterPath="$PROJECT_DIR$/res/layout/view_checkpoint_trip.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/view_trip_details.xml" afterPath="$PROJECT_DIR$/res/layout/view_trip_details.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/view_trip_subscriber.xml" afterPath="$PROJECT_DIR$/res/layout/view_trip_subscriber.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/view_trip_subscriber_block.xml" afterPath="$PROJECT_DIR$/res/layout/view_trip_subscriber_block.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="UTBM_Carpooling.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369617855109" ignored="false" />
+    <file path="/Dummy.txt" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1370109336966" ignored="false" />
     <file path="/fragment.java" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369485298036" ignored="false" />
     <file path="/a.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1368843632967" ignored="false" />
     <file path="/a.groovy" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1368843664133" ignored="false" />
@@ -68,8 +56,8 @@
     <file path="/TripsAlertsFragment.java" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369176242839" ignored="false" />
     <file path="/strings_trips.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369002799597" ignored="false" />
     <file path="/activity_trips.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1368974407513" ignored="false" />
-    <file path="/AndroidManifest.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369589440330" ignored="false" />
-    <file path="/HomeActivity.java" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369589234573" ignored="false" />
+    <file path="/AndroidManifest.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369663699197" ignored="false" />
+    <file path="/HomeActivity.java" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369663590062" ignored="false" />
     <file path="/a.dummy" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369544100226" ignored="false" />
     <file path="/fragment_trips_passenger.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369005482657" ignored="false" />
     <file path="/fragment_trips_driver.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369004911208" ignored="false" />
@@ -116,6 +104,11 @@
     <file path="/TrunkAdapter.java" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369594568726" ignored="false" />
     <file path="/DummyFile.xpath" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369619232173" ignored="false" />
     <file path="/strings.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369619363460" ignored="false" />
+    <file path="/strings_edit_trip.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369691417067" ignored="false" />
+    <file path="/EditTripActivity.java" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369704912316" ignored="false" />
+    <file path="/activity_edit_trip.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369703970783" ignored="false" />
+    <file path="/plop.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369664258219" ignored="false" />
+    <file path="/colors.xml" changelist="398ba21b-9ebe-4110-9219-8e65927f1bf9" time="1369704676424" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +128,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -172,6 +164,7 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -180,52 +173,85 @@
     <favorites_list name="UTBM_Carpooling" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="TripSearchActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/TripSearchActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="28" selection-start="3058" selection-end="3058" vertical-scroll-proportion="0.6024306">
-              <folding>
-                <element signature="e#2798#3026#0" expanded="true" />
-                <element signature="e#3015#3016#0" expanded="true" />
-                <element signature="e#3099#3327#0" expanded="true" />
-                <element signature="e#3316#3317#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_trip_search.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/activity_trip_search.xml">
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state line="115" column="46" selection-start="4933" selection-end="4933" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="44" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings_trip_search.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings_trip_search.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="208" selection-start="707" selection-end="707" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="activity_edit_trip.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/res/layout/activity_edit_trip.xml">
+              <provider editor-type-id="android-designer">
+                <state />
+              </provider>
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="542" column="5" selection-start="23944" selection-end="23944" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EditTripActivity.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/EditTripActivity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="70" column="48" selection-start="2830" selection-end="2830" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="activity_trip_search.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/res/layout/activity_trip_search.xml">
+              <provider editor-type-id="android-designer">
+                <state />
+              </provider>
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="120" column="31" selection-start="4957" selection-end="4957" vertical-scroll-proportion="-4.64">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="45" column="64" selection-start="1987" selection-end="1987" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="colors.xml" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="3" column="38" selection-start="101" selection-end="101" vertical-scroll-proportion="0.078125">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="strings_edit_trip.xml" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/res/values/strings_edit_trip.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="34" column="18" selection-start="1816" selection-end="1816" vertical-scroll-proportion="0.8854167">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="16" column="7" selection-start="530" selection-end="541" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -236,6 +262,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
     <option name="myDateState">
       <MyDateState />
     </option>
@@ -250,22 +277,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/DatePickerSpinner.java" />
-        <option value="$PROJECT_DIR$/res/values/attrs.xml" />
-        <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/HomeActivity.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TimePickerSpinner.java" />
-        <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/EditCarActivity.java" />
-        <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/Resources.java" />
-        <option value="$PROJECT_DIR$/res/values/strings_trip_search.xml" />
         <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/SiteShortAdapter.java" />
         <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TrunkAdapter.java" />
         <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/ModelAdapter.java" />
         <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/BrandAdapter.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripFeedbackDialog.java" />
-        <option value="$PROJECT_DIR$/res/layout/activity_trip_search.xml" />
         <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/TripSearchActivity.java" />
+        <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/res/layout/plop.xml" />
+        <option value="$PROJECT_DIR$/res/layout/activity_trip_search.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings_edit_trip.xml" />
+        <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/DrawableAlignedButton.java" />
+        <option value="$PROJECT_DIR$/res/layout/activity_edit_trip.xml" />
+        <option value="$PROJECT_DIR$/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/src/fr/utbm/carpooling/view/EditTripActivity.java" />
       </list>
     </option>
   </component>
@@ -323,6 +350,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -518,7 +546,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -531,16 +558,16 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="C:/Program Files (x86)/Git/bin/git.exe" />
-    <property name="AndroidLayoutSelectedEditor" value="android-designer" />
+    <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -590,6 +617,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -615,19 +655,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -753,12 +780,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.086979724" sideWeight="0.6703786" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17022412" sideWeight="0.6703786" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -767,17 +792,19 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16755603" sideWeight="0.42761692" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32628062" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32555556" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32516703" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16862327" sideWeight="0.24610245" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16862327" sideWeight="0.6703786" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16862327" sideWeight="0.6703786" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.086979724" sideWeight="0.6703786" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17022412" sideWeight="0.6703786" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32516703" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.6002227" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -855,131 +882,135 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TimePickerSpinner.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/TripSearchActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="12" selection-start="1498" selection-end="1498" vertical-scroll-proportion="0.49222797">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/Resources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="30" selection-start="1658" selection-end="1658" vertical-scroll-proportion="1.0621761">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/EditCarActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="341" selection-end="341" vertical-scroll-proportion="0.18229167">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/ProfileCarsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="22" selection-start="931" selection-end="1013" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripSubscriber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="120" selection-start="691" selection-end="797" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/SiteShortAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="0" selection-end="2176" vertical-scroll-proportion="0.0">
+        <state line="76" column="40" selection-start="2981" selection-end="2981" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2793#3021#0" expanded="true" />
+            <element signature="e#3010#3011#0" expanded="true" />
+            <element signature="e#3074#3302#0" expanded="true" />
+            <element signature="e#3291#3292#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TrunkAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="20" selection-start="670" selection-end="670" vertical-scroll-proportion="0.76704544">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/ModelAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="20" selection-start="670" selection-end="670" vertical-scroll-proportion="0.76704544">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/BrandAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="20" selection-start="670" selection-end="670" vertical-scroll-proportion="0.76704544">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/home.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/AlertAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="249" selection-end="249" vertical-scroll-proportion="0.104166664">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/TripFeedbackDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="81" selection-start="903" selection-end="903" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings_trip_search.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="208" selection-start="707" selection-end="707" vertical-scroll-proportion="0.0">
+        <state line="9" column="0" selection-start="454" selection-end="693" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_home.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.40834847">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/widgets/DatePickerSpinner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="78" selection-start="2613" selection-end="2613" vertical-scroll-proportion="0.8214286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Android/android-sdk/sources/android-17/java/util/Calendar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="457" column="28" selection-start="18259" selection-end="18301" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/dialog_trip_feedback.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="84" selection-start="1332" selection-end="2146" vertical-scroll-proportion="0.8657244">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings_edit_car.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="34" selection-start="485" selection-end="492" vertical-scroll-proportion="0.26041666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_edit_car.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="42" selection-start="3509" selection-end="3509" vertical-scroll-proportion="-0.21778585">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="44" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
+        <state line="16" column="7" selection-start="530" selection-end="541" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_edit_trip.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="542" column="5" selection-start="23944" selection-end="23944" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings_edit_trip.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="18" selection-start="1816" selection-end="1816" vertical-scroll-proportion="0.8854167">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/EditTripActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="48" selection-start="2830" selection-end="2830" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_trip_search.xml">
-      <provider selected="true" editor-type-id="android-designer">
+      <provider editor-type-id="android-designer">
         <state />
       </provider>
-      <provider editor-type-id="text-editor">
-        <state line="115" column="46" selection-start="4933" selection-end="4933" vertical-scroll-proportion="0.0">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="31" selection-start="4957" selection-end="4957" vertical-scroll-proportion="-4.64">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/utbm/carpooling/view/TripSearchActivity.java">
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="28" selection-start="3058" selection-end="3058" vertical-scroll-proportion="0.6024306">
-          <folding>
-            <element signature="e#2798#3026#0" expanded="true" />
-            <element signature="e#3015#3016#0" expanded="true" />
-            <element signature="e#3099#3327#0" expanded="true" />
-            <element signature="e#3316#3317#0" expanded="true" />
-          </folding>
+        <state line="45" column="64" selection-start="1987" selection-end="1987" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="38" selection-start="101" selection-end="101" vertical-scroll-proportion="0.078125">
+          <folding />
         </state>
       </provider>
     </entry>
