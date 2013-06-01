@@ -2,6 +2,7 @@ package fr.utbm.carpooling.model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,17 +44,12 @@ public abstract class BaseTrip extends JSONParsable {
 			e.printStackTrace();
 		}
 		
-		ArrayList<CheckpointShort> checkpoints = new ArrayList<CheckpointShort>();
-		
 		try {
-			for(int i = 0; i < object.getJSONArray("checkpoints").length(); ++i) {
-				CheckpointShort c = new CheckpointShort((JSONObject) object.getJSONArray("checkpoints").get(i));
-				checkpoints.add(c);
-			}
+			deserializeJSONCheckpoints(object.getJSONArray("checkpoints"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
-		setCheckpoints(checkpoints);
 	}
+	
+	protected abstract void deserializeJSONCheckpoints(JSONArray checkpoints);
 }

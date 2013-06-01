@@ -46,6 +46,7 @@ public class Resources {
         sitesShort.put(0, new SiteShort(0, "belfort"));
         sitesShort.put(1, new SiteShort(1, "sévenans"));
         sitesShort.put(2, new SiteShort(2, "montbéliard"));
+        sitesShort.put(3, new SiteShort(3, "sbarro"));
 
         brands.put(0, new Brand(0, "renault"));
         brands.put(1, new Brand(1, "peugeot"));

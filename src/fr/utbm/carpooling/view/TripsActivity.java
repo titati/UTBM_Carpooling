@@ -28,13 +28,12 @@ public class TripsActivity extends FragmentActivity {
         mTabsAdapter = new TabsAdapter(this, mViewPager);
 
         mViewPager.setAdapter(mTabsAdapter);
-        mViewPager
-                .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-                    @Override
-                    public void onPageSelected(int position) {
-                        actionBar.setSelectedNavigationItem(position);
-                    }
-                });
+        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        	@Override
+        	public void onPageSelected(int position) {
+        		actionBar.setSelectedNavigationItem(position);
+        	}
+        });
 
         mTabsAdapter.addTab(actionBar.newTab().setText(R.string.trips_driver_title), TripsDriverFragment.class, null);
         mTabsAdapter.addTab(actionBar.newTab().setText(R.string.trips_passenger_title), TripsPassengerFragment.class, null);

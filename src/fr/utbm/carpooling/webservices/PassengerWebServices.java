@@ -1,24 +1,61 @@
 package fr.utbm.carpooling.webservices;
 
-import java.util.*;
+import java.util.ArrayList;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import fr.utbm.carpooling.HttpConnection;
+import fr.utbm.carpooling.HttpConnection.HttpTaskHandler;
+import fr.utbm.carpooling.TaskHandler;
+import fr.utbm.carpooling.HttpConnection.REQUEST_TYPE;
 import fr.utbm.carpooling.model.*;
 
 
 public class PassengerWebServices { 
 
-	public static List<PassengerTripShort> getNextTripsShort(User user) {
-   		// TODO: implement
-		return null;
+	public static void getNextTripsShort(int userId, final TaskHandler<ArrayList<PassengerTripShort>> handler) {
+   		
+		HttpConnection con = new HttpConnection("/getNextTripsShort", null, REQUEST_TYPE.POST, new HttpTaskHandler() {
+			
+			@Override
+			public void taskSuccessful(String jsonString) {
+				JSONObject object = null;
+				
+				try {
+					object = new JSONObject(jsonString);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				
+				ArrayList<PassengerTripShort> listTrip = new ArrayList<PassengerTripShort>();
+				
+				try {
+					for(int i = 0; i < object.getJSONArray("passengertripshorts").length(); ++i) {
+						listTrip.add(new PassengerTripShort((JSONObject) object.getJSONArray("passengertripshorts").get(i)));
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				
+				handler.taskSuccessful(listTrip);
+			}
+			
+			@Override
+			public void taskFailed() {
+				handler.taskFailed();
+			}
+		});
+		
+		con.execute("");
 	}
 
-	public static List<PassengerTripShort> getPreviousTripsShort(User user) {
+	public static void getPreviousTripsShort(User user) {
    		// TODO: implement
-		return null;
 	}
 
-	public static List<Alert> getAlerts(User user) {
+	public static void getAlerts(User user) {
    		// TODO: implement
-		return null;
 	}
 
 	public static void deleteAlert(User user, Alert alert) {
@@ -29,9 +66,8 @@ public class PassengerWebServices {
    		// TODO: implement
 	}
 
-	public static List<TripSearchResultShort> searchTrips(TripSearch tripSearch) {
+	public static void searchTrips(TripSearch tripSearch) {
    		// TODO: implement
-		return null;
 	}
 
 	public static TripSearchResult getTripSearchResult(TripSearchResultShort trip) {
@@ -51,14 +87,12 @@ public class PassengerWebServices {
    		// TODO: implement
 	}
 		 
-	public static GpsPosition getCheckpointPosition(PassengerTrip trip, Checkpoint checkpoint) {
+	public static void getCheckpointPosition(PassengerTrip trip, Checkpoint checkpoint) {
    		// TODO: implement
-		return null;
 	}
 	
-	public static PassengerTrip getPassengerTrip(PassengerTripShort trip) {
+	public static void getPassengerTrip(PassengerTripShort trip) {
    		// TODO: implement
-		return null;
 	}
 	
 }

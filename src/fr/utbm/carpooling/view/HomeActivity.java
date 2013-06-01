@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
+import fr.utbm.carpooling.view.widgets.LoadingDialog;
 
 public class HomeActivity extends Activity {
 

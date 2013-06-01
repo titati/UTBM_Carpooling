@@ -1,5 +1,8 @@
 package fr.utbm.carpooling.model;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -77,5 +80,20 @@ public class TripSearchResultShort extends BaseTrip {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	protected void deserializeJSONCheckpoints(JSONArray checkpoints) {
+		ArrayList<CheckpointShort> liCheckpoints = new ArrayList<CheckpointShort>();
+		
+		try {
+			for(int i = 0; i < checkpoints.length(); ++i) {
+				liCheckpoints.add(new CheckpointShort((JSONObject) checkpoints.get(i)));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		setCheckpoints(liCheckpoints);
 	}
 }

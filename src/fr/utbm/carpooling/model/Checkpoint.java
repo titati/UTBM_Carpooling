@@ -7,6 +7,12 @@ public class Checkpoint extends CheckpointShort {
 
 	private int siteId;
 	
+	public Checkpoint(){}
+	
+	public Checkpoint(JSONObject object) {
+		super(object);
+	}
+
 	public int getSiteId() {
 		return siteId;
 	}
@@ -20,7 +26,7 @@ public class Checkpoint extends CheckpointShort {
 		super.deserializeJSON(object);
 		
 		try {
-			setSiteId(object.getInt("siteId"));
+			setSiteId(object.getInt("siteid"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
