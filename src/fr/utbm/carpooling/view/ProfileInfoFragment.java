@@ -22,4 +22,9 @@ public class ProfileInfoFragment extends Fragment {
 				false);
 	}
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }

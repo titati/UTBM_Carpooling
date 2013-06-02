@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/fr.utbm.carpooling"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_trip_prompt_checkpoint_site"
+                android:enabled="false"
+                android:textAllCaps="true"
+                android:layout_gravity="bottom"
+                android:paddingStart="10dp"/>
+
+            <Space
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:id="@+id/space"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/del"
+                android:id="@+id/edit_trip_button_del"
+                android:layout_gravity="right|center_vertical"
+                android:contentDescription="@string/edit_trip_imgdesc_del"
+                android:background="@null"
+                android:padding="10dp"
+                android:layout_marginLeft="-10dp"
+                android:layout_marginTop="-10dp"
+                android:layout_marginRight="-10dp"
+                android:layout_marginBottom="-10dp"
+                />
+
+        </LinearLayout>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_trip_spinner_checkpoint_site"
+            android:prompt="@string/edit_trip_prompt_select_checkpoint_site"
+            style="@android:style/TextAppearance.Medium"
+            android:spinnerMode="dialog"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <fr.utbm.carpooling.view.widgets.DatePickerSpinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                custom:prompt="@string/edit_trip_prompt_select_checkpoint_date"
+                android:id="@+id/edit_trip_spinner_checkpoint_date"
+                style="@android:style/TextAppearance.Medium"
+                android:paddingStart="10dip"
+                android:layout_weight="2"/>
+
+            <fr.utbm.carpooling.view.widgets.TimePickerSpinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                custom:prompt="@string/edit_trip_prompt_select_checkpoint_time"
+                android:id="@+id/edit_trip_spinner_checkpoint_time"
+                style="@android:style/TextAppearance.Medium"
+                android:paddingStart="10dip"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/light_gray"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+
+</LinearLayout>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/fr.utbm.carpooling"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/edit_trip_llayout_main">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/edit_trip_prompt_departure_site"
+                        android:enabled="false"
+                        android:textAllCaps="true"
+                        android:layout_gravity="bottom"
+                        android:paddingStart="10dp"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_trip_spinner_departure_site"
+                        android:prompt="@string/edit_trip_prompt_select_departure_site"
+                        style="@android:style/TextAppearance.Medium"
+                        android:spinnerMode="dialog"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <fr.utbm.carpooling.view.widgets.DatePickerSpinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            custom:prompt="@string/edit_trip_prompt_select_departure_date"
+                            android:id="@+id/edit_trip_spinner_departure_date"
+                            style="@android:style/TextAppearance.Medium"
+                            android:paddingStart="10dip"
+                            android:layout_weight="2"/>
+
+                        <fr.utbm.carpooling.view.widgets.TimePickerSpinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            custom:prompt="@string/edit_trip_prompt_select_departure_time"
+                            android:id="@+id/edit_trip_spinner_departure_time"
+                            style="@android:style/TextAppearance.Medium"
+                            android:paddingStart="10dip"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/light_gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/edit_trip_prompt_arrival_site"
+                            android:enabled="false"
+                            android:textAllCaps="true"
+                            android:layout_gravity="bottom"
+                            android:paddingStart="10dp"/>
+
+                        <Space
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:id="@+id/space"
+                            android:layout_weight="1"/>
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/add"
+                            android:id="@+id/edit_trip_button_add"
+                            android:layout_gravity="right|center_vertical"
+                            android:contentDescription="@string/edit_trip_imgdesc_add"
+                            android:background="@null"
+                            android:padding="10dp"
+                            android:layout_marginBottom="-10dp"
+                            android:layout_marginTop="-10dp"
+                            android:layout_marginLeft="-10dp"
+                            android:layout_marginRight="-10dp"/>
+
+                    </LinearLayout>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_trip_spinner_arrival_site"
+                        android:prompt="@string/edit_trip_prompt_select_arrival_site"
+                        style="@android:style/TextAppearance.Medium"
+                        android:spinnerMode="dialog"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <fr.utbm.carpooling.view.widgets.DatePickerSpinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            custom:prompt="@string/edit_trip_prompt_select_arrival_date"
+                            android:id="@+id/edit_trip_spinner_arrival_date"
+                            style="@android:style/TextAppearance.Medium"
+                            android:paddingStart="10dip"
+                            android:layout_weight="2"/>
+
+                        <fr.utbm.carpooling.view.widgets.TimePickerSpinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            custom:prompt="@string/edit_trip_prompt_select_arrival_time"
+                            android:id="@+id/edit_trip_spinner_arrival_time"
+                            style="@android:style/TextAppearance.Medium"
+                            android:paddingStart="10dip"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/light_gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/edit_trip_llayout_advanced">
+
+                <CheckBox
+                    android:text="@string/edit_trip_prompt_repeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_trip_checkbox_repeat"
+                    android:checked="true"
+                    android:textAllCaps="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/edit_trip_llayout_repeat">
+
+                    <LinearLayout
+                        android:id="@+id/edit_trip_llayout_weekdays"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="7"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp">
+
+                        <ToggleButton
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:id="@+id/edit_trip_toggle_monday"
+                            android:layout_weight="1"
+                            android:textOff="@string/caption_monday"
+                            android:textOn="@string/caption_monday"
+                            android:enabled="true"
+                            android:padding="5dp"
+                            android:checked="true"/>
+
+                        <ToggleButton
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:id="@+id/edit_trip_toggle_tuesday"
+                            android:layout_weight="1"
+                            android:textOff="@string/caption_tuesday"
+                            android:textOn="@string/caption_tuesday"
+                            android:enabled="true"
+                            android:padding="5dp"
+                            android:checked="true"/>
+
+                        <ToggleButton
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:id="@+id/edit_trip_toggle_wednesday"
+                            android:layout_weight="1"
+                            android:textOff="@string/caption_wednesday"
+                            android:textOn="@string/caption_wednesday"
+                            android:enabled="true"
+                            android:padding="5dp"
+                            android:checked="true"/>
+
+                        <ToggleButton
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:id="@+id/edit_trip_toggle_thursday"
+                            android:layout_weight="1"
+                            android:textOff="@string/caption_thursday"
+                            android:textOn="@string/caption_thursday"
+                            android:enabled="true"
+                            android:padding="5dp"
+                            android:checked="true"/>
+
+                        <ToggleButton
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:id="@+id/edit_trip_toggle_friday"
+                            android:layout_weight="1"
+                            android:textOff="@string/caption_friday"
+                            android:textOn="@string/caption_friday"
+                            android:enabled="true"
+                            android:padding="5dp"
+                            android:checked="true"/>
+
+                        <ToggleButton
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:id="@+id/edit_trip_toggle_saturday"
+                            android:layout_weight="1"
+                            android:textOff="@string/caption_saturday"
+                            android:textOn="@string/caption_saturday"
+                            android:enabled="true"
+                            android:padding="5dp"
+                            android:checked="true"/>
+
+                        <ToggleButton
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:id="@+id/edit_trip_toggle_sunday"
+                            android:layout_weight="1"
+                            android:textOn="@string/caption_sunday"
+                            android:textOff="@string/caption_sunday"
+                            android:enabled="true"
+                            android:padding="5dp"
+                            android:checked="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="2">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/edit_trip_prompt_periodicity"
+                                android:enabled="false"
+                                android:textAllCaps="true"
+                                android:paddingStart="10dp"/>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_vertical">
+
+                                <EditText
+                                    android:layout_width="50dip"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/edit_trip_edittext_periodicity"
+                                    android:numeric="integer"
+                                    android:inputType="number"
+                                    android:maxLength="1"
+                                    android:digits="123456789"
+                                    android:layout_gravity="center_vertical"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/edit_trip_caption_weeks"
+                                    style="@android:style/TextAppearance.Medium"
+                                    android:enabled="false"
+
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="5dp"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:layout_weight="2">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/edit_trip_prompt_repeat_end"
+                                android:enabled="false"
+                                android:textAllCaps="true"
+                                android:paddingStart="10dp"/>
+
+                            <fr.utbm.carpooling.view.widgets.DatePickerSpinner
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                custom:prompt="@string/edit_trip_prompt_select_repeat_end_date"
+                                android:id="@+id/edit_trip_spinner_repeat_end"
+                                style="@android:style/TextAppearance.Medium"
+                                android:paddingStart="10dip"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/light_gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_trip_prompt_description"
+                    android:id="@+id/edit_trip_edittext_description"
+                    android:editable="true"
+                    android:enabled="true"
+                    android:inputType="textMultiLine"
+                    android:gravity="left|top"
+                    android:minHeight="150dp"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/light_gray"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_trip_prompt_trunk"
+                    android:enabled="false"
+                    android:textAllCaps="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_trip_spinner_trunk"
+                    android:prompt="@string/edit_trip_prompt_select_trunk"
+                    style="@android:style/TextAppearance.Medium"
+                    android:spinnerMode="dialog"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_trip_prompt_car"
+                    android:enabled="false"
+                    android:textAllCaps="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_trip_spinner_car"
+                    android:prompt="@string/edit_trip_prompt_select_car"
+                    style="@android:style/TextAppearance.Medium"
+                    android:spinnerMode="dialog"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_trip_prompt_seats"
+                    android:enabled="false"
+                    android:textAllCaps="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_trip_edittext_seats"
+                    android:numeric="integer"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:digits="123456789"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/edit_trip_llayout_more">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@android:color/holo_blue_light"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/action_more"
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/edit_trip_button_more"/>
+
+    </LinearLayout>
+
+</LinearLayout>

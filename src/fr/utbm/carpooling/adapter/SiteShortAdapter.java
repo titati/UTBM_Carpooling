@@ -8,13 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import fr.utbm.carpooling.model.SiteShort;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class SiteShortAdapter extends ArrayAdapter<SiteShort> {
 
     private List<SiteShort> mItems;
-    private int mDisabled;
+    private List<Integer> mDisabled = new ArrayList<Integer>();
 
     public SiteShortAdapter(Context context, int textViewResourceId, List<SiteShort> items) {
         super(context, textViewResourceId, items);
@@ -34,7 +35,11 @@ public class SiteShortAdapter extends ArrayAdapter<SiteShort> {
     }
 
     public void disableItem(int position) {
-         mDisabled = position;
+         mDisabled.add(position);
+    }
+
+    public void enableItems() {
+         mDisabled.clear();
     }
 
 
@@ -63,8 +68,9 @@ public class SiteShortAdapter extends ArrayAdapter<SiteShort> {
             label = (TextView) inflater.inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
         }
 
-        label.setEnabled(position != mDisabled);
-        label.setClickable(position == mDisabled);
+        boolean enable = !mDisabled.contains(position);
+        label.setEnabled(enable);
+        label.setClickable(!enable);
 
         label.setTextAppearance(getContext(), android.R.style.TextAppearance_Medium);
         label.setText(getItem(position).getName());

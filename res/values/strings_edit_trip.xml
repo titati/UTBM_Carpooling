@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="edit_trip_prompt_departure_site">From</string>
+    <string name="edit_trip_prompt_checkpoint_site">Through</string>
+    <string name="edit_trip_prompt_arrival_site">To</string>
+
+    <string name="edit_trip_imgdesc_add">Add Checkpoint</string>
+    <string name="edit_trip_imgdesc_del">Remove Checkpoint</string>
+
+
+    <string name="edit_trip_prompt_description">Description</string>
+    <string name="edit_trip_prompt_repeat">Repeat</string>
+    <string name="edit_trip_prompt_weekdays">On</string>
+    <string name="edit_trip_prompt_periodicity">Every</string>
+    <string name="edit_trip_caption_weeks">Weeks</string>
+    <string name="edit_trip_prompt_repeat_end">Until</string>
+    <string name="edit_trip_caption_repeat_end">Included</string>
+    <string name="edit_trip_prompt_car">Car</string>
+    <string name="edit_trip_prompt_trunk">Trunk</string>
+    <string name="edit_trip_prompt_seats">Seats</string>
+
+    <string name="edit_trip_prompt_select_departure_site">Departure Site</string>
+    <string name="edit_trip_prompt_select_departure_date">Departure Date</string>
+    <string name="edit_trip_prompt_select_departure_time">Departure Time</string>
+
+    <string name="edit_trip_prompt_select_checkpoint_site">Checkpoint Site</string>
+    <string name="edit_trip_prompt_select_checkpoint_date">Checkpoint Date</string>
+    <string name="edit_trip_prompt_select_checkpoint_time">Checkpoint Time</string>
+
+    <string name="edit_trip_prompt_select_arrival_site">Arrival Site</string>
+    <string name="edit_trip_prompt_select_arrival_date">Arrival Date</string>
+    <string name="edit_trip_prompt_select_arrival_time">Arrival Time</string>
+
+    <string name="edit_trip_prompt_select_car">Car</string>
+    <string name="edit_trip_prompt_select_trunk">Trunk</string>
+
+    <string name="edit_trip_prompt_select_repeat_end_date">Repeat End Date</string>
+
+
+
+</resources>

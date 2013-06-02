@@ -44,6 +44,7 @@
         </activity>
         <activity android:name="fr.utbm.carpooling.view.EditCarActivity"/>
         <activity android:name="fr.utbm.carpooling.view.EditInfoActivity"/>
+        <activity android:name="fr.utbm.carpooling.view.EditTripActivity"/>
         <activity android:name="fr.utbm.carpooling.view.TripSearchResultsActivity"/>
         <activity
             android:name="fr.utbm.carpooling.view.TripSearchActivity"
