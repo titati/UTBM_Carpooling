@@ -1,11 +1,18 @@
 package fr.utbm.carpooling.webservices;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
+
 import fr.utbm.carpooling.model.*;
 
 
-public class ResourcesWebServices { 
-
+public class ResourcesWebServices {
+	private static SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy kk:mm:ss", Locale.ENGLISH);
+	
+	public static SimpleDateFormat getStandardDateFormat() {
+		return df;
+	}
+	
 	public static List<Color> getColors() {
 		// TODO: implement
 		return null;

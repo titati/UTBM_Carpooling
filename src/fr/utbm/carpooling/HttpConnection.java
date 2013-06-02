@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import org.apache.http.message.BasicNameValuePair;
@@ -65,7 +67,8 @@ public class HttpConnection extends AsyncTask<String, Void, String> {
 		con.setReadTimeout(10000);
 		con.setConnectTimeout(15000);
 		con.setDoInput(true);
-		con.setDoOutput(true);
+		con.setRequestProperty("Charset", "UTF-8");
+		con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 	}
 	
 	private void disableConnectionReuseIfNecessary() {
@@ -93,12 +96,19 @@ public class HttpConnection extends AsyncTask<String, Void, String> {
 						con.setRequestMethod("GET");
 					} else {
 						con.setRequestMethod("POST");
+						con.setDoOutput(true);
 					}
 					
 					if (mParamList != null) {
+						String query = "";
+						
 						for(BasicNameValuePair p : mParamList) {
-							con.addRequestProperty(p.getName(), p.getValue());
+							query += ((query == "") ? "" : "&") + p.getName() + "=" + URLEncoder.encode(p.getValue(), "UTF-8");
 						}
+						
+						PrintWriter pw = new PrintWriter(con.getOutputStream());
+						pw.write(query);
+						pw.close();
 					}
 					
 					try {

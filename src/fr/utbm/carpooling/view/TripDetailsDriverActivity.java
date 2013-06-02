@@ -76,7 +76,7 @@ public class TripDetailsDriverActivity extends Activity {
         
         data.setPassengers(users);
         
-        data.setId("2");
+        data.setAbstractTripId("2");
 		
 		TripDetailsDriverBlock v = (TripDetailsDriverBlock) findViewById(R.id.trip_details_driver_view);
 		v.setData(data);

@@ -64,7 +64,7 @@ public class TripDetailsPassengerActivity extends Activity {
         uDriver.setName("Man");
         uDriver.setPhone("");
         
-        data.setId("2");
+        data.setAbstractTripId("2");
         data.setDriver(uDriver);
         data.setFeedbackGiven(false);
 		

@@ -54,7 +54,7 @@ public class HomeActivity extends Activity {
 
         Resources.init();
 
-        if (Resources.login == null) {
+        if (Resources.getUserId() == null) {
 
             Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
             startActivity(intent);

@@ -4,18 +4,20 @@ package fr.utbm.carpooling.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.adapter.DriverTripAdapter;
-import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.model.DriverTripOccurenceShort;
-import fr.utbm.carpooling.model.SiteShort;
+import fr.utbm.carpooling.view.widgets.LoadingDialog;
+import fr.utbm.carpooling.webservices.DriverWebServices;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,17 +26,23 @@ import java.util.Date;
 public class TripsDriverFragment extends Fragment {
 
     private ListView mListView = null;
+    private TaskHandler<ArrayList<DriverTripOccurenceShort>> mHandler = null;
+    private LoadingDialog mLoader = null;
+    
+    private static Date lastUpdate;
+    private static ArrayList<DriverTripOccurenceShort> data;
 
     public TripsDriverFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    	
+    	setHasOptionsMenu(true);
+    	
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trips_driver, container,
-                false);
+        return inflater.inflate(R.layout.fragment_trips_driver, container, false);
     }
 
     @Override
@@ -44,45 +52,15 @@ public class TripsDriverFragment extends Fragment {
 
         mListView = (ListView) getView().findViewById(R.id.trips_driver_listview_trips);
 
-        Checkpoint c1 = new Checkpoint();
-        c1.setSiteId(0);
-        c1.setNumCheckpoint(0);
-        c1.setDate(new Date(113, 4, 20, 13, 0));
-
-        Checkpoint c2 = new Checkpoint();
-        c2.setSiteId(1);
-        c2.setNumCheckpoint(1);
-        c2.setDate(new Date(113, 4, 20, 13, 15));
-
-        Checkpoint c3 = new Checkpoint();
-        c3.setSiteId(2);
-        c3.setNumCheckpoint(2);
-        c3.setDate(new Date(113, 4, 20, 13, 40));
-
-        ArrayList<Checkpoint> checkpoints1 = new ArrayList<Checkpoint>();
-        checkpoints1.add(c1);
-        checkpoints1.add(c3);
-
-        ArrayList<Checkpoint> checkpoints2 = new ArrayList<Checkpoint>();
-        checkpoints2.add(c2);
-        checkpoints2.add(c3);
-
-        DriverTripOccurenceShort trip1 = new DriverTripOccurenceShort();
-        trip1.setCheckpoints(checkpoints1);
-        trip1.setRepeat(true);
-
-        DriverTripOccurenceShort trip2 = new DriverTripOccurenceShort();
-        trip2.setCheckpoints(checkpoints2);
-        trip2.setRepeat(false);
-
-        ArrayList<DriverTripOccurenceShort> trips = new ArrayList<DriverTripOccurenceShort>();
-        trips.add(0, trip1);
-        trips.add(1, trip2);
-
-        DriverTripAdapter adapter = new DriverTripAdapter(getActivity(),
-                R.id.trips_driver_listview_trips, trips);
-
-        mListView.setAdapter(adapter);
+        initHandler();
+        if (lastUpdate == null || lastUpdate.getTime() < (new Date()).getTime() - 5 * 60) refreshData();
+        if (data != null) initView(data);
+    }
+    
+    private void initView(ArrayList<DriverTripOccurenceShort> object) {
+    	DriverTripAdapter adapter = new DriverTripAdapter(getActivity(), R.id.trips_passenger_listview_trips, object);
+		
+		mListView.setAdapter(adapter);
         
         mListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -92,7 +70,43 @@ public class TripsDriverFragment extends Fragment {
                 startActivity(intent);
 			}
 		});
+	}
 
+	private void refreshData() {
+        mLoader.show();
+        DriverWebServices.getNextTripsShort(mHandler);
+        lastUpdate = new Date();
     }
+    
+    private void initHandler() {
+		mLoader = new LoadingDialog(getActivity());
+		mHandler = new TaskHandler<ArrayList<DriverTripOccurenceShort>>() {
+			
+			@Override
+			public void taskSuccessful(ArrayList<DriverTripOccurenceShort> object) {
+				initView(object);
+				data = object;
+		        
+		        mLoader.hide();
+			}
+			
+			@Override
+			public void taskFailed() {
+				Toast.makeText(getActivity().getApplicationContext(), "Error while fetching content", Toast.LENGTH_LONG).show();
+		        mLoader.hide();
+			}
+		};
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
+			case R.id.trips_menuitem_refresh :
+				refreshData();
+			break;
+		}
 
+
+		return super.onOptionsItemSelected(item);
+	}
 }

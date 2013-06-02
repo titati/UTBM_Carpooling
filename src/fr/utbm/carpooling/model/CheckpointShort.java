@@ -1,15 +1,13 @@
 package fr.utbm.carpooling.model;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
 public class CheckpointShort extends JSONParsable {
 	
@@ -37,7 +35,7 @@ public class CheckpointShort extends JSONParsable {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	
 	@Override
 	protected void deserializeJSON(JSONObject object) {
 		try {
@@ -46,9 +44,8 @@ public class CheckpointShort extends JSONParsable {
 			e.printStackTrace();
 		}
 		
-		SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy kk:mm:ss", Locale.ENGLISH);
 		try {
-			setDate(df.parse((object.getString("date"))));
+			setDate(ResourcesWebServices.getStandardDateFormat().parse((object.getString("date"))));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {

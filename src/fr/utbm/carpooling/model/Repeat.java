@@ -1,14 +1,13 @@
 package fr.utbm.carpooling.model;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.Locale;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
 public class Repeat extends JSONParsable {
 
@@ -166,9 +165,8 @@ public class Repeat extends JSONParsable {
 			e.printStackTrace();
 		}
 		
-		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.ENGLISH);
 		try {
-			setEndRepeat(df.parse((object.getString("endRepeat"))));
+			setEndRepeat(ResourcesWebServices.getStandardDateFormat().parse((object.getString("endRepeat"))));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
@@ -183,7 +181,7 @@ public class Repeat extends JSONParsable {
 		
 		if (isStandby()) {
 			try {
-				setEndStandby(df.parse((object.getString("endStandby"))));
+				setEndStandby(ResourcesWebServices.getStandardDateFormat().parse((object.getString("endStandby"))));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			} catch (JSONException e) {

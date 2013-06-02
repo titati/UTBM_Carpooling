@@ -1,17 +1,22 @@
 package fr.utbm.carpooling.view;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.adapter.AlertAdapter;
 import fr.utbm.carpooling.model.Alert;
-import fr.utbm.carpooling.model.Checkpoint;
-import fr.utbm.carpooling.model.SiteShort;
+import fr.utbm.carpooling.view.widgets.LoadingDialog;
+import fr.utbm.carpooling.webservices.PassengerWebServices;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,17 +24,23 @@ import java.util.Date;
 public class TripsAlertsFragment extends Fragment {
 
     private ListView mListView = null;
+    private LoadingDialog mLoader;
+	private TaskHandler<ArrayList<Alert>> mHandler;
+    
+	private static Date lastUpdate;
+	private static ArrayList<Alert> data;
 
     public TripsAlertsFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    	
+    	setHasOptionsMenu(true);
+    	
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trips_alerts, container,
-                false);
+        return inflater.inflate(R.layout.fragment_trips_alerts, container, false);
     }
 
     @Override
@@ -39,42 +50,49 @@ public class TripsAlertsFragment extends Fragment {
 
         mListView = (ListView) getView().findViewById(R.id.trips_alerts_listview_alerts);
 
-        Checkpoint c1 = new Checkpoint();
-        c1.setSiteId(0);
-        c1.setNumCheckpoint(0);
-        c1.setDate(new Date(113, 4, 20, 13, 0));
-
-        Checkpoint c2 = new Checkpoint();
-        c2.setSiteId(1);
-        c2.setNumCheckpoint(1);
-        c2.setDate(new Date(113, 4, 20, 13, 15));
-
-        Checkpoint c3 = new Checkpoint();
-        c3.setSiteId(2);
-        c3.setNumCheckpoint(2);
-        c3.setDate(new Date(113, 4, 20, 13, 40));
-
-        ArrayList<Checkpoint> checkpoints1 = new ArrayList<Checkpoint>();
-        checkpoints1.add(c1);
-        checkpoints1.add(c3);
-
-        ArrayList<Checkpoint> checkpoints2 = new ArrayList<Checkpoint>();
-        checkpoints2.add(c2);
-        checkpoints2.add(c3);
-
-        Alert trip1 = new Alert();
-        trip1.setCheckpoints(checkpoints1);
-
-        Alert trip2 = new Alert();
-        trip2.setCheckpoints(checkpoints2);
-
-        ArrayList<Alert> trips = new ArrayList<Alert>();
-        trips.add(0, trip1);
-        trips.add(1, trip2);
-
-        AlertAdapter adapter = new AlertAdapter(getActivity(),
-                R.id.trips_alerts_listview_alerts, trips);
-
-        mListView.setAdapter(adapter);
+        initHandler();
+        if (lastUpdate == null || lastUpdate.getTime() < (new Date()).getTime() - 5 * 60) refreshData();
+        if (data != null) initView(data);
     }
+    
+    private void refreshData() {
+    	mLoader.show();
+        PassengerWebServices.getAlerts(mHandler);
+        lastUpdate = new Date();
+	}
+
+	private void initHandler() {
+		mLoader = new LoadingDialog(getActivity());
+		mHandler = new TaskHandler<ArrayList<Alert>>() {
+			
+			@Override
+			public void taskSuccessful(ArrayList<Alert> object) {
+				initView(object);
+				data = object;
+		        
+		        mLoader.hide();
+			}
+			
+			@Override
+			public void taskFailed() {
+				Toast.makeText(getActivity().getApplicationContext(), "Error while fetching content", Toast.LENGTH_LONG).show();
+		        mLoader.hide();
+			}
+		};
+	}
+
+	private void initView(ArrayList<Alert> object) {
+    	AlertAdapter adapter = new AlertAdapter(getActivity(), R.id.trips_passenger_listview_trips, object);
+		
+		mListView.setAdapter(adapter);
+        
+        mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				Intent intent = new Intent(getActivity().getApplicationContext(), TripDetailsDriverActivity.class);
+                startActivity(intent);
+			}
+		});
+	}
 }

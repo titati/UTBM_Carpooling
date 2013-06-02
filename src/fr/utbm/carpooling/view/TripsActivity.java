@@ -5,15 +5,15 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
 import fr.utbm.carpooling.R;
 
 
 public class TripsActivity extends FragmentActivity {
-
-    TabsAdapter mTabsAdapter;
-    ViewPager mViewPager;
-
-
+	
+	private ViewPager mViewPager;
+	private TabsAdapter mTabsAdapter;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,9 +22,12 @@ public class TripsActivity extends FragmentActivity {
         final ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-
-        mViewPager = (ViewPager) findViewById(R.id.profile_pager);
+        
+        ActionBar.Tab driverTab = actionBar.newTab().setText(R.string.trips_driver_title);
+        ActionBar.Tab passengerTab = actionBar.newTab().setText(R.string.trips_passenger_title);
+        ActionBar.Tab alertTab = actionBar.newTab().setText(R.string.trips_alerts_title);
+        
+        mViewPager = (ViewPager) findViewById(R.id.fragment_container);
         mTabsAdapter = new TabsAdapter(this, mViewPager);
 
         mViewPager.setAdapter(mTabsAdapter);
@@ -34,11 +37,11 @@ public class TripsActivity extends FragmentActivity {
         		actionBar.setSelectedNavigationItem(position);
         	}
         });
-
-        mTabsAdapter.addTab(actionBar.newTab().setText(R.string.trips_driver_title), TripsDriverFragment.class, null);
-        mTabsAdapter.addTab(actionBar.newTab().setText(R.string.trips_passenger_title), TripsPassengerFragment.class, null);
-        mTabsAdapter.addTab(actionBar.newTab().setText(R.string.trips_alerts_title), TripsAlertsFragment.class, null);
-
+        
+        mTabsAdapter.addTab(driverTab, TripsDriverFragment.class, null);
+        mTabsAdapter.addTab(passengerTab, TripsPassengerFragment.class, null);
+        mTabsAdapter.addTab(alertTab, TripsAlertsFragment.class, null);
+		
         if (savedInstanceState != null) {
             actionBar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
         }
@@ -48,4 +51,12 @@ public class TripsActivity extends FragmentActivity {
         super.onSaveInstanceState(outState);
         outState.putInt("tab", getActionBar().getSelectedNavigationIndex());
     }
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.trips, menu);
+		
+		return true;
+	}
 }

@@ -10,6 +10,12 @@ public class DriverTripOccurenceShort extends BaseTrip {
 
 	private boolean repeat;
 
+	public DriverTripOccurenceShort(JSONObject object) {
+		super(object);
+	}
+
+	public DriverTripOccurenceShort() {}
+
 	public boolean isRepeat() {
 		return repeat;
 	}

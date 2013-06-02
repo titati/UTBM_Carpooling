@@ -7,9 +7,10 @@ import java.util.*;
 
 public class Resources {
 
-    public static String login = null;
+    private static String userId = null;
+    private static String apiToken = null;
 
-    private static Map<Integer, Color> colors = new HashMap<Integer, Color>();
+	private static Map<Integer, Color> colors = new HashMap<Integer, Color>();
     private static Map<Integer, Trunk> trunks = new HashMap<Integer, Trunk>();
     private static Map<Integer, SiteShort> sitesShort = new HashMap<Integer, SiteShort>();
     private static Map<Integer, Brand> brands = new HashMap<Integer, Brand>();
@@ -18,7 +19,8 @@ public class Resources {
 
     public static void init() {
 
-        login = "plop";
+        setUserId("plop");
+        setApiToken("fze8f54zef4ze56f4ezf8z4ef5zef8zef4z8ef4z8e9f4e8fz89f");
 
         colors.put(0, new Color(0, "", "000000"));
         colors.put(1, new Color(1, "", "808080"));
@@ -120,6 +122,23 @@ public class Resources {
     public static Model getModel(int brand_id, int id) {
         return models.get(brand_id).get(id);
     }
+
+	public static String getUserId() {
+		return userId;
+	}
+
+	public static void setUserId(String userId) {
+		Resources.userId = userId;
+	}
+
+    public static String getApiToken() {
+		return apiToken;
+	}
+
+
+	public static void setApiToken(String apiToken) {
+		Resources.apiToken = apiToken;
+	}
 
 
 }

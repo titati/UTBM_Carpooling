@@ -12,6 +12,12 @@ public class DriverTripOccurence extends BaseTrip {
 	private ArrayList<User> passengers;
 	private Car car;
 
+	public DriverTripOccurence(JSONObject object) {
+		super(object);
+	}
+
+	public DriverTripOccurence() {}
+
 	public ArrayList<User> getPassengers() {
 		return passengers;
 	}

@@ -1,6 +1,10 @@
 package fr.utbm.carpooling.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,7 +15,9 @@ import fr.utbm.carpooling.JSONParsable;
 
 public abstract class BaseTrip extends JSONParsable {
 
-	protected String id;
+	protected String abstractTripId;
+	protected Date tripId;
+
 	protected ArrayList<? extends CheckpointShort> checkpoints;
 
 	public BaseTrip(JSONObject object) {
@@ -20,12 +26,20 @@ public abstract class BaseTrip extends JSONParsable {
 	
 	public BaseTrip() {}
 
-	public String getId() {
-		return id;
+	public String getAbstractTripId() {
+		return abstractTripId;
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	public void setAbstractTripId(String id) {
+		this.abstractTripId = id;
+	}
+	
+	public Date getTripId() {
+		return tripId;
+	}
+
+	public void setTripId(Date tripId) {
+		this.tripId = tripId;
 	}
 	
 	public ArrayList<? extends CheckpointShort> getCheckpoints() {
@@ -39,8 +53,17 @@ public abstract class BaseTrip extends JSONParsable {
 	@Override
 	public void deserializeJSON(JSONObject object) {
 		try {
-			setId(object.getString("id"));
+			setAbstractTripId(object.getString("abstracttripid"));
 		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy kk:mm:ss", Locale.ENGLISH);
+		try {
+			setTripId(df.parse(object.getString("tripid")));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
