@@ -1,8 +1,10 @@
 package fr.utbm.carpooling.view;
 
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import fr.utbm.carpooling.R;
 
 
@@ -14,4 +16,10 @@ public class EditInfoActivity extends Activity {
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.edit_info, menu);
+        return true;
+    }
 }

@@ -8,17 +8,20 @@
     <string name="title_activity_trip_details_driver">TripDetailsDriver</string>
     <string name="title_activity_trip_details_passenger">TripDetailsPassenger</string>
 
-    <string name="action_ok">OK</string>
+    <string name="action_done">Done</string>
     <string name="action_cancel">Cancel</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_new">New</string>
     <string name="action_less">Less</string>
     <string name="action_more">More</string>
 
-    <string name="caption_monday">M</string>
-    <string name="caption_tuesday">T</string>
-    <string name="caption_wednesday">W</string>
-    <string name="caption_thursday">T</string>
-    <string name="caption_friday">F</string>
-    <string name="caption_saturday">S</string>
-    <string name="caption_sunday">S</string>
+    <string name="caption_monday">MON</string>
+    <string name="caption_tuesday">TUE</string>
+    <string name="caption_wednesday">WED</string>
+    <string name="caption_thursday">THU</string>
+    <string name="caption_friday">FRI</string>
+    <string name="caption_saturday">SAT</string>
+    <string name="caption_sunday">SUN</string>
 
 </resources>

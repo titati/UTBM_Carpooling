@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.Resources;
+import fr.utbm.carpooling.adapter.SiteShortAdapter;
+import fr.utbm.carpooling.model.SiteShort;
+import fr.utbm.carpooling.view.widgets.EditCheckpointView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,8 +20,11 @@ import java.util.Locale;
 public class EditTripActivity extends Activity {
 
     private List<ToggleButton> mWeekdayToggleButtons = new ArrayList<ToggleButton>();
-    private List<TableRow> mAdvancedOptions = new ArrayList<TableRow>();
-    private List<TableRow> mRepeatOptions = new ArrayList<TableRow>();
+    private List<EditCheckpointView> mCheckpointViews = new ArrayList<EditCheckpointView>();
+    private List<Spinner> mSiteSpinners = new ArrayList<Spinner>();
+    private LinearLayout mMainLayout;
+    private ImageButton mAddButton;
+    private List<SiteShort> mSitesShort = Resources.getSitesShort();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +49,8 @@ public class EditTripActivity extends Activity {
 
             if (firstDayOfWeek == Calendar.SATURDAY) {
                 ToggleButton saturday = mWeekdayToggleButtons.get(5);
-                ll.removeView(sunday);
-                ll.addView(sunday, 0);
+                ll.removeView(saturday);
+                ll.addView(saturday, 0);
             }
         }
 
@@ -52,53 +59,163 @@ public class EditTripActivity extends Activity {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                    buttonView.setTextColor(getResources().getColor(isChecked ? android.R.color.holo_blue_light : android.R.color.secondary_text_light_nodisable));
+                    buttonView.setTextColor(getResources().getColor(isChecked ? android.R.color.holo_blue_dark : android.R.color.secondary_text_light_nodisable));
                     buttonView.setTypeface(null, isChecked ? Typeface.BOLD : Typeface.NORMAL);
                 }
             });
             btn.setChecked(false);
         }
 
-        mRepeatOptions.add((TableRow) findViewById(R.id.edit_trip_row_weekdays));
-        mRepeatOptions.add((TableRow) findViewById(R.id.edit_trip_row_periodicity));
-        mRepeatOptions.add((TableRow) findViewById(R.id.edit_trip_row_repeat_end));
+        final LinearLayout repeatBlock = (LinearLayout) findViewById(R.id.edit_trip_llayout_repeat);
 
-        Switch repeatSwitch = (Switch) findViewById(R.id.edit_trip_switch_repeat);
+        CheckBox repeatSwitch = (CheckBox) findViewById(R.id.edit_trip_checkbox_repeat);
         repeatSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                for(TableRow r: mRepeatOptions) {
-                    r.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-                }
+                repeatBlock.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             }
         });
         repeatSwitch.setChecked(false);
 
+        final LinearLayout advancedBlock = (LinearLayout) findViewById(R.id.edit_trip_llayout_advanced);
+        final LinearLayout moreBlock = (LinearLayout) findViewById(R.id.edit_trip_llayout_more);
 
-        mAdvancedOptions.add((TableRow) findViewById(R.id.edit_trip_separator1));
-        mAdvancedOptions.add((TableRow) findViewById(R.id.edit_trip_row_repeat));
-        mAdvancedOptions.add((TableRow) findViewById(R.id.edit_trip_separator2));
-        mAdvancedOptions.add((TableRow) findViewById(R.id.edit_trip_row_car));
-        mAdvancedOptions.add((TableRow) findViewById(R.id.edit_trip_row_trunk));
-        mAdvancedOptions.add((TableRow) findViewById(R.id.edit_trip_row_seats));
-        mAdvancedOptions.add((TableRow) findViewById(R.id.edit_trip_separator3));
-        mAdvancedOptions.add((TableRow) findViewById(R.id.edit_trip_row_description));
+        advancedBlock.setVisibility(View.GONE);
 
-        for (TableRow r: mAdvancedOptions) {
-            r.setVisibility(View.GONE);
-        }
 
         Button moreButton = (Button) findViewById(R.id.edit_trip_button_more);
         moreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (TableRow r: mAdvancedOptions) {
-                    r.setVisibility(View.VISIBLE);
-                }
-                v.setVisibility(View.GONE);
-                findViewById(R.id.edit_trip_separator_more).setVisibility(View.GONE);
+                advancedBlock.setVisibility(View.VISIBLE);
+                moreBlock.setVisibility(View.GONE);
             }
         });
+
+        mMainLayout = (LinearLayout) findViewById(R.id.edit_trip_llayout_main);
+        mAddButton = (ImageButton) findViewById(R.id.edit_trip_button_add);
+
+        mAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditTripActivity.this.insertCheckpointView();
+            }
+        });
+
+        Spinner departureSiteSpinner = (Spinner) findViewById(R.id.edit_trip_spinner_departure_site);
+        Spinner arrivalSiteSpinner = (Spinner) findViewById(R.id.edit_trip_spinner_arrival_site);
+
+        mSiteSpinners.add(departureSiteSpinner);
+        mSiteSpinners.add(arrivalSiteSpinner);
+
+        for (Spinner sp : mSiteSpinners) {
+            SiteShortAdapter adapter = new SiteShortAdapter(this, 0, mSitesShort);
+            sp.setAdapter(adapter);
+            sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    EditTripActivity.this.updateSiteSpinners();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                }
+            });
+        }
+
+        departureSiteSpinner.setSelection(0);
+        arrivalSiteSpinner.setSelection(1);
+
+
+    }
+
+    private void insertCheckpointView() {
+
+        final EditCheckpointView checkpointView = new EditCheckpointView(this);
+
+        mCheckpointViews.add(checkpointView);
+        mMainLayout.addView(checkpointView, mCheckpointViews.size());
+
+
+        ImageButton delButton = checkpointView.getDelButton();
+
+        delButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditTripActivity.this.removeCheckpointView(checkpointView);
+            }
+        });
+
+        Spinner siteSpinner = checkpointView.getSiteSpinner();
+        SiteShortAdapter adapter = new SiteShortAdapter(this, 0, mSitesShort);
+        siteSpinner.setAdapter(adapter);
+
+
+
+        mSiteSpinners.add(siteSpinner);
+
+        siteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                EditTripActivity.this.updateSiteSpinners();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        if (mSiteSpinners.size() == mSitesShort.size())
+            mAddButton.setVisibility(View.INVISIBLE);
+
+        List<Integer> selectedSites = new ArrayList<Integer>();
+        for (int i = 0; i < mSitesShort.size(); ++i) {
+            selectedSites.add(i);
+        }
+
+        for (Spinner sp : mSiteSpinners) {
+            if (sp == siteSpinner)
+                continue;
+
+            selectedSites.remove((Integer) sp.getSelectedItemPosition());
+        }
+
+        siteSpinner.setSelection(selectedSites.get(0));
+
+    }
+
+    private void removeCheckpointView(EditCheckpointView checkpointView) {
+
+        mMainLayout.removeView(checkpointView);
+        mCheckpointViews.remove(checkpointView);
+        mSiteSpinners.remove(checkpointView.getSiteSpinner());
+        updateSiteSpinners();
+
+        if (mAddButton.getVisibility() == View.INVISIBLE)
+            mAddButton.setVisibility(View.VISIBLE);
+
+    }
+
+    private void updateSiteSpinners() {
+
+        for (Spinner sp : mSiteSpinners) {
+            ((SiteShortAdapter) sp.getAdapter()).enableItems();
+        }
+
+        for (Spinner sp : mSiteSpinners) {
+
+            int selected = sp.getSelectedItemPosition();
+
+            for (Spinner sp0 : mSiteSpinners) {
+                if (sp == sp0)
+                    continue;
+
+                ((SiteShortAdapter) sp0.getAdapter()).disableItem(selected);
+            }
+
+        }
+
 
     }
 

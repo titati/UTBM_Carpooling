@@ -25,7 +25,7 @@ public class TripFeedbackDialog extends AlertDialog {
             }
         });
 
-        setButton(AlertDialog.BUTTON_POSITIVE, context.getText(R.string.action_ok), new OnClickListener() {
+        setButton(AlertDialog.BUTTON_POSITIVE, context.getText(R.string.action_done), new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

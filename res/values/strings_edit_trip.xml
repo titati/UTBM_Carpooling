@@ -2,12 +2,13 @@
 <resources>
 
     <string name="edit_trip_prompt_departure_site">From</string>
-    <string name="edit_trip_prompt_departure_date">On</string>
-    <string name="edit_trip_prompt_departure_time">At</string>
-    <string name="edit_trip_prompt_arrival_site">To</string>
-    <string name="edit_trip_prompt_arrival_time">In</string>
     <string name="edit_trip_prompt_checkpoint_site">Through</string>
-    <string name="edit_trip_prompt_checkpoint_time">In</string>
+    <string name="edit_trip_prompt_arrival_site">To</string>
+
+    <string name="edit_trip_imgdesc_add">Add Checkpoint</string>
+    <string name="edit_trip_imgdesc_del">Remove Checkpoint</string>
+
+
     <string name="edit_trip_prompt_description">Description</string>
     <string name="edit_trip_prompt_repeat">Repeat</string>
     <string name="edit_trip_prompt_weekdays">On</string>
@@ -24,9 +25,11 @@
     <string name="edit_trip_prompt_select_departure_time">Departure Time</string>
 
     <string name="edit_trip_prompt_select_checkpoint_site">Checkpoint Site</string>
+    <string name="edit_trip_prompt_select_checkpoint_date">Checkpoint Date</string>
     <string name="edit_trip_prompt_select_checkpoint_time">Checkpoint Time</string>
 
     <string name="edit_trip_prompt_select_arrival_site">Arrival Site</string>
+    <string name="edit_trip_prompt_select_arrival_date">Arrival Date</string>
     <string name="edit_trip_prompt_select_arrival_time">Arrival Time</string>
 
     <string name="edit_trip_prompt_select_car">Car</string>

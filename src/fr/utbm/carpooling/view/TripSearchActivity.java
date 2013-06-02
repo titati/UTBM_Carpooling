@@ -46,6 +46,7 @@ public class TripSearchActivity extends Activity {
         mDepartureSiteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                adapterTo.enableItems();
                 adapterTo.disableItem(position);
             }
 
@@ -57,6 +58,7 @@ public class TripSearchActivity extends Activity {
         mArrivalSiteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                adapterFrom.enableItems();
                 adapterFrom.disableItem(position);
             }
 

@@ -4,6 +4,8 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.View;
 import fr.utbm.carpooling.R;
 
 public class ProfileActivity extends FragmentActivity {
@@ -30,6 +32,9 @@ public class ProfileActivity extends FragmentActivity {
                     @Override
                     public void onPageSelected(int position) {
                         actionBar.setSelectedNavigationItem(position);
+                        findViewById(R.id.profile_menuitem_delete_car).setVisibility(View.GONE);
+                        findViewById(R.id.profile_menuitem_new_car).setVisibility(position == 1 ? View.VISIBLE : View.GONE);
+                        findViewById(R.id.profile_menuitem_edit_info).setVisibility(position == 0 ? View.VISIBLE : View.GONE);
                     }
                 });
 
@@ -40,6 +45,7 @@ public class ProfileActivity extends FragmentActivity {
         if (savedInstanceState != null) {
             actionBar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
         }
+
     }
 
     protected void onSaveInstanceState(Bundle outState) {
@@ -47,4 +53,9 @@ public class ProfileActivity extends FragmentActivity {
         outState.putInt("tab", getActionBar().getSelectedNavigationIndex());
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.profile, menu);
+        return true;
+    }
 }
