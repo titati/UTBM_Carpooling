@@ -26,7 +26,7 @@ public class DriverCarAdapter extends ArrayAdapter<DriverCar> {
 		if (v == null) {
 			v = new DriverCarItem(getContext(), null);
 		}
-		
+
 		DriverCar item = items.get(position);
 		
 		if (item != null) {

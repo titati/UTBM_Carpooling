@@ -20,7 +20,7 @@ public class HomeActivity extends Activity {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-                        Intent intent = new Intent(HomeActivity.this, EditInfoActivity.class);
+                        Intent intent = new Intent(HomeActivity.this, TripSearchActivity.class);
                         startActivity(intent);
 					}
 				});
@@ -29,7 +29,7 @@ public class HomeActivity extends Activity {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						Intent intent = new Intent(HomeActivity.this, TripSearchResultsActivity.class);
+						Intent intent = new Intent(HomeActivity.this, EditTripActivity.class);
                         startActivity(intent);
 					}
 				});

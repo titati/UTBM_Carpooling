@@ -1,170 +1,150 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:orientation="vertical"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:stretchColumns="1"
-             tools:context=".EditCarActivity"
-             android:gravity="top"
-             android:padding="10dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".EditCarActivity">
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/edit_car_prompt_brand"
-            android:id="@+id/textView"
-            style="@android:style/TextAppearance.Holo.Medium"
-            android:textColor="@android:color/secondary_text_light"
-            android:gravity="center_vertical|right|top"
-            android:paddingRight="20dp"
-            android:enabled="false"/>
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/edit_car_spinner_brand"/>
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/edit_car_prompt_model"
-            android:id="@+id/textView1"
-            style="@android:style/TextAppearance.Holo.Medium"
-            android:textColor="@android:color/secondary_text_light"
-            android:gravity="center_vertical|right|top"
-            android:paddingRight="20dp"
-            android:enabled="false"/>
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/edit_car_spinner_model"/>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/edit_car_prompt_color"
-            android:id="@+id/textView2"
-            style="@android:style/TextAppearance.Holo.Medium"
-            android:textColor="@android:color/secondary_text_light"
-            android:gravity="center_vertical|right|top"
-            android:paddingRight="20dp"
-            android:enabled="false"/>
-
-        <fr.utbm.carpooling.view.widgets.ColorGridView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edit_car_gridview_colors"/>
-
-    </TableRow>
-
-    <TableRow
+    <ScrollView
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp">
+        android:layout_height="0dip"
+        android:layout_weight="1">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/edit_car_prompt_seats"
-            android:id="@+id/textView3"
-            android:singleLine="false"
-            style="@android:style/TextAppearance.Holo.Medium"
-            android:textColor="@android:color/secondary_text_light"
-            android:paddingRight="20dp"
-            android:enabled="false"
-            android:gravity="center_vertical|right"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/edit_car_edittext_seats"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="false"
-                android:layout_centerVertical="true"
-                android:numeric="integer"
-                android:inputType="number"
-                android:maxLength="1"
-                android:digits="123456789"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/edit_car_caption_seats"
-                android:id="@+id/textView5"
-                style="@android:style/TextAppearance.Holo.Small"
-                android:gravity="center_vertical|right"
-                android:textColor="@android:color/holo_blue_light"
-                android:layout_toRightOf="@+id/edit_car_edittext_seats"
-                android:layout_alignBottom="@+id/edit_car_edittext_seats"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"/>
+                android:text="@string/edit_car_prompt_brand"
+                android:enabled="false"
+                android:textAllCaps="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
 
-        </RelativeLayout>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit_car_prompt_trunk"
-            android:id="@+id/textView4"
-            style="@android:style/TextAppearance.Holo.Medium"
-            android:textColor="@android:color/secondary_text_light"
-            android:gravity="right|top"
-            android:paddingRight="20dp"
-            android:enabled="false"/>
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/edit_car_spinner_trunk"/>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp">
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit_car_option_default"
-            android:id="@+id/checkBox"
-            />
-    </TableRow>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_car_spinner_brand"
+                style="@android:style/TextAppearance.Medium"
+                android:spinnerMode="dialog"
+                android:prompt="@string/edit_car_prompt_select_brand"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
 
 
-</TableLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_car_prompt_model"
+                android:enabled="false"
+                android:textAllCaps="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_car_spinner_model"
+                style="@android:style/TextAppearance.Medium"
+                android:spinnerMode="dialog"
+                android:prompt="@string/edit_car_prompt_select_model"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_car_prompt_color"
+                android:enabled="false"
+                android:textAllCaps="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"/>
+
+            <fr.utbm.carpooling.view.widgets.ColorGridView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_car_gridview_colors"
+                android:layout_margin="10dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_car_prompt_seats"
+                android:enabled="false"
+                android:textAllCaps="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="50dip"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_car_edittext_seats"
+                    android:numeric="integer"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:digits="123456789"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_car_caption_seats"
+                    style="@android:style/TextAppearance.Small"
+                    android:gravity="center_vertical|right"
+                    android:textColor="@android:color/holo_blue_light"
+                    android:layout_marginRight="20dp"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_car_prompt_trunk"
+                android:enabled="false"
+                android:textAllCaps="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_car_spinner_trunk"
+                style="@android:style/TextAppearance.Medium"
+                android:spinnerMode="dialog"
+                android:prompt="@string/edit_car_prompt_select_trunk"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <CheckBox
+                android:text="@string/edit_car_option_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_car_checkbox_default"
+                android:checked="true"
+                android:textAllCaps="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

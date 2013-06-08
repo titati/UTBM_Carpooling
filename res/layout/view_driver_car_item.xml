@@ -1,80 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:padding="5dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="?android:attr/activatedBackgroundIndicator">
 
-    <TableRow
-        android:id="@+id/TableRow1"
+    <TextView
+        android:id="@+id/driver_car_item_textview_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|left"
+        style="@android:style/TextAppearance.Holo.Medium"
+        android:textAllCaps="true"/>
 
-        <TextView
-            android:id="@+id/driver_car_item_textview_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_span="6" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
         <fr.utbm.carpooling.view.widgets.ColorCheckBox
             android:id="@+id/driver_car_item_colorcheckbox_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:clickable="false"
-            android:gravity="center" />
-		
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center" >
-        
-	        <ImageView
-	            android:id="@+id/driver_car_item_imageview_seats"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:src="@drawable/seats" />
-	
-	        <TextView
-	            android:id="@+id/driver_car_item_textview_seats"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:paddingLeft="5dp" />
-        
-        </LinearLayout>
-		
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center" >
-        
-	        <ImageView
-	            android:id="@+id/driver_car_item_imageview_trunk"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:src="@drawable/trunk" />
-	
-	        <TextView
-	            android:id="@+id/driver_car_item_textview_trunk"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:paddingLeft="5dp" />
-	    
-	    </LinearLayout>
+            android:gravity="center_vertical|left"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_gravity="center_vertical|left"/>
 
-        <ImageView
+        <TextView
+            android:drawableLeft="@drawable/seats"
+            android:drawablePadding="10dp"
+            android:id="@+id/driver_car_item_textview_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            style="@android:style/TextAppearance.Medium"
+            android:gravity="center_vertical|left"
+            />
+
+
+        <TextView
+            android:drawableLeft="@drawable/trunk"
+            android:id="@+id/driver_car_item_textview_trunk"
+            android:layout_width="wrap_content"
+            android:drawablePadding="10dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:textAllCaps="true"
+            android:gravity="center_vertical|left"
+            />
+
+        <TextView
             android:id="@+id/driver_car_item_imageview_default"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/default_car"
-            android:gravity="center" />
-    </TableRow>
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/default_car"
+            android:gravity="center_vertical|right"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:layout_gravity="center_vertical|left"/>
+    </LinearLayout>
 
-</merge>
+</LinearLayout>

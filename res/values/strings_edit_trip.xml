@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="edit_trip_title">Create Trip</string>
+
     <string name="edit_trip_prompt_departure_site">From</string>
     <string name="edit_trip_prompt_checkpoint_site">Through</string>
     <string name="edit_trip_prompt_arrival_site">To</string>
@@ -36,6 +38,8 @@
     <string name="edit_trip_prompt_select_trunk">Trunk</string>
 
     <string name="edit_trip_prompt_select_repeat_end_date">Repeat End Date</string>
+
+    <string name="edit_trip_caption_seats">(driver not included)</string>
 
 
 

@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 public class ColorCheckBox extends CheckBox {
@@ -29,23 +31,26 @@ public class ColorCheckBox extends CheckBox {
     }
 
     protected void init() {
+        // init styles of the painters
         mBodyPainter.setStyle(Paint.Style.FILL);
         mFramePainter.setStyle(Paint.Style.STROKE);
     }
 
-    public void setColor(String htmlColor) {
+    public void setColor(String hex) {
 
         int bodyColor;
         int frameColor;
 
+        // parsing color from hex
         try {
-            bodyColor = Color.parseColor(htmlColor);
+            bodyColor = Color.parseColor(hex);
         } catch (IllegalArgumentException e) {
             return;
         }
 
         mBodyPainter.setColor(bodyColor);
 
+        // computing frame color (darker body color)
         float[] hsv = new float[3];
         Color.colorToHSV(bodyColor, hsv);
 
@@ -62,8 +67,10 @@ public class ColorCheckBox extends CheckBox {
     @Override
     protected void onDraw(Canvas canvas) {
 
+        // select width of the frame according to the state of the checkbox
         mFramePainter.setStrokeWidth(isChecked() ? CHECKED_FRAME_WIDTH : UNCHECKED_FRAME_WIDTH);
 
+        // draw rectangles
         canvas.drawRect(mBodyRect, mBodyPainter);
         canvas.drawRect(mFrameRect, mFramePainter);
     }
@@ -71,16 +78,44 @@ public class ColorCheckBox extends CheckBox {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 
-        int s = Math.min(w, h);
-        int x = (w - s) / 2;
-        int y = (h - s) / 2;
+        // paddings
+        int l = getPaddingLeft(),
+            r = getPaddingRight(),
+            t = getPaddingTop(),
+            b = getPaddingBottom();
 
+        // real dimensions of the container
+        int rw = w - (l+r);
+        int rh = h - (t+b);
+
+        // computing side of the square
+        int s = Math.min(rw, rh);
+
+        // computing pos of the square (centered by default)
+        int x = (rw - s) / 2;
+        int y = (rh - s) / 2;
+
+        if ((getGravity() & Gravity.LEFT) != 0) {
+            x = l;
+        } else if ((getGravity() & Gravity.RIGHT) != 0) {
+            x = w - r - s;
+        }
+
+        if ((getGravity() & Gravity.TOP) != 0) {
+            y = t;
+        } else if ((getGravity() & Gravity.BOTTOM) != 0) {
+            y = h - b - s;
+        }
+
+        // computing frame & body rects
         mFrameRect.set(UNCHECKED_FRAME_WIDTH + x,
                 UNCHECKED_FRAME_WIDTH
                         + y, s + x, s + y);
         mBodyRect = mFrameRect;
 
-        mBodyRect.inset(CHECKED_FRAME_WIDTH, CHECKED_FRAME_WIDTH);
+        // reducing body rect if checkbox clickable
+        if (isClickable())
+            mBodyRect.inset(CHECKED_FRAME_WIDTH, CHECKED_FRAME_WIDTH);
 
     }
 
