@@ -15,6 +15,10 @@ public class Brand extends JSONParsable {
         this.name = name;
     }
 
+	public Brand(JSONObject object) {
+		super(object);
+	}
+
 	public int getId() {
 		return id;
 	}

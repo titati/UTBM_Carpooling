@@ -25,8 +25,8 @@ public class DriverWebServices {
 	public static void getPreviousTripsShort(final TaskHandler<ArrayList<DriverTripOccurenceShort>> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "getPreviousTripsShort", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -64,8 +64,8 @@ public class DriverWebServices {
 	public static void getNextTripsShort(final TaskHandler<ArrayList<DriverTripOccurenceShort>> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "getNextTripsShort", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -104,8 +104,8 @@ public class DriverWebServices {
 	public static void getCars(final TaskHandler<ArrayList<DriverCar>> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "getCars", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -143,8 +143,8 @@ public class DriverWebServices {
 	public static void createCar(DriverCar car, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "createCar", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -180,8 +180,8 @@ public class DriverWebServices {
 	public static void updateCar(DriverCar car, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "updateCar", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -217,8 +217,8 @@ public class DriverWebServices {
 	public static void deleteCar(String carId, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "deleteCar", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -254,8 +254,8 @@ public class DriverWebServices {
 	public static void updateCarPosition(String carId, GpsPosition position, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "updateCarPosition", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -291,8 +291,8 @@ public class DriverWebServices {
 	public static void createTrip(DriverTrip trip, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "createTrip", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -328,8 +328,8 @@ public class DriverWebServices {
 	public static void updateTrip(DriverTrip trip, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "updateTrip", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -365,8 +365,8 @@ public class DriverWebServices {
 	public static void updateTripOccurence(DriverTripOccurence trip, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "updateTripOccurence", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -402,8 +402,8 @@ public class DriverWebServices {
 	public static void deleteTrip(String abstractTripId, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "deleteTrip", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -439,8 +439,8 @@ public class DriverWebServices {
 	public static void deleteTripOccurence(String abstractTripId, Date tripId, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "deleteTripOccurence", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -476,8 +476,8 @@ public class DriverWebServices {
 	public static void getTrip(String abstractTripId, final TaskHandler<DriverTrip> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "getTrip", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
@@ -513,8 +513,8 @@ public class DriverWebServices {
 	public static void getTripOccurence(String abstractTripId, Date tripId, final TaskHandler<DriverTripOccurence> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getApiToken()));
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
 		HttpConnection con = new HttpConnection(cat + "getTripOccurence", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			

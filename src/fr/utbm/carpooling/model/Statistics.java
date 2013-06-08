@@ -14,7 +14,7 @@ public class Statistics extends JSONParsable {
 	private int passengerTrips;
 	private int peopleCarried;
 	private int rating;
-	private List<String> comments;
+	private List<Comment> comments;
 	
 	public Statistics() {}
 	
@@ -54,11 +54,11 @@ public class Statistics extends JSONParsable {
 		this.rating = rating;
 	}
 	
-	public List<String> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
 	
-	public void setComments(List<String> comments) {
+	public void setComments(List<Comment> comments) {
 		this.comments = comments;
 	}
 	
@@ -88,11 +88,11 @@ public class Statistics extends JSONParsable {
 			e.printStackTrace();
 		}
 		
-		ArrayList<String> comments = new ArrayList<String>();
+		ArrayList<Comment> comments = new ArrayList<Comment>();
 		
 		try {
 			for(int i = 0; i < object.getJSONArray("comments").length(); ++i) {
-				comments.add((String) object.getJSONArray("checkpoints").get(i));
+				comments.add(new Comment((JSONObject) object.getJSONArray("comments").get(i)));
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

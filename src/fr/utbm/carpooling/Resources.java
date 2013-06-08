@@ -7,20 +7,23 @@ import java.util.*;
 
 public class Resources {
 
-    private static String userId = null;
-    private static String apiToken = null;
-
 	private static Map<Integer, Color> colors = new HashMap<Integer, Color>();
     private static Map<Integer, Trunk> trunks = new HashMap<Integer, Trunk>();
     private static Map<Integer, SiteShort> sitesShort = new HashMap<Integer, SiteShort>();
     private static Map<Integer, Brand> brands = new HashMap<Integer, Brand>();
     private static Map<Integer, Map<Integer, Model>> models = new HashMap<Integer, Map<Integer, Model>>();
     private static List<Color> colorsSorted;
+    private static User user;
 
     public static void init() {
-
-        setUserId("plop");
-        setApiToken("fze8f54zef4ze56f4ezf8z4ef5zef8zef4z8ef4z8e9f4e8fz89f");
+    	User user1 = new User();
+    	user1.setUserId("plop");
+        user1.setApiToken("fze8f54zef4ze56f4ezf8z4ef5zef8zef4z8ef4z8e9f4e8fz89f");
+        user1.setEmail("plop@utbm.fr");
+        user1.setFirstname("Truc");
+        user1.setName("Chose");
+        user1.setPhone("0667849494");
+        Resources.setUser(user1);
 
         colors.put(0, new Color(0, "", "000000"));
         colors.put(1, new Color(1, "", "808080"));
@@ -83,7 +86,15 @@ public class Resources {
     }
 
 
-    public static List<Color> getColors() {
+    public static void setUser(User user2) {
+		user = user2;
+	}
+    
+    public static User getUser() {
+    	return user;
+    }
+
+	public static List<Color> getColors() {
         return colorsSorted;
     }
 
@@ -122,23 +133,6 @@ public class Resources {
     public static Model getModel(int brand_id, int id) {
         return models.get(brand_id).get(id);
     }
-
-	public static String getUserId() {
-		return userId;
-	}
-
-	public static void setUserId(String userId) {
-		Resources.userId = userId;
-	}
-
-    public static String getApiToken() {
-		return apiToken;
-	}
-
-
-	public static void setApiToken(String apiToken) {
-		Resources.apiToken = apiToken;
-	}
 
 
 }

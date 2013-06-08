@@ -53,14 +53,13 @@ public class TripsPassengerFragment extends Fragment {
         mListView = (ListView) getView().findViewById(R.id.trips_passenger_listview_trips);
         
         initHandler();
-        if (lastUpdate == null || lastUpdate.getTime() < (new Date()).getTime() - 5 * 60) refreshData();
+        if (lastUpdate == null || (lastUpdate.getTime() < (new Date()).getTime() - 5 * 60000)) refreshData();
         if (data != null) initView(data);
     }
     
     private void refreshData() {
         mLoader.show();
         PassengerWebServices.getNextTripsShort(mHandler);
-        lastUpdate = new Date();
     }
 
 	private void initHandler() {
@@ -71,6 +70,7 @@ public class TripsPassengerFragment extends Fragment {
 			public void taskSuccessful(ArrayList<PassengerTripShort> object) {
 				initView(object);
 				data = object;
+		        lastUpdate = new Date();
 		        
 		        mLoader.hide();
 			}

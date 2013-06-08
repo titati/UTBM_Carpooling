@@ -18,8 +18,12 @@ public class Color extends JSONParsable implements Comparable<Color> {
         setHex(hex);
     }
 
+    public Color(JSONObject object) {
+		super(object);
+	}
 
-    public int getId() {
+
+	public int getId() {
         return id;
     }
 

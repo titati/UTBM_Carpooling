@@ -17,6 +17,10 @@ public class Model extends JSONParsable {
         this.id = id;
         this.name = name;
     }
+    
+	public Model(JSONObject object) {
+		super(object);
+	}
 
 
 	public int getId() {

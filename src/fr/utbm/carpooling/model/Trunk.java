@@ -15,6 +15,10 @@ public class Trunk extends JSONParsable {
         setName(name);
     }
 
+	public Trunk(JSONObject object) {
+		super(object);
+	}
+
 	public int getId() {
 		return id;
 	}

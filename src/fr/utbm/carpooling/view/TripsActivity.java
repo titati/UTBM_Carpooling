@@ -14,6 +14,8 @@ public class TripsActivity extends FragmentActivity {
 	private ViewPager mViewPager;
 	private TabsAdapter mTabsAdapter;
 	
+	
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

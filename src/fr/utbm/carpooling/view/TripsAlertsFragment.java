@@ -51,14 +51,13 @@ public class TripsAlertsFragment extends Fragment {
         mListView = (ListView) getView().findViewById(R.id.trips_alerts_listview_alerts);
 
         initHandler();
-        if (lastUpdate == null || lastUpdate.getTime() < (new Date()).getTime() - 5 * 60) refreshData();
+        if (lastUpdate == null || (lastUpdate.getTime() < (new Date()).getTime() - 5 * 60000)) refreshData();
         if (data != null) initView(data);
     }
     
     private void refreshData() {
     	mLoader.show();
         PassengerWebServices.getAlerts(mHandler);
-        lastUpdate = new Date();
 	}
 
 	private void initHandler() {
@@ -69,6 +68,7 @@ public class TripsAlertsFragment extends Fragment {
 			public void taskSuccessful(ArrayList<Alert> object) {
 				initView(object);
 				data = object;
+		        lastUpdate = new Date();
 		        
 		        mLoader.hide();
 			}

@@ -4,6 +4,7 @@ package fr.utbm.carpooling.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,7 +54,7 @@ public class TripsDriverFragment extends Fragment {
         mListView = (ListView) getView().findViewById(R.id.trips_driver_listview_trips);
 
         initHandler();
-        if (lastUpdate == null || lastUpdate.getTime() < (new Date()).getTime() - 5 * 60) refreshData();
+        if (lastUpdate == null || (lastUpdate.getTime() < (new Date()).getTime() - 5 * 60000)) refreshData();
         if (data != null) initView(data);
     }
     
@@ -75,7 +76,6 @@ public class TripsDriverFragment extends Fragment {
 	private void refreshData() {
         mLoader.show();
         DriverWebServices.getNextTripsShort(mHandler);
-        lastUpdate = new Date();
     }
     
     private void initHandler() {
@@ -86,6 +86,7 @@ public class TripsDriverFragment extends Fragment {
 			public void taskSuccessful(ArrayList<DriverTripOccurenceShort> object) {
 				initView(object);
 				data = object;
+		        lastUpdate = new Date();
 		        
 		        mLoader.hide();
 			}

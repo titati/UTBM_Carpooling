@@ -3,15 +3,10 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
-
-public class User extends JSONParsable {
+public class User extends UserShort {
 	
-	private String login;
-	private String name;
-	private String firstname;
-	private String phone;
-	private String email;
+	private String userId;
+	private String apiToken;
 	
 	public User() {}
 	
@@ -19,74 +14,34 @@ public class User extends JSONParsable {
 		super(object);
 	}
 
-	public String getLogin() {
-		return login;
+	public String getUserId() {
+		return userId;
 	}
 	
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getApiToken() {
+		return apiToken;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getFirstname() {
-		return firstname;
-	}
-	
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-	
-	public String getPhone() {
-		return phone;
-	}
-	
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
-	
-	public void setEmail(String email) {
-		this.email = email;
+	public void setApiToken(String apiToken) {
+		this.apiToken = apiToken;
 	}
 	
 	@Override
 	protected void deserializeJSON(JSONObject object) {
+		super.deserializeJSON(object);
+		
 		try {
-			setLogin(object.getString("name"));
+			setUserId(object.getString("userid"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			setName(object.getString("name"));
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			setFirstname(object.getString("firstname"));
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			setPhone(object.getString("phone"));
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			setEmail(object.getString("email"));
+			setApiToken(object.getString("apitoken"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
