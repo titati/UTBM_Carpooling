@@ -15,6 +15,7 @@
     <string name="action_new">New</string>
     <string name="action_less">Less</string>
     <string name="action_more">More</string>
+    <string name="action_go">Go</string>
 
     <string name="caption_monday">MON</string>
     <string name="caption_tuesday">TUE</string>

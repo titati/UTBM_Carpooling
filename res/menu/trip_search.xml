@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@+id/trip_search_menuitem_go"
+        android:icon="@drawable/navigation_forward"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/action_go"/>
+
+</menu>

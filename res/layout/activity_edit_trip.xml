@@ -506,7 +506,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textAllCaps="true"
             android:text="@string/action_more"
+            style="@android:style/TextAppearance.Small"
             android:background="?android:attr/selectableItemBackground"
             android:id="@+id/edit_trip_button_more"/>
 
