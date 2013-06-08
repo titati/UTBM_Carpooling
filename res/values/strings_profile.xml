@@ -17,4 +17,7 @@
     <string name="profile_stats_caption_rating">Rating</string>
     <string name="profile_stats_caption_comments">Comments</string>
 
+    <string name="profile_info_title_edit">Edit Info</string>
+
+
 </resources>

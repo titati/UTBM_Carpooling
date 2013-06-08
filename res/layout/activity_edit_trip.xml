@@ -3,7 +3,9 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res/fr.utbm.carpooling"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    tools:context=".EditTripActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -401,25 +403,6 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"/>
 
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/edit_trip_prompt_trunk"
-                    android:enabled="false"
-                    android:textAllCaps="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
-
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edit_trip_spinner_trunk"
-                    android:prompt="@string/edit_trip_prompt_select_trunk"
-                    style="@android:style/TextAppearance.Medium"
-                    android:spinnerMode="dialog"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
 
                 <TextView
 
@@ -428,9 +411,9 @@
                     android:text="@string/edit_trip_prompt_car"
                     android:enabled="false"
                     android:textAllCaps="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    />
 
                 <Spinner
                     android:layout_width="match_parent"
@@ -449,18 +432,55 @@
                     android:text="@string/edit_trip_prompt_seats"
                     android:enabled="false"
                     android:textAllCaps="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"/>
 
-                <EditText
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="50dip"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_trip_edittext_seats"
+                        android:numeric="integer"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:digits="123456789"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/edit_trip_caption_seats"
+                        style="@android:style/TextAppearance.Small"
+                        android:gravity="center_vertical|right"
+                        android:textColor="@android:color/holo_blue_light"
+                        android:layout_marginRight="20dp"/>
+
+                </LinearLayout>
+
+                <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edit_trip_edittext_seats"
-                    android:numeric="integer"
-                    android:inputType="number"
-                    android:maxLength="1"
-                    android:digits="123456789"
+                    android:text="@string/edit_trip_prompt_trunk"
+                    android:enabled="false"
+                    android:textAllCaps="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_trip_spinner_trunk"
+                    android:prompt="@string/edit_trip_prompt_select_trunk"
+                    style="@android:style/TextAppearance.Medium"
+                    android:spinnerMode="dialog"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"/>
 

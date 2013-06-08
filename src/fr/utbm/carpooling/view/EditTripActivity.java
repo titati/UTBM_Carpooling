@@ -4,6 +4,8 @@ package fr.utbm.carpooling.view;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import fr.utbm.carpooling.R;
@@ -213,10 +215,32 @@ public class EditTripActivity extends Activity {
 
                 ((SiteShortAdapter) sp0.getAdapter()).disableItem(selected);
             }
-
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.edit_trip, menu);
+        return true;
+    }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.edit_trip_menuitem_cancel:
+                this.setResult(0);
+                finish();
+                return true;
+
+            case R.id.edit_trip_menuitem_save:
+                //TODO: create the trip
+                this.setResult(1);
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

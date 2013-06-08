@@ -39,7 +39,8 @@ public class ColorGridView extends LinearLayout {
             mGridView.setNumColumns(GridView.AUTO_FIT);
             mGridView.setVerticalSpacing(5);
             mGridView.setHorizontalSpacing(5);
-            mGridView.setStretchMode(GridView.STRETCH_COLUMN_WIDTH);
+            mGridView.setStretchMode(GridView.STRETCH_SPACING_UNIFORM);
+
             mGridView.setGravity(Gravity.CENTER);
             mGridView.setClickable(true);
             mGridView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
@@ -49,6 +50,13 @@ public class ColorGridView extends LinearLayout {
             mGridView.setAdapter(adapter);
         }
 
+    }
+
+    @Override
+    protected void onMeasure (int widthMeasureSpec, int heightMeasureSpec) {
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec(
+                MeasureSpec.AT_MOST, 200);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
 
@@ -103,6 +111,7 @@ public class ColorGridView extends LinearLayout {
 
             if (ccb == null) {
                 ccb = new ColorCheckBox(mContext);
+                ccb.setPadding(5,5,5,5);
                 ccb.setColor(mColors.get(position).getHex());
                 ccb.setClickable(false);
                 ccb.setFocusable(false);

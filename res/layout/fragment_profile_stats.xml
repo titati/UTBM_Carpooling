@@ -1,216 +1,149 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    tools:context=".ProfileStatsFragment" >
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical"
+              android:padding="10dp"
+              tools:context=".ProfileStatsFragment">
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="top"
-        android:stretchColumns="1" >
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/profile_stats_caption_trips"
+        android:textAllCaps="true"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal|left"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:showDividers="middle"
+        android:divider="@android:drawable/divider_horizontal_bright">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <TextView
-                android:id="@+id/profile_stats_textview_trips"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_span="2"
-                android:paddingBottom="10dp"
-                android:text="@string/profile_stats_caption_trips"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/profile_stats_stextview_driver_trips"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:paddingBottom="10dp"
-                android:paddingRight="10dp"
                 android:text="@string/profile_stats_caption_driver_trips"
-                android:textColor="@android:color/secondary_text_light"
-                android:enabled="false"/>
+                style="?android:attr/textAppearanceSmall"
+                android:enabled="false"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/profile_stats_textview_driver_trips"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="6" />
-        </TableRow>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?android:attr/textAppearanceLarge"
+                android:text="6"
+                android:gravity="center"
+                android:textColor="@android:color/holo_blue_light"
+                android:textStyle="bold"
+                android:typeface="serif"/>
+        </LinearLayout>
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <TextView
-                android:id="@+id/profile_stats_stextview_passenger_trips"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:paddingBottom="10dp"
-                android:paddingRight="10dp"
+                android:layout_gravity="center"
                 android:text="@string/profile_stats_caption_passenger_trips"
-                android:textColor="@android:color/secondary_text_light"
-                android:enabled="false"/>
+                style="?android:attr/textAppearanceSmall"
+                android:enabled="false"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/profile_stats_textview_passenger_trips"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="3" />
-        </TableRow>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?android:attr/textAppearanceLarge"
+                android:text="3"
+                android:gravity="center"
+                android:textColor="@android:color/holo_blue_light"
+                android:textStyle="bold"
+                android:typeface="serif"/>
+        </LinearLayout>
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <TextView
-                android:id="@+id/profile_stats_stextview_people_carried"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:paddingRight="10dp"
+                android:layout_gravity="center"
                 android:text="@string/profile_stats_caption_people_carried"
-                android:textColor="@android:color/secondary_text_light"
-                android:enabled="false"/>
+                style="?android:attr/textAppearanceSmall"
+                android:enabled="false"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/profile_stats_textview_people_carried"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="15" />
-        </TableRow>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?android:attr/textAppearanceLarge"
+                android:text="15"
+                android:gravity="center"
+                android:textColor="@android:color/holo_blue_light"
+                android:textStyle="bold"
+                android:typeface="serif"/>
+        </LinearLayout>
+    </LinearLayout>
 
-        <TableRow
-            android:layout_width="fill_parent"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right" >
+            android:layout_gravity="center"
+            android:text="@string/profile_stats_caption_reputation"
+            android:textAllCaps="true"
+            style="?android:attr/textAppearanceLarge"
+            android:gravity="center_horizontal|left"
+            android:layout_weight="1"/>
 
-            <TextView
-                android:id="@+id/profile_stats_textview_reputation"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_span="2"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:text="@string/profile_stats_caption_reputation"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
 
-        <TableRow
+        <RatingBar
+            android:layout_gravity="center_vertical|right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_stats_ratingbar_rating"
+            android:progressDrawable="@drawable/ratingbar_selector"
+            android:numStars="5"
+            android:isIndicator="true"
+            android:maxHeight="24dip"
+            android:minHeight="24dip"
+            android:rating="3.5"
+            android:stepSize="0.5"
+            android:focusable="true"
+            />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/profile_stats_stextview_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:paddingBottom="10dp"
-                android:paddingRight="10dp"
-                android:text="@string/profile_stats_caption_rating"
-                android:textColor="@android:color/secondary_text_light"
-                android:enabled="false"/>
-
-            <RatingBar
-                android:id="@+id/profile_stats_ratingBar1"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left|center_vertical"
-                android:isIndicator="true"
-                android:paddingBottom="10dp"
-                android:rating="3.5"
-                android:stepSize="0.5" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/profile_stats_stextview_comments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:paddingRight="10dp"
-                android:text="@string/profile_stats_caption_comments"
-                android:textColor="@android:color/secondary_text_light"
-                android:enabled="false"/>
-        </TableRow>
-
-        <TableRow android:layout_height="match_parent" >
-
-            <ScrollView
-                android:id="@+id/profile_stats_scrollview_comments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="2"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:dividerPadding="2dp"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/profile_stats_textview_driver_trips_0"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr rr rrrrrrrrrrr rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
-                        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                    <TextView
-                        android:id="@+id/profile_stats_textview_driver_trips_1"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa   aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                    <TextView
-                        android:id="@+id/profile_stats_textview_driver_trips_2"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhhhhhh hh hhhhhhhhhhhhhhhhhh"
-                        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                    <TextView
-                        android:id="@+id/profile_stats_textview_driver_trips_3"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr rr rrrrrrrrrrr rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
-                        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                    <TextView
-                        android:id="@+id/profile_stats_textview_driver_trips_4"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhh hhhhhhhhhhhhhhh hh hhhhhhhhhhhhhhhhhh"
-                        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                    <TextView
-                        android:id="@+id/profile_stats_textview_driver_trips_5"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa   aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                        android:textAppearance="?android:attr/textAppearanceSmall" />
-                </LinearLayout>
-            </ScrollView>
-        </TableRow>
-    </TableLayout>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/profile_stats_listview_comments"/>
 
 </LinearLayout>
