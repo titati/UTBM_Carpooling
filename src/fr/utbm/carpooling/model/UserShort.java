@@ -7,6 +7,7 @@ import fr.utbm.carpooling.JSONParsable;
 
 public class UserShort extends JSONParsable {
 	
+	private String userId;
 	private String name;
 	private String firstname;
 	private String phone;
@@ -16,6 +17,14 @@ public class UserShort extends JSONParsable {
 	
 	public UserShort(JSONObject object) {
 		super(object);
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 	public String getName() {
@@ -52,6 +61,12 @@ public class UserShort extends JSONParsable {
 	
 	@Override
 	protected void deserializeJSON(JSONObject object) {
+		try {
+			setUserId(object.getString("userid"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
 		try {
 			setName(object.getString("name"));
 		} catch (JSONException e) {

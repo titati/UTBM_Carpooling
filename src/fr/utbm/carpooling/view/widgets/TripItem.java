@@ -1,8 +1,10 @@
 package fr.utbm.carpooling.view.widgets;
 
 import java.text.DateFormat;
+import java.util.Date;
 
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.model.BaseTrip;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public abstract class TripItem<E> extends LinearLayout {
+public abstract class TripItem<E extends BaseTrip> extends LinearLayout {
 	
 	protected E data = null;
 	
@@ -38,6 +40,14 @@ public abstract class TripItem<E> extends LinearLayout {
 	public void setData(E mData) {
 		data = mData;
 		initView();
+	}
+	
+	public String getAbstractTripId() {
+		return data.getAbstractTripId();
+	}
+	
+	public Date getTripId() {
+		return data.getTripId();
 	}
 	
 	protected void initItems() {

@@ -77,19 +77,19 @@ public class Car extends JSONParsable {
 		}
 		
 		try {
-			setBrandId(object.getInt("brandId"));
+			setBrandId(object.getInt("brandid"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			setModelId(object.getInt("modelId"));
+			setModelId(object.getInt("modelid"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			setColorId(object.getInt("colorId"));
+			setColorId(object.getInt("colorid"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -101,7 +101,7 @@ public class Car extends JSONParsable {
 		}
 		
 		try {
-			setTrunkId(object.getInt("trunkId"));
+			setTrunkId(object.getInt("trunkid"));
 		} catch(JSONException e) {
 			e.printStackTrace();
 		}

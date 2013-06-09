@@ -97,6 +97,12 @@ public class TripsPassengerFragment extends Fragment {
 			}
 		});
 	}
+    
+    @Override
+    public void onPause() {
+    	super.onPause();
+    	mLoader.dismiss();
+    }
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

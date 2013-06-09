@@ -9,8 +9,8 @@ import org.json.JSONObject;
 
 public class DriverTripOccurence extends BaseTrip {
 	
-	private ArrayList<User> passengers;
-	private Car car;
+	private ArrayList<UserShort> mPassengers;
+	private Car mCar;
 
 	public DriverTripOccurence(JSONObject object) {
 		super(object);
@@ -18,20 +18,20 @@ public class DriverTripOccurence extends BaseTrip {
 
 	public DriverTripOccurence() {}
 
-	public ArrayList<User> getPassengers() {
-		return passengers;
+	public ArrayList<UserShort> getPassengers() {
+		return mPassengers;
 	}
 
-	public void setPassengers(ArrayList<User> passengers) {
-		this.passengers = passengers;
+	public void setPassengers(ArrayList<UserShort> passengers) {
+		this.mPassengers = passengers;
 	}
 
 	public Car getCar() {
-		return car;
+		return mCar;
 	}
 
 	public void setCar(Car car) {
-		this.car = car;
+		this.mCar = car;
 	}
 	
 	@Override
@@ -44,16 +44,17 @@ public class DriverTripOccurence extends BaseTrip {
 			e.printStackTrace();
 		}
 		
-		ArrayList<User> passengers = new ArrayList<User>();
+		ArrayList<UserShort> passengers = new ArrayList<UserShort>();
 		
 		try {
 			for(int i = 0; i < object.getJSONArray("passengers").length(); ++i) {
-				User u = new User((JSONObject) object.getJSONArray("passengers").get(i));
-				passengers.add(u);
+				passengers.add(new UserShort((JSONObject) object.getJSONArray("passengers").get(i)));
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		
+		setPassengers(passengers);
 	}
 	
 	@Override

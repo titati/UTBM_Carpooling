@@ -4,7 +4,6 @@ package fr.utbm.carpooling.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +16,7 @@ import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.adapter.DriverTripAdapter;
 import fr.utbm.carpooling.model.DriverTripOccurenceShort;
+import fr.utbm.carpooling.view.widgets.DriverTripItem;
 import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import fr.utbm.carpooling.webservices.DriverWebServices;
 
@@ -68,6 +68,9 @@ public class TripsDriverFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				Intent intent = new Intent(getActivity().getApplicationContext(), TripDetailsDriverActivity.class);
+				DriverTripItem view = (DriverTripItem) arg1;
+				intent.putExtra("abstractTripId", view.getAbstractTripId());
+				intent.putExtra("tripId", view.getTripId());
                 startActivity(intent);
 			}
 		});
@@ -98,7 +101,13 @@ public class TripsDriverFragment extends Fragment {
 			}
 		};
 	}
-	
+    
+    @Override
+    public void onPause() {
+    	super.onPause();
+    	mLoader.dismiss();
+    }
+    
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {

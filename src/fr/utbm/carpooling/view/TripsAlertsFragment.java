@@ -1,16 +1,14 @@
 package fr.utbm.carpooling.view;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.adapter.AlertAdapter;
@@ -86,13 +84,20 @@ public class TripsAlertsFragment extends Fragment {
 		
 		mListView.setAdapter(adapter);
         
-        mListView.setOnItemClickListener(new OnItemClickListener() {
-
+        mListView.setOnLongClickListener(new OnLongClickListener() {
+			
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				Intent intent = new Intent(getActivity().getApplicationContext(), TripDetailsDriverActivity.class);
-                startActivity(intent);
+			public boolean onLongClick(View v) {
+				
+				
+				return false;
 			}
 		});
 	}
+    
+    @Override
+    public void onPause() {
+    	super.onPause();
+    	mLoader.dismiss();
+    }
 }

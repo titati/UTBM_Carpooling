@@ -19,7 +19,7 @@ public class UserWebServices {
 	
 	private static String cat = "/user/"; 
 	
-	public static void login(String login, String pwd, final TaskHandler<String> handler) {
+	public static void login(String login, String pwd, final TaskHandler<LoginResponse> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("login", login));
@@ -34,15 +34,15 @@ public class UserWebServices {
 				if (jv.isValid()) {
 					JSONObject object = jv.getObject();
 				
-					String apiToken = "";
+					LoginResponse result = null;
 
 					try {
-						apiToken = object.getString("apiToken");
+						result = new LoginResponse(object.getJSONObject("loginresponse"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 
-					handler.taskSuccessful(apiToken);
+					handler.taskSuccessful(result);
 				} else {
 					handler.taskFailed();
 				}
@@ -171,13 +171,80 @@ public class UserWebServices {
 		con.execute("");
 	}
 	
-	public static void updateUser(User user) {
-   		// TODO: implement
+	public static void updateUser(final TaskHandler<Boolean> handler) {
+		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
+		
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
+		
+		HttpConnection con = new HttpConnection(cat + "createUser", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+			
+			@Override
+			public void taskSuccessful(String jsonString) {
+				JSONValidator jv = new JSONValidator(jsonString);
+				
+				if (jv.isValid()) {
+					JSONObject object = jv.getObject();
+				
+					boolean result = false;
+
+					try {
+						result = object.getBoolean("result");
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+					handler.taskSuccessful(result);
+				} else {
+					handler.taskFailed();
+				}
+			}
+			
+			@Override
+			public void taskFailed() {
+				handler.taskFailed();
+			}
+		});
+		
+		con.execute("");
 	}
 	
-	public static Statistics getStatistics(User user) {
-   		// TODO: implement
-		return null;
+	public static void getStatistics(final TaskHandler<Statistics> handler) {
+		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
+		
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
+		
+		HttpConnection con = new HttpConnection(cat + "createUser", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+			
+			@Override
+			public void taskSuccessful(String jsonString) {
+				JSONValidator jv = new JSONValidator(jsonString);
+				
+				if (jv.isValid()) {
+					JSONObject object = jv.getObject();
+				
+					Statistics stats = null;
+
+					try {
+						stats = new Statistics(object.getJSONObject("stats"));
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+					handler.taskSuccessful(stats);
+				} else {
+					handler.taskFailed();
+				}
+			}
+			
+			@Override
+			public void taskFailed() {
+				handler.taskFailed();
+			}
+		});
+		
+		con.execute("");
 	}
 }
 

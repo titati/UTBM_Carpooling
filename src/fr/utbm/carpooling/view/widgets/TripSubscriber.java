@@ -1,7 +1,7 @@
 package fr.utbm.carpooling.view.widgets;
 
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.model.User;
+import fr.utbm.carpooling.model.UserShort;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class TripSubscriber extends TableRow {
 	
-	protected User mUser = null;
+	protected UserShort mUser = null;
 	
 	protected TextView mName = null;
 	protected ImageView mPhone = null;
@@ -32,7 +32,7 @@ public class TripSubscriber extends TableRow {
 		initItems();
 	}
 	
-	public void setData(User user) {
+	public void setData(UserShort user) {
 		mUser = user;
 		initView();
 	}

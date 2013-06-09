@@ -82,7 +82,7 @@ public class Resources {
 
         models.put(0, renault_models);
         models.put(1, peugeot_models);
-        models.put(3, citroen_models);
+        models.put(2, citroen_models);
     }
 
 

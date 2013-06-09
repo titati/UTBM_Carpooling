@@ -20,7 +20,7 @@ import fr.utbm.carpooling.model.*;
 public class ResourcesWebServices {
 	
 	@SuppressLint("SimpleDateFormat")
-	private static SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy kk:mm:ss");
+	private final static SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy kk:mm:ss");
 	private static String cat = "/ressources/";
 	
 	public static SimpleDateFormat getStandardDateFormat() {

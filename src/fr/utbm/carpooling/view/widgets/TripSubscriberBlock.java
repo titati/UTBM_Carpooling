@@ -3,7 +3,7 @@ package fr.utbm.carpooling.view.widgets;
 import java.util.ArrayList;
 
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.model.User;
+import fr.utbm.carpooling.model.UserShort;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class TripSubscriberBlock extends LinearLayout {
 	
-	protected ArrayList<User> mSubscribers = null;
+	protected ArrayList<UserShort> mSubscribers = null;
 	protected int mNbSeats = 0;
 	
 	protected TextView mSeats = null;
@@ -29,7 +29,7 @@ public class TripSubscriberBlock extends LinearLayout {
 		initItems();
 	}
 	
-	public void setData(ArrayList<User> users, int nbSeats) {
+	public void setData(ArrayList<UserShort> users, int nbSeats) {
 		mSubscribers = users;
 		mNbSeats = nbSeats;
 		
