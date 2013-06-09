@@ -18,8 +18,8 @@ public class TripPathView extends View {
     private Paint mBodyPainter = new Paint();
     private Paint mFramePainter = new Paint();
     private final int COLOR = getResources().getColor(android.R.color.holo_blue_light);
-    private final int POINT_RADIUS = 6;
-    private final int CIRCLE_RADIUS = 10;
+    private final int POINT_RADIUS = 8;
+    private final int CIRCLE_RADIUS = 12;
     private final int STROKE_WIDTH = 3;
 
     private int mW = 0;

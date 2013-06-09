@@ -2,12 +2,16 @@ package fr.utbm.carpooling.view;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.adapter.DriverCarAdapter;
@@ -17,7 +21,15 @@ import fr.utbm.carpooling.model.DriverCar;
 public class ProfileCarsFragment extends Fragment {
 
     private ListView mListView = null;
-    private MenuItem mMenuItemDeleteCar = null;
+
+    private class CarOptionsDialog extends AlertDialog {
+
+        public CarOptionsDialog(Context context) {
+            super(context);
+
+        }
+    }
+
 
     public ProfileCarsFragment() {
         // Required empty public constructor
@@ -60,17 +72,47 @@ public class ProfileCarsFragment extends Fragment {
         cars.add(0, m);
         cars.add(1, c);
 
-        DriverCarAdapter adapter = new DriverCarAdapter(getActivity(), R.layout.view_driver_car_item, cars);
+        final DriverCarAdapter adapter = new DriverCarAdapter(getActivity(), R.layout.view_driver_car_item, cars);
 
         mListView.setAdapter(adapter);
         mListView.setItemsCanFocus(false);
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                mListView.setItemChecked(position, true);
-                mMenuItemDeleteCar.setVisible(mListView.getCheckedItemPosition() != -1);
+//                ArrayList<CharSequence> items = new ArrayList<CharSequence>();
+//
+//                if (!adapter.getItem(position).isDefaultCar()) {
+//                    items.add(getResources().getString(R.string.profile_cars_option_make_default));
+//                }
+//                items.add(getResources().getString(R.string.profile_cars_option_delete));
+
+                CharSequence items[] = new CharSequence[2];
+                items[0] = getResources().getString(R.string.profile_cars_option_make_default);
+                items[1] =getResources().getString(R.string.profile_cars_option_delete);
+
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        switch (which) {
+                            case 0:
+                                if (!adapter.getItem(which).isDefaultCar()) {
+                                    // todo: updateCar
+                                }
+                                break;
+                            case 1:
+                                // todo: deleteCar
+                                break;
+                        }
+                        // update list
+                    }
+                });
+
+                builder.create().show();
+                return false;
             }
         });
 
@@ -79,8 +121,6 @@ public class ProfileCarsFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.profile_cars, menu);
-        mMenuItemDeleteCar = menu.findItem(R.id.profile_menuitem_delete_car);
-        mMenuItemDeleteCar.setVisible(mListView.getCheckedItemPosition() != -1);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -90,10 +130,6 @@ public class ProfileCarsFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.profile_menuitem_new_car:
                 startActivityForResult(new Intent(getActivity(), EditCarActivity.class), 0);
-                return true;
-
-            case R.id.profile_menuitem_delete_car:
-                //todo: delete car
                 return true;
         }
         return super.onOptionsItemSelected(item);

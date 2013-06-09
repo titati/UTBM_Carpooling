@@ -9,7 +9,6 @@
         android:id="@+id/profile_cars_listview_cars"
         android:layout_width="0dip"
         android:layout_height="match_parent"
-        android:choiceMode="singleChoice"
         android:footerDividersEnabled="true"
         android:layout_weight="1">
     </ListView>
