@@ -13,6 +13,7 @@ import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.adapter.PassengerTripAdapter;
 import fr.utbm.carpooling.model.PassengerTripShort;
 import fr.utbm.carpooling.view.widgets.LoadingDialog;
+import fr.utbm.carpooling.view.widgets.PassengerTripItem;
 import fr.utbm.carpooling.webservices.PassengerWebServices;
 
 import java.util.ArrayList;
@@ -90,6 +91,8 @@ public class TripsPassengerFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				Intent intent = new Intent(getActivity().getApplicationContext(), TripDetailsPassengerActivity.class);
+				intent.putExtra("abstractTripId", ((PassengerTripItem) arg1).getAbstractTripId());
+				intent.putExtra("tripId", ((PassengerTripItem) arg1).getTripId());
                 startActivity(intent);
 			}
 		});
