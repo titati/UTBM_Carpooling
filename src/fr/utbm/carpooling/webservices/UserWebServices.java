@@ -22,7 +22,7 @@ public class UserWebServices {
 	public static void login(String login, String pwd, final TaskHandler<LoginResponse> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("login", login));
+		params.add(new BasicNameValuePair("userid", login));
 		params.add(new BasicNameValuePair("pwd", pwd));
 		
 		HttpConnection con = new HttpConnection(cat + "login", params, REQUEST_TYPE.POST, new HttpTaskHandler() {

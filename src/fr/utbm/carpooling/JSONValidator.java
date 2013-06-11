@@ -3,6 +3,8 @@ package fr.utbm.carpooling;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class JSONValidator {
 	private JSONObject object = null;
 	
@@ -12,6 +14,8 @@ public class JSONValidator {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		
+		Log.i("json String", jsonString);
 	}
 	
 	public boolean isValid() {

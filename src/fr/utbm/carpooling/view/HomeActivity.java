@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.View;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
-import fr.utbm.carpooling.view.widgets.LoadingDialog;
 
 public class HomeActivity extends Activity {
 
@@ -51,15 +50,16 @@ public class HomeActivity extends Activity {
 						startActivity(intent);
 					}
 				});
-
+		
         Resources.init();
 
-        if (Resources.getUser().getUserId() == null) {
-
-            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }
-
+	}
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		
+		finish();
 	}
 
 	@Override

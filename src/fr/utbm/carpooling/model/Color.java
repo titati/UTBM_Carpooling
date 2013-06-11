@@ -51,6 +51,11 @@ public class Color extends JSONParsable implements Comparable<Color> {
 
         this.hex = hex;
     }
+	
+	public String serializeJSON() {
+		return  "\"id\" : \"" + getId() +
+				"\", \"hex\" : \"" + getHex() + "\"";
+	}
 
     @Override
     public int compareTo(Color color) {

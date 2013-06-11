@@ -1,19 +1,27 @@
 package fr.utbm.carpooling.view;
 
+import java.io.FileNotFoundException;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.Resources;
+import fr.utbm.carpooling.TaskHandler;
+import fr.utbm.carpooling.model.LoginResponse;
+import fr.utbm.carpooling.model.User;
+import fr.utbm.carpooling.model.UserShort;
+import fr.utbm.carpooling.webservices.UserWebServices;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -24,7 +32,8 @@ public class LoginActivity extends Activity {
 	/**
 	 * Keep track of the login task to ensure we can cancel it if requested.
 	 */
-	private UserLoginTask mAuthTask = null;
+	private TaskHandler<LoginResponse> mAuthTask = null;
+	private TaskHandler<UserShort> mGatheringTask = null;
 
 	// Values for email and password at the time of the login attempt.
 	private String mLogin = null;
@@ -41,23 +50,35 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+        if (Resources.getUser() == null) {
+        	doLogin();
+        } else {
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+	}
+
+
+	private void doLogin() {
 		setContentView(R.layout.activity_login);
+		setTitle(R.string.login_title);
 
 		mLoginView = (EditText) findViewById(R.id.login_edittext_login);
 		mPasswordView = (EditText) findViewById(R.id.login_edittext_password);
-		mPasswordView
-				.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-					@Override
-					public boolean onEditorAction(TextView textView, int id,
-							KeyEvent keyEvent) {
-						if (id == R.id.login_edittext_password_imeAction
-								|| id == EditorInfo.IME_NULL) {
-							attemptLogin();
-							return true;
-						}
-						return false;
-					}
-				});
+		findViewById(R.id.login_checkbox_remember).setVisibility(View.GONE);
+		mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			@Override
+			public boolean onEditorAction(TextView textView, int id,
+					KeyEvent keyEvent) {
+				if (id == R.id.login_edittext_password_imeAction
+						|| id == EditorInfo.IME_NULL) {
+					attemptLogin();
+					return true;
+				}
+				return false;
+			}
+		});
 
 		mLoginFormView = findViewById(R.id.login_scrollview_data);
 		mLoginStatusView = findViewById(R.id.login_linearlayout_status);
@@ -71,6 +92,56 @@ public class LoginActivity extends Activity {
 						attemptLogin();
 					}
 				});
+
+		mAuthTask = new TaskHandler<LoginResponse>() {
+
+			@Override
+			public void taskSuccessful(LoginResponse object) {
+				showProgress(false);
+				
+				if (object.isUserExist()) {
+					
+					User user = new User();
+					user.setUserId(object.getUserId());
+					user.setApiToken(object.getApiToken());
+					Resources.setUser(user);
+					((TextView) findViewById(R.id.login_textview_status)).setText("Gathering information");
+					showProgress(true);
+					
+					mGatheringTask = new TaskHandler<UserShort>() {
+						
+						@Override
+						public void taskSuccessful(UserShort object) {
+							showProgress(false);
+							try {
+								Resources.setUser(object, openFileOutput("userInfos", MODE_PRIVATE));
+					            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+					            startActivity(intent);
+								finish();
+							} catch (FileNotFoundException e) {
+								e.printStackTrace();
+							}
+							
+						}
+						
+						@Override
+						public void taskFailed() {
+							UserWebServices.getUser(mGatheringTask);
+						}
+					};
+					
+					UserWebServices.getUser(mGatheringTask);
+				} else {
+					Log.i("user", "not exist");
+				}
+			}
+
+			@Override
+			public void taskFailed() {
+				showProgress(false);
+				findViewById(R.id.login_textview_invalid_data).setVisibility(View.VISIBLE);
+			}
+		};
 	}
 
 
@@ -80,9 +151,6 @@ public class LoginActivity extends Activity {
 	 * errors are presented and no actual login attempt is made.
 	 */
 	public void attemptLogin() {
-		if (mAuthTask != null) {
-			return;
-		}
 
 		// Reset errors.
 		mLoginView.setError(null);
@@ -102,7 +170,7 @@ public class LoginActivity extends Activity {
 			focusView = mLoginView;
 			cancel = true;
 		}
-		
+
 		// Check for a valid password.
 		if (mPassword.isEmpty()) {
 			mPasswordView.setError(getString(R.string.login_error_field_required));
@@ -118,9 +186,9 @@ public class LoginActivity extends Activity {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
 			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
+
 			showProgress(true);
-			mAuthTask = new UserLoginTask();
-			mAuthTask.execute((Void) null);
+			UserWebServices.login(mLogin, mPassword, mAuthTask);
 		}
 	}
 
@@ -138,69 +206,30 @@ public class LoginActivity extends Activity {
 
 			mLoginStatusView.setVisibility(View.VISIBLE);
 			mLoginStatusView.animate().setDuration(shortAnimTime)
-					.alpha(show ? 1 : 0)
-					.setListener(new AnimatorListenerAdapter() {
-						@Override
-						public void onAnimationEnd(Animator animation) {
-							mLoginStatusView.setVisibility(show ? View.VISIBLE
-									: View.GONE);
-						}
-					});
+			.alpha(show ? 1 : 0)
+			.setListener(new AnimatorListenerAdapter() {
+				@Override
+				public void onAnimationEnd(Animator animation) {
+					mLoginStatusView.setVisibility(show ? View.VISIBLE
+							: View.GONE);
+				}
+			});
 
 			mLoginFormView.setVisibility(View.VISIBLE);
 			mLoginFormView.animate().setDuration(shortAnimTime)
-					.alpha(show ? 0 : 1)
-					.setListener(new AnimatorListenerAdapter() {
-						@Override
-						public void onAnimationEnd(Animator animation) {
-							mLoginFormView.setVisibility(show ? View.GONE
-									: View.VISIBLE);
-						}
-					});
+			.alpha(show ? 0 : 1)
+			.setListener(new AnimatorListenerAdapter() {
+				@Override
+				public void onAnimationEnd(Animator animation) {
+					mLoginFormView.setVisibility(show ? View.GONE
+							: View.VISIBLE);
+				}
+			});
 		} else {
 			// The ViewPropertyAnimator APIs are not available, so simply show
 			// and hide the relevant UI components.
 			mLoginStatusView.setVisibility(show ? View.VISIBLE : View.GONE);
 			mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-		}
-	}
-
-	/**
-	 * Represents an asynchronous login/registration task used to authenticate
-	 * the user.
-	 */
-	public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-		@Override
-		protected Boolean doInBackground(Void... params) {
-
-			try {
-				// Simulate network access.
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				return false;
-			}
-
-			return true;
-		}
-
-		@Override
-		protected void onPostExecute(final Boolean success) {
-			mAuthTask = null;
-			showProgress(false);
-
-			if (success) {
-				finish();
-//				Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-//				startActivity(intent);
-			} else {
-				findViewById(R.id.login_textview_invalid_data).setVisibility(View.VISIBLE);
-			}
-		}
-
-		@Override
-		protected void onCancelled() {
-			mAuthTask = null;
-			showProgress(false);
 		}
 	}
 }

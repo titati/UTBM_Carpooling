@@ -26,6 +26,7 @@ public class Model extends JSONParsable {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -41,8 +42,15 @@ public class Model extends JSONParsable {
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String serializeJSON() {
+		return  "\"id\" : \"" + getId() +
+				"\", \"brandid\" : \"" + getBrandId() +
+				"\", \"name\" : \"" + getName() + "\"";
 	}
 
 
@@ -55,7 +63,7 @@ public class Model extends JSONParsable {
 		}
 		
 		try {
-			setBrandId(object.getInt("brandId"));
+			setBrandId(object.getInt("brandid"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

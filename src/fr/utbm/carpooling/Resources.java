@@ -2,7 +2,7 @@ package fr.utbm.carpooling;
 
 
 import fr.utbm.carpooling.model.*;
-
+import java.io.FileOutputStream;
 import java.util.*;
 
 public class Resources {
@@ -13,7 +13,7 @@ public class Resources {
     private static Map<Integer, Brand> brands = new HashMap<Integer, Brand>();
     private static Map<Integer, Map<Integer, Model>> models = new HashMap<Integer, Map<Integer, Model>>();
     private static List<Color> colorsSorted;
-    private static User user;
+    private static User mUser = null;
 
     public static void init() {
     	User user1 = new User();
@@ -23,7 +23,7 @@ public class Resources {
         user1.setFirstname("Truc");
         user1.setName("Chose");
         user1.setPhone("0667849494");
-        Resources.setUser(user1);
+        //setUser(user1);
 
         colors.put(0, new Color(0, "", "000000"));
         colors.put(1, new Color(1, "", "808080"));
@@ -86,12 +86,12 @@ public class Resources {
     }
 
 
-    public static void setUser(User user2) {
-		user = user2;
+    public static void setUser(User user) {
+		mUser = user;
 	}
     
     public static User getUser() {
-    	return user;
+    	return mUser;
     }
 
 	public static List<Color> getColors() {
@@ -133,6 +133,16 @@ public class Resources {
     public static Model getModel(int brand_id, int id) {
         return models.get(brand_id).get(id);
     }
+    
+	public static void setUser(UserShort object, FileOutputStream out) {
+		mUser.setEmail(object.getEmail());
+		mUser.setPhone(object.getPhone());
+		mUser.setFirstname(object.getFirstname());
+		mUser.setName(object.getFirstname());
+		mUser.setUserId(object.getUserId());
+		
+		FileManager.writeFile("{ " + mUser.serializeJSON() + " }", out);
+	}
 
 
 }

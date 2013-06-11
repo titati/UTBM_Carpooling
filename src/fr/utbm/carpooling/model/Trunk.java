@@ -31,6 +31,11 @@ public class Trunk extends JSONParsable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String serializeJSON() {
+		return  "\"id\" : \"" + getId() +
+				"\", \"name\" : \"" + getName() + "\"";
+	}
 
 	@Override
 	protected void deserializeJSON(JSONObject object) {

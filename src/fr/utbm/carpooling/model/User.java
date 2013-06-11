@@ -21,6 +21,10 @@ public class User extends UserShort {
 		this.apiToken = apiToken;
 	}
 	
+	public String serializeJSON() {
+		return super.serializeJSON() + ", \"apitoken\" : \"" + getApiToken() + "\"";
+	}
+	
 	@Override
 	protected void deserializeJSON(JSONObject object) {
 		super.deserializeJSON(object);

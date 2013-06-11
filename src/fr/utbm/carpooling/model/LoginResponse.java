@@ -1,5 +1,6 @@
 package fr.utbm.carpooling.model;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import fr.utbm.carpooling.JSONParsable;
@@ -49,6 +50,28 @@ public class LoginResponse extends JSONParsable {
 
 	@Override
 	protected void deserializeJSON(JSONObject object) {
+		try {
+			setUserId(object.getString("userid"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		
+		try {
+			setUserExist(object.getBoolean("userexist"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setLoggedIn(object.getBoolean("loggedin"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			setApiToken(object.getString("apitoken"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 }
