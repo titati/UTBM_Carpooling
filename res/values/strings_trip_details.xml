@@ -5,4 +5,12 @@
     <string name="trip_details_prompt_comment">Comment</string>
     <string name="trip_details_feedback_dialog_title">Feedback</string>
 
+    <string name="trip_details_caption_description">Description</string>
+    <string name="trip_details_caption_car">Car</string>
+    <string name="trip_details_caption_suscribers">Suscribers</string>
+    <string name="trip_details_caption_detail">Detail</string>
+    <string name="trip_details_caption_driver">Driver</string>
+    <string name="trip_details_action_feedback">Feedback</string>
+
+
 </resources>

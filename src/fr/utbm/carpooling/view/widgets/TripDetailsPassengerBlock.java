@@ -28,8 +28,9 @@ public class TripDetailsPassengerBlock extends TripDetailBlock<PassengerTrip> {
 		}
 		
 		if (mSeats != null) {
-			mSeats.setVisibility(INVISIBLE);
-			((ViewGroup) ((ViewGroup) getChildAt(0)).getChildAt(1)).getChildAt(0).setVisibility(INVISIBLE);
+            int totalSeats = mData.getCar().getSeats();
+            int usedSeats = totalSeats - mData.getRemainingSeats();
+			mSeats.setText(usedSeats + "/" + totalSeats);
 		}
 		
 		if (mDate != null) {

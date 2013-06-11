@@ -8,7 +8,6 @@ import fr.utbm.carpooling.model.TripSearchResultShort;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -41,13 +40,13 @@ public class ResultTripItem extends LinearLayout {
 	}
 	
 	protected void initItems() {
-		pathView = (TripPathRestrictedView) getChildAt(0);
-        departurePoint = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(0)).getChildAt(0);
-        departureTime = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(0)).getChildAt(1);
-        nbSeats = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(1)).getChildAt(3);
-        arrivalPoint = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(1)).getChildAt(0);
-        arrivalTime = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(1)).getChildAt(1);
-        trunkSize = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(1)).getChildAt(3);
+		pathView = (TripPathRestrictedView) findViewById(R.id.result_item_trippathview);
+        departurePoint = (TextView) findViewById(R.id.result_item_textview_departure_point);
+        departureTime = (TextView) findViewById(R.id.result_item_textview_departure_time);
+        nbSeats = (TextView) findViewById(R.id.result_item_textview_nb_seats);
+        arrivalPoint = (TextView) findViewById(R.id.result_item_textview_arrival_point);
+        arrivalTime = (TextView) findViewById(R.id.result_item_textview_arrival_time);
+        trunkSize = (TextView) findViewById(R.id.result_item_textview_trunk_size);
 	}
 	
 	protected void initView() {

@@ -7,4 +7,9 @@
     <string name="trips_passenger_title">As Passenger</string>
     <string name="trips_alerts_title">Alerts</string>
 
+    <string name="trips_details_title">Trip Details</string>
+
+    <string name="trips_details_suscribe">Suscribe</string>
+    <string name="trips_details_unsuscribe">Unsuscribe</string>
+
 </resources>

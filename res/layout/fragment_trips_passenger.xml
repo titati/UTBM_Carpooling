@@ -2,7 +2,8 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              tools:context=".TripsPassengerFragment">
+              tools:context=".TripsPassengerFragment"
+              android:baselineAligned="false">
 
     <ListView
         android:id="@+id/trips_passenger_listview_trips"

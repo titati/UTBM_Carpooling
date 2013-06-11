@@ -37,8 +37,8 @@ public class TripSubscriberBlock extends LinearLayout {
 	}
 	
 	protected void initItems() {
-		mSeats = (TextView) ((ViewGroup) getChildAt(0)).getChildAt(2);
-        mTable = (TableLayout) getChildAt(1);
+		mSeats = (TextView) findViewById(R.id.trip_suscriber_textview_seats);
+        mTable = (TableLayout) findViewById(R.id.trip_suscriber_tlayout);
 	}
 	
 	protected void initView() {

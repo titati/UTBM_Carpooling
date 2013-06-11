@@ -42,23 +42,34 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fr.utbm.carpooling.view.HomeActivity"/>
         </activity>
-        <activity android:name="fr.utbm.carpooling.view.EditCarActivity"
-                  android:label="@string/edit_car_title"/>
-        <activity android:name="fr.utbm.carpooling.view.EditInfoActivity"
-                  android:label="@string/profile_info_title_edit"/>
-        <activity android:name="fr.utbm.carpooling.view.EditTripActivity"
-                  android:label="@string/edit_trip_title"/>
-        <activity android:name="fr.utbm.carpooling.view.TripSearchResultsActivity"/>
+        <activity
+            android:name="fr.utbm.carpooling.view.EditCarActivity"
+            android:label="@string/edit_car_title"/>
+
+        <activity
+            android:name="fr.utbm.carpooling.view.EditInfoActivity"
+            android:label="@string/profile_info_title_edit"/>
+
+        <activity
+            android:name="fr.utbm.carpooling.view.EditTripActivity"
+            android:label="@string/edit_trip_title"/>
+
+        <activity
+            android:name="fr.utbm.carpooling.view.TripSearchResultsActivity"
+            android:label="@string/search_results_title"/>
+
         <activity
             android:name="fr.utbm.carpooling.view.TripSearchActivity"
-            android:label="@string/trip_search_title" />
+            android:label="@string/trip_search_title"/>
+
         <activity
             android:name="fr.utbm.carpooling.view.TripDetailsDriverActivity"
-            android:label="@string/title_activity_trip_details_driver" >
+            android:label="@string/trips_details_title">
         </activity>
+
         <activity
             android:name="fr.utbm.carpooling.view.TripDetailsPassengerActivity"
-            android:label="@string/title_activity_trip_details_passenger" >
+            android:label="@string/trips_details_title">
         </activity>
     </application>
 

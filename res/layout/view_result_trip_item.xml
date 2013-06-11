@@ -1,94 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res/fr.utbm.carpooling"
-    android:id="@+id/RelativeLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_gravity="fill_horizontal" >
+       xmlns:custom="http://schemas.android.com/apk/res/fr.utbm.carpooling"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_gravity="fill_horizontal">
 
     <fr.utbm.carpooling.view.widgets.TripPathRestrictedView
-        android:id="@+id/item_trippathview"
+        android:id="@+id/result_item_trippathview"
         android:layout_height="match_parent"
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         custom:surroundBounds="false"
-        android:layout_gravity="fill_vertical" />
-	
+        android:layout_gravity="fill_vertical"/>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:stretchColumns="0"
         android:weightSum="2"
-        android:paddingRight="5dp" >
-        
+        android:paddingRight="10dp">
+
         <TableRow
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:gravity="center_vertical"
-            android:layout_weight="1" >
-            
-		    <TextView
-		        android:id="@+id/item_textview_departure_point"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="left|center_vertical"
-		        android:paddingRight="5dp"
-		        android:paddingTop="5dp"
-		        android:paddingBottom="5dp" />
-		    
-		    <TextView
-		        android:id="@+id/item_textview_departure_time"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:paddingRight="5dp" />
-		    
-		    <ImageView
-		        android:id="@+id/item_imageView_seats"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:src="@drawable/seats"/>
-		    
-		    <TextView
-		        android:id="@+id/item_textview_nb_seats"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:paddingRight="5dp" />
-	    
-	    </TableRow>
-	    
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/result_item_textview_departure_point"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearance"
+                android:textAllCaps="true"
+                android:gravity="center_vertical|left|fill_vertical"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/result_item_textview_departure_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearance"
+                android:gravity="center_vertical|right|fill_vertical"
+                android:enabled="false"
+                android:textStyle="bold"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/result_item_textview_nb_seats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/seats"
+                android:drawablePadding="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAllCaps="true"
+                android:paddingRight="5dp"/>
+
+        </TableRow>
+
         <TableRow
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:gravity="center_vertical"
-            android:layout_weight="1" >
-		    
-		    <TextView
-		        android:id="@+id/item_textview_arrival_point"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_gravity="left|center_vertical"
-		        android:paddingRight="5dp"
-		        android:paddingTop="5dp"
-		        android:paddingBottom="5dp" />
-	    	
-		    <TextView
-		        android:id="@+id/item_textview_arrival_time"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:paddingRight="5dp" />
-		    
-		    <ImageView
-		        android:id="@+id/item_imageView_trunk"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:src="@drawable/trunk"/>
-		    
-		    <TextView
-		        android:id="@+id/item_textview_trunk_size"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:paddingRight="5dp" />
-		    
-		</TableRow>
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:id="@+id/result_item_textview_arrival_point"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAllCaps="true"
+                android:textAppearance="?android:attr/textAppearance"
+                android:gravity="center_vertical|left|fill_vertical"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/result_item_textview_arrival_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearance"
+                android:gravity="center_vertical|right|fill_vertical"
+                android:enabled="false"
+                android:textStyle="bold"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/result_item_textview_trunk_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:drawableLeft="@drawable/trunk"
+                android:drawablePadding="10dp"
+                android:textAllCaps="true"
+                android:gravity="center_vertical|left"/>
+
+        </TableRow>
     </TableLayout>
 </merge>

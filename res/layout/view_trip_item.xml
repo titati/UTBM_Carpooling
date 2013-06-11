@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
        xmlns:custom="http://schemas.android.com/apk/res/fr.utbm.carpooling"
-       android:id="@+id/RelativeLayout1"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="horizontal"
@@ -84,7 +83,7 @@
                 android:layout_marginRight="20dp"/>
 
             <ImageView
-                android:id="@+id/trip_item_imageView_repeat"
+                android:id="@+id/trip_item_imageview_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical|right"

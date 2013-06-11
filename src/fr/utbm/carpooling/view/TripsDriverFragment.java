@@ -4,11 +4,7 @@ package fr.utbm.carpooling.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -98,15 +94,21 @@ public class TripsDriverFragment extends Fragment {
 			}
 		};
 	}
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.trips_driver, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
-			case R.id.trips_menuitem_refresh :
-				refreshData();
-			break;
+			case R.id.trips_menuitem_new:
+                startActivity(new Intent(getActivity(), EditTripActivity.class));
+                return true;
 		}
-
 
 		return super.onOptionsItemSelected(item);
 	}

@@ -3,10 +3,7 @@ package fr.utbm.carpooling.view;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -93,20 +90,27 @@ public class TripsPassengerFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				Intent intent = new Intent(getActivity().getApplicationContext(), TripDetailsPassengerActivity.class);
+                intent.putExtra("suscribed", true);
                 startActivity(intent);
 			}
 		});
 	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()) {
-			case R.id.trips_menuitem_refresh :
-				refreshData();
-			break;
-		}
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.trips_passenger, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
-		return super.onOptionsItemSelected(item);
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.trips_menuitem_search:
+                Intent intent = new Intent(getActivity(), TripSearchActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

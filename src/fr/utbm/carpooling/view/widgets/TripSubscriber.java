@@ -1,5 +1,6 @@
 package fr.utbm.carpooling.view.widgets;
 
+import android.widget.ImageButton;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.User;
 import android.content.Context;
@@ -7,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -16,10 +16,10 @@ public class TripSubscriber extends TableRow {
 	protected User mUser = null;
 	
 	protected TextView mName = null;
-	protected ImageView mPhone = null;
-	protected ImageView mText = null;
-	protected ImageView mMail = null;
-	protected ImageView mDelete = null;
+	protected ImageButton mPhone = null;
+	protected ImageButton mText = null;
+	protected ImageButton mMail = null;
+	protected ImageButton mDelete = null;
 
 	public TripSubscriber(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -38,51 +38,48 @@ public class TripSubscriber extends TableRow {
 	}
 	
 	protected void initItems() {
-		mName = (TextView) getChildAt(0);
-        mPhone = (ImageView) getChildAt(1);
-        mText = (ImageView) getChildAt(2);
-        mMail = (ImageView) getChildAt(3);
-        mDelete = (ImageView) getChildAt(4);
+		mName = (TextView) findViewById(R.id.trip_suscriber_textview_name);
+        mPhone = (ImageButton) findViewById(R.id.trip_suscriber_button_call);
+        mText = (ImageButton) findViewById(R.id.trip_suscriber_button_chat);
+        mMail = (ImageButton) findViewById(R.id.trip_suscriber_button_email);
+        mDelete = (ImageButton) findViewById(R.id.trip_suscriber_button_remove);
 	}
 	
 	protected void initView() {
 		mName.setText(mUser.getFirstname() + " " + mUser.getName());
-		mPhone.setClickable(true);
+
 		mPhone.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// todo: call driver
 				
 			}
 		});
 
-		mText.setClickable(true);
 		mText.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// todo: chat with driver
 				
 			}
 		});
-		
-		mMail.setClickable(true);
+
 		mMail.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// todo: mail to driver
 				
 			}
 		});
-		
-		mDelete.setClickable(true);
+
 		mDelete.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				// todo: delete suscriber
 				
 			}
 		});

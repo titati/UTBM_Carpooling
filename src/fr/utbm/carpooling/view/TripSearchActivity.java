@@ -2,8 +2,10 @@ package fr.utbm.carpooling.view;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import fr.utbm.carpooling.R;
@@ -82,5 +84,16 @@ public class TripSearchActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.trip_search, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.trip_search_menuitem_go:
+                startActivity(new Intent(this, TripSearchResultsActivity.class));
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

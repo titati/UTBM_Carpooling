@@ -3,6 +3,8 @@ package fr.utbm.carpooling.view;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.view.View;
+import android.widget.Button;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.Car;
 import fr.utbm.carpooling.model.Checkpoint;
@@ -16,21 +18,25 @@ import android.view.Menu;
 
 public class TripDetailsPassengerActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_trip_details_passenger);
-		
-		PassengerTrip data = new PassengerTrip();
-		Car car = new DriverCar();
-		car.setBrandId(0);
-		car.setColorId(8);
-		car.setModelId(2);
-		car.setSeats(4);
-		car.setTrunkId(2);
-		data.setCar(car);
-		
-		Checkpoint c1 = new Checkpoint();
+    private boolean mSuscribed = false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_trip_details_passenger);
+
+        mSuscribed = getIntent().getExtras().getBoolean("suscribed");
+
+        PassengerTrip data = new PassengerTrip();
+        Car car = new DriverCar();
+        car.setBrandId(0);
+        car.setColorId(8);
+        car.setModelId(2);
+        car.setSeats(4);
+        car.setTrunkId(2);
+        data.setCar(car);
+
+        Checkpoint c1 = new Checkpoint();
         c1.setSiteId(0);
         c1.setNumCheckpoint(0);
         c1.setDate(new Date(113, 4, 20, 13, 0));
@@ -63,20 +69,25 @@ public class TripDetailsPassengerActivity extends Activity {
         uDriver.setFirstname("Driver");
         uDriver.setName("Man");
         uDriver.setPhone("");
-        
+
         data.setAbstractTripId("2");
         data.setDriver(uDriver);
         data.setFeedbackGiven(false);
-		
-		TripDetailsPassengerBlock v = (TripDetailsPassengerBlock) findViewById(R.id.trip_details_driver_view);
-		v.setData(data);
-	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.trip_details_passenger, menu);
-		return true;
-	}
+        TripDetailsPassengerBlock v = (TripDetailsPassengerBlock) findViewById(R.id.trip_details_driver_view);
+        v.setData(data);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.trip_details_passenger, menu);
+
+        menu.findItem(R.id.trip_details_passenger_menuitem_suscribe).setVisible(!mSuscribed);
+        menu.findItem(R.id.trip_details_passenger_menuitem_unsuscribe).setVisible(mSuscribed);
+
+        return true;
+    }
 
 }

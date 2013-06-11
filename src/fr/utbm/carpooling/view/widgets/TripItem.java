@@ -6,7 +6,6 @@ import fr.utbm.carpooling.R;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -41,13 +40,13 @@ public abstract class TripItem<E> extends LinearLayout {
 	}
 	
 	protected void initItems() {
-		pathView = (TripPathView) getChildAt(0);
-        departurePoint = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(0)).getChildAt(0);
-        departureTime = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(0)).getChildAt(1);
-        departureDate = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(0)).getChildAt(2);
-        arrivalPoint = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(1)).getChildAt(0);
-        arrivalTime = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(1)).getChildAt(1);
-        repeat = (ImageView) ((ViewGroup) ((ViewGroup) getChildAt(1)).getChildAt(1)).getChildAt(2);
+		pathView = (TripPathView) findViewById(R.id.item_trippathview);
+        departurePoint = (TextView) findViewById(R.id.item_textview_departure_point);
+        departureTime = (TextView) findViewById(R.id.trip_item_textview_departure_time);
+        departureDate = (TextView) findViewById(R.id.item_textview_departure_date);
+        arrivalPoint = (TextView) findViewById(R.id.item_textview_arrival_point);
+        arrivalTime = (TextView) findViewById(R.id.item_textview_arrival_time);
+        repeat = (ImageView) findViewById(R.id.trip_item_imageview_repeat);
 	}
 	
 	protected abstract void initView();
