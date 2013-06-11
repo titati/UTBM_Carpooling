@@ -1,12 +1,15 @@
 package fr.utbm.carpooling.view;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import fr.utbm.carpooling.R;
@@ -47,6 +50,32 @@ public class TripsAlertsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         mListView = (ListView) getView().findViewById(R.id.trips_alerts_listview_alerts);
+
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                CharSequence items[] = new CharSequence[1];
+                items[0] = getResources().getString(R.string.action_delete);
+
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        switch (which) {
+                            case 0:
+                                // todo: delete alert
+                                break;
+                        }
+                        // update list
+                    }
+                });
+
+                builder.create().show();
+                return false;
+            }
+        });
 
         initHandler();
         if (lastUpdate == null || (lastUpdate.getTime() < (new Date()).getTime() - 5 * 60000)) refreshData();

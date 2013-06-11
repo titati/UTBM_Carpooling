@@ -82,13 +82,6 @@ public class ProfileCarsFragment extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-//                ArrayList<CharSequence> items = new ArrayList<CharSequence>();
-//
-//                if (!adapter.getItem(position).isDefaultCar()) {
-//                    items.add(getResources().getString(R.string.profile_cars_option_make_default));
-//                }
-//                items.add(getResources().getString(R.string.profile_cars_option_delete));
-
                 CharSequence items[] = new CharSequence[2];
                 items[0] = getResources().getString(R.string.profile_cars_option_make_default);
                 items[1] =getResources().getString(R.string.profile_cars_option_delete);

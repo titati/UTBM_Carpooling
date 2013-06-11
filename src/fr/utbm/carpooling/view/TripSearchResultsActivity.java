@@ -3,6 +3,8 @@ package fr.utbm.carpooling.view;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,10 +57,10 @@ public class TripSearchResultsActivity extends Activity {
         trip2.setCheckpoints(checkpoints2);
 
         ArrayList<TripSearchResultShort> trips = new ArrayList<TripSearchResultShort>();
-        trips.add(0, trip1);
-        trips.add(1, trip2);
+//        trips.add(0, trip1);
+//        trips.add(1, trip2);
 		
-		ResultTripAdapter adapter = new ResultTripAdapter(getBaseContext(), R.id.trips_alerts_listview_alerts, trips);
+		final ResultTripAdapter adapter = new ResultTripAdapter(getBaseContext(), R.id.trips_alerts_listview_alerts, trips);
 
         mListView.setAdapter(adapter);
 
@@ -66,9 +68,61 @@ public class TripSearchResultsActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(TripSearchResultsActivity.this, TripDetailsPassengerActivity.class);
-                intent.putExtra("suscribed", false);
                 startActivity(intent);
             }
         });
+
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(TripSearchResultsActivity.this);
+
+                CharSequence items[] = new CharSequence[1];
+                items[0] = getResources().getString(R.string.trips_details_suscribe);
+
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        switch (which) {
+                            case 0:
+                                // todo: suscribe
+                                break;
+                        }
+                        // update list
+                    }
+                });
+
+                builder.create().show();
+                return false;
+            }
+        });
+
+        if (adapter.getCount() == 0) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setPositiveButton(R.string.action_yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // todo: create alert
+                    finish();
+                }
+            });
+
+            builder.setNegativeButton(R.string.action_no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+
+            builder.setTitle(R.string.search_results_no_results);
+            builder.setMessage(R.string.search_results_message_create_alert);
+            builder.create().show();
+
+
+        }
+
+
 	}
 }

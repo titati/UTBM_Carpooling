@@ -1,6 +1,8 @@
 package fr.utbm.carpooling.view;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -49,6 +51,37 @@ public class TripsDriverFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         mListView = (ListView) getView().findViewById(R.id.trips_driver_listview_trips);
+
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                CharSequence items[] = new CharSequence[2];
+                items[0] = getResources().getString(R.string.action_share);
+                items[1] = getResources().getString(R.string.action_delete);
+
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        switch (which) {
+                            case 0:
+                                // todo: share trip
+                                break;
+
+                            case 1:
+                                // todo: delete trip
+                                break;
+                        }
+                        // update list
+                    }
+                });
+
+                builder.create().show();
+                return false;
+            }
+        });
 
         initHandler();
         if (lastUpdate == null || (lastUpdate.getTime() < (new Date()).getTime() - 5 * 60000)) refreshData();
