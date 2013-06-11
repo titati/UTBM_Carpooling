@@ -68,13 +68,13 @@ public class TripsAlertsFragment extends Fragment {
 				data = object;
 		        lastUpdate = new Date();
 		        
-		        mLoader.hide();
+		        mLoader.dismiss();
 			}
 			
 			@Override
 			public void taskFailed() {
 				Toast.makeText(getActivity().getApplicationContext(), "Error while fetching content", Toast.LENGTH_LONG).show();
-		        mLoader.hide();
+		        mLoader.dismiss();
 			}
 		};
 	}

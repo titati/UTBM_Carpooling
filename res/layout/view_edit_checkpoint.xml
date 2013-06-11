@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/edit_trip_spinner_checkpoint_site"
             android:prompt="@string/edit_trip_prompt_select_checkpoint_site"
-            style="@android:style/TextAppearance.Medium"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:spinnerMode="dialog"
             />
 
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 custom:prompt="@string/edit_trip_prompt_select_checkpoint_date"
                 android:id="@+id/edit_trip_spinner_checkpoint_date"
-                style="@android:style/TextAppearance.Medium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingStart="10dip"
                 android:layout_weight="2"/>
 
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 custom:prompt="@string/edit_trip_prompt_select_checkpoint_time"
                 android:id="@+id/edit_trip_spinner_checkpoint_time"
-                style="@android:style/TextAppearance.Medium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:paddingStart="10dip"
                 android:layout_weight="1"/>
 

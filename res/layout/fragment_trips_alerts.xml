@@ -8,8 +8,9 @@
     <ListView
         android:id="@+id/trips_alerts_listview_alerts"
         android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:footerDividersEnabled="true">
     </ListView>
 
 </LinearLayout>

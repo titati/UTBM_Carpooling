@@ -3,13 +3,15 @@ package fr.utbm.carpooling.view;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.adapter.ResultTripAdapter;
 import fr.utbm.carpooling.model.CheckpointShort;
 import fr.utbm.carpooling.model.TripSearchResultShort;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.ListView;
 
 public class TripSearchResultsActivity extends Activity {
@@ -47,6 +49,8 @@ public class TripSearchResultsActivity extends Activity {
         TripSearchResultShort trip1 = new TripSearchResultShort();
         trip1.setCheckpoints(checkpoints1);
 
+        trip1.setTrunkId(2);
+
         TripSearchResultShort trip2 = new TripSearchResultShort();
         trip2.setCheckpoints(checkpoints2);
 
@@ -57,12 +61,14 @@ public class TripSearchResultsActivity extends Activity {
 		ResultTripAdapter adapter = new ResultTripAdapter(getBaseContext(), R.id.trips_alerts_listview_alerts, trips);
 
         mListView.setAdapter(adapter);
-	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.search_results, menu);
-		return true;
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(TripSearchResultsActivity.this, TripDetailsPassengerActivity.class);
+                intent.putExtra("suscribed", false);
+                startActivity(intent);
+            }
+        });
 	}
 }

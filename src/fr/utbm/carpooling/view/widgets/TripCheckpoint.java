@@ -2,6 +2,7 @@ package fr.utbm.carpooling.view.widgets;
 
 import java.text.DateFormat;
 
+import android.widget.ImageButton;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.Checkpoint;
@@ -19,7 +20,6 @@ public class TripCheckpoint extends TableRow {
 	protected Checkpoint mCheckpoint = null;
 	
 	protected TextView mName = null;
-	protected ImageView mCoords = null;
 	protected TextView mTime = null;
 	
 	protected final DateFormat TIME_FORMAT = android.text.format.DateFormat.getTimeFormat(getContext());
@@ -31,7 +31,8 @@ public class TripCheckpoint extends TableRow {
         inflater.inflate(R.layout.view_checkpoint_trip, this, true);
         
         setGravity(Gravity.CENTER_VERTICAL);
-        
+        setPadding(0, 10, 0, 10);
+
 		initItems();
 	}
 	
@@ -41,21 +42,18 @@ public class TripCheckpoint extends TableRow {
 	}
 	
 	protected void initItems() {
-		mName = (TextView) getChildAt(0);
-		mCoords = (ImageView) getChildAt(1);
-		mTime = (TextView) getChildAt(2);
+		mName = (TextView) findViewById(R.id.checkpoint_trip_textview_site);
+		mTime = (TextView) findViewById(R.id.checkpoint_trip_textview_time);
 	}
 	
 	protected void initView() {
 		if (mName != null) {
 			mName.setText(Resources.getSiteShort(mCheckpoint.getSiteId()).getName());
-		}
-		
-		if (mCoords != null) {
-			mCoords.setOnClickListener(new OnClickListener() {
+            mName.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
+                    // todo: open maps
 					//Resources.getSite(mCheckpoint.getSiteId()).getCoords();
 				}
 			});

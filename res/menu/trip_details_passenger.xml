@@ -1,9 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:id="@+id/trip_details_passenger_menuitem_suscribe"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/trips_details_suscribe"/>
+
+    <item
+        android:id="@+id/trip_details_passenger_menuitem_unsuscribe"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/trips_details_unsuscribe"/>
 
 </menu>

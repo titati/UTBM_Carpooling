@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_trip_spinner_departure_site"
                         android:prompt="@string/edit_trip_prompt_select_departure_site"
-                        style="@android:style/TextAppearance.Medium"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:spinnerMode="dialog"
                         />
 
@@ -65,7 +65,7 @@
                             android:layout_height="wrap_content"
                             custom:prompt="@string/edit_trip_prompt_select_departure_date"
                             android:id="@+id/edit_trip_spinner_departure_date"
-                            style="@android:style/TextAppearance.Medium"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:paddingStart="10dip"
                             android:layout_weight="2"/>
 
@@ -74,7 +74,7 @@
                             android:layout_height="wrap_content"
                             custom:prompt="@string/edit_trip_prompt_select_departure_time"
                             android:id="@+id/edit_trip_spinner_departure_time"
-                            style="@android:style/TextAppearance.Medium"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:paddingStart="10dip"
                             android:layout_weight="1"/>
 
@@ -144,7 +144,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/edit_trip_spinner_arrival_site"
                         android:prompt="@string/edit_trip_prompt_select_arrival_site"
-                        style="@android:style/TextAppearance.Medium"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:spinnerMode="dialog"
                         />
 
@@ -159,7 +159,7 @@
                             android:layout_height="wrap_content"
                             custom:prompt="@string/edit_trip_prompt_select_arrival_date"
                             android:id="@+id/edit_trip_spinner_arrival_date"
-                            style="@android:style/TextAppearance.Medium"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:paddingStart="10dip"
                             android:layout_weight="2"/>
 
@@ -168,7 +168,7 @@
                             android:layout_height="wrap_content"
                             custom:prompt="@string/edit_trip_prompt_select_arrival_time"
                             android:id="@+id/edit_trip_spinner_arrival_time"
-                            style="@android:style/TextAppearance.Medium"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
                             android:paddingStart="10dip"
                             android:layout_weight="1"/>
 
@@ -339,7 +339,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/edit_trip_caption_weeks"
-                                    style="@android:style/TextAppearance.Medium"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:enabled="false"
 
                                     android:layout_gravity="center_vertical"
@@ -366,7 +366,7 @@
                                 android:layout_height="wrap_content"
                                 custom:prompt="@string/edit_trip_prompt_select_repeat_end_date"
                                 android:id="@+id/edit_trip_spinner_repeat_end"
-                                style="@android:style/TextAppearance.Medium"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:paddingStart="10dip"/>
 
                         </LinearLayout>
@@ -420,7 +420,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_trip_spinner_car"
                     android:prompt="@string/edit_trip_prompt_select_car"
-                    style="@android:style/TextAppearance.Medium"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:spinnerMode="dialog"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"/>
@@ -457,7 +457,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/edit_trip_caption_seats"
-                        style="@android:style/TextAppearance.Small"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:gravity="center_vertical|right"
                         android:textColor="@android:color/holo_blue_light"
                         android:layout_marginRight="20dp"/>
@@ -479,7 +479,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/edit_trip_spinner_trunk"
                     android:prompt="@string/edit_trip_prompt_select_trunk"
-                    style="@android:style/TextAppearance.Medium"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:spinnerMode="dialog"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"/>
@@ -506,7 +506,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textAllCaps="true"
             android:text="@string/action_more"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:background="?android:attr/selectableItemBackground"
             android:id="@+id/edit_trip_button_more"/>
 

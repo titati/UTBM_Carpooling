@@ -4,9 +4,9 @@
     >
 
     <item
-        android:id="@+id/profile_menuitem_new_car"
-        android:icon="@drawable/content_new"
+        android:id="@+id/trip_search_menuitem_go"
+        android:icon="@drawable/navigation_forward"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/action_new"/>
+        android:title="@string/action_go"/>
 
 </menu>

@@ -50,17 +50,18 @@ public abstract class TripDetailBlock<E extends BaseTrip> extends LinearLayout {
 	}
 	
 	protected void initItems() {
-		mTripPath = (TripPathView) ((ViewGroup) getChildAt(1)).getChildAt(0);
-        mSeats = (TextView) ((ViewGroup) ((ViewGroup) getChildAt(0)).getChildAt(1)).getChildAt(1);
-        mDate = (TextView) ((ViewGroup) getChildAt(0)).getChildAt(2);
-        mRootCheckpoint = (TableLayout) ((ViewGroup) getChildAt(1)).getChildAt(1);
+		mTripPath = (TripPathView) findViewById(R.id.trip_details_trippathview);
+        mSeats = (TextView) findViewById(R.id.trip_details_textview_seats);
+        mDate = (TextView) findViewById(R.id.trip_details_textview_date);
+        mRootCheckpoint = (TableLayout) findViewById(R.id.trip_details_tlayout_checkpoints);
+
 	}
 	
 	protected void initSecondItems() {
-		mCarName = (TextView) ((ViewGroup) getChildAt(3)).getChildAt(1);
-        mColor = (ColorCheckBox) ((ViewGroup) getChildAt(3)).getChildAt(2);
-        mTrunkSize = (TextView) ((ViewGroup) getChildAt(3)).getChildAt(4);
-        mDesc = (TextView) getChildAt(5);
+		mCarName = (TextView) findViewById(R.id.trip_details_textview_car);
+        mColor = (ColorCheckBox) findViewById(R.id.trip_details_checkbox_color);
+        mTrunkSize = (TextView) findViewById(R.id.trip_details_textview_trunk);
+        mDesc = (TextView) findViewById(R.id.trip_details_textview_description);
 
 		if (mRootCheckpoint != null) {
 			for(int i = 0; i < mData.getCheckpoints().size(); ++i) {

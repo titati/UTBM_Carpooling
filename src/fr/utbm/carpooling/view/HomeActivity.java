@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
@@ -69,4 +70,14 @@ public class HomeActivity extends Activity {
 		return true;
 	}
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.home_menuitem_logout:
+                // todo: logout
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

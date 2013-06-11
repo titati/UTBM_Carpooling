@@ -53,12 +53,4 @@ public class TripsActivity extends FragmentActivity {
         super.onSaveInstanceState(outState);
         outState.putInt("tab", getActionBar().getSelectedNavigationIndex());
     }
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.trips, menu);
-		
-		return true;
-	}
 }

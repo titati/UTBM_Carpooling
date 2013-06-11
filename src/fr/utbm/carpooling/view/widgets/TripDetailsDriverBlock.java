@@ -29,7 +29,6 @@ public class TripDetailsDriverBlock extends TripDetailBlock<DriverTripOccurence>
 		
 		if (mSeats != null) {
 			mSeats.setVisibility(INVISIBLE);
-			((ViewGroup) ((ViewGroup) getChildAt(0)).getChildAt(1)).getChildAt(0).setVisibility(INVISIBLE);
 		}
 		
 		if (mDate != null) {
@@ -48,5 +47,7 @@ public class TripDetailsDriverBlock extends TripDetailBlock<DriverTripOccurence>
 			mTrunkSize.setText(Resources.getTrunk(mData.getCar().getTrunkId()).getName());
 		}
 	}
+
+
 
 }

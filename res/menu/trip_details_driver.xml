@@ -1,9 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
+        android:id="@+id/trip_details_driver_menuitem_share"
+        android:showAsAction="ifRoom|withText"
+        android:icon="@drawable/social_share"
+        android:title="@string/action_share"/>
+
+    <item
+        android:id="@+id/trip_details_driver_menuitem_suscribe"
+        android:showAsAction="ifRoom|withText"
+        android:icon="@drawable/content_discard"
+        android:title="@string/action_delete"/>
 
 </menu>

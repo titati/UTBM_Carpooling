@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edit_car_spinner_brand"
-                style="@android:style/TextAppearance.Medium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:spinnerMode="dialog"
                 android:prompt="@string/edit_car_prompt_select_brand"
                 android:layout_marginLeft="10dp"
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edit_car_spinner_model"
-                style="@android:style/TextAppearance.Medium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:spinnerMode="dialog"
                 android:prompt="@string/edit_car_prompt_select_model"
                 android:layout_marginLeft="10dp"
@@ -70,7 +70,7 @@
 
             <fr.utbm.carpooling.view.widgets.ColorGridView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dip"
                 android:id="@+id/edit_car_gridview_colors"
                 android:layout_margin="10dp"
                 android:layout_weight="1"/>
@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/edit_car_caption_seats"
-                    style="@android:style/TextAppearance.Small"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:gravity="center_vertical|right"
                     android:textColor="@android:color/holo_blue_light"
                     android:layout_marginRight="20dp"/>
@@ -127,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edit_car_spinner_trunk"
-                style="@android:style/TextAppearance.Medium"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:spinnerMode="dialog"
                 android:prompt="@string/edit_car_prompt_select_trunk"
                 android:layout_marginLeft="10dp"

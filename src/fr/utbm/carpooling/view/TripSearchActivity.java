@@ -2,12 +2,12 @@ package fr.utbm.carpooling.view;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
+import android.widget.*;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.adapter.SiteShortAdapter;
@@ -21,8 +21,6 @@ public class TripSearchActivity extends Activity {
     private Spinner mArrivalSiteSpinner;
     private DatePickerSpinner mArrivalDateSpinner;
     private TimePickerSpinner mArrivalTimeSpinner;
-    private Button mLessButton;
-    private Button mMoreButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,30 +65,35 @@ public class TripSearchActivity extends Activity {
             }
         });
 
-        mLessButton = (Button) findViewById(R.id.trip_search_button_less);
-        mLessButton.setVisibility(View.GONE);
-        mMoreButton = (Button) findViewById(R.id.trip_search_button_more);
+        final LinearLayout advancedBlock = (LinearLayout) findViewById(R.id.trip_search_llayout_advanced);
+        final LinearLayout moreBlock = (LinearLayout) findViewById(R.id.trip_search_llayout_more);
 
-        mLessButton.setOnClickListener(new View.OnClickListener() {
+        advancedBlock.setVisibility(View.GONE);
+
+        Button moreButton = (Button) findViewById(R.id.trip_search_button_more);
+        moreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                mLessButton.setVisibility(View.GONE);
-                mMoreButton.setVisibility(View.VISIBLE);
+                advancedBlock.setVisibility(View.VISIBLE);
+                moreBlock.setVisibility(View.GONE);
             }
         });
+    }
 
-        
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.trip_search, menu);
+        return true;
+    }
 
-        mMoreButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.trip_search_menuitem_go:
+                startActivity(new Intent(this, TripSearchResultsActivity.class));
+                return true;
+        }
 
-                mMoreButton.setVisibility(View.GONE);
-                mLessButton.setVisibility(View.VISIBLE);
-            }
-        });
-
-
+        return super.onOptionsItemSelected(item);
     }
 }

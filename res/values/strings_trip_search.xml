@@ -10,5 +10,7 @@
     <string name="trip_search_prompt_select_arrival_site">Arrival Site</string>
     <string name="trip_search_prompt_select_arrival_date">Arrival Date</string>
     <string name="trip_search_prompt_select_arrival_time">Arrival Time</string>
+    <string name="trip_search_prompt_trunk">Min Trunk</string>
+    <string name="trip_search_prompt_select_trunk">Min Trunk</string>
 
 </resources>
