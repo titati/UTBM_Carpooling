@@ -9,12 +9,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.TaskHandler;
@@ -69,10 +69,8 @@ public class LoginActivity extends Activity {
 		findViewById(R.id.login_checkbox_remember).setVisibility(View.GONE);
 		mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 			@Override
-			public boolean onEditorAction(TextView textView, int id,
-					KeyEvent keyEvent) {
-				if (id == R.id.login_edittext_password_imeAction
-						|| id == EditorInfo.IME_NULL) {
+			public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+				if (id == R.id.login_edittext_password_imeAction || id == EditorInfo.IME_NULL) {
 					attemptLogin();
 					return true;
 				}
@@ -99,47 +97,53 @@ public class LoginActivity extends Activity {
 			public void taskSuccessful(LoginResponse object) {
 				showProgress(false);
 				
-				if (object.isUserExist()) {
-					
+				if (object.isLoggedIn()) {
 					User user = new User();
 					user.setUserId(object.getUserId());
 					user.setApiToken(object.getApiToken());
 					Resources.setUser(user);
-					((TextView) findViewById(R.id.login_textview_status)).setText("Gathering information");
-					showProgress(true);
 					
-					mGatheringTask = new TaskHandler<UserShort>() {
+					if (object.isUserExist()) {
+						((TextView) findViewById(R.id.login_textview_status)).setText("Gathering information");
+						showProgress(true);
 						
-						@Override
-						public void taskSuccessful(UserShort object) {
-							showProgress(false);
-							try {
-								Resources.setUser(object, openFileOutput("userInfos", MODE_PRIVATE));
-					            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-					            startActivity(intent);
-								finish();
-							} catch (FileNotFoundException e) {
-								e.printStackTrace();
+						mGatheringTask = new TaskHandler<UserShort>() {
+							
+							@Override
+							public void taskSuccessful(UserShort object) {
+								showProgress(false);
+								try {
+									Resources.setUser(object, openFileOutput("userInfos", MODE_PRIVATE));
+						            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+						            startActivity(intent);
+									finish();
+								} catch (FileNotFoundException e) {
+									e.printStackTrace();
+								}
+								
 							}
 							
-						}
+							@Override
+							public void taskFailed() {
+								UserWebServices.getUser(mGatheringTask);
+							}
+						};
 						
-						@Override
-						public void taskFailed() {
-							UserWebServices.getUser(mGatheringTask);
-						}
-					};
-					
-					UserWebServices.getUser(mGatheringTask);
+						UserWebServices.getUser(mGatheringTask);
+					} else {
+						Intent intent = new Intent(LoginActivity.this, CreateUserActivity.class);
+			            startActivity(intent);
+					}
 				} else {
-					Log.i("user", "not exist");
+					mLoginStatusMessageView.setVisibility(View.VISIBLE);
+					findViewById(R.id.login_textview_invalid_data).setVisibility(View.VISIBLE);
 				}
 			}
 
 			@Override
 			public void taskFailed() {
 				showProgress(false);
-				findViewById(R.id.login_textview_invalid_data).setVisibility(View.VISIBLE);
+				Toast.makeText(getApplicationContext(), "Error while signin in", Toast.LENGTH_LONG).show();
 			}
 		};
 	}
@@ -231,5 +235,12 @@ public class LoginActivity extends Activity {
 			mLoginStatusView.setVisibility(show ? View.VISIBLE : View.GONE);
 			mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
 		}
+	}
+	
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		
+		finish();
 	}
 }

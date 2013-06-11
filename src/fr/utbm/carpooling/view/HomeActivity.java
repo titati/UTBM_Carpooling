@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import fr.utbm.carpooling.Constants;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 
@@ -75,7 +76,12 @@ public class HomeActivity extends Activity {
 
         switch (item.getItemId()) {
             case R.id.home_menuitem_logout:
-                // todo: logout
+                deleteFile(Constants.FILE_USER_INFO);
+                Resources.setUser(null);
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+				startActivity(intent);
+				finish();
+				
                 return true;
         }
         return super.onOptionsItemSelected(item);

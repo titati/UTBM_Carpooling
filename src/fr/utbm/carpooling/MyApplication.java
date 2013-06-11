@@ -7,7 +7,6 @@ import org.json.JSONObject;
 
 import fr.utbm.carpooling.model.User;
 import android.app.Application;
-import android.util.Log;
 
 public class MyApplication extends Application {
 
@@ -17,11 +16,9 @@ public class MyApplication extends Application {
     	super.onCreate();
     	
     	Resources.setUser(null);
-		Log.i("myapp", "used");
     	
     	try {
-			Resources.setUser(new User(new JSONObject(FileManager.readFile(openFileInput("userInfos")))));
-			Log.i("user", "loaded");
+			Resources.setUser(new User(new JSONObject(FileManager.readFile(openFileInput(Constants.FILE_USER_INFO)))));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
