@@ -8,7 +8,7 @@ import fr.utbm.carpooling.JSONParsable;
 public class UserShort extends JSONParsable {
 	
 	private String userId;
-	private String name;
+	private String lastname;
 	private String firstname;
 	private String phone;
 	private String email;
@@ -27,12 +27,12 @@ public class UserShort extends JSONParsable {
 		this.userId = userId;
 	}
 	
-	public String getName() {
-		return name;
+	public String getLastname() {
+		return lastname;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	
 	public String getFirstname() {
@@ -61,7 +61,7 @@ public class UserShort extends JSONParsable {
 	
 	public String serializeJSON() {
 		return  "\"userid\" : \"" + getUserId() +
-				"\", \"name\" : \"" + getName() +
+				"\", \"lastname\" : \"" + getLastname() +
 				"\", \"firstname\" : \"" + getFirstname() +
 				"\", \"phone\" : \"" + getPhone() +
 				"\", \"email\" : \"" + getEmail() + "\"";
@@ -76,7 +76,7 @@ public class UserShort extends JSONParsable {
 		}
 		
 		try {
-			setName(object.getString("name"));
+			setLastname(object.getString("lastname"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

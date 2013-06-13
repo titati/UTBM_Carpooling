@@ -95,13 +95,13 @@ public class UserWebServices {
 		con.execute("");
 	}
 
-	public static void getUser(final TaskHandler<UserShort> handler) {
+	public static void getUserInfos(final TaskHandler<UserInfos> mGatheringTask) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
-		HttpConnection con = new HttpConnection(cat + "getUser", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+		HttpConnection con = new HttpConnection(cat + "getUserInfos", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
 			@Override
 			public void taskSuccessful(String jsonString) {
@@ -110,23 +110,33 @@ public class UserWebServices {
 				if (jv.isValid()) {
 					JSONObject object = jv.getObject();
 				
-					UserShort user = null;
+					UserInfos userInfos = new UserInfos();
 
 					try {
-						user = new UserShort(object.getJSONObject("user"));
+						userInfos.setUser(new UserShort(object.getJSONObject("user")));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 
-					handler.taskSuccessful(user);
+					ArrayList<Car> listCar = new ArrayList<Car>();
+
+					try {
+						for(int i = 0; i < object.getJSONArray("cars").length(); ++i) {
+							listCar.add(new Car((JSONObject) object.getJSONArray("cars").get(i)));
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+					mGatheringTask.taskSuccessful(userInfos);
 				} else {
-					handler.taskFailed();
+					mGatheringTask.taskFailed();
 				}
 			}
 			
 			@Override
 			public void taskFailed() {
-				handler.taskFailed();
+				mGatheringTask.taskFailed();
 			}
 		});
 		
@@ -171,11 +181,15 @@ public class UserWebServices {
 		con.execute("");
 	}
 	
-	public static void updateUser(final TaskHandler<Boolean> handler) {
+	public static void updateUser(final TaskHandler<Boolean> handler, UserShort user) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
+		params.add(new BasicNameValuePair("firstname", user.getFirstname()));
+		params.add(new BasicNameValuePair("name", user.getLastname()));
+		params.add(new BasicNameValuePair("email", user.getEmail()));
+		params.add(new BasicNameValuePair("phone", user.getPhone()));
 		
 		HttpConnection con = new HttpConnection(cat + "createUser", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			

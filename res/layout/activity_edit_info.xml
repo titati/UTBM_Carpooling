@@ -16,12 +16,11 @@
         android:paddingStart="10dp"/>
 
     <EditText
-        android:id="@+id/profile_info_textview_name"
+        android:id="@+id/edit_info_textview_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bombeur"
         android:inputType="textPersonName"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp" />
 
 
     <TextView
@@ -33,10 +32,9 @@
         android:paddingStart="10dp"/>
 
     <EditText
-        android:id="@+id/profile_info_textview_firstname"
+        android:id="@+id/edit_info_textview_firstname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jean"
         android:inputType="textPersonName"
         android:layout_marginBottom="10dp"/>
 
@@ -50,10 +48,9 @@
         android:paddingStart="10dp"/>
 
     <EditText
-        android:id="@+id/profile_info_textview_phone"
+        android:id="@+id/edit_info_textview_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0123456789"
         android:inputType="phone"
         android:layout_marginBottom="10dp"/>
 
@@ -66,9 +63,8 @@
         android:paddingStart="10dp"/>
 
     <EditText
-        android:id="@+id/profile_info_textview_email"
+        android:id="@+id/edit_info_textview_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="jean.bombeur@utbm.fr"
         android:inputType="textEmailAddress"/>
 </LinearLayout>

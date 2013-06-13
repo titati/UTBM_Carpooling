@@ -46,7 +46,7 @@ public class TripSubscriber extends TableRow {
 	}
 	
 	protected void initView() {
-		mName.setText(mUser.getFirstname() + " " + mUser.getName());
+		mName.setText(mUser.getFirstname() + " " + mUser.getLastname());
 
 		mPhone.setOnClickListener(new OnClickListener() {
 			

@@ -4,13 +4,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class FileManager {
 	
 	public static boolean writeFile(String content, FileOutputStream output) {
 		
 		try {
-		  output.write(content.getBytes());
+		  output.write(content.getBytes(Charset.defaultCharset()));
 		  if(output != null)
 		    output.close();
 		} catch (FileNotFoundException e) {
@@ -38,7 +39,7 @@ public class FileManager {
 			if(input != null)
 				input.close();
 			
-			return lu.toString();
+			return new String(lu.toString().getBytes(Charset.defaultCharset()), Charset.defaultCharset());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

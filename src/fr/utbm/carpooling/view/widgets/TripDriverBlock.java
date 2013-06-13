@@ -50,7 +50,7 @@ public class TripDriverBlock extends LinearLayout {
 
     protected void initView() {
 
-        mName.setText(mDriver.getFirstname() + " " + mDriver.getName());
+        mName.setText(mDriver.getFirstname() + " " + mDriver.getLastname());
         mRating.setMax(5);
         mRating.setStepSize((float) 0.5);
         mPhone.setOnClickListener(new OnClickListener() {

@@ -4,16 +4,10 @@ import android.widget.*;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.DriverCar;
-import fr.utbm.carpooling.view.HomeActivity;
-import fr.utbm.carpooling.view.ProfileCarsFragment;
-import fr.utbm.carpooling.view.TripDetailsDriverActivity;
-import fr.utbm.carpooling.view.TripSearchResultsActivity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 public class DriverCarItem extends LinearLayout {
 	

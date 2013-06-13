@@ -106,4 +106,13 @@ public class Car extends JSONParsable {
 			e.printStackTrace();
 		}
 	}
+
+	public String serializeJSON() {
+		return  "\"id\" : \"" + getId() +
+				"\", \"brandid\" : \"" + getBrandId() +
+				"\", \"modelid\" : \"" + getModelId() +
+				"\", \"colorid\" : \"" + getColorId() +
+				"\", \"trunkid\" : \"" + getTrunkId() +
+				"\", \"seats\" : \"" + getSeats() + "\"";
+	}
 }

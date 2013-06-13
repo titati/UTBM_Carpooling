@@ -4,20 +4,45 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
+import android.widget.TextView;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.Resources;
 
 
 public class ProfileInfoFragment extends Fragment {
+    
+    private TextView mName;
+    private TextView mFirstname;
+    private TextView mEmail;
+    private TextView mPhone;
 
 	public ProfileInfoFragment() {}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         setHasOptionsMenu(true);
-		return inflater.inflate(R.layout.fragment_profile_info, container,
-				false);
+        
+		return inflater.inflate(R.layout.fragment_profile_info, container, false);
+	}
+	
+	@Override
+	public void onResume() {
+        initView();
+        
+		super.onResume();
+	}
+
+	private void initView() {
+		mFirstname = (TextView) getView().findViewById(R.id.profile_info_textview_firstname);
+		mName = (TextView) getView().findViewById(R.id.profile_info_textview_name);
+		mPhone = (TextView) getView().findViewById(R.id.profile_info_textview_phone);
+		mEmail = (TextView) getView().findViewById(R.id.profile_info_textview_email);
+
+		mFirstname.setText(Resources.getUser().getFirstname());
+		mName.setText(Resources.getUser().getLastname());
+		mPhone.setText(Resources.getUser().getPhone());
+		mEmail.setText(Resources.getUser().getEmail());
 	}
 
 
@@ -45,6 +70,7 @@ public class ProfileInfoFragment extends Fragment {
         if (requestCode == 0 && resultCode == 1) {
             //TODO: get updated user infos
         }
+        
         super.onActivityResult(requestCode, resultCode, data);
     }
 }

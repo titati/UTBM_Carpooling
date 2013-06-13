@@ -1,7 +1,5 @@
 package fr.utbm.carpooling.view;
 
-import java.io.FileNotFoundException;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -20,7 +18,7 @@ import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.model.LoginResponse;
 import fr.utbm.carpooling.model.User;
-import fr.utbm.carpooling.model.UserShort;
+import fr.utbm.carpooling.model.UserInfos;
 import fr.utbm.carpooling.webservices.UserWebServices;
 
 /**
@@ -28,16 +26,20 @@ import fr.utbm.carpooling.webservices.UserWebServices;
  * well.
  */
 public class LoginActivity extends Activity {
-
+	
 	/**
-	 * Keep track of the login task to ensure we can cancel it if requested.
+	 * Keep track of the login task.
 	 */
 	private TaskHandler<LoginResponse> mAuthTask = null;
-	private TaskHandler<UserShort> mGatheringTask = null;
+	/**
+	 * Keep track of the gathering info task.
+	 */
+	private TaskHandler<UserInfos> mGatheringTask = null;
 
 	// Values for email and password at the time of the login attempt.
 	private String mLogin = null;
 	private String mPassword = null;
+	private int mNbTry = 0;
 
 	// UI references.
 	private EditText mLoginView;
@@ -98,38 +100,37 @@ public class LoginActivity extends Activity {
 				showProgress(false);
 				
 				if (object.isLoggedIn()) {
-					User user = new User();
-					user.setUserId(object.getUserId());
-					user.setApiToken(object.getApiToken());
-					Resources.setUser(user);
+					Resources.initUser(object.getUserId(), object.getApiToken());
 					
 					if (object.isUserExist()) {
 						((TextView) findViewById(R.id.login_textview_status)).setText("Gathering information");
 						showProgress(true);
 						
-						mGatheringTask = new TaskHandler<UserShort>() {
+						mGatheringTask = new TaskHandler<UserInfos>() {
 							
 							@Override
-							public void taskSuccessful(UserShort object) {
+							public void taskSuccessful(UserInfos object) {
 								showProgress(false);
-								try {
-									Resources.setUser(object, openFileOutput("userInfos", MODE_PRIVATE));
-						            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-						            startActivity(intent);
-									finish();
-								} catch (FileNotFoundException e) {
-									e.printStackTrace();
-								}
-								
+								Resources.setUserInfos(object, getApplicationContext());
+								Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+								startActivity(intent);
+								finish();
 							}
 							
 							@Override
 							public void taskFailed() {
-								UserWebServices.getUser(mGatheringTask);
+								++mNbTry;
+								if (mNbTry > 10) {
+									((TextView) findViewById(R.id.login_textview_status)).setText(R.string.login_progress_signing_in);
+									Toast.makeText(getApplicationContext(), "Error while gathering information", Toast.LENGTH_LONG).show();
+									mNbTry = 0;
+								} else {
+									UserWebServices.getUserInfos(mGatheringTask);
+								}
 							}
 						};
 						
-						UserWebServices.getUser(mGatheringTask);
+						UserWebServices.getUserInfos(mGatheringTask);
 					} else {
 						Intent intent = new Intent(LoginActivity.this, CreateUserActivity.class);
 			            startActivity(intent);

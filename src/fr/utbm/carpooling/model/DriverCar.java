@@ -28,9 +28,13 @@ public class DriverCar extends Car {
 		super.deserializeJSON(object);
 		
 		try {
-			setDefaultCar(object.getBoolean("defaultCar"));
+			setDefaultCar(object.getBoolean("defaultcar"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public String serializeJSON() {
+		return super.serializeJSON() + ", \"defaultcar\" : \"" + isDefaultCar() + "\""; 
 	}
 }
