@@ -5,7 +5,7 @@ import org.json.JSONObject;
 import fr.utbm.carpooling.model.*;
 
 /**
- * public class<br>
+ * public abstract class<br>
  * <strong>JSONParsable</strong><br><br>
  * Every class which extends from this one will be constructible from a {@link JSONObject}
  * <br><br>
