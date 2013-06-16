@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="trunk_size_0">Tiny</string>
+    <string name="trunk_size_1">Small</string>
+    <string name="trunk_size_2">Regular</string>
+    <string name="trunk_size_3">Large</string>
+    <string name="trunk_size_4">Huge</string>
+    
+</resources>

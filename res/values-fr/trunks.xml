@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="trunk_size_0">Très petit</string>
+    <string name="trunk_size_1">Petit</string>
+    <string name="trunk_size_2">Normal</string>
+    <string name="trunk_size_3">Grand</string>
+    <string name="trunk_size_4">Enorme</string>
+    
+</resources>

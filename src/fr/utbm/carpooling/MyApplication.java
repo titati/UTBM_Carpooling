@@ -9,8 +9,10 @@ import org.json.JSONObject;
 
 import fr.utbm.carpooling.model.DriverCar;
 import fr.utbm.carpooling.model.User;
+import fr.utbm.carpooling.model.wrapper.Trunk;
 import android.app.Application;
 import android.util.Log;
+import android.util.SparseArray;
 
 public class MyApplication extends Application {
 
@@ -19,6 +21,23 @@ public class MyApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		
+		initResources();
+		initSession();
+	}
+
+	private void initResources() {
+		SparseArray<Trunk> trunks = new SparseArray<Trunk>();
+
+		trunks.put(0, new Trunk(0, getString(R.string.trunk_size_0)));
+		trunks.put(1, new Trunk(1, getString(R.string.trunk_size_1)));
+		trunks.put(2, new Trunk(2, getString(R.string.trunk_size_2)));
+		trunks.put(3, new Trunk(3, getString(R.string.trunk_size_3)));
+		trunks.put(4, new Trunk(4, getString(R.string.trunk_size_4)));
+		
+		Resources.setTrunks(trunks);
+	}
+
+	private void initSession() {
 		User user = null;
 
 		try {
@@ -56,6 +75,5 @@ public class MyApplication extends Application {
 				Resources.setCars(listCar);
 			}
 		}
-
 	}
 }

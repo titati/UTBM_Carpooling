@@ -24,28 +24,22 @@ public class Resources {
 	private static SparseArray<DriverCar> mCars = new SparseArray<DriverCar>();
 
 	public static void init() {
-		colors.put(0, new Color(0, "", "000000"));
-		colors.put(1, new Color(1, "", "808080"));
-		colors.put(2, new Color(2, "", "FFFFFF"));
-		colors.put(3, new Color(3, "", "000080"));
-		colors.put(4, new Color(4, "", "0000FF"));
-		colors.put(5, new Color(5, "", "008000"));
-		colors.put(6, new Color(6, "", "00FF00"));
-		colors.put(7, new Color(7, "", "800000"));
-		colors.put(8, new Color(8, "", "FF0000"));
-		colors.put(9, new Color(9, "", "FFFF00"));
-		colors.put(10, new Color(10, "", "00FFFF"));
-		colors.put(11, new Color(11, "", "FF00FF"));
+		colors.put(0, new Color(0, "000000"));
+		colors.put(1, new Color(1, "808080"));
+		colors.put(2, new Color(2, "FFFFFF"));
+		colors.put(3, new Color(3, "000080"));
+		colors.put(4, new Color(4, "0000FF"));
+		colors.put(5, new Color(5, "008000"));
+		colors.put(6, new Color(6, "00FF00"));
+		colors.put(7, new Color(7, "800000"));
+		colors.put(8, new Color(8, "FF0000"));
+		colors.put(9, new Color(9, "FFFF00"));
+		colors.put(10, new Color(10, "00FFFF"));
+		colors.put(11, new Color(11, "FF00FF"));
 
 		colorsSorted = new ArrayList<Color>();
 		colorsSorted.addAll(colors.values());
 		Collections.sort(colorsSorted);
-
-		mTrunks.put(0, new Trunk(0, "tiny"));
-		mTrunks.put(1, new Trunk(1, "small"));
-		mTrunks.put(2, new Trunk(2, "regular"));
-		mTrunks.put(3, new Trunk(3, "large"));
-		mTrunks.put(4, new Trunk(4, "huge"));
 
 		sitesShort.put(0, new SiteShort(0, "belfort"));
 		sitesShort.put(1, new SiteShort(1, "sévenans"));
@@ -100,10 +94,14 @@ public class Resources {
 		ArrayList<Trunk> list = new ArrayList<Trunk>();
 		
 		for(int i = 0; i < mTrunks.size(); ++i) {
-			list.add(mTrunks.get(mTrunks.keyAt(i)));
+			list.add(mTrunks.valueAt(i));
 		}
 		
 		return list;
+	}
+	
+	public static void setTrunks(SparseArray<Trunk> trunks) {
+		mTrunks = trunks;
 	}
 
 	public static Trunk getTrunk(int id) {
@@ -138,7 +136,7 @@ public class Resources {
 		ArrayList<DriverCar> list = new ArrayList<DriverCar>();
 		
 		for(int i = 0; i < mCars.size(); ++i) {
-			list.add(mCars.get(mCars.keyAt(i)));
+			list.add(mCars.valueAt(i));
 		}
 		
 		return list;
@@ -179,9 +177,9 @@ public class Resources {
 		String cars = "[";
 		if (mCars != null) {
 			for(int i = 0; i < mCars.size(); ++i) {
-				cars += "{ " + mCars.get(mCars.keyAt(i)).serializeJSON() + " },";
+				cars += "{ " + mCars.valueAt(i).serializeJSON() + " },";
 			}
-			cars = cars.substring(0, cars.length() - 2);
+			cars = cars.substring(0, cars.length() - 1);
 		}
 		cars += "]";
 		
@@ -212,7 +210,7 @@ public class Resources {
 		mCars.remove(id);
 		
 		if (wasDefault) {
-			mCars.get(mCars.keyAt(0)).setDefaultCar(true);
+			mCars.valueAt(0).setDefaultCar(true);
 		}
 	}
 }
