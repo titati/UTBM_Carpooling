@@ -46,7 +46,7 @@ public class TripCheckpoint extends TableRow {
 	
 	protected void initView() {
 		if (mName != null) {
-			mName.setText(Resources.getSiteShort(mCheckpoint.getSiteId()).getName());
+			mName.setText(Resources.getSite(mCheckpoint.getSiteId()).getName());
             mName.setOnClickListener(new OnClickListener() {
 				
 				@Override

@@ -61,11 +61,11 @@ public class AlertTripItem extends LinearLayout {
         }
         
         if (departurePoint != null) {
-            departurePoint.setText(Resources.getSiteShort(data.getFromSiteId()).getName());
+            departurePoint.setText(Resources.getSite(data.getFromSiteId()).getName());
         }
         
         if (arrivalPoint != null) {
-            arrivalPoint.setText(Resources.getSiteShort(data.getToSiteId()).getName());
+            arrivalPoint.setText(Resources.getSite(data.getToSiteId()).getName());
         }
         
         if (arrivalTime != null) {

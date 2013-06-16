@@ -26,7 +26,7 @@ public class DriverTripItem extends TripItem<DriverTripOccurenceShort> {
         }
         
         if (departurePoint != null) {
-            departurePoint.setText(Resources.getSiteShort(from.getSiteId()).getName());
+            departurePoint.setText(Resources.getSite(from.getSiteId()).getName());
         }
         
         if (departureTime != null) {
@@ -41,7 +41,7 @@ public class DriverTripItem extends TripItem<DriverTripOccurenceShort> {
         }
         
         if (arrivalPoint != null) {
-            arrivalPoint.setText(Resources.getSiteShort(to.getSiteId()).getName());
+            arrivalPoint.setText(Resources.getSite(to.getSiteId()).getName());
         }
         
         if (arrivalTime != null) {

@@ -16,7 +16,7 @@ public class Resources {
 
 	private static Map<Integer, Color> colors = new HashMap<Integer, Color>();
 	private static SparseArray<Trunk> mTrunks = new SparseArray<Trunk>();
-	private static Map<Integer, SiteShort> sitesShort = new HashMap<Integer, SiteShort>();
+	private static SparseArray<Site> mSites = new SparseArray<Site>();
 	private static Map<Integer, Brand> brands = new HashMap<Integer, Brand>();
 	private static Map<Integer, Map<Integer, Model>> models = new HashMap<Integer, Map<Integer, Model>>();
 	private static List<Color> colorsSorted;
@@ -41,10 +41,10 @@ public class Resources {
 		colorsSorted.addAll(colors.values());
 		Collections.sort(colorsSorted);
 
-		sitesShort.put(0, new SiteShort(0, "belfort"));
-		sitesShort.put(1, new SiteShort(1, "sévenans"));
-		sitesShort.put(2, new SiteShort(2, "montbéliard"));
-		sitesShort.put(3, new SiteShort(3, "sbarro"));
+		mSites.put(0, new Site(0, "belfort"));
+		mSites.put(1, new Site(1, "sévenans"));
+		mSites.put(2, new Site(2, "montbéliard"));
+		mSites.put(3, new Site(3, "sbarro"));
 
 		brands.put(0, new Brand(0, "renault"));
 		brands.put(1, new Brand(1, "peugeot"));
@@ -108,15 +108,21 @@ public class Resources {
 		return mTrunks.get(id);
 	}
 
-	public static List<SiteShort> getSitesShort() {
-		return new ArrayList<SiteShort>(sitesShort.values());
+	public static ArrayList<Site> getSites() {
+		ArrayList<Site> list = new ArrayList<Site>();
+		
+		for(int i = 0; i < mSites.size(); ++i) {
+			list.add(mSites.valueAt(i));
+		}
+		
+		return list;
 	}
 
-	public static SiteShort getSiteShort(int id) {
-		return sitesShort.get(id);
+	public static Site getSite(int id) {
+		return mSites.get(id);
 	}
 
-	public static List<Brand> getBrands() {
+	public static ArrayList<Brand> getBrands() {
 		return new ArrayList<Brand>(brands.values());
 	}
 
@@ -124,12 +130,12 @@ public class Resources {
 		return brands.get(id);
 	}
 
-	public static List<Model> getModels(int brand_id) {
-		return new ArrayList<Model>(models.get(brand_id).values());
+	public static List<Model> getModels(int brandId) {
+		return new ArrayList<Model>(models.get(brandId).values());
 	}
 
-	public static Model getModel(int brand_id, int id) {
-		return models.get(brand_id).get(id);
+	public static Model getModel(int brandId, int id) {
+		return models.get(brandId).get(id);
 	}
 	
 	public static ArrayList<DriverCar> getCars() {
@@ -165,15 +171,15 @@ public class Resources {
 		}
 	}
 
-	public static void saveUser(Context c) {
+	public static void saveUser(Context context) {
 		try {
-			FileManager.writeFile("{ " + mUser.serializeJSON() + " }", c.openFileOutput(Constants.FILE_USER_INFO, Context.MODE_PRIVATE));
+			FileManager.writeFile("{ " + mUser.serializeJSON() + " }", context.openFileOutput(Constants.FILE_USER_INFO, Context.MODE_PRIVATE));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void saveCars(Context c) {
+	public static void saveCars(Context context) {
 		String cars = "[";
 		if (mCars != null) {
 			for(int i = 0; i < mCars.size(); ++i) {
@@ -184,7 +190,7 @@ public class Resources {
 		cars += "]";
 		
 		try {
-			FileManager.writeFile(cars, c.openFileOutput(Constants.FILE_USER_CARS, Context.MODE_PRIVATE));
+			FileManager.writeFile(cars, context.openFileOutput(Constants.FILE_USER_CARS, Context.MODE_PRIVATE));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -212,5 +218,15 @@ public class Resources {
 		if (wasDefault) {
 			mCars.valueAt(0).setDefaultCar(true);
 		}
+	}
+
+	public static ArrayList<SiteShort> getSitesShort() {
+		ArrayList<SiteShort> siteShort = new ArrayList<SiteShort>();
+		
+		for(int i = 0; i < mSites.size(); ++i) {
+			siteShort.add(new SiteShort(mSites.keyAt(i), mSites.valueAt(i).getName()));
+		}
+		
+		return null;
 	}
 }

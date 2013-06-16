@@ -55,7 +55,7 @@ public class ResultTripItem extends LinearLayout {
 		}
 		
 		if (departurePoint != null) {
-			departurePoint.setText(Resources.getSiteShort(0).getName());
+			departurePoint.setText(Resources.getSite(0).getName());
 		}
 		
 		if (departureTime != null) {
@@ -67,7 +67,7 @@ public class ResultTripItem extends LinearLayout {
 		}
 		
 		if (arrivalPoint != null) {
-			arrivalPoint.setText(Resources.getSiteShort(0).getName());
+			arrivalPoint.setText(Resources.getSite(0).getName());
 		}
 		
 		if (arrivalTime != null) {

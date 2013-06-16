@@ -27,7 +27,7 @@ public class PassengerTripItem extends TripItem<PassengerTripShort> {
         }
         
         if (departurePoint != null) {
-            departurePoint.setText(Resources.getSiteShort(from.getSiteId()).getName());
+            departurePoint.setText(Resources.getSite(from.getSiteId()).getName());
         }
         
         if (departureTime != null) {
@@ -42,7 +42,7 @@ public class PassengerTripItem extends TripItem<PassengerTripShort> {
         }
         
         if (arrivalPoint != null) {
-            arrivalPoint.setText(Resources.getSiteShort(to.getSiteId()).getName());
+            arrivalPoint.setText(Resources.getSite(to.getSiteId()).getName());
         }
         
         if (arrivalTime != null) {

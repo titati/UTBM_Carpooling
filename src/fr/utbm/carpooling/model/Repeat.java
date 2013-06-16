@@ -6,10 +6,10 @@ import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
-public class Repeat extends JSONParsable {
+public class Repeat extends JSONParsableObject {
 
 	private boolean sunday;
 	private boolean monday;

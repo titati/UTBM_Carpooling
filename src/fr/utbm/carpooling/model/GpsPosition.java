@@ -3,9 +3,9 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 
-public class GpsPosition extends JSONParsable {
+public class GpsPosition extends JSONParsableObject {
 
 	private double latitude;
 	private double longitude;

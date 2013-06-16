@@ -17,18 +17,18 @@ import fr.utbm.carpooling.model.*;
  * {@link DriverCar}, {@link User}, {@link Checkpoint}, {@link BasePassengerTrip}, {@link DriverTrip}, {@link TripSearchResult},
  * {@link PassengerTrip}, {@link PassengerTripShort}, {@link TripSearchResultShort}, {@link DriverTripOccurence}, {@link DriverTripOccurenceShort}
  */
-public abstract class JSONParsable {
+public abstract class JSONParsableObject {
 	/**
 	 * <strong>public JSONParsable({@link JSONObject} object)</strong><br><br>
 	 * Define how to construct the object from a JSONObject.
 	 * @param object A JSONObject representing some data
 	 */
-	public JSONParsable(JSONObject object) {
+	public JSONParsableObject(JSONObject object) {
 		deserializeJSON(object);
 	}
 	
 	/**	Need a default blank constructor to create object from nothing */
-	public JSONParsable() {}
+	public JSONParsableObject() {}
 	
 	/**
 	 * <strong>protected abstract void deserializeJSON({@link JSONObject} object)</strong><br><br>

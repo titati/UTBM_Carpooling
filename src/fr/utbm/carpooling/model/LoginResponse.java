@@ -3,9 +3,9 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 
-public class LoginResponse extends JSONParsable {
+public class LoginResponse extends JSONParsableObject {
 	
 	private String userId;
 	private String apiToken;

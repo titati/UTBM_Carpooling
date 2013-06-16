@@ -3,9 +3,9 @@ package fr.utbm.carpooling.model.wrapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 
-public class Trunk extends JSONParsable {
+public class Trunk extends JSONParsableObject {
 
 	private int id;
 	private String name;

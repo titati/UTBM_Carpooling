@@ -3,9 +3,9 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 
-public class Car extends JSONParsable {
+public class Car extends JSONParsableObject {
 
 	protected int id;
 	protected int brandId;

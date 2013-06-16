@@ -3,9 +3,9 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 
-public class Color extends JSONParsable implements Comparable<Color> {
+public class Color extends JSONParsableObject implements Comparable<Color> {
 
     private int id;
     private String hex;

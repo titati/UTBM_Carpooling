@@ -6,9 +6,9 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 
-public class Statistics extends JSONParsable {
+public class Statistics extends JSONParsableObject {
 
 	private int driverTrips;
 	private int passengerTrips;

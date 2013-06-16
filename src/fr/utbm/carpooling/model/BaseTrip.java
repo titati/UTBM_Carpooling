@@ -8,11 +8,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
 
-public abstract class BaseTrip extends JSONParsable {
+public abstract class BaseTrip extends JSONParsableObject {
 
 	protected String abstractTripId;
 	protected Date tripId;

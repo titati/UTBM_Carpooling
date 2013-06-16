@@ -7,10 +7,10 @@ import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
-public class Alert extends JSONParsable {
+public class Alert extends JSONParsableObject {
 	
 	private int alertId = 0;
 	private int fromSiteId = 0;

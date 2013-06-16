@@ -6,17 +6,17 @@ import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.JSONParsableObject;
 import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
 /**
  * public class<br>
  * <strong>CheckpointShort</strong><br>
- * extends {@link JSONParsable}<br><br>
+ * extends {@link JSONParsableObject}<br><br>
  * Known direct subclasses<br>
  * {@link Checkpoint}
  */
-public class CheckpointShort extends JSONParsable {
+public class CheckpointShort extends JSONParsableObject {
 	
 	/** Indicate which checkpoint is the current one. The numbering begins at 1. */
 	protected int numCheckpoint;
