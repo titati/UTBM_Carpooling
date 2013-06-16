@@ -102,7 +102,7 @@ public class TripsAlertsFragment extends Fragment {
 			
 			@Override
 			public void taskFailed() {
-				Toast.makeText(getActivity().getApplicationContext(), "Error while fetching content", Toast.LENGTH_LONG).show();
+				if (getUserVisibleHint()) Toast.makeText(getActivity().getApplicationContext(), "Error while fetching content", Toast.LENGTH_LONG).show();
 		        mLoader.dismiss();
 			}
 		};

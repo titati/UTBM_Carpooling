@@ -1,11 +1,9 @@
 package fr.utbm.carpooling.view.widgets;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.*;
-import android.widget.ProgressBar;
 import fr.utbm.carpooling.R;
 
 

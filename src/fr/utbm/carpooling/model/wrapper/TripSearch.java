@@ -1,4 +1,4 @@
-package fr.utbm.carpooling.model;
+package fr.utbm.carpooling.model.wrapper;
 
 import java.util.ArrayList;
 import java.util.Date;

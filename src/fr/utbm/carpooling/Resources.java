@@ -2,34 +2,28 @@ package fr.utbm.carpooling;
 
 
 import fr.utbm.carpooling.model.*;
+import fr.utbm.carpooling.model.wrapper.SiteShort;
+import fr.utbm.carpooling.model.wrapper.Trunk;
+import fr.utbm.carpooling.model.wrapper.UserInfos;
 
 import java.io.FileNotFoundException;
 import java.util.*;
-import java.util.Map.Entry;
 
 import android.content.Context;
+import android.util.SparseArray;
 
 public class Resources {
 
 	private static Map<Integer, Color> colors = new HashMap<Integer, Color>();
-	private static Map<Integer, Trunk> trunks = new HashMap<Integer, Trunk>();
+	private static SparseArray<Trunk> mTrunks = new SparseArray<Trunk>();
 	private static Map<Integer, SiteShort> sitesShort = new HashMap<Integer, SiteShort>();
 	private static Map<Integer, Brand> brands = new HashMap<Integer, Brand>();
 	private static Map<Integer, Map<Integer, Model>> models = new HashMap<Integer, Map<Integer, Model>>();
 	private static List<Color> colorsSorted;
 	private static User mUser = null;
-	private static HashMap<String, DriverCar> mCars = new HashMap<String, DriverCar>();
+	private static SparseArray<DriverCar> mCars = new SparseArray<DriverCar>();
 
 	public static void init() {
-		//    	User user1 = new User();
-		//    	user1.setUserId("plop");
-		//        user1.setApiToken("fze8f54zef4ze56f4ezf8z4ef5zef8zef4z8ef4z8e9f4e8fz89f");
-		//        user1.setEmail("plop@utbm.fr");
-		//        user1.setFirstname("Truc");
-		//        user1.setLastname("Chose");
-		//        user1.setPhone("0667849494");
-		//setUser(user1);
-
 		colors.put(0, new Color(0, "", "000000"));
 		colors.put(1, new Color(1, "", "808080"));
 		colors.put(2, new Color(2, "", "FFFFFF"));
@@ -47,11 +41,11 @@ public class Resources {
 		colorsSorted.addAll(colors.values());
 		Collections.sort(colorsSorted);
 
-		trunks.put(0, new Trunk(0, "tiny"));
-		trunks.put(1, new Trunk(1, "small"));
-		trunks.put(2, new Trunk(2, "regular"));
-		trunks.put(3, new Trunk(3, "large"));
-		trunks.put(4, new Trunk(4, "huge"));
+		mTrunks.put(0, new Trunk(0, "tiny"));
+		mTrunks.put(1, new Trunk(1, "small"));
+		mTrunks.put(2, new Trunk(2, "regular"));
+		mTrunks.put(3, new Trunk(3, "large"));
+		mTrunks.put(4, new Trunk(4, "huge"));
 
 		sitesShort.put(0, new SiteShort(0, "belfort"));
 		sitesShort.put(1, new SiteShort(1, "sévenans"));
@@ -102,12 +96,18 @@ public class Resources {
 		return colors.get(id);
 	}
 
-	public static List<Trunk> getTrunks() {
-		return new ArrayList<Trunk>(trunks.values());
+	public static ArrayList<Trunk> getTrunks() {
+		ArrayList<Trunk> list = new ArrayList<Trunk>();
+		
+		for(int i = 0; i < mTrunks.size(); ++i) {
+			list.add(mTrunks.get(mTrunks.keyAt(i)));
+		}
+		
+		return list;
 	}
 
 	public static Trunk getTrunk(int id) {
-		return trunks.get(id);
+		return mTrunks.get(id);
 	}
 
 	public static List<SiteShort> getSitesShort() {
@@ -133,12 +133,22 @@ public class Resources {
 	public static Model getModel(int brand_id, int id) {
 		return models.get(brand_id).get(id);
 	}
+	
+	public static ArrayList<DriverCar> getCars() {
+		ArrayList<DriverCar> list = new ArrayList<DriverCar>();
+		
+		for(int i = 0; i < mCars.size(); ++i) {
+			list.add(mCars.get(mCars.keyAt(i)));
+		}
+		
+		return list;
+	}
 
 	public static void setUserInfos(UserInfos object, Context context) {
 		setUser(object.getUser());
 		setCars(object.getCars());
-		saveCars(context);
 		saveUser(context);
+		saveCars(context);
 	}
 
 	public static void setUser(UserShort object) {
@@ -150,15 +160,11 @@ public class Resources {
 	}
 
 	public static void setCars(ArrayList<DriverCar> object) {
-		String cars = "[";
 		if (object != null && !object.isEmpty()) {
 			for(DriverCar c : object) {
 				mCars.put(c.getId(), c);
-				cars += "{ " + c.serializeJSON() + " },";
 			}
-			cars = cars.substring(0, cars.length() - 2);
 		}
-		cars += "]";
 	}
 
 	public static void saveUser(Context c) {
@@ -171,15 +177,14 @@ public class Resources {
 
 	public static void saveCars(Context c) {
 		String cars = "[";
-		if (mCars != null && !mCars.isEmpty()) {
-			Iterator<Entry<String, DriverCar>> it = mCars.entrySet().iterator();
-			while(it.hasNext()) {
-				cars += "{ " + it.next().getValue().serializeJSON() + " },";
+		if (mCars != null) {
+			for(int i = 0; i < mCars.size(); ++i) {
+				cars += "{ " + mCars.get(mCars.keyAt(i)).serializeJSON() + " },";
 			}
 			cars = cars.substring(0, cars.length() - 2);
 		}
 		cars += "]";
-
+		
 		try {
 			FileManager.writeFile(cars, c.openFileOutput(Constants.FILE_USER_CARS, Context.MODE_PRIVATE));
 		} catch (FileNotFoundException e) {
@@ -191,5 +196,23 @@ public class Resources {
 		mUser = new User();
 		mUser.setApiToken(apiToken);
 		mUser.setUserId(userId);
+	}
+
+	public static void resetUser() {
+		mUser = null;
+	}
+
+	public static void deleteCar(int id) {
+		boolean wasDefault = false;
+		
+		if (mCars.get(id).isDefaultCar() && mCars.size() > 1) {
+			wasDefault = true;
+		}
+		
+		mCars.remove(id);
+		
+		if (wasDefault) {
+			mCars.get(mCars.keyAt(0)).setDefaultCar(true);
+		}
 	}
 }

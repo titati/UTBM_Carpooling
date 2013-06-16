@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import fr.utbm.carpooling.model.Trunk;
+import fr.utbm.carpooling.model.wrapper.Trunk;
 
 import java.util.List;
 

@@ -1,6 +1,9 @@
-package fr.utbm.carpooling.model;
+package fr.utbm.carpooling.model.wrapper;
 
 import java.util.ArrayList;
+
+import fr.utbm.carpooling.model.DriverCar;
+import fr.utbm.carpooling.model.UserShort;
 
 public class UserInfos {
 	private UserShort mUser;

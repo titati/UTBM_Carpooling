@@ -67,46 +67,6 @@ public class ResourcesWebServices {
 		con.execute("");
 	}
 	
-	public static void getTrunks(final TaskHandler<ArrayList<Trunk>> handler) {
-		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
-		
-		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		
-		HttpConnection con = new HttpConnection(cat + "getTrunks", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
-			
-			@Override
-			public void taskSuccessful(String jsonString) {
-				JSONValidator jv = new JSONValidator(jsonString);
-				
-				if (jv.isValid()) {
-					JSONObject object = jv.getObject();
-				
-					ArrayList<Trunk> listTrunk = new ArrayList<Trunk>();
-
-					try {
-						for(int i = 0; i < object.getJSONArray("trunks").length(); ++i) {
-							listTrunk.add(new Trunk((JSONObject) object.getJSONArray("trunks").get(i)));
-						}
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-
-					handler.taskSuccessful(listTrunk);
-				} else {
-					handler.taskFailed();
-				}
-			}
-			
-			@Override
-			public void taskFailed() {
-				handler.taskFailed();
-			}
-		});
-		
-		con.execute("");
-	}
-	
 	public static void getBrands(final TaskHandler<ArrayList<Brand>> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
@@ -187,7 +147,7 @@ public class ResourcesWebServices {
 		con.execute("");
 	}
 	
-	public static void getSitesShort(final TaskHandler<ArrayList<SiteShort>> handler) {
+	public static void getSites(final TaskHandler<ArrayList<Site>> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -202,17 +162,17 @@ public class ResourcesWebServices {
 				if (jv.isValid()) {
 					JSONObject object = jv.getObject();
 				
-					ArrayList<SiteShort> listModel = new ArrayList<SiteShort>();
+					ArrayList<Site> listSites = new ArrayList<Site>();
 
 					try {
-						for(int i = 0; i < object.getJSONArray("siteshorts").length(); ++i) {
-							listModel.add(new SiteShort((JSONObject) object.getJSONArray("siteshorts").get(i)));
+						for(int i = 0; i < object.getJSONArray("sites").length(); ++i) {
+							listSites.add(new Site((JSONObject) object.getJSONArray("sites").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 
-					handler.taskSuccessful(listModel);
+					handler.taskSuccessful(listSites);
 				} else {
 					handler.taskFailed();
 				}

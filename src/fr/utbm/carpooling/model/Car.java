@@ -7,7 +7,7 @@ import fr.utbm.carpooling.JSONParsable;
 
 public class Car extends JSONParsable {
 
-	protected String id;
+	protected int id;
 	protected int brandId;
 	protected int modelId;
 	protected int colorId;
@@ -20,11 +20,11 @@ public class Car extends JSONParsable {
 		super(object);
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
@@ -71,7 +71,7 @@ public class Car extends JSONParsable {
 	@Override
 	protected void deserializeJSON(JSONObject object) {
 		try {
-			setId(object.getString("id"));
+			setId(object.getInt("id"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

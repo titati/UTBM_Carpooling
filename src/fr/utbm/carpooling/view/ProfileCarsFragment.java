@@ -1,34 +1,27 @@
 package fr.utbm.carpooling.view;
 
-import java.util.ArrayList;
-
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.Resources;
+import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.adapter.DriverCarAdapter;
-import fr.utbm.carpooling.model.DriverCar;
+import fr.utbm.carpooling.view.widgets.LoadingDialog;
+import fr.utbm.carpooling.webservices.UserWebServices;
 
 
 public class ProfileCarsFragment extends Fragment {
 
     private ListView mListView = null;
-
-    private class CarOptionsDialog extends AlertDialog {
-
-        public CarOptionsDialog(Context context) {
-            super(context);
-
-        }
-    }
+    private TaskHandler<Boolean> mDeleteTask = null;
+    private TaskHandler<Boolean> mSetDefaultTask = null;
+    private LoadingDialog mLoader = null;
 
 
     public ProfileCarsFragment() {
@@ -36,15 +29,15 @@ public class ProfileCarsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_profile_cars, container,
-                false);
+        mLoader = new LoadingDialog(getActivity());
+        
+        return inflater.inflate(R.layout.fragment_profile_cars, container, false);
     }
 
-    @Override
+	@Override
     public void onActivityCreated(Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
@@ -52,27 +45,7 @@ public class ProfileCarsFragment extends Fragment {
         mListView = (ListView) getView().findViewById(
                 R.id.profile_cars_listview_cars);
 
-        DriverCar m = new DriverCar();
-        m.setBrandId(0);
-        m.setModelId(2);
-        m.setColorId(8);
-        m.setDefaultCar(true);
-        m.setSeats(4);
-        m.setTrunkId(2);
-
-        DriverCar c = new DriverCar();
-        c.setBrandId(1);
-        c.setModelId(3);
-        c.setColorId(6);
-        c.setDefaultCar(false);
-        c.setSeats(3);
-        c.setTrunkId(2);
-
-        ArrayList<DriverCar> cars = new ArrayList<DriverCar>();
-        cars.add(0, m);
-        cars.add(1, c);
-
-        final DriverCarAdapter adapter = new DriverCarAdapter(getActivity(), R.layout.view_driver_car_item, cars);
+        final DriverCarAdapter adapter = new DriverCarAdapter(getActivity(), R.layout.view_driver_car_item, Resources.getCars());
 
         mListView.setAdapter(adapter);
         mListView.setItemsCanFocus(false);
@@ -93,14 +66,13 @@ public class ProfileCarsFragment extends Fragment {
                         switch (which) {
                             case 0:
                                 if (!adapter.getItem(which).isDefaultCar()) {
-                                    // todo: updateCar
+                                	makeAsDefault(adapter.getItem(which).getId());
                                 }
                                 break;
                             case 1:
-                                // todo: deleteCar
+                                deleteCar(adapter.getItem(which).getId());
                                 break;
                         }
-                        // update list
                     }
                 });
 
@@ -110,6 +82,42 @@ public class ProfileCarsFragment extends Fragment {
         });
 
     }
+	
+	private void deleteCar(final int id) {
+		mDeleteTask = new TaskHandler<Boolean>() {
+			
+			@Override
+			public void taskSuccessful(Boolean object) {
+				Resources.deleteCar(id);
+			}
+
+			@Override
+			public void taskFailed() {
+				mLoader.hide();
+			}
+		};
+
+        mLoader.show();
+		UserWebServices.deleteCar(mDeleteTask, id);
+	}
+	
+	private void makeAsDefault(final int id) {
+		mSetDefaultTask = new TaskHandler<Boolean>() {
+
+			@Override
+			public void taskSuccessful(Boolean object) {
+				Resources.deleteCar(id);
+			}
+
+			@Override
+			public void taskFailed() {
+				mLoader.hide();
+			}
+		};
+		
+		mLoader.show();
+        UserWebServices.setDefaultCar(mSetDefaultTask, id);
+	}
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -131,8 +139,8 @@ public class ProfileCarsFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == 0 && resultCode == 1) {
-            //TODO: get updated car list
+        if (resultCode == 1) {
+            //TODO: get updated car list with the new car
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

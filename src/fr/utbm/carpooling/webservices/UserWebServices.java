@@ -13,6 +13,7 @@ import fr.utbm.carpooling.HttpConnection.HttpTaskHandler;
 import fr.utbm.carpooling.HttpConnection.REQUEST_TYPE;
 import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.model.*;
+import fr.utbm.carpooling.model.wrapper.UserInfos;
 
 
 public class UserWebServices { 
@@ -95,7 +96,7 @@ public class UserWebServices {
 		con.execute("");
 	}
 
-	public static void getUserInfos(final TaskHandler<UserInfos> mGatheringTask) {
+	public static void getUserInfos(final TaskHandler<UserInfos> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -118,25 +119,66 @@ public class UserWebServices {
 						e.printStackTrace();
 					}
 
-					ArrayList<Car> listCar = new ArrayList<Car>();
+					ArrayList<DriverCar> listCar = new ArrayList<DriverCar>();
 
 					try {
 						for(int i = 0; i < object.getJSONArray("cars").length(); ++i) {
-							listCar.add(new Car((JSONObject) object.getJSONArray("cars").get(i)));
+							listCar.add(new DriverCar((JSONObject) object.getJSONArray("cars").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-
-					mGatheringTask.taskSuccessful(userInfos);
+					
+					userInfos.setCars(listCar);
+					handler.taskSuccessful(userInfos);
 				} else {
-					mGatheringTask.taskFailed();
+					handler.taskFailed();
 				}
 			}
 			
 			@Override
 			public void taskFailed() {
-				mGatheringTask.taskFailed();
+				handler.taskFailed();
+			}
+		});
+		
+		con.execute("");
+	}
+
+	public static void getCars(final TaskHandler<ArrayList<DriverCar>> handler) {
+		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
+		
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
+		
+		HttpConnection con = new HttpConnection(cat + "getCars", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+			
+			@Override
+			public void taskSuccessful(String jsonString) {
+				JSONValidator jv = new JSONValidator(jsonString);
+				
+				if (jv.isValid()) {
+					JSONObject object = jv.getObject();
+
+					ArrayList<DriverCar> listCar = new ArrayList<DriverCar>();
+
+					try {
+						for(int i = 0; i < object.getJSONArray("cars").length(); ++i) {
+							listCar.add(new DriverCar((JSONObject) object.getJSONArray("cars").get(i)));
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+					handler.taskSuccessful(listCar);
+				} else {
+					handler.taskFailed();
+				}
+			}
+			
+			@Override
+			public void taskFailed() {
+				handler.taskFailed();
 			}
 		});
 		
@@ -259,6 +301,16 @@ public class UserWebServices {
 		});
 		
 		con.execute("");
+	}
+
+	public static void setDefaultCar(TaskHandler<Boolean> mSetDefaultTask, int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void deleteCar(TaskHandler<Boolean> mDeleteTask, int id) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

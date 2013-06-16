@@ -11,7 +11,7 @@ import android.widget.*;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.adapter.SiteShortAdapter;
-import fr.utbm.carpooling.model.SiteShort;
+import fr.utbm.carpooling.model.wrapper.SiteShort;
 import fr.utbm.carpooling.view.widgets.EditCheckpointView;
 
 import java.util.ArrayList;

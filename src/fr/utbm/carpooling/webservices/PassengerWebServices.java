@@ -14,6 +14,7 @@ import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.HttpConnection.REQUEST_TYPE;
 import fr.utbm.carpooling.model.*;
+import fr.utbm.carpooling.model.wrapper.TripSearch;
 
 
 public class PassengerWebServices {

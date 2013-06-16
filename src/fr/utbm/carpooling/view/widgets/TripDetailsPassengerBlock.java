@@ -2,7 +2,6 @@ package fr.utbm.carpooling.view.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.PassengerTrip;
 

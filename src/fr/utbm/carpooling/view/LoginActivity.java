@@ -17,8 +17,7 @@ import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.model.LoginResponse;
-import fr.utbm.carpooling.model.User;
-import fr.utbm.carpooling.model.UserInfos;
+import fr.utbm.carpooling.model.wrapper.UserInfos;
 import fr.utbm.carpooling.webservices.UserWebServices;
 
 /**
@@ -27,13 +26,9 @@ import fr.utbm.carpooling.webservices.UserWebServices;
  */
 public class LoginActivity extends Activity {
 	
-	/**
-	 * Keep track of the login task.
-	 */
+	/** Keep track of the login task. */
 	private TaskHandler<LoginResponse> mAuthTask = null;
-	/**
-	 * Keep track of the gathering info task.
-	 */
+	/** Keep track of the gathering info task. */
 	private TaskHandler<UserInfos> mGatheringTask = null;
 
 	// Values for email and password at the time of the login attempt.

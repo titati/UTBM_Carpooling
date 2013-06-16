@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 public class ColorCheckBox extends CheckBox {

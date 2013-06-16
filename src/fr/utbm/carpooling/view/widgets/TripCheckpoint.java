@@ -2,7 +2,6 @@ package fr.utbm.carpooling.view.widgets;
 
 import java.text.DateFormat;
 
-import android.widget.ImageButton;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.Checkpoint;
@@ -11,7 +10,6 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 

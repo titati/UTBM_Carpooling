@@ -76,7 +76,7 @@ public class HomeActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.home_menuitem_logout:
                 deleteFile(Constants.FILE_USER_INFO);
-                Resources.setUser(null);
+                Resources.resetUser();
                 Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
 				startActivity(intent);
 				finish();

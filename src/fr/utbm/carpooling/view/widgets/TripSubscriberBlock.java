@@ -6,7 +6,6 @@ import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.UserShort;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
