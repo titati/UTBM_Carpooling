@@ -1,9 +1,11 @@
 package fr.utbm.carpooling;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 public class FileManager {
@@ -27,19 +29,20 @@ public class FileManager {
 	
 	public static String readFile(FileInputStream input) {
 		try {
-			int value;
-			// On utilise un StringBuffer pour construire la chaîne au fur et à mesure
-			StringBuffer lu = new StringBuffer();
-			// On lit les caractères les uns après les autres
-			while((value = input.read()) != -1) {
-				// On écrit dans le fichier le caractère lu
-				lu.append((char)value);
+			BufferedReader br = new BufferedReader(new InputStreamReader(input, Charset.defaultCharset()), 8192);
+			String str;
+			String value = "";
+			
+			// Read lines one by one
+			while((str = br.readLine()) != null) {
+				// We concatenate the line with the previous ones
+				value += str;
 			}
 			
 			if(input != null)
 				input.close();
 			
-			return new String(lu.toString().getBytes(Charset.defaultCharset()), Charset.defaultCharset());
+			return value;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
