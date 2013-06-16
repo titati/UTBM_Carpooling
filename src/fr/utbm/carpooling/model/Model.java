@@ -8,45 +8,43 @@ import fr.utbm.carpooling.JSONParsable;
 public class Model extends JSONParsable {
 
 	private int id;
-    private int brandId;
+	private int brandId;
 	private String name;
 
+	public Model(int brandId, int id, String name) {
+		this.brandId = brandId;
+		this.id = id;
+		this.name = name;
+	}
 
-    public Model(int brandId, int id, String name) {
-        this.brandId = brandId;
-        this.id = id;
-        this.name = name;
-    }
-    
 	public Model(JSONObject object) {
 		super(object);
 	}
 
-
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-    public int getBrandId() {
-        return brandId;
-    }
+	public int getBrandId() {
+		return brandId;
+	}
 
-    public void setBrandId(int brandId) {
-        this.brandId = brandId;
-    }
+	public void setBrandId(int brandId) {
+		this.brandId = brandId;
+	}
 
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String serializeJSON() {
 		return  "\"id\" : \"" + getId() +
 				"\", \"brandid\" : \"" + getBrandId() +
@@ -61,13 +59,13 @@ public class Model extends JSONParsable {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			setBrandId(object.getInt("brandid"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
 			setName(object.getString("name"));
 		} catch (JSONException e) {

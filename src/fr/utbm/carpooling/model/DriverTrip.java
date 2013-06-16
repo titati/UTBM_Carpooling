@@ -8,37 +8,37 @@ import org.json.JSONObject;
 
 public class DriverTrip extends BaseTrip {
 
-	protected DriverCar car;
-	protected String description;
-	private Repeat repeat;
+	protected DriverCar mCar;
+	protected String mDescription;
+	private Repeat mRepeat;
 
 	public DriverTrip(JSONObject object) {
 		super(object);
 	}
 
 	public DriverCar getCar() {
-		return car;
+		return mCar;
 	}
 
 	public void setCar(DriverCar car) {
-		this.car = car;
+		this.mCar = car;
 	}
 
 	public String getDescription() {
-		return description;
+		return mDescription;
 	}
 
 	public void setDescription(String description) {
-		this.description = description;
+		this.mDescription = description;
 	}
 
 
 	public Repeat getRepeat() {
-		return repeat;
+		return mRepeat;
 	}
 
 	public void setRepeat(Repeat repeat) {
-		this.repeat = repeat;
+		this.mRepeat = repeat;
 	}
 
 	@Override

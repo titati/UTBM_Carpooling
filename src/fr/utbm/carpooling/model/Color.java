@@ -8,13 +8,11 @@ import fr.utbm.carpooling.JSONParsable;
 public class Color extends JSONParsable implements Comparable<Color> {
 
     private int id;
-    private String name;
     private String hex;
 
 
-    public Color(int id, String name, String hex) {
+    public Color(int id, String hex) {
         setId(id);
-        setName(name);
         setHex(hex);
     }
 
@@ -22,21 +20,12 @@ public class Color extends JSONParsable implements Comparable<Color> {
 		super(object);
 	}
 
-
 	public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getHex() {

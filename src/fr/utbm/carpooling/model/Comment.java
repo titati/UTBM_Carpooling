@@ -7,8 +7,8 @@ import fr.utbm.carpooling.JSONParsable;
 
 public class Comment extends JSONParsable {
 	
-	private String name;
-	private String comment;
+	private String mName;
+	private String mComment;
 	
 	public Comment() {
 		
@@ -19,19 +19,19 @@ public class Comment extends JSONParsable {
 	}
 
 	public String getName() {
-		return name;
+		return mName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.mName = name;
 	}
 
 	public String getComment() {
-		return comment;
+		return mComment;
 	}
 
 	public void setComment(String comment) {
-		this.comment = comment;
+		this.mComment = comment;
 	}
 	
 	@Override

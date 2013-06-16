@@ -1,23 +1,21 @@
 package fr.utbm.carpooling.model;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import fr.utbm.carpooling.JSONParsable;
+import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
 
 public abstract class BaseTrip extends JSONParsable {
 
 	protected String abstractTripId;
 	protected Date tripId;
-
 	protected ArrayList<? extends CheckpointShort> checkpoints;
 
 	public BaseTrip(JSONObject object) {
@@ -58,9 +56,8 @@ public abstract class BaseTrip extends JSONParsable {
 			e.printStackTrace();
 		}
 		
-		SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy kk:mm:ss", Locale.ENGLISH);
 		try {
-			setTripId(df.parse(object.getString("tripid")));
+			setTripId(ResourcesWebServices.getStandardDateFormat().parse(object.getString("tripid")));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {

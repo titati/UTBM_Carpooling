@@ -3,7 +3,9 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class User extends UserShort {
+import fr.utbm.carpooling.JSONSerializable;
+
+public class User extends UserShort implements JSONSerializable {
 	
 	private String apiToken;
 	
@@ -22,7 +24,12 @@ public class User extends UserShort {
 	}
 	
 	public String serializeJSON() {
-		return super.serializeJSON() + ", \"apitoken\" : \"" + getApiToken() + "\"";
+		return "\"userid\" : \"" + getUserId() +
+				"\", \"lastname\" : \"" + getLastname() +
+				"\", \"firstname\" : \"" + getFirstname() +
+				"\", \"phone\" : \"" + getPhone() +
+				"\", \"email\" : \"" + getEmail() +
+				"\", \"apitoken\" : \"" + getApiToken() + "\"";
 	}
 	
 	@Override

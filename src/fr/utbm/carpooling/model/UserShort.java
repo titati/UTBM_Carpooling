@@ -59,14 +59,6 @@ public class UserShort extends JSONParsable {
 		this.email = email;
 	}
 	
-	public String serializeJSON() {
-		return  "\"userid\" : \"" + getUserId() +
-				"\", \"lastname\" : \"" + getLastname() +
-				"\", \"firstname\" : \"" + getFirstname() +
-				"\", \"phone\" : \"" + getPhone() +
-				"\", \"email\" : \"" + getEmail() + "\"";
-	}
-	
 	@Override
 	protected void deserializeJSON(JSONObject object) {
 		try {
