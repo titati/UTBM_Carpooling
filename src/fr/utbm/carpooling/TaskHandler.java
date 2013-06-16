@@ -6,6 +6,6 @@ package fr.utbm.carpooling;
  * and if the task is not successful then we'll call taskFailed
  */
 public interface TaskHandler<E> {
-		void taskSuccessful(E object);
-	    void taskFailed();
+	public void taskSuccessful(E object);
+	public void taskFailed();
 }
