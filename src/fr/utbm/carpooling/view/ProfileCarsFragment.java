@@ -13,7 +13,7 @@ import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.adapter.DriverCarAdapter;
 import fr.utbm.carpooling.view.widgets.LoadingDialog;
-import fr.utbm.carpooling.webservices.UserWebServices;
+import fr.utbm.carpooling.webservices.DriverWebServices;
 
 
 public class ProfileCarsFragment extends Fragment {
@@ -98,7 +98,7 @@ public class ProfileCarsFragment extends Fragment {
 		};
 
         mLoader.show();
-		UserWebServices.deleteCar(mDeleteTask, id);
+		DriverWebServices.deleteCar(id, mDeleteTask);
 	}
 	
 	private void makeAsDefault(final int id) {
@@ -116,7 +116,7 @@ public class ProfileCarsFragment extends Fragment {
 		};
 		
 		mLoader.show();
-        UserWebServices.setDefaultCar(mSetDefaultTask, id);
+        DriverWebServices.setDefaultCar(id, mSetDefaultTask);
 	}
 
     @Override

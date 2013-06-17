@@ -39,7 +39,7 @@ public class EditCarActivity extends Activity {
                 return true;
 
             case R.id.edit_car_menuitem_save:
-                //TODO: create the car
+                //TODO: update the car
                 this.setResult(1);
                 finish();
                 return true;

@@ -214,7 +214,7 @@ public class DriverWebServices {
 		con.execute("");
 	}
 	
-	public static void deleteCar(String carId, final TaskHandler<Boolean> handler) {
+	public static void deleteCar(int id, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -249,6 +249,11 @@ public class DriverWebServices {
 		});
 		
 		con.execute("");
+	}
+
+	public static void setDefaultCar(int id, TaskHandler<Boolean> mSetDefaultTask) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public static void updateCarPosition(String carId, GpsPosition position, final TaskHandler<Boolean> handler) {
