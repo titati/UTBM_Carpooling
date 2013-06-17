@@ -58,44 +58,6 @@ public class UserWebServices {
 		con.execute("");
 	}
 
-	public static void logout(final TaskHandler<Boolean> handler) {
-		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
-		
-		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		
-		HttpConnection con = new HttpConnection(cat + "logout", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
-			
-			@Override
-			public void taskSuccessful(String jsonString) {
-				JSONValidator jv = new JSONValidator(jsonString);
-				
-				if (jv.isValid()) {
-					JSONObject object = jv.getObject();
-				
-					boolean isLoggedOut = false;
-
-					try {
-						isLoggedOut = object.getBoolean("loggedout");
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-
-					handler.taskSuccessful(isLoggedOut);
-				} else {
-					handler.taskFailed();
-				}
-			}
-			
-			@Override
-			public void taskFailed() {
-				handler.taskFailed();
-			}
-		});
-		
-		con.execute("");
-	}
-
 	public static void getUserInfos(final TaskHandler<UserInfos> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
@@ -145,7 +107,7 @@ public class UserWebServices {
 		con.execute("");
 	}
 	
-	public static void createUser(final TaskHandler<Boolean> handler) {
+	public static void createUser(UserShort user, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -183,7 +145,7 @@ public class UserWebServices {
 		con.execute("");
 	}
 	
-	public static void updateUser(final TaskHandler<Boolean> handler, UserShort user) {
+	public static void updateUser(UserShort user, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));

@@ -63,7 +63,7 @@ public class HttpConnection extends AsyncTask<String, Void, String> {
         return sb.toString();
 	}
 
-	protected void initCon() {
+	private void initCon() {
 		con.setReadTimeout(10000);
 		con.setConnectTimeout(15000);
 		con.setDoInput(true);

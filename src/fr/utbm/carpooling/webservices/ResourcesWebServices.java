@@ -15,6 +15,7 @@ import fr.utbm.carpooling.HttpConnection.HttpTaskHandler;
 import fr.utbm.carpooling.HttpConnection.REQUEST_TYPE;
 import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.model.*;
+import fr.utbm.carpooling.model.wrapper.CarsReferences;
 
 
 public class ResourcesWebServices {
@@ -67,47 +68,7 @@ public class ResourcesWebServices {
 		con.execute("");
 	}
 	
-	public static void getBrands(final TaskHandler<ArrayList<Brand>> handler) {
-		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
-		
-		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		
-		HttpConnection con = new HttpConnection(cat + "getBrands", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
-			
-			@Override
-			public void taskSuccessful(String jsonString) {
-				JSONValidator jv = new JSONValidator(jsonString);
-				
-				if (jv.isValid()) {
-					JSONObject object = jv.getObject();
-				
-					ArrayList<Brand> listBrand = new ArrayList<Brand>();
-
-					try {
-						for(int i = 0; i < object.getJSONArray("brands").length(); ++i) {
-							listBrand.add(new Brand((JSONObject) object.getJSONArray("brands").get(i)));
-						}
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-
-					handler.taskSuccessful(listBrand);
-				} else {
-					handler.taskFailed();
-				}
-			}
-			
-			@Override
-			public void taskFailed() {
-				handler.taskFailed();
-			}
-		});
-		
-		con.execute("");
-	}
-	
-	public static void getModels(int brandId, final TaskHandler<ArrayList<Model>> handler) {
+	public static void getCarsReferences(final TaskHandler<ArrayList<CarsReferences>> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -122,17 +83,17 @@ public class ResourcesWebServices {
 				if (jv.isValid()) {
 					JSONObject object = jv.getObject();
 				
-					ArrayList<Model> listModel = new ArrayList<Model>();
+					ArrayList<CarsReferences> listRefs = new ArrayList<CarsReferences>();
 
 					try {
-						for(int i = 0; i < object.getJSONArray("models").length(); ++i) {
-							listModel.add(new Model((JSONObject) object.getJSONArray("models").get(i)));
+						for(int i = 0; i < object.getJSONArray("brands").length(); ++i) {
+							//listRefs.add(new CarsReferences((JSONObject) object.getJSONArray("models").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 
-					handler.taskSuccessful(listModel);
+					handler.taskSuccessful(listRefs);
 				} else {
 					handler.taskFailed();
 				}

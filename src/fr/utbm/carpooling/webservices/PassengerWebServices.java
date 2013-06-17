@@ -261,12 +261,12 @@ public class PassengerWebServices {
 		con.execute("");
 	}
 
-	public static void getTripSearchResult(String abstractTripId, Date tripId, final TaskHandler<TripSearchResult> handler) {
+	public static void getTripSearchResult(int abstractTripId, Date tripId, final TaskHandler<TripSearchResult> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		params.add(new BasicNameValuePair("abstractTripId", abstractTripId));
+		params.add(new BasicNameValuePair("abstractTripId", String.valueOf(abstractTripId)));
 		params.add(new BasicNameValuePair("tripId", ResourcesWebServices.getStandardDateFormat().format(tripId)));
 		
 		HttpConnection con = new HttpConnection(cat + "getTripSearchResult", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
@@ -301,12 +301,12 @@ public class PassengerWebServices {
 		con.execute("");
 	}
 	
-	public static void suscribe(String abstractTripId, Date tripId, final TaskHandler<Boolean> handler) {
+	public static void suscribe(int abstractTripId, Date tripId, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		params.add(new BasicNameValuePair("abstractTripId", abstractTripId));
+		params.add(new BasicNameValuePair("abstractTripId", String.valueOf(abstractTripId)));
 		params.add(new BasicNameValuePair("tripId", ResourcesWebServices.getStandardDateFormat().format(tripId)));
 		
 		HttpConnection con = new HttpConnection(cat + "suscribe", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
@@ -341,12 +341,12 @@ public class PassengerWebServices {
 		con.execute("");
 	}
 	
-	public static void unsuscribe(String abstractTripId, Date tripId, final TaskHandler<Boolean> handler) {
+	public static void unsuscribe(int abstractTripId, Date tripId, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		params.add(new BasicNameValuePair("abstractTripId", abstractTripId));
+		params.add(new BasicNameValuePair("abstractTripId", String.valueOf(abstractTripId)));
 		params.add(new BasicNameValuePair("tripId", ResourcesWebServices.getStandardDateFormat().format(tripId)));
 		
 		HttpConnection con = new HttpConnection(cat + "unsuscribe", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
@@ -381,12 +381,12 @@ public class PassengerWebServices {
 		con.execute("");
 	}
 	
-	public static void setTripFeedback(String abstractTripId, Date tripId, TripFeedback feedback, final TaskHandler<Boolean> handler) {
+	public static void setTripFeedback(int abstractTripId, Date tripId, TripFeedback feedback, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		params.add(new BasicNameValuePair("abstractTripId", abstractTripId));
+		params.add(new BasicNameValuePair("abstractTripId", String.valueOf(abstractTripId)));
 		params.add(new BasicNameValuePair("tripId", ResourcesWebServices.getStandardDateFormat().format(tripId)));
 		params.add(new BasicNameValuePair("feedbackRating", String.valueOf(feedback.getRating())));
 		params.add(new BasicNameValuePair("feedbackComment", feedback.getComment()));
@@ -423,12 +423,12 @@ public class PassengerWebServices {
 		con.execute("");
 	}
 	
-	public static void getPassengerTrip(String abstractTripId, Date tripId, final TaskHandler<PassengerTrip> handler) {
+	public static void getPassengerTrip(int abstractTripId, Date tripId, final TaskHandler<PassengerTrip> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		params.add(new BasicNameValuePair("abstractTripId", abstractTripId));
+		params.add(new BasicNameValuePair("abstractTripId", String.valueOf(abstractTripId)));
 		params.add(new BasicNameValuePair("tripId", ResourcesWebServices.getStandardDateFormat().format(tripId)));
 		
 		HttpConnection con = new HttpConnection(cat + "getPassengerTrip", params, REQUEST_TYPE.POST, new HttpTaskHandler() {

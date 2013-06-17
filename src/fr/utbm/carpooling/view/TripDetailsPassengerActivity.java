@@ -24,10 +24,10 @@ public class TripDetailsPassengerActivity extends Activity {
 		setContentView(R.layout.activity_trip_details_passenger);
 		
 		initHandler();
-        loadData(getIntent().getExtras().getString("abstractTripId"), (Date) getIntent().getExtras().get("tripId"));
+        loadData(getIntent().getExtras().getInt("abstractTripId"), (Date) getIntent().getExtras().get("tripId"));
 	}
 	
-	private void loadData(String abstractTripId, Date tripId) {
+	private void loadData(int abstractTripId, Date tripId) {
         mLoader.show();
         PassengerWebServices.getPassengerTrip(abstractTripId, tripId, mHandler);
     }

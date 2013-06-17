@@ -41,7 +41,7 @@ public abstract class TripItem<E extends BaseTrip> extends LinearLayout {
 		initView();
 	}
 	
-	public String getAbstractTripId() {
+	public int getAbstractTripId() {
 		return data.getAbstractTripId();
 	}
 	

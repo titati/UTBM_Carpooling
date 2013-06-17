@@ -14,7 +14,7 @@ import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
 public abstract class BaseTrip extends JSONParsableObject {
 
-	protected String abstractTripId;
+	protected int abstractTripId;
 	protected Date tripId;
 	protected ArrayList<? extends CheckpointShort> checkpoints;
 
@@ -24,11 +24,11 @@ public abstract class BaseTrip extends JSONParsableObject {
 	
 	public BaseTrip() {}
 
-	public String getAbstractTripId() {
+	public int getAbstractTripId() {
 		return abstractTripId;
 	}
 	
-	public void setAbstractTripId(String id) {
+	public void setAbstractTripId(int id) {
 		this.abstractTripId = id;
 	}
 	
@@ -51,7 +51,7 @@ public abstract class BaseTrip extends JSONParsableObject {
 	@Override
 	public void deserializeJSON(JSONObject object) {
 		try {
-			setAbstractTripId(object.getString("abstracttripid"));
+			setAbstractTripId(object.getInt("abstracttripid"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

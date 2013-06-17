@@ -404,7 +404,7 @@ public class DriverWebServices {
 		con.execute("");
 	}
 	
-	public static void deleteTrip(String abstractTripId, final TaskHandler<Boolean> handler) {
+	public static void deleteTrip(int abstractTripId, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -441,7 +441,7 @@ public class DriverWebServices {
 		con.execute("");
 	}
 	
-	public static void deleteTripOccurence(String abstractTripId, Date tripId, final TaskHandler<Boolean> handler) {
+	public static void deleteTripOccurence(int abstractTripId, Date tripId, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -478,7 +478,7 @@ public class DriverWebServices {
 		con.execute("");
 	}
 	
-	public static void getTrip(String abstractTripId, final TaskHandler<DriverTrip> handler) {
+	public static void getTrip(int abstractTripId, final TaskHandler<DriverTrip> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -515,12 +515,12 @@ public class DriverWebServices {
 		con.execute("");
 	}
 	
-	public static void getTripOccurence(String abstractTripId, Date tripId, final TaskHandler<DriverTripOccurence> handler) {
+	public static void getTripOccurence(int abstractTripId, Date tripId, final TaskHandler<DriverTripOccurence> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		params.add(new BasicNameValuePair("abstracttripid", abstractTripId));
+		params.add(new BasicNameValuePair("abstracttripid", String.valueOf(abstractTripId)));
 		params.add(new BasicNameValuePair("tripid", ResourcesWebServices.getStandardDateFormat().format(tripId)));
 		
 		HttpConnection con = new HttpConnection(cat + "getTripOccurence", params, REQUEST_TYPE.POST, new HttpTaskHandler() {

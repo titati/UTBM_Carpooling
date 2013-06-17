@@ -94,7 +94,7 @@ public class EditInfoActivity extends Activity {
             	mUser.setEmail(mEmail.getText().toString());
             	
             	mLoader.show();
-                UserWebServices.updateUser(mHandler, mUser);
+                UserWebServices.updateUser(mUser, mHandler);
                 
                 return true;
         }
