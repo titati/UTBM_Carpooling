@@ -14,10 +14,10 @@ import java.util.List;
 
 public class SiteShortAdapter extends ArrayAdapter<SiteShort> {
 
-    private List<SiteShort> mItems;
-    private List<Integer> mDisabled = new ArrayList<Integer>();
+    private ArrayList<SiteShort> mItems;
+    private ArrayList<Integer> mDisabled = new ArrayList<Integer>();
 
-    public SiteShortAdapter(Context context, int textViewResourceId, List<SiteShort> items) {
+    public SiteShortAdapter(Context context, int textViewResourceId, ArrayList<SiteShort> items) {
         super(context, textViewResourceId, items);
         mItems = items;
     }

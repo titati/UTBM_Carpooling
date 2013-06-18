@@ -26,7 +26,7 @@ public class EditTripActivity extends Activity {
     private List<Spinner> mSiteSpinners = new ArrayList<Spinner>();
     private LinearLayout mMainLayout;
     private ImageButton mAddButton;
-    private List<SiteShort> mSitesShort = Resources.getSitesShort();
+    private ArrayList<SiteShort> mSitesShort = Resources.getSitesShort();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
