@@ -200,10 +200,12 @@ public class Resources {
 		mUser = new User();
 		mUser.setApiToken(apiToken);
 		mUser.setUserId(userId);
+		mCars = new SparseArray<DriverCar>();
 	}
 
 	public static void resetUser() {
 		mUser = null;
+		mCars = null;
 	}
 
 	public static void deleteCar(int id) {
@@ -227,6 +229,6 @@ public class Resources {
 			siteShort.add(new SiteShort(mSites.keyAt(i), mSites.valueAt(i).getName()));
 		}
 		
-		return null;
+		return siteShort;
 	}
 }
