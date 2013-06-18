@@ -15,9 +15,9 @@ public class ColorCheckBox extends CheckBox {
     private Paint mFramePainter = new Paint();
     private Rect mBodyRect = new Rect();
     private Rect mFrameRect = new Rect();
-    private static final int UNCHECKED_FRAME_WIDTH = 1;
+    private static final int UNCHECKED_FRAME_WIDTH = 2;
     private static final int CHECKED_FRAME_WIDTH = 10;
-    private static final float FRAME_COLOR_DARK_FACTOR = (float) 0.5;
+    private static final float FRAME_COLOR_DARK_FACTOR = (float) 0.25;
 
     public ColorCheckBox(Context context) {
         super(context);
@@ -33,6 +33,7 @@ public class ColorCheckBox extends CheckBox {
         // init styles of the painters
         mBodyPainter.setStyle(Paint.Style.FILL);
         mFramePainter.setStyle(Paint.Style.STROKE);
+        mFramePainter.setAntiAlias(true);
     }
 
     public void setColor(String hex) {
@@ -70,8 +71,10 @@ public class ColorCheckBox extends CheckBox {
         mFramePainter.setStrokeWidth(isChecked() ? CHECKED_FRAME_WIDTH : UNCHECKED_FRAME_WIDTH);
 
         // draw rectangles
-        canvas.drawRect(mBodyRect, mBodyPainter);
-        canvas.drawRect(mFrameRect, mFramePainter);
+        //canvas.drawRect(mBodyRect, mBodyPainter);
+        canvas.drawCircle(mBodyRect.exactCenterX(), mBodyRect.exactCenterY(), mBodyRect.width()/2, mBodyPainter);
+        canvas.drawCircle(mFrameRect.exactCenterX(), mFrameRect.exactCenterY(), mFrameRect.width()/2, mFramePainter);
+        //canvas.drawRect(mFrameRect, mFramePainter);
     }
 
     @Override
