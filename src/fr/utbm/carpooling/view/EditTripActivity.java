@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.*;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
+import fr.utbm.carpooling.adapter.CarAdapter;
 import fr.utbm.carpooling.adapter.SiteShortAdapter;
+import fr.utbm.carpooling.adapter.TrunkAdapter;
 import fr.utbm.carpooling.model.wrapper.SiteShort;
 import fr.utbm.carpooling.view.widgets.EditCheckpointView;
 
@@ -27,6 +29,9 @@ public class EditTripActivity extends Activity {
     private LinearLayout mMainLayout;
     private ImageButton mAddButton;
     private ArrayList<SiteShort> mSitesShort = Resources.getSitesShort();
+
+    private Spinner mCarsSpinner;
+    private Spinner mTrunksSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +133,14 @@ public class EditTripActivity extends Activity {
 
         departureSiteSpinner.setSelection(0);
         arrivalSiteSpinner.setSelection(1);
+
+
+        mCarsSpinner = (Spinner) findViewById(R.id.edit_trip_spinner_car);
+        mTrunksSpinner = (Spinner) findViewById(R.id.edit_trip_spinner_trunk);
+
+        mCarsSpinner.setAdapter(new CarAdapter(this, 0, Resources.getCars()));
+        mTrunksSpinner.setAdapter(new TrunkAdapter(this, 0, Resources.getTrunks()));
+
 
 
     }

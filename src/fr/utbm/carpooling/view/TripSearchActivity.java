@@ -11,6 +11,7 @@ import android.widget.*;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.adapter.SiteShortAdapter;
+import fr.utbm.carpooling.adapter.TrunkAdapter;
 import fr.utbm.carpooling.view.widgets.DatePickerSpinner;
 import fr.utbm.carpooling.view.widgets.TimePickerSpinner;
 
@@ -19,6 +20,7 @@ public class TripSearchActivity extends Activity {
 
     private Spinner mDepartureSiteSpinner;
     private Spinner mArrivalSiteSpinner;
+    private Spinner mTrunksSpinner;
     private DatePickerSpinner mArrivalDateSpinner;
     private TimePickerSpinner mArrivalTimeSpinner;
 
@@ -78,6 +80,10 @@ public class TripSearchActivity extends Activity {
                 moreBlock.setVisibility(View.GONE);
             }
         });
+
+        mTrunksSpinner = (Spinner) findViewById(R.id.trip_search_spinner_trunk);
+
+        mTrunksSpinner.setAdapter(new TrunkAdapter(this, 0, Resources.getTrunks()));
     }
 
     @Override
