@@ -16,7 +16,6 @@ import fr.utbm.carpooling.adapter.DriverTripAdapter;
 import fr.utbm.carpooling.model.DriverTripOccurenceShort;
 import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.view.widgets.DriverTripItem;
-import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import fr.utbm.carpooling.webservices.DriverWebServices;
 
 import java.util.ArrayList;
@@ -27,7 +26,6 @@ public class TripsDriverFragment extends Fragment {
 
     private ListView mListView = null;
     private TaskHandler<ArrayList<DriverTripOccurenceShort>> mHandler = null;
-    private LoadingDialog mLoader = null;
     
     private static Date lastUpdate;
     private static ArrayList<DriverTripOccurenceShort> data;
@@ -38,7 +36,7 @@ public class TripsDriverFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	
+
     	setHasOptionsMenu(true);
     	
         // Inflate the layout for this fragment
@@ -107,12 +105,12 @@ public class TripsDriverFragment extends Fragment {
 	}
 
 	private void refreshData() {
-        mLoader.show();
+        getActivity().setProgressBarIndeterminateVisibility(true);
         DriverWebServices.getNextTripsShort(mHandler);
     }
     
     private void initHandler() {
-		mLoader = new LoadingDialog(getActivity());
+
 		mHandler = new TaskHandler<ArrayList<DriverTripOccurenceShort>>() {
 			
 			@Override
@@ -120,14 +118,14 @@ public class TripsDriverFragment extends Fragment {
 				initView(object);
 				data = object;
 		        lastUpdate = new Date();
-		        
-		        mLoader.dismiss();
+
+                getActivity().setProgressBarIndeterminateVisibility(false);
 			}
 			
 			@Override
 			public void taskFailed() {
 				if (getUserVisibleHint()) Toast.makeText(getActivity().getApplicationContext(), "Error while fetching content", Toast.LENGTH_LONG).show();
-		        mLoader.dismiss();
+                getActivity().setProgressBarIndeterminateVisibility(false);
 			}
 		};
 	}
@@ -142,7 +140,7 @@ public class TripsDriverFragment extends Fragment {
     @Override
     public void onPause() {
     	super.onPause();
-    	mLoader.dismiss();
+        getActivity().setProgressBarIndeterminateVisibility(false);
     }
     
 	@Override

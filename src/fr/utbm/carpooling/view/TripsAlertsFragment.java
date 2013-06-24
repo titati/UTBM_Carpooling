@@ -17,7 +17,6 @@ import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.adapter.AlertAdapter;
 import fr.utbm.carpooling.model.Alert;
 import fr.utbm.carpooling.utils.TaskHandler;
-import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import fr.utbm.carpooling.webservices.PassengerWebServices;
 
 import java.util.ArrayList;
@@ -26,11 +25,10 @@ import java.util.Date;
 public class TripsAlertsFragment extends Fragment {
 
     private ListView mListView = null;
-    private LoadingDialog mLoader;
-	private TaskHandler<ArrayList<Alert>> mHandler;
-    
-	private static Date lastUpdate;
-	private static ArrayList<Alert> data;
+    private TaskHandler<ArrayList<Alert>> mHandler;
+
+    private static Date lastUpdate;
+    private static ArrayList<Alert> data;
 
     public TripsAlertsFragment() {
         // Required empty public constructor
@@ -38,9 +36,9 @@ public class TripsAlertsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    	
-    	setHasOptionsMenu(true);
-    	
+
+        setHasOptionsMenu(true);
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_trips_alerts, container, false);
     }
@@ -82,53 +80,52 @@ public class TripsAlertsFragment extends Fragment {
         if (lastUpdate == null || (lastUpdate.getTime() < (new Date()).getTime() - 5 * 60000)) refreshData();
         if (data != null) initView(data);
     }
-    
+
     private void refreshData() {
-    	mLoader.show();
+        getActivity().setProgressBarIndeterminateVisibility(true);
         PassengerWebServices.getAlerts(mHandler);
-	}
+    }
 
-	private void initHandler() {
-		mLoader = new LoadingDialog(getActivity());
-		mHandler = new TaskHandler<ArrayList<Alert>>() {
-			
-			@Override
-			public void taskSuccessful(ArrayList<Alert> object) {
-				initView(object);
-				data = object;
-		        lastUpdate = new Date();
-		        
-		        mLoader.dismiss();
-			}
-			
-			@Override
-			public void taskFailed() {
-				if (getUserVisibleHint()) Toast.makeText(getActivity().getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
-		        mLoader.dismiss();
-			}
-		};
-	}
+    private void initHandler() {
 
-	private void initView(ArrayList<Alert> object) {
-		Log.i("checkTo", "" + object.get(0).getToSiteId());
-    	AlertAdapter adapter = new AlertAdapter(getActivity(), R.id.trips_passenger_listview_trips, object);
-		
-		mListView.setAdapter(adapter);
-        
+        mHandler = new TaskHandler<ArrayList<Alert>>() {
+
+            @Override
+            public void taskSuccessful(ArrayList<Alert> object) {
+                initView(object);
+                data = object;
+                lastUpdate = new Date();
+
+                getActivity().setProgressBarIndeterminateVisibility(false);
+            }
+
+            @Override
+            public void taskFailed() {
+                if (getUserVisibleHint())
+                    Toast.makeText(getActivity().getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
+                getActivity().setProgressBarIndeterminateVisibility(false);
+            }
+        };
+    }
+
+    private void initView(ArrayList<Alert> object) {
+        Log.i("checkTo", "" + object.get(0).getToSiteId());
+        AlertAdapter adapter = new AlertAdapter(getActivity(), R.id.trips_passenger_listview_trips, object);
+
+        mListView.setAdapter(adapter);
+
         mListView.setOnLongClickListener(new OnLongClickListener() {
-			
-			@Override
-			public boolean onLongClick(View v) {
-				
-				
-				return false;
-			}
-		});
-	}
-    
+            @Override
+            public boolean onLongClick(View v) {
+
+                return false;
+            }
+        });
+    }
+
     @Override
     public void onPause() {
-    	super.onPause();
-    	mLoader.dismiss();
+        super.onPause();
+        getActivity().setProgressBarIndeterminateVisibility(false);
     }
 }
