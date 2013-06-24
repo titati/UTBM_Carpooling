@@ -1,70 +1,75 @@
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".EditInfoActivity"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/profile_info_caption_name"
-        android:enabled="false"
-        android:textAllCaps="true"
-        android:paddingStart="10dp"/>
-
-    <EditText
-        android:id="@+id/edit_info_textview_name"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:layout_marginBottom="10dp" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_info_caption_name"
+            android:enabled="false"
+            android:textAllCaps="true"
+            android:paddingStart="10dp"/>
+
+        <EditText
+            android:id="@+id/edit_info_textview_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="10dp"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/profile_info_caption_firstname"
-        android:enabled="false"
-        android:textAllCaps="true"
-        android:paddingStart="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_info_caption_firstname"
+            android:enabled="false"
+            android:textAllCaps="true"
+            android:paddingStart="10dp"/>
 
-    <EditText
-        android:id="@+id/edit_info_textview_firstname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:layout_marginBottom="10dp"/>
+        <EditText
+            android:id="@+id/edit_info_textview_firstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="10dp"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/profile_info_caption_phone"
-        android:enabled="false"
-        android:textAllCaps="true"
-        android:paddingStart="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_info_caption_phone"
+            android:enabled="false"
+            android:textAllCaps="true"
+            android:paddingStart="10dp"/>
 
-    <EditText
-        android:id="@+id/edit_info_textview_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:layout_marginBottom="10dp"/>
+        <EditText
+            android:id="@+id/edit_info_textview_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/profile_info_caption_email"
-        android:enabled="false"
-        android:textAllCaps="true"
-        android:paddingStart="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_info_caption_email"
+            android:enabled="false"
+            android:textAllCaps="true"
+            android:paddingStart="10dp"/>
 
-    <EditText
-        android:id="@+id/edit_info_textview_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"/>
-</LinearLayout>
+        <EditText
+            android:id="@+id/edit_info_textview_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"/>
+    </LinearLayout>
+</ScrollView>

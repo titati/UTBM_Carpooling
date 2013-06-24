@@ -2,6 +2,7 @@ package fr.utbm.carpooling.view.widgets;
 
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -18,6 +19,8 @@ public class ColorGridView extends LinearLayout {
     private Context mContext;
     private ArrayList<Color> mColors;
     private GridView mGridView;
+    private TextView mTitle;
+    private int mCurPos = -1;
 
 
     public ColorGridView(Context context, AttributeSet attrs) {
@@ -44,16 +47,34 @@ public class ColorGridView extends LinearLayout {
             mGridView.setGravity(Gravity.CENTER);
             mGridView.setClickable(true);
             mGridView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+            mGridView.setFocusable(true);
+            mGridView.setFocusableInTouchMode(true);
+
+            mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (mTitle.getError() != null)
+                        mTitle.setError(null);
+
+                    mCurPos = position;
+                }
+            });
 
             ColorAdapter adapter = new ColorAdapter(mContext, mGridView.getId());
 
             mGridView.setAdapter(adapter);
+
+            LinearLayout parent = (LinearLayout) getParent();
+            mTitle = (TextView) parent.getChildAt(parent.indexOfChild(this) - 1);
+            mTitle.setFocusable(true);
+            mTitle.setFocusableInTouchMode(true);
+
         }
 
     }
 
     @Override
-    protected void onMeasure (int widthMeasureSpec, int heightMeasureSpec) {
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(
                 MeasureSpec.AT_MOST, 200);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -68,13 +89,18 @@ public class ColorGridView extends LinearLayout {
     }
 
 
-    public Color getSelectedColor() {
+    public void setError(CharSequence errorMsg) {
 
-        return mColors.get(mGridView.getSelectedItemPosition());
+        mTitle.requestFocus();
+        mTitle.setError(errorMsg);
     }
 
-    public void setSelectedColor(Color color) {
 
+    public Color getSelectedColor() {
+
+        if (mCurPos == -1)
+            return null;
+        return mColors.get(mCurPos);
     }
 
 
@@ -111,7 +137,7 @@ public class ColorGridView extends LinearLayout {
 
             if (ccb == null) {
                 ccb = new ColorCheckBox(mContext);
-                ccb.setPadding(5,5,5,5);
+                ccb.setPadding(5, 5, 5, 5);
                 ccb.setColor(mColors.get(position).getHex());
                 ccb.setClickable(false);
                 ccb.setFocusable(false);

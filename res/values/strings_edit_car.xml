@@ -12,5 +12,7 @@
     <string name="edit_car_prompt_select_trunk">Trunk</string>
     <string name="edit_car_caption_seats">(driver not included)</string>
     <string name="edit_car_option_default">Default</string>
+    <string name="edit_car_error_color">You must select a color</string>
+    <string name="edit_car_error_seats">You must provide a number of seats</string>
     
 </resources>

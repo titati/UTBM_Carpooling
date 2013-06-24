@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import fr.utbm.carpooling.model.LoginResponse;
 import fr.utbm.carpooling.model.wrapper.UserInfos;
 import fr.utbm.carpooling.utils.Resources;
 import fr.utbm.carpooling.utils.TaskHandler;
+import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import fr.utbm.carpooling.webservices.UserWebServices;
 
 /**
@@ -39,9 +41,7 @@ public class LoginActivity extends Activity {
 	// UI references.
 	private EditText mLoginView;
 	private EditText mPasswordView;
-	private View mLoginFormView;
-	private View mLoginStatusView;
-	private TextView mLoginStatusMessageView;
+    private LoadingDialog mLoader;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +54,11 @@ public class LoginActivity extends Activity {
 		setContentView(R.layout.activity_login);
 		setTitle(R.string.login_title);
 
+        mLoader = new LoadingDialog(this);
+        mLoader.setCancelable(false);
+
 		mLoginView = (EditText) findViewById(R.id.login_edittext_login);
 		mPasswordView = (EditText) findViewById(R.id.login_edittext_password);
-		findViewById(R.id.login_checkbox_remember).setVisibility(View.GONE);
 		mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 			@Override
 			public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -68,11 +70,6 @@ public class LoginActivity extends Activity {
 			}
 		});
 
-		mLoginFormView = findViewById(R.id.login_scrollview_data);
-		mLoginStatusView = findViewById(R.id.login_linearlayout_status);
-		mLoginStatusMessageView = (TextView) findViewById(R.id.login_textview_status);
-
-		findViewById(R.id.login_textview_invalid_data).setVisibility(View.GONE);
 		findViewById(R.id.login_button_sign_in).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
@@ -85,20 +82,20 @@ public class LoginActivity extends Activity {
 
 			@Override
 			public void taskSuccessful(LoginResponse object) {
-				showProgress(false);
+				mLoader.show();
 				
 				if (object.isLoggedIn()) {
 					Resources.initUser(object.getUserId(), object.getApiToken());
 					
 					if (object.isUserExist()) {
-						mLoginStatusMessageView.setText(R.string.info_gathering_info);
-						showProgress(true);
+                        mLoader.setText(getString(R.string.info_gathering_info));
+                        mLoader.show();
 						
 						mGatheringTask = new TaskHandler<UserInfos>() {
 							
 							@Override
 							public void taskSuccessful(UserInfos object) {
-								showProgress(false);
+                                mLoader.dismiss();
 								Resources.setUserInfos(object, getApplicationContext());
 								Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
 								startActivity(intent);
@@ -109,7 +106,7 @@ public class LoginActivity extends Activity {
 							public void taskFailed() {
 								++mNbTry;
 								if (mNbTry > 10) {
-									mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
+                                    mLoader.setText(getString(R.string.login_progress_signing_in));
 									Toast.makeText(getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
 									mNbTry = 0;
 								} else {
@@ -124,13 +121,13 @@ public class LoginActivity extends Activity {
 			            startActivity(intent);
 					}
 				} else {
-					mLoginStatusMessageView.setVisibility(View.VISIBLE);
+                    mLoader.setText(null);
 				}
 			}
 
 			@Override
 			public void taskFailed() {
-				showProgress(false);
+                mLoader.dismiss();
 				Toast.makeText(getApplicationContext(), "Error while signin in", Toast.LENGTH_LONG).show();
 			}
 		};
@@ -147,7 +144,6 @@ public class LoginActivity extends Activity {
 		// Reset errors.
 		mLoginView.setError(null);
 		mPasswordView.setError(null);
-		findViewById(R.id.login_textview_invalid_data).setVisibility(View.GONE);
 
 		// Store values at the time of the login attempt.
 		mLogin = mLoginView.getText().toString();
@@ -177,51 +173,10 @@ public class LoginActivity extends Activity {
 		} else {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
-			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
-			
-			showProgress(true);
+            mLoader.show();
+			mLoader.setText(getString(R.string.login_progress_signing_in));
+
 			UserWebServices.login(mLogin, mPassword, mAuthTask);
-		}
-	}
-
-	/**
-	 * Shows the progress UI and hides the login form.
-	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-	private void showProgress(final boolean show) {
-		// On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-		// for very easy animations. If available, use these APIs to fade-in
-		// the progress spinner.
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-			int shortAnimTime = getResources().getInteger(
-					android.R.integer.config_shortAnimTime);
-
-			mLoginStatusView.setVisibility(View.VISIBLE);
-			mLoginStatusView.animate().setDuration(shortAnimTime)
-			.alpha(show ? 1 : 0)
-			.setListener(new AnimatorListenerAdapter() {
-				@Override
-				public void onAnimationEnd(Animator animation) {
-					mLoginStatusView.setVisibility(show ? View.VISIBLE
-							: View.GONE);
-				}
-			});
-
-			mLoginFormView.setVisibility(View.VISIBLE);
-			mLoginFormView.animate().setDuration(shortAnimTime)
-			.alpha(show ? 0 : 1)
-			.setListener(new AnimatorListenerAdapter() {
-				@Override
-				public void onAnimationEnd(Animator animation) {
-					mLoginFormView.setVisibility(show ? View.GONE
-							: View.VISIBLE);
-				}
-			});
-		} else {
-			// The ViewPropertyAnimator APIs are not available, so simply show
-			// and hide the relevant UI components.
-			mLoginStatusView.setVisibility(show ? View.VISIBLE : View.GONE);
-			mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
 		}
 	}
 	

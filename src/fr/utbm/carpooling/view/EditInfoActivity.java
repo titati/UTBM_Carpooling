@@ -15,16 +15,16 @@ import fr.utbm.carpooling.webservices.UserWebServices;
 
 
 public class EditInfoActivity extends Activity {
-	
-	private TaskHandler<Boolean> mHandler = null;
+
+    private TaskHandler<Boolean> mHandler = null;
     private LoadingDialog mLoader = null;
     private UserShort mUser = new UserShort();
-    
+
     private TextView mName;
     private TextView mFirstname;
     private TextView mEmail;
     private TextView mPhone;
-	
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_info);
@@ -35,45 +35,45 @@ public class EditInfoActivity extends Activity {
     }
 
     private void initHandler() {
-    	mHandler = new TaskHandler<Boolean>() {
+        mHandler = new TaskHandler<Boolean>() {
 
-			@Override
-			public void taskSuccessful(Boolean object) {
-				if (object) {
-					Resources.setUser(mUser);
-					Resources.saveUser(getApplicationContext());
-					
-					setResult(1);
-	                finish();
-				} else {
-					taskFailed();
-				}
-			}
-			
-			@Override
-			public void taskFailed() {
-				mLoader.hide();
-				Toast.makeText(getApplicationContext(), "Error while updating data", Toast.LENGTH_LONG).show();
-			}
-        	
-		};
-	}
+            @Override
+            public void taskSuccessful(Boolean object) {
+                if (object) {
+                    Resources.setUser(mUser);
+                    Resources.saveUser(getApplicationContext());
 
-	private void initView() {
-		mLoader = new LoadingDialog(this);
-		
-		mFirstname = (TextView) findViewById(R.id.edit_info_textview_firstname);
-		mName = (TextView) findViewById(R.id.edit_info_textview_name);
-		mPhone = (TextView) findViewById(R.id.edit_info_textview_phone);
-		mEmail = (TextView) findViewById(R.id.edit_info_textview_email);
+                    setResult(1);
+                    finish();
+                } else {
+                    taskFailed();
+                }
+            }
 
-		mFirstname.setText(Resources.getUser().getFirstname());
-		mName.setText(Resources.getUser().getLastname());
-		mPhone.setText(Resources.getUser().getPhone());
-		mEmail.setText(Resources.getUser().getEmail());
-	}
+            @Override
+            public void taskFailed() {
+                mLoader.hide();
+                Toast.makeText(getApplicationContext(), "Error while updating data", Toast.LENGTH_LONG).show();
+            }
 
-	@Override
+        };
+    }
+
+    private void initView() {
+        mLoader = new LoadingDialog(this);
+
+        mFirstname = (TextView) findViewById(R.id.edit_info_textview_firstname);
+        mName = (TextView) findViewById(R.id.edit_info_textview_name);
+        mPhone = (TextView) findViewById(R.id.edit_info_textview_phone);
+        mEmail = (TextView) findViewById(R.id.edit_info_textview_email);
+
+        mFirstname.setText(Resources.getUser().getFirstname());
+        mName.setText(Resources.getUser().getLastname());
+        mPhone.setText(Resources.getUser().getPhone());
+        mEmail.setText(Resources.getUser().getEmail());
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.edit_info, menu);
         return true;
@@ -88,25 +88,55 @@ public class EditInfoActivity extends Activity {
                 return true;
 
             case R.id.edit_info_menuitem_save:
-            	mUser.setFirstname(mFirstname.getText().toString());
-            	mUser.setLastname(mName.getText().toString());
-            	mUser.setPhone(mPhone.getText().toString());
-            	mUser.setEmail(mEmail.getText().toString());
-            	
-            	mLoader.show();
-                UserWebServices.updateUser(mUser, mHandler);
-                
-                return true;
+
+                if (checkData()) {
+
+                    mUser.setFirstname(mFirstname.getText().toString());
+                    mUser.setLastname(mName.getText().toString());
+                    mUser.setPhone(mPhone.getText().toString());
+                    mUser.setEmail(mEmail.getText().toString());
+
+                    mLoader.show();
+                    UserWebServices.updateUser(mUser, mHandler);
+
+                    return true;
+                }
         }
-        
+
         return super.onOptionsItemSelected(item);
     }
-    
+
     @Override
     protected void onPause() {
-    	super.onPause();
-    	
-    	mLoader.dismiss();
-    	finish();
+        super.onPause();
+
+        mLoader.dismiss();
+        finish();
+    }
+
+    private boolean checkData() {
+
+        boolean ok = true;
+
+        if (mFirstname.getText().toString().isEmpty()) {
+            mFirstname.setError(getString(R.string.profile_info_error_field_required));
+            ok = false;
+        }
+
+        if (mName.getText().toString().isEmpty()) {
+            mName.setError(getString(R.string.profile_info_error_field_required));
+            ok = false;
+        }
+
+        if (mPhone.getText().toString().isEmpty()) {
+            mPhone.setError(getString(R.string.profile_info_error_field_required));
+            ok = false;
+        }
+
+        if (mEmail.getText().toString().isEmpty()) {
+            mEmail.setError(getString(R.string.profile_info_error_field_required));
+            ok = false;
+        }
+        return ok;
     }
 }
