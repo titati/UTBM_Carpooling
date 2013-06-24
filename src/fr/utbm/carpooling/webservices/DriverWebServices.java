@@ -520,8 +520,8 @@ public class DriverWebServices {
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		params.add(new BasicNameValuePair("abstracttripid", String.valueOf(abstractTripId)));
-		params.add(new BasicNameValuePair("tripid", ResourcesWebServices.getStandardDateFormat().format(tripId)));
+		params.add(new BasicNameValuePair("abstractTripId", String.valueOf(abstractTripId)));
+		params.add(new BasicNameValuePair("tripId", ResourcesWebServices.getStandardDateFormat().format(tripId)));
 		
 		HttpConnection con = new HttpConnection(cat + "getTripOccurence", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			

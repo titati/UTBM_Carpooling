@@ -9,8 +9,8 @@ import org.json.JSONObject;
 public abstract class BasePassengerTrip extends BaseTrip {
 
 	protected int remainingSeats;
-	protected User driver;
-	protected int rating;
+	protected UserShort driver;
+	protected double rating;
 	protected Car car;
 	protected String description;
 
@@ -30,19 +30,19 @@ public abstract class BasePassengerTrip extends BaseTrip {
 		this.remainingSeats = remainingSeats;
 	}
 
-	public User getDriver() {
+	public UserShort getDriver() {
 		return driver;
 	}
 
-	public void setDriver(User driver) {
+	public void setDriver(UserShort driver) {
 		this.driver = driver;
 	}
 
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 
@@ -73,7 +73,7 @@ public abstract class BasePassengerTrip extends BaseTrip {
 		}
 
 		try {
-			setDriver(new User(object.getJSONObject("driver")));
+			setDriver(new UserShort(object.getJSONObject("driver")));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -85,7 +85,7 @@ public abstract class BasePassengerTrip extends BaseTrip {
 		}
 
 		try {
-			setRating(object.getInt("rating"));
+			setRating(object.getDouble("rating"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

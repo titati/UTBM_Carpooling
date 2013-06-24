@@ -1,7 +1,7 @@
 package fr.utbm.carpooling.view.widgets;
 
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.model.User;
+import fr.utbm.carpooling.model.UserShort;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class TripDriverBlock extends LinearLayout {
 
-    protected User mDriver = null;
+    protected UserShort mDriver = null;
 
     protected TextView mName = null;
     protected ImageView mPhone = null;
@@ -34,7 +34,7 @@ public class TripDriverBlock extends LinearLayout {
         initItems();
     }
 
-    public void setData(User driver) {
+    public void setData(UserShort driver) {
         mDriver = driver;
         initView();
     }

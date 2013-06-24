@@ -81,9 +81,9 @@ public class HttpConnection extends AsyncTask<String, Void, String> {
 				e.printStackTrace();
 			}
 			con.setDoOutput(true);
-			con.setRequestProperty("Charset", "UTF-8");
-			con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 		}
+		con.setRequestProperty("Charset", "UTF-8");
+		con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 	}
 	
 	private void disableConnectionReuseIfNecessary() {
@@ -105,7 +105,7 @@ public class HttpConnection extends AsyncTask<String, Void, String> {
 				con = (HttpURLConnection) url.openConnection();
 				
 				initCon();
-					
+				
 				if (mParamList != null) {
 					String query = "";
 					
