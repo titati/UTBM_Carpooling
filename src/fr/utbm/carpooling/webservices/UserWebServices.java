@@ -114,7 +114,7 @@ public class UserWebServices {
 					boolean result = false;
 
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -156,7 +156,7 @@ public class UserWebServices {
 					boolean result = false;
 
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -194,7 +194,7 @@ public class UserWebServices {
 					Statistics stats = null;
 
 					try {
-						stats = new Statistics(object.getJSONObject("stats"));
+						stats = new Statistics(object.getJSONObject("data"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
