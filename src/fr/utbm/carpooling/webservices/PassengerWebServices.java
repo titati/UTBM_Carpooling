@@ -9,10 +9,7 @@ import org.json.JSONObject;
 
 import fr.utbm.carpooling.model.*;
 import fr.utbm.carpooling.model.wrapper.TripSearch;
-import fr.utbm.carpooling.utils.HttpConnection;
-import fr.utbm.carpooling.utils.JSONValidator;
-import fr.utbm.carpooling.utils.Resources;
-import fr.utbm.carpooling.utils.TaskHandler;
+import fr.utbm.carpooling.utils.*;
 import fr.utbm.carpooling.utils.HttpConnection.HttpTaskHandler;
 import fr.utbm.carpooling.utils.HttpConnection.REQUEST_TYPE;
 

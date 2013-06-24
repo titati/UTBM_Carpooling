@@ -12,9 +12,9 @@ import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
 public class Alert extends JSONParsableObject {
 	
-	private int alertId = 0;
-	private int fromSiteId = 0;
-	private int toSiteId = 0;
+	private int alertId;
+	private int fromSiteId;
+	private int toSiteId;
 	private Date arrivalDate;
 	
 	public Alert() {}

@@ -212,8 +212,6 @@ public class Resources {
 				mModels.put(b.getId(), new SparseArray<Model>());
 			}
 		}
-		
-		Log.i("setBrands", "" + list.size());
 	}
 	
 	public static void saveBrands(Context context) {

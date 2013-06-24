@@ -102,8 +102,8 @@ public class MyApplication extends Application {
 			e.printStackTrace();
 		}
 		
-		if (modelsArray != null) {
-			for(int i = 0; i < modelsArray.length(); ++i) {
+		if (colorsArray != null) {
+			for(int i = 0; i < colorsArray.length(); ++i) {
 				try {
 					listColors.add(new Color((JSONObject) colorsArray.get(i)));
 				} catch (JSONException e) {
@@ -126,8 +126,8 @@ public class MyApplication extends Application {
 			e.printStackTrace();
 		}
 		
-		if (modelsArray != null) {
-			for(int i = 0; i < modelsArray.length(); ++i) {
+		if (sitesArray != null) {
+			for(int i = 0; i < sitesArray.length(); ++i) {
 				try {
 					listSites.add(new Site((JSONObject) sitesArray.get(i)));
 				} catch (JSONException e) {

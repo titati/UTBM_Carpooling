@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnLongClickListener;
@@ -102,13 +103,14 @@ public class TripsAlertsFragment extends Fragment {
 			
 			@Override
 			public void taskFailed() {
-				if (getUserVisibleHint()) Toast.makeText(getActivity().getApplicationContext(), "Error while fetching content", Toast.LENGTH_LONG).show();
+				if (getUserVisibleHint()) Toast.makeText(getActivity().getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
 		        mLoader.dismiss();
 			}
 		};
 	}
 
 	private void initView(ArrayList<Alert> object) {
+		Log.i("checkTo", "" + object.get(0).getToSiteId());
     	AlertAdapter adapter = new AlertAdapter(getActivity(), R.id.trips_passenger_listview_trips, object);
 		
 		mListView.setAdapter(adapter);

@@ -9,7 +9,6 @@ import android.widget.TextView;
 import fr.utbm.carpooling.model.wrapper.SiteShort;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class SiteShortAdapter extends ArrayAdapter<SiteShort> {

@@ -54,7 +54,6 @@ public class AlertTripItem extends LinearLayout {
 	protected void initView() {
 		repeat.setVisibility(GONE);
 		departureTime.setVisibility(INVISIBLE);
-		departureDate.setVisibility(INVISIBLE);
 		
         if (pathView != null) {
             pathView.setCheckpoints(data.getCheckpoints());
@@ -70,6 +69,10 @@ public class AlertTripItem extends LinearLayout {
         
         if (arrivalTime != null) {
             arrivalTime.setText(TIME_FORMAT.format(data.getArrivalDate()));
+        }
+        
+        if (departureDate != null) {
+        	departureDate.setText(DATE_FORMAT.format(data.getArrivalDate()));
         }
 	}
 

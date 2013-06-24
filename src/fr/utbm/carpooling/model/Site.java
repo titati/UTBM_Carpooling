@@ -112,8 +112,8 @@ public class Site extends JSONParsableObject implements JSONSerializable {
 	public String serializeJSON() {
 		return "\"id\" : \"" + getId() +
 				"\", \"name\" : \"" + getName() +
-				"\", \"location\" : \"{ " + getLocation().serializeJSON() + " }" +
-				"\", \"street\" : \"" + getStreet() +
+				"\", \"location\" : { " + getLocation().serializeJSON() + " }" +
+				", \"street\" : \"" + getStreet() +
 				"\", \"postalcode\" : \"" + getPostalCode() +
 				"\", \"town\" : \"" + getTown() + "\"";
 	}

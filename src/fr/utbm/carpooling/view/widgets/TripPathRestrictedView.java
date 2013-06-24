@@ -32,7 +32,7 @@ public class TripPathRestrictedView extends TripPathView {
 
     public void setCheckpoints(ArrayList<? extends CheckpointShort> arrayList, boolean secondIsBound) {
     	mLimit1IsBound = (arrayList.get(0).getNumCheckpoint() == 0);
-    	mLimit1IsBound = secondIsBound;
+    	mLimit2IsBound = secondIsBound;
     	
     	Log.e("Checkpoint num", "" + arrayList.get(0).getNumCheckpoint());
     	
