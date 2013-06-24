@@ -440,7 +440,7 @@ public class PassengerWebServices {
 					PassengerTrip trip = null;
 					
 					try {
-						trip = new PassengerTrip(object.getJSONObject("trip"));
+						trip = new PassengerTrip(object.getJSONObject("data"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
