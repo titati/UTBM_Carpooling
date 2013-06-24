@@ -46,8 +46,8 @@ public class ResourcesWebServices {
 					ArrayList<Color> listColor = new ArrayList<Color>();
 
 					try {
-						for(int i = 0; i < object.getJSONArray("colors").length(); ++i) {
-							listColor.add(new Color((JSONObject) object.getJSONArray("colors").get(i)));
+						for(int i = 0; i < object.getJSONArray("data").length(); ++i) {
+							listColor.add(new Color((JSONObject) object.getJSONArray("data").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -124,8 +124,8 @@ public class ResourcesWebServices {
 					ArrayList<Site> listSites = new ArrayList<Site>();
 
 					try {
-						for(int i = 0; i < object.getJSONArray("sites").length(); ++i) {
-							listSites.add(new Site((JSONObject) object.getJSONArray("sites").get(i)));
+						for(int i = 0; i < object.getJSONArray("data").length(); ++i) {
+							listSites.add(new Site((JSONObject) object.getJSONArray("data").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
