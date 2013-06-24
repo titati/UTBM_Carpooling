@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-light"
-        android:text="@string/info_gathering_resources"
+        android:text="@string/info_starting"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </LinearLayout>

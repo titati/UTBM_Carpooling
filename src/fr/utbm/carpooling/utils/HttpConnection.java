@@ -67,8 +67,23 @@ public class HttpConnection extends AsyncTask<String, Void, String> {
 		con.setReadTimeout(10000);
 		con.setConnectTimeout(15000);
 		con.setDoInput(true);
-		con.setRequestProperty("Charset", "UTF-8");
-		con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+		
+		if (mRType == REQUEST_TYPE.GET) {
+			try {
+				con.setRequestMethod("GET");
+			} catch (ProtocolException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				con.setRequestMethod("POST");
+			} catch (ProtocolException e) {
+				e.printStackTrace();
+			}
+			con.setDoOutput(true);
+			con.setRequestProperty("Charset", "UTF-8");
+			con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+		}
 	}
 	
 	private void disableConnectionReuseIfNecessary() {
@@ -90,39 +105,28 @@ public class HttpConnection extends AsyncTask<String, Void, String> {
 				con = (HttpURLConnection) url.openConnection();
 				
 				initCon();
+					
+				if (mParamList != null) {
+					String query = "";
+					
+					for(BasicNameValuePair p : mParamList) {
+						query += ((query == "") ? "" : "&") + p.getName() + "=" + URLEncoder.encode(p.getValue(), "UTF-8");
+					}
+					
+					PrintWriter pw = new PrintWriter(con.getOutputStream());
+					pw.write(query);
+					pw.close();
+				}
 				
 				try {
-					if (mRType == REQUEST_TYPE.GET) {
-						con.setRequestMethod("GET");
-					} else {
-						con.setRequestMethod("POST");
-						con.setDoOutput(true);
+					con.connect();
+					
+					if (!url.getHost().equals(con.getURL().getHost())) {
+						return null;
 					}
 					
-					if (mParamList != null) {
-						String query = "";
-						
-						for(BasicNameValuePair p : mParamList) {
-							query += ((query == "") ? "" : "&") + p.getName() + "=" + URLEncoder.encode(p.getValue(), "UTF-8");
-						}
-						
-						PrintWriter pw = new PrintWriter(con.getOutputStream());
-						pw.write(query);
-						pw.close();
-					}
-					
-					try {
-						con.connect();
-						
-						if (!url.getHost().equals(con.getURL().getHost())) {
-							return null;
-						}
-						
-						result = readInput(con.getInputStream());
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				} catch (ProtocolException e) {
+					result = readInput(con.getInputStream());
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			} catch (IOException e) {

@@ -9,6 +9,7 @@ import fr.utbm.carpooling.model.wrapper.CarsReferences;
 import fr.utbm.carpooling.utils.Resources;
 import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.webservices.ResourcesWebServices;
+import android.widget.TextView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ public class LauncherActivity extends Activity {
 		setContentView(R.layout.activity_launcher);
 
         if (Resources.getSites().isEmpty()) {
+        	((TextView) findViewById(R.id.launcher_textview_status)).setText(R.string.info_gathering_resources);
+        	
         	ResourcesWebServices.getSites(new TaskHandler<ArrayList<Site>>() {
 
 				@Override
@@ -43,9 +46,13 @@ public class LauncherActivity extends Activity {
 					Toast.makeText(getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
 				}
 			});
+        } else {
+        	mSitesDL = true;
         }
         
         if (Resources.getBrands().isEmpty()) {
+        	((TextView) findViewById(R.id.launcher_textview_status)).setText(R.string.info_gathering_resources);
+        	
         	ResourcesWebServices.getCarsReferences(new TaskHandler<CarsReferences>() {
 				
 				@Override
@@ -64,9 +71,13 @@ public class LauncherActivity extends Activity {
 					Toast.makeText(getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
 				}
 			});
+        } else {
+        	mCarsRefsDL = true;
         }
         
         if (Resources.getBrands().isEmpty()) {
+        	((TextView) findViewById(R.id.launcher_textview_status)).setText(R.string.info_gathering_resources);
+        	
         	ResourcesWebServices.getColors(new TaskHandler<ArrayList<Color>>() {
 				
 				@Override
@@ -83,6 +94,8 @@ public class LauncherActivity extends Activity {
 					Toast.makeText(getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
 				}
 			});
+        } else {
+        	mColorsDL = true;
         }
         
         

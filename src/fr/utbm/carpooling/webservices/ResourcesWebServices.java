@@ -3,7 +3,6 @@ package fr.utbm.carpooling.webservices;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,7 +11,6 @@ import fr.utbm.carpooling.model.*;
 import fr.utbm.carpooling.model.wrapper.CarsReferences;
 import fr.utbm.carpooling.utils.HttpConnection;
 import fr.utbm.carpooling.utils.JSONValidator;
-import fr.utbm.carpooling.utils.Resources;
 import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.utils.HttpConnection.HttpTaskHandler;
 import fr.utbm.carpooling.utils.HttpConnection.REQUEST_TYPE;
@@ -22,19 +20,15 @@ public class ResourcesWebServices {
 	
 	@SuppressLint("SimpleDateFormat")
 	private final static SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy kk:mm:ss");
-	private static String cat = "/ressources/";
+	private static String cat = "/resources/";
 	
 	public static SimpleDateFormat getStandardDateFormat() {
 		return df;
 	}
 	
 	public static void getColors(final TaskHandler<ArrayList<Color>> handler) {
-		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		
-		HttpConnection con = new HttpConnection(cat + "getColors", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+		HttpConnection con = new HttpConnection(cat + "getColors", null, REQUEST_TYPE.GET, new HttpTaskHandler() {
 			
 			@Override
 			public void taskSuccessful(String jsonString) {
@@ -69,12 +63,8 @@ public class ResourcesWebServices {
 	}
 	
 	public static void getCarsReferences(final TaskHandler<CarsReferences> handler) {
-		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		
-		HttpConnection con = new HttpConnection(cat + "getModels", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+		HttpConnection con = new HttpConnection(cat + "getCarsReferences", null, REQUEST_TYPE.GET, new HttpTaskHandler() {
 			
 			@Override
 			public void taskSuccessful(String jsonString) {
@@ -107,12 +97,8 @@ public class ResourcesWebServices {
 	}
 	
 	public static void getSites(final TaskHandler<ArrayList<Site>> handler) {
-		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
-		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
-		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
-		
-		HttpConnection con = new HttpConnection(cat + "getSitesShort", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+		HttpConnection con = new HttpConnection(cat + "getSites", null, REQUEST_TYPE.GET, new HttpTaskHandler() {
 			
 			@Override
 			public void taskSuccessful(String jsonString) {

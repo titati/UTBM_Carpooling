@@ -12,8 +12,8 @@ import fr.utbm.carpooling.utils.JSONSerializable;
 
 public class CarsReferences extends JSONParsableObject implements JSONSerializable {
 	
-	private ArrayList<Brand> brands = new ArrayList<Brand>();
-	private ArrayList<Model> models = new ArrayList<Model>();
+	private ArrayList<Brand> brands;
+	private ArrayList<Model> models;
 	
 	public CarsReferences(JSONObject object) {
 		super(object);
@@ -37,6 +37,9 @@ public class CarsReferences extends JSONParsableObject implements JSONSerializab
 
 	@Override
 	protected void deserializeJSON(JSONObject object) {
+		brands = new ArrayList<Brand>();
+		models = new ArrayList<Model>();
+		
 		try {
 			for(int i = 0; i < object.getJSONArray("brands").length(); ++i) {
 				brands.add(new Brand((JSONObject) object.getJSONArray("brands").get(i)));

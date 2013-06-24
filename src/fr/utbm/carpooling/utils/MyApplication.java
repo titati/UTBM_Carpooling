@@ -9,9 +9,11 @@ import org.json.JSONObject;
 
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.Brand;
+import fr.utbm.carpooling.model.Color;
 import fr.utbm.carpooling.model.DriverCar;
+import fr.utbm.carpooling.model.Model;
+import fr.utbm.carpooling.model.Site;
 import fr.utbm.carpooling.model.User;
-import fr.utbm.carpooling.model.wrapper.CarsReferences;
 import fr.utbm.carpooling.model.wrapper.Trunk;
 import android.app.Application;
 import android.util.Log;
@@ -62,6 +64,78 @@ public class MyApplication extends Application {
 			}
 
 			Resources.setBrands(listBrands);
+		}
+		
+		//Initialize model list
+		ArrayList<Model> listModels = new ArrayList<Model>();
+		JSONArray modelsArray = null;
+		
+		try {
+			modelsArray = new JSONArray(FileManager.readFile(openFileInput(Constants.FILE_MODELS)));
+		} catch (FileNotFoundException e) {
+			Log.v("FileNotFound", "FILE_MODELS");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		if (modelsArray != null) {
+			for(int i = 0; i < modelsArray.length(); ++i) {
+				try {
+					listModels.add(new Model((JSONObject) modelsArray.get(i)));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+
+			Resources.setModels(listModels);
+		}
+		
+		//Initialize color list
+		ArrayList<Color> listColors = new ArrayList<Color>();
+		JSONArray colorsArray = null;
+		
+		try {
+			colorsArray = new JSONArray(FileManager.readFile(openFileInput(Constants.FILE_COLORS)));
+		} catch (FileNotFoundException e) {
+			Log.v("FileNotFound", "FILE_COLORS");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		if (modelsArray != null) {
+			for(int i = 0; i < modelsArray.length(); ++i) {
+				try {
+					listColors.add(new Color((JSONObject) colorsArray.get(i)));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+
+			Resources.setColors(listColors);
+		}
+		
+		//Initialize site list
+		ArrayList<Site> listSites = new ArrayList<Site>();
+		JSONArray sitesArray = null;
+		
+		try {
+			sitesArray = new JSONArray(FileManager.readFile(openFileInput(Constants.FILE_SITES)));
+		} catch (FileNotFoundException e) {
+			Log.v("FileNotFound", "FILE_SITES");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		if (modelsArray != null) {
+			for(int i = 0; i < modelsArray.length(); ++i) {
+				try {
+					listSites.add(new Site((JSONObject) sitesArray.get(i)));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+
+			Resources.setSites(listSites);
 		}
 	}
 

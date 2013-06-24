@@ -27,5 +27,6 @@
     <string name="info_gathering_info">Gathering information</string>
     <string name="info_gathering_resources">Gathering resources</string>
     <string name="error_fetching_data">Error while fetching data</string>
+    <string name="info_starting">Starting</string>
 
 </resources>
