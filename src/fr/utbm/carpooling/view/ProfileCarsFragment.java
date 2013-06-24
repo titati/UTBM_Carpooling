@@ -1,5 +1,7 @@
 package fr.utbm.carpooling.view;
 
+import java.util.ArrayList;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,8 +10,10 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.adapter.DriverCarAdapter;
+import fr.utbm.carpooling.model.DriverCar;
 import fr.utbm.carpooling.utils.Resources;
 import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.view.widgets.LoadingDialog;
@@ -45,7 +49,79 @@ public class ProfileCarsFragment extends Fragment {
         mListView = (ListView) getView().findViewById(
                 R.id.profile_cars_listview_cars);
 
-        final DriverCarAdapter adapter = new DriverCarAdapter(getActivity(), R.layout.view_driver_car_item, Resources.getCars());
+        refreshCarList();
+    }
+	
+	private void deleteCar(final int id) {
+		mDeleteTask = new TaskHandler<Boolean>() {
+			
+			@Override
+			public void taskSuccessful(Boolean object) {
+				mLoader.dismiss();
+				Resources.deleteCar(id);
+			}
+
+			@Override
+			public void taskFailed() {
+				mLoader.dismiss();
+				Toast.makeText(getActivity(), R.string.error_delete_car, Toast.LENGTH_LONG).show();
+			}
+		};
+
+        mLoader.show();
+		DriverWebServices.deleteCar(id, mDeleteTask);
+	}
+	
+	private void makeAsDefault(final int id) {
+		mSetDefaultTask = new TaskHandler<Boolean>() {
+
+			@Override
+			public void taskSuccessful(Boolean object) {
+				mLoader.dismiss();
+				Resources.setDefaultCar(id);
+				refreshCarList();
+			}
+
+			@Override
+			public void taskFailed() {
+				mLoader.dismiss();
+				Toast.makeText(getActivity(), R.string.error_updating_car, Toast.LENGTH_LONG).show();
+			}
+		};
+		
+		mLoader.show();
+        DriverWebServices.setDefaultCar(id, mSetDefaultTask);
+	}
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.profile_cars, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.profile_menuitem_new_car:
+                startActivityForResult(new Intent(getActivity(), CreateCarActivity.class), 0);
+                return true;
+        }
+        
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == 1) {
+    		fetchCarList();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+	private void refreshCarList() {
+		final DriverCarAdapter adapter = new DriverCarAdapter(getActivity(), R.layout.view_driver_car_item, Resources.getCars());
 
         mListView.setAdapter(adapter);
         mListView.setItemsCanFocus(false);
@@ -80,69 +156,26 @@ public class ProfileCarsFragment extends Fragment {
                 return false;
             }
         });
-
-    }
+	}
 	
-	private void deleteCar(final int id) {
-		mDeleteTask = new TaskHandler<Boolean>() {
+	private void fetchCarList() {
+		mLoader.show();
+		DriverWebServices.getCars(new TaskHandler<ArrayList<DriverCar>>() {
 			
 			@Override
-			public void taskSuccessful(Boolean object) {
-				Resources.deleteCar(id);
+			public void taskSuccessful(ArrayList<DriverCar> object) {
+				mLoader.dismiss();
+				Resources.setCars(object);
+				Resources.saveCars(getActivity());
+				refreshCarList();
 			}
-
+			
 			@Override
 			public void taskFailed() {
-				mLoader.hide();
+				mLoader.dismiss();
+				Toast.makeText(getActivity(), R.string.error_updating_car_list, Toast.LENGTH_LONG).show();
 			}
-		};
-
-        mLoader.show();
-		DriverWebServices.deleteCar(id, mDeleteTask);
+		});
 	}
-	
-	private void makeAsDefault(final int id) {
-		mSetDefaultTask = new TaskHandler<Boolean>() {
-
-			@Override
-			public void taskSuccessful(Boolean object) {
-				Resources.deleteCar(id);
-			}
-
-			@Override
-			public void taskFailed() {
-				mLoader.hide();
-			}
-		};
-		
-		mLoader.show();
-        DriverWebServices.setDefaultCar(id, mSetDefaultTask);
-	}
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.profile_cars, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.profile_menuitem_new_car:
-                startActivityForResult(new Intent(getActivity(), EditCarActivity.class), 0);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (resultCode == 1) {
-            //TODO: get updated car list with the new car
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 
 }

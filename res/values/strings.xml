@@ -27,6 +27,10 @@
     <string name="info_gathering_info">Gathering information</string>
     <string name="info_gathering_resources">Gathering resources</string>
     <string name="error_fetching_data">Error while fetching data</string>
+    <string name="error_updating_data">Error while updating data</string>
+    <string name="error_updating_car_list">Error while updating list of cars</string>
+    <string name="error_updating_car">Error while updating car</string>
+    <string name="error_delete_car">Error while deleting car</string>
     <string name="info_starting">Starting</string>
     <string name="contentDesc_repeat">Repeat icon</string>
 

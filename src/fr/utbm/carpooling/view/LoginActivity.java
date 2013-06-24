@@ -112,8 +112,9 @@ public class LoginActivity extends Activity {
 						
 						UserWebServices.getUserInfos(mGatheringTask);
 					} else {
+                        mLoader.dismiss();
 						Intent intent = new Intent(LoginActivity.this, CreateUserActivity.class);
-			            startActivity(intent);
+			            startActivityForResult(intent, 0);
 					}
 				} else {
                     mLoader.setText(null);
@@ -176,9 +177,23 @@ public class LoginActivity extends Activity {
 	}
 	
 	@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 0 && resultCode == 1) {
+        	Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+			startActivity(intent);
+			finish();
+        } else if (requestCode == 0 && resultCode == 0) {
+        	Resources.resetUser();
+        }
+        
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+	
+	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-		
+		mLoader.dismiss();
 		finish();
 	}
 }

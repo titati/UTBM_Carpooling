@@ -91,7 +91,7 @@ public abstract class BasePassengerTrip extends BaseTrip {
 		}
 
 		try {
-			setRemainingSeats(object.getInt("remainingSeats"));
+			setRemainingSeats(object.getInt("remainingseats"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

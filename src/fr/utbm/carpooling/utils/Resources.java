@@ -87,6 +87,14 @@ public class Resources {
 		}
 	}
 	
+	public static void setDefaultCar(int carId) {
+		for (int i = 0; i < mCars.size(); ++i) {
+			mCars.valueAt(i).setDefaultCar(false);
+		}
+		
+		mCars.valueAt(carId).setDefaultCar(true);
+	}
+	
 	public static ArrayList<DriverCar> getCars() {
 		return toArrayList(mCars);
 	}

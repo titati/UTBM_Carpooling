@@ -21,7 +21,7 @@ import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import fr.utbm.carpooling.webservices.DriverWebServices;
 
 
-public class EditCarActivity extends Activity {
+public class CreateCarActivity extends Activity {
 
     private ColorGridView mColors;
     private EditText mSeats;
@@ -44,7 +44,7 @@ public class EditCarActivity extends Activity {
     private void initView() {
         mLoader = new LoadingDialog(this);
 
-        setContentView(R.layout.activity_edit_car);
+        setContentView(R.layout.activity_create_car);
 
         mColors = (ColorGridView) findViewById(R.id.edit_car_gridview_colors);
         mTrunks = (Spinner) findViewById(R.id.edit_car_spinner_trunk);
@@ -61,7 +61,7 @@ public class EditCarActivity extends Activity {
         mBrands.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ModelAdapter modelAdapter = new ModelAdapter(EditCarActivity.this, 0, Resources.getModels(brandAdapter.getItem(position).getId()));
+                ModelAdapter modelAdapter = new ModelAdapter(CreateCarActivity.this, 0, Resources.getModels(brandAdapter.getItem(position).getId()));
                 mModels.setAdapter(modelAdapter);
             }
             @Override

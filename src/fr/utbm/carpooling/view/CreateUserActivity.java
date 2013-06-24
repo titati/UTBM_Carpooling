@@ -1,23 +1,42 @@
 package fr.utbm.carpooling.view;
 
 import fr.utbm.carpooling.R;
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+import fr.utbm.carpooling.utils.Resources;
+import fr.utbm.carpooling.utils.TaskHandler;
+import fr.utbm.carpooling.webservices.UserWebServices;
+import android.widget.Toast;
 
-public class CreateUserActivity extends Activity {
+public class CreateUserActivity extends InfoBaseActivity {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_info);
+	protected void initHandler() {
+		mHandler = new TaskHandler<Boolean>() {
+
+            @Override
+            public void taskSuccessful(Boolean object) {
+                if (object) {
+                    Resources.setUser(mUser);
+                    Resources.saveUser(getApplicationContext());
+
+                    setResult(1);
+                    finish();
+                } else {
+                    taskFailed();
+                }
+            }
+
+            @Override
+            public void taskFailed() {
+                mLoader.hide();
+                Toast.makeText(getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
+            }
+
+        };
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.edit_info, menu);
-		return true;
+	protected void pushData() {
+        UserWebServices.createUser(mUser, mHandler);
 	}
 
 }

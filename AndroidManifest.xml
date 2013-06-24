@@ -48,7 +48,7 @@
                 android:value="fr.utbm.carpooling.view.HomeActivity" />
         </activity>
         <activity
-            android:name="fr.utbm.carpooling.view.EditCarActivity"
+            android:name="fr.utbm.carpooling.view.CreateCarActivity"
             android:label="@string/edit_car_title" />
         <activity
             android:name="fr.utbm.carpooling.view.EditInfoActivity"
