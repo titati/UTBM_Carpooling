@@ -1,5 +1,6 @@
 package fr.utbm.carpooling.view;
 
+import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +12,9 @@ import android.widget.*;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.adapter.SiteShortAdapter;
 import fr.utbm.carpooling.adapter.TrunkAdapter;
+import fr.utbm.carpooling.model.wrapper.SiteShort;
+import fr.utbm.carpooling.model.wrapper.TripSearch;
+import fr.utbm.carpooling.model.wrapper.Trunk;
 import fr.utbm.carpooling.utils.Resources;
 import fr.utbm.carpooling.view.widgets.DatePickerSpinner;
 import fr.utbm.carpooling.view.widgets.TimePickerSpinner;
@@ -96,7 +100,16 @@ public class TripSearchActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.trip_search_menuitem_go:
-                startActivity(new Intent(this, TripSearchResultsActivity.class));
+            	Intent intent = new Intent(this, TripSearchResultsActivity.class);
+            	TripSearch search = new TripSearch();
+            	Date date = new Date();
+            	date.setTime(mArrivalDateSpinner.getDate().getTimeInMillis() + mArrivalTimeSpinner.getTime().getTimeInMillis());
+            	search.setArrivalDate(date);
+            	search.setFromSiteId(((SiteShort) mDepartureSiteSpinner.getSelectedItem()).getId());
+            	search.setToSiteId(((SiteShort) mArrivalSiteSpinner.getSelectedItem()).getId());
+            	search.setMinTrunkId(((Trunk) mTrunksSpinner.getSelectedItem()).getId());
+				intent.putExtra("search", search);
+                startActivity(intent);
                 return true;
         }
 

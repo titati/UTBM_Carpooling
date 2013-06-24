@@ -1,13 +1,16 @@
 package fr.utbm.carpooling.model.wrapper;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 import org.apache.http.message.BasicNameValuePair;
 import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
-public class TripSearch {
+public class TripSearch implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private int fromSiteId;
 	private int toSiteId;
 	private Date arrivalDate;

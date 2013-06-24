@@ -28,5 +28,6 @@
     <string name="info_gathering_resources">Gathering resources</string>
     <string name="error_fetching_data">Error while fetching data</string>
     <string name="info_starting">Starting</string>
+    <string name="contentDesc_repeat">Repeat icon</string>
 
 </resources>

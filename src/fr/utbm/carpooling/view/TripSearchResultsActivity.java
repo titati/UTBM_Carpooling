@@ -1,7 +1,7 @@
 package fr.utbm.carpooling.view;
 
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,6 +12,7 @@ import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.adapter.ResultTripAdapter;
 import fr.utbm.carpooling.model.CheckpointShort;
 import fr.utbm.carpooling.model.TripSearchResultShort;
+import fr.utbm.carpooling.webservices.ResourcesWebServices;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -30,15 +31,27 @@ public class TripSearchResultsActivity extends Activity {
 		
 		CheckpointShort c1 = new CheckpointShort();
         c1.setNumCheckpoint(0);
-        c1.setDate(new Date(113, 4, 20, 13, 0));
+        try {
+			c1.setDate(ResourcesWebServices.getStandardDateFormat().parse("04/20/2013 13:00:00"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
         CheckpointShort c2 = new CheckpointShort();
         c2.setNumCheckpoint(1);
-        c2.setDate(new Date(113, 4, 20, 13, 15));
+        try {
+			c1.setDate(ResourcesWebServices.getStandardDateFormat().parse("04/20/2013 13:15:00"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
         CheckpointShort c3 = new CheckpointShort();
         c3.setNumCheckpoint(2);
-        c3.setDate(new Date(113, 4, 20, 13, 40));
+        try {
+			c1.setDate(ResourcesWebServices.getStandardDateFormat().parse("04/20/2013 13:40:00"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
         ArrayList<CheckpointShort> checkpoints1 = new ArrayList<CheckpointShort>();
         checkpoints1.add(c1);
