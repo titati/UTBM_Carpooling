@@ -19,7 +19,6 @@ import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.view.widgets.ColorGridView;
 import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import fr.utbm.carpooling.webservices.DriverWebServices;
-import fr.utbm.carpooling.webservices.UserWebServices;
 
 
 public class EditCarActivity extends Activity {

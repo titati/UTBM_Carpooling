@@ -2,7 +2,6 @@ package fr.utbm.carpooling.view.widgets;
 
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
