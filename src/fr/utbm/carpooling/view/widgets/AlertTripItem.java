@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.Alert;
+import fr.utbm.carpooling.utils.Resources;
 
 public class AlertTripItem extends LinearLayout {
 	

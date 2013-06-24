@@ -8,14 +8,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
-import fr.utbm.carpooling.HttpConnection;
-import fr.utbm.carpooling.JSONValidator;
-import fr.utbm.carpooling.Resources;
-import fr.utbm.carpooling.HttpConnection.HttpTaskHandler;
-import fr.utbm.carpooling.HttpConnection.REQUEST_TYPE;
-import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.model.*;
 import fr.utbm.carpooling.model.wrapper.CarsReferences;
+import fr.utbm.carpooling.utils.HttpConnection;
+import fr.utbm.carpooling.utils.JSONValidator;
+import fr.utbm.carpooling.utils.Resources;
+import fr.utbm.carpooling.utils.TaskHandler;
+import fr.utbm.carpooling.utils.HttpConnection.HttpTaskHandler;
+import fr.utbm.carpooling.utils.HttpConnection.REQUEST_TYPE;
 
 
 public class ResourcesWebServices {
@@ -68,7 +68,7 @@ public class ResourcesWebServices {
 		con.execute("");
 	}
 	
-	public static void getCarsReferences(final TaskHandler<ArrayList<CarsReferences>> handler) {
+	public static void getCarsReferences(final TaskHandler<CarsReferences> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -83,17 +83,15 @@ public class ResourcesWebServices {
 				if (jv.isValid()) {
 					JSONObject object = jv.getObject();
 				
-					ArrayList<CarsReferences> listRefs = new ArrayList<CarsReferences>();
+					CarsReferences refs = null;
 
 					try {
-						for(int i = 0; i < object.getJSONArray("brands").length(); ++i) {
-							//listRefs.add(new CarsReferences((JSONObject) object.getJSONArray("models").get(i)));
-						}
+						refs = new CarsReferences((JSONObject) object.getJSONObject("data"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 
-					handler.taskSuccessful(listRefs);
+					handler.taskSuccessful(refs);
 				} else {
 					handler.taskFailed();
 				}

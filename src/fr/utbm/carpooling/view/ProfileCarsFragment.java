@@ -9,9 +9,9 @@ import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
-import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.adapter.DriverCarAdapter;
+import fr.utbm.carpooling.utils.Resources;
+import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import fr.utbm.carpooling.webservices.DriverWebServices;
 

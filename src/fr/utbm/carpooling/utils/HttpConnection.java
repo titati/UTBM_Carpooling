@@ -1,4 +1,4 @@
-package fr.utbm.carpooling;
+package fr.utbm.carpooling.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

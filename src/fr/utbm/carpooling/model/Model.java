@@ -3,9 +3,10 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsableObject;
+import fr.utbm.carpooling.utils.JSONParsableObject;
+import fr.utbm.carpooling.utils.JSONSerializable;
 
-public class Model extends JSONParsableObject {
+public class Model extends JSONParsableObject implements JSONSerializable {
 
 	private int id;
 	private int brandId;

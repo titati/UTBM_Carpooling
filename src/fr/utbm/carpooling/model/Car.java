@@ -3,7 +3,7 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsableObject;
+import fr.utbm.carpooling.utils.JSONParsableObject;
 
 public class Car extends JSONParsableObject {
 

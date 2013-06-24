@@ -3,8 +3,8 @@ package fr.utbm.carpooling.view;
 import java.util.Date;
 
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.model.DriverTripOccurence;
+import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import fr.utbm.carpooling.view.widgets.TripDetailsDriverBlock;
 import fr.utbm.carpooling.webservices.DriverWebServices;

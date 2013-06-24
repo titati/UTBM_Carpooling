@@ -3,9 +3,10 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsableObject;
+import fr.utbm.carpooling.utils.JSONParsableObject;
+import fr.utbm.carpooling.utils.JSONSerializable;
 
-public class GpsPosition extends JSONParsableObject {
+public class GpsPosition extends JSONParsableObject implements JSONSerializable {
 
 	private double latitude;
 	private double longitude;
@@ -43,6 +44,12 @@ public class GpsPosition extends JSONParsableObject {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public String serializeJSON() {
+		return "\"latitude\" : \"" + getLatitude() +
+				"\", \"longitude\" : \"" + getLongitude() + "\"";
 	}
 
 }

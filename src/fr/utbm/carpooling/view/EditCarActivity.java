@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.adapter.BrandAdapter;
 import fr.utbm.carpooling.adapter.ModelAdapter;
 import fr.utbm.carpooling.adapter.TrunkAdapter;
 import fr.utbm.carpooling.model.Color;
+import fr.utbm.carpooling.utils.Resources;
 import fr.utbm.carpooling.view.widgets.ColorGridView;
 
 import java.util.ArrayList;

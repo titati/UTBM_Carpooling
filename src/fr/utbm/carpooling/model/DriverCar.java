@@ -3,7 +3,7 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONSerializable;
+import fr.utbm.carpooling.utils.JSONSerializable;
 
 public class DriverCar extends Car implements JSONSerializable {
 

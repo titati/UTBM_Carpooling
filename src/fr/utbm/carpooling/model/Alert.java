@@ -7,7 +7,7 @@ import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsableObject;
+import fr.utbm.carpooling.utils.JSONParsableObject;
 import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
 public class Alert extends JSONParsableObject {

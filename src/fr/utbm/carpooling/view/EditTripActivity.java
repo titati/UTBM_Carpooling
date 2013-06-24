@@ -9,11 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.adapter.CarAdapter;
 import fr.utbm.carpooling.adapter.SiteShortAdapter;
 import fr.utbm.carpooling.adapter.TrunkAdapter;
 import fr.utbm.carpooling.model.wrapper.SiteShort;
+import fr.utbm.carpooling.utils.Resources;
 import fr.utbm.carpooling.view.widgets.EditCheckpointView;
 
 import java.util.ArrayList;

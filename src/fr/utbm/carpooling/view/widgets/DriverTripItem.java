@@ -1,9 +1,9 @@
 package fr.utbm.carpooling.view.widgets;
 
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.model.DriverTripOccurenceShort;
+import fr.utbm.carpooling.utils.Resources;
 import android.content.Context;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;

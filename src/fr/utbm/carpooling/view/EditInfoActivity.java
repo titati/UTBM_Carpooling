@@ -7,9 +7,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
-import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.model.UserShort;
+import fr.utbm.carpooling.utils.Resources;
+import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import fr.utbm.carpooling.webservices.UserWebServices;
 

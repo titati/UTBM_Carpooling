@@ -9,13 +9,13 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-import fr.utbm.carpooling.HttpConnection;
-import fr.utbm.carpooling.JSONValidator;
-import fr.utbm.carpooling.Resources;
-import fr.utbm.carpooling.HttpConnection.HttpTaskHandler;
-import fr.utbm.carpooling.HttpConnection.REQUEST_TYPE;
-import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.model.*;
+import fr.utbm.carpooling.utils.HttpConnection;
+import fr.utbm.carpooling.utils.JSONValidator;
+import fr.utbm.carpooling.utils.Resources;
+import fr.utbm.carpooling.utils.TaskHandler;
+import fr.utbm.carpooling.utils.HttpConnection.HttpTaskHandler;
+import fr.utbm.carpooling.utils.HttpConnection.REQUEST_TYPE;
 
 
 public class DriverWebServices { 

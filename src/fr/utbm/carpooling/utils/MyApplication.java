@@ -1,4 +1,4 @@
-package fr.utbm.carpooling;
+package fr.utbm.carpooling.utils;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -7,8 +7,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import fr.utbm.carpooling.R;
+import fr.utbm.carpooling.model.Brand;
 import fr.utbm.carpooling.model.DriverCar;
 import fr.utbm.carpooling.model.User;
+import fr.utbm.carpooling.model.wrapper.CarsReferences;
 import fr.utbm.carpooling.model.wrapper.Trunk;
 import android.app.Application;
 import android.util.Log;
@@ -26,6 +29,7 @@ public class MyApplication extends Application {
 	}
 
 	private void initResources() {
+		//Initialize trunk options
 		SparseArray<Trunk> trunks = new SparseArray<Trunk>();
 
 		trunks.put(0, new Trunk(0, getString(R.string.trunk_size_0)));
@@ -35,6 +39,30 @@ public class MyApplication extends Application {
 		trunks.put(4, new Trunk(4, getString(R.string.trunk_size_4)));
 		
 		Resources.setTrunks(trunks);
+		
+		//Initialize brand list
+		ArrayList<Brand> listBrands = new ArrayList<Brand>();
+		JSONArray brandsArray = null;
+		
+		try {
+			brandsArray = new JSONArray(FileManager.readFile(openFileInput(Constants.FILE_BRANDS)));
+		} catch (FileNotFoundException e) {
+			Log.v("FileNotFound", "FILE_BRANDS");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		if (brandsArray != null) {
+			for(int i = 0; i < brandsArray.length(); ++i) {
+				try {
+					listBrands.add(new Brand((JSONObject) brandsArray.get(i)));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+
+			Resources.setBrands(listBrands);
+		}
 	}
 
 	private void initSession() {

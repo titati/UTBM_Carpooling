@@ -2,8 +2,8 @@ package fr.utbm.carpooling.view.widgets;
 
 import android.widget.*;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.DriverCar;
+import fr.utbm.carpooling.utils.Resources;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;

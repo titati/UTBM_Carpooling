@@ -14,10 +14,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
-import fr.utbm.carpooling.TaskHandler;
 import fr.utbm.carpooling.model.LoginResponse;
 import fr.utbm.carpooling.model.wrapper.UserInfos;
+import fr.utbm.carpooling.utils.Resources;
+import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.webservices.UserWebServices;
 
 /**
@@ -47,15 +47,8 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-        if (Resources.getUser() == null) {
-        	doLogin();
-        } else {
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        doLogin();
 	}
-
 
 	private void doLogin() {
 		setContentView(R.layout.activity_login);
@@ -98,7 +91,7 @@ public class LoginActivity extends Activity {
 					Resources.initUser(object.getUserId(), object.getApiToken());
 					
 					if (object.isUserExist()) {
-						((TextView) findViewById(R.id.login_textview_status)).setText("Gathering information");
+						mLoginStatusMessageView.setText(R.string.info_gathering_info);
 						showProgress(true);
 						
 						mGatheringTask = new TaskHandler<UserInfos>() {
@@ -116,8 +109,8 @@ public class LoginActivity extends Activity {
 							public void taskFailed() {
 								++mNbTry;
 								if (mNbTry > 10) {
-									((TextView) findViewById(R.id.login_textview_status)).setText(R.string.login_progress_signing_in);
-									Toast.makeText(getApplicationContext(), "Error while gathering information", Toast.LENGTH_LONG).show();
+									mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
+									Toast.makeText(getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
 									mNbTry = 0;
 								} else {
 									UserWebServices.getUserInfos(mGatheringTask);
@@ -132,7 +125,6 @@ public class LoginActivity extends Activity {
 					}
 				} else {
 					mLoginStatusMessageView.setVisibility(View.VISIBLE);
-					findViewById(R.id.login_textview_invalid_data).setVisibility(View.VISIBLE);
 				}
 			}
 
@@ -186,7 +178,7 @@ public class LoginActivity extends Activity {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
 			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
-
+			
 			showProgress(true);
 			UserWebServices.login(mLogin, mPassword, mAuthTask);
 		}

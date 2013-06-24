@@ -2,8 +2,8 @@ package fr.utbm.carpooling.view.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.DriverTripOccurence;
+import fr.utbm.carpooling.utils.Resources;
 
 public class TripDetailsDriverBlock extends TripDetailBlock<DriverTripOccurence> {
 	

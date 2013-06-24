@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import fr.utbm.carpooling.Constants;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
+import fr.utbm.carpooling.utils.Constants;
+import fr.utbm.carpooling.utils.Resources;
 
 public class HomeActivity extends Activity {
 

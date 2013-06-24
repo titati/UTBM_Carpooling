@@ -1,4 +1,4 @@
-package fr.utbm.carpooling;
+package fr.utbm.carpooling.utils;
 
 public class Constants {
 	/** Define the name of the file where we store the user infos */

@@ -8,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsableObject;
+import fr.utbm.carpooling.utils.JSONParsableObject;
 import fr.utbm.carpooling.webservices.ResourcesWebServices;
 
 

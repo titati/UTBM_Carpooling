@@ -3,9 +3,10 @@ package fr.utbm.carpooling.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import fr.utbm.carpooling.JSONParsableObject;
+import fr.utbm.carpooling.utils.JSONParsableObject;
+import fr.utbm.carpooling.utils.JSONSerializable;
 
-public class Site extends JSONParsableObject {
+public class Site extends JSONParsableObject implements JSONSerializable {
 
 	private int id;
 	private String name;
@@ -105,6 +106,16 @@ public class Site extends JSONParsableObject {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public String serializeJSON() {
+		return "\"id\" : \"" + getId() +
+				"\", \"name\" : \"" + getName() +
+				"\", \"location\" : \"{ " + getLocation().serializeJSON() + " }" +
+				"\", \"street\" : \"" + getStreet() +
+				"\", \"postalcode\" : \"" + getPostalCode() +
+				"\", \"town\" : \"" + getTown() + "\"";
 	}
 
 }

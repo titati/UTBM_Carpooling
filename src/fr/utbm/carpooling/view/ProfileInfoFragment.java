@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.TextView;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
+import fr.utbm.carpooling.utils.Resources;
 
 
 public class ProfileInfoFragment extends Fragment {

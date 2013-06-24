@@ -1,4 +1,4 @@
-package fr.utbm.carpooling;
+package fr.utbm.carpooling.utils;
 
 /**
  * Represent the result of an asynchronous task.

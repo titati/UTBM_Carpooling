@@ -1,4 +1,4 @@
-package fr.utbm.carpooling;
+package fr.utbm.carpooling.utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;

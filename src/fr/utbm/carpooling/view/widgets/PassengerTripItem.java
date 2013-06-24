@@ -4,9 +4,9 @@ import android.content.Context;
 import android.text.format.DateUtils;
 import android.util.AttributeSet;
 import fr.utbm.carpooling.R;
-import fr.utbm.carpooling.Resources;
 import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.model.PassengerTripShort;
+import fr.utbm.carpooling.utils.Resources;
 
 public class PassengerTripItem extends TripItem<PassengerTripShort> {
 
