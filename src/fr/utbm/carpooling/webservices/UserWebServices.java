@@ -38,7 +38,7 @@ public class UserWebServices {
 					LoginResponse result = null;
 
 					try {
-						result = new LoginResponse(object.getJSONObject("loginresponse"));
+						result = new LoginResponse(object.getJSONObject("data"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -73,25 +73,14 @@ public class UserWebServices {
 				if (jv.isValid()) {
 					JSONObject object = jv.getObject();
 				
-					UserInfos userInfos = new UserInfos();
-
-					try {
-						userInfos.setUser(new UserShort(object.getJSONObject("user")));
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-
-					ArrayList<DriverCar> listCar = new ArrayList<DriverCar>();
-
-					try {
-						for(int i = 0; i < object.getJSONArray("cars").length(); ++i) {
-							listCar.add(new DriverCar((JSONObject) object.getJSONArray("cars").get(i)));
-						}
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					UserInfos userInfos = null;
 					
-					userInfos.setCars(listCar);
+					try {
+						userInfos = new UserInfos(object.getJSONObject("data"));
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
 					handler.taskSuccessful(userInfos);
 				} else {
 					handler.taskFailed();

@@ -36,8 +36,8 @@ public class PassengerWebServices {
 					ArrayList<PassengerTripShort> listTrip = new ArrayList<PassengerTripShort>();
 
 					try {
-						for(int i = 0; i < object.getJSONArray("passengertripshorts").length(); ++i) {
-							listTrip.add(new PassengerTripShort((JSONObject) object.getJSONArray("passengertripshorts").get(i)));
+						for(int i = 0; i < object.getJSONArray("data").length(); ++i) {
+							listTrip.add(new PassengerTripShort((JSONObject) object.getJSONArray("data").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -76,8 +76,8 @@ public class PassengerWebServices {
 					ArrayList<PassengerTripShort> listTrip = new ArrayList<PassengerTripShort>();
 
 					try {
-						for(int i = 0; i < object.getJSONArray("passengertripshorts").length(); ++i) {
-							listTrip.add(new PassengerTripShort((JSONObject) object.getJSONArray("passengertripshorts").get(i)));
+						for(int i = 0; i < object.getJSONArray("data").length(); ++i) {
+							listTrip.add(new PassengerTripShort((JSONObject) object.getJSONArray("data").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -116,8 +116,8 @@ public class PassengerWebServices {
 					ArrayList<Alert> listAlert = new ArrayList<Alert>();
 					
 					try {
-						for(int i = 0; i < object.getJSONArray("alerts").length(); ++i) {
-							listAlert.add(new Alert((JSONObject) object.getJSONArray("alerts").get(i)));
+						for(int i = 0; i < object.getJSONArray("data").length(); ++i) {
+							listAlert.add(new Alert((JSONObject) object.getJSONArray("data").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -156,7 +156,7 @@ public class PassengerWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -197,7 +197,7 @@ public class PassengerWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -236,8 +236,8 @@ public class PassengerWebServices {
 					ArrayList<TripSearchResultShort> listTrip = new ArrayList<TripSearchResultShort>();
 					
 					try {
-						for(int i = 0; i < object.getJSONArray("trips").length(); ++i) {
-							listTrip.add(new TripSearchResultShort((JSONObject) object.getJSONArray("trips").get(i)));
+						for(int i = 0; i < object.getJSONArray("data").length(); ++i) {
+							listTrip.add(new TripSearchResultShort((JSONObject) object.getJSONArray("data").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -278,7 +278,7 @@ public class PassengerWebServices {
 					TripSearchResult searchResult = null;
 					
 					try {
-						searchResult = new TripSearchResult(object.getJSONObject("result"));
+						searchResult = new TripSearchResult(object.getJSONObject("data"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -318,7 +318,7 @@ public class PassengerWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -358,7 +358,7 @@ public class PassengerWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -400,7 +400,7 @@ public class PassengerWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}

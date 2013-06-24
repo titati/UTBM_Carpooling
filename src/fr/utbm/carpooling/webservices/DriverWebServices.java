@@ -39,8 +39,8 @@ public class DriverWebServices {
 					ArrayList<DriverTripOccurenceShort> listTrip = new ArrayList<DriverTripOccurenceShort>();
 					
 					try {
-						for(int i = 0; i < object.getJSONArray("drivertripshorts").length(); ++i) {
-							listTrip.add(new DriverTripOccurenceShort((JSONObject) object.getJSONArray("drivertripshorts").get(i)));
+						for(int i = 0; i < object.getJSONArray("data").length(); ++i) {
+							listTrip.add(new DriverTripOccurenceShort((JSONObject) object.getJSONArray("data").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -79,8 +79,8 @@ public class DriverWebServices {
 					ArrayList<DriverTripOccurenceShort> listTrip = new ArrayList<DriverTripOccurenceShort>();
 
 					try {
-						for(int i = 0; i < object.getJSONArray("drivertripshorts").length(); ++i) {
-							listTrip.add(new DriverTripOccurenceShort((JSONObject) object.getJSONArray("drivertripshorts").get(i)));
+						for(int i = 0; i < object.getJSONArray("data").length(); ++i) {
+							listTrip.add(new DriverTripOccurenceShort((JSONObject) object.getJSONArray("data").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -118,8 +118,8 @@ public class DriverWebServices {
 					ArrayList<DriverCar> listCar = new ArrayList<DriverCar>();
 					
 					try {
-						for(int i = 0; i < object.getJSONArray("cars").length(); ++i) {
-							listCar.add(new DriverCar((JSONObject) object.getJSONArray("cars").get(i)));
+						for(int i = 0; i < object.getJSONArray("data").length(); ++i) {
+							listCar.add(new DriverCar((JSONObject) object.getJSONArray("data").get(i)));
 						}
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -157,7 +157,7 @@ public class DriverWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -194,7 +194,7 @@ public class DriverWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -231,7 +231,7 @@ public class DriverWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -251,12 +251,45 @@ public class DriverWebServices {
 		con.execute("");
 	}
 
-	public static void setDefaultCar(int id, TaskHandler<Boolean> mSetDefaultTask) {
-		// TODO Auto-generated method stub
+	public static void setDefaultCar(int carId, final TaskHandler<Boolean> handler) {
+		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
+		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
+		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
+		params.add(new BasicNameValuePair("carId", String.valueOf(carId)));
+		
+		HttpConnection con = new HttpConnection(cat + "makeAsDefault", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+			
+			@Override
+			public void taskSuccessful(String jsonString) {
+				JSONValidator jv = new JSONValidator(jsonString);
+				
+				if (jv.isValid()) {
+					JSONObject object = jv.getObject();
+					Boolean result = false;
+					
+					try {
+						result = object.getBoolean("data");
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					
+					handler.taskSuccessful(result);
+				} else {
+					handler.taskFailed();
+				}
+			}
+			
+			@Override
+			public void taskFailed() {
+				handler.taskFailed();
+			}
+		});
+		
+		con.execute("");
 	}
 	
-	public static void updateCarPosition(String carId, GpsPosition position, final TaskHandler<Boolean> handler) {
+	public static void updateCarPosition(int carId, GpsPosition position, final TaskHandler<Boolean> handler) {
 		ArrayList<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
 		
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
@@ -273,7 +306,7 @@ public class DriverWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -310,7 +343,7 @@ public class DriverWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -347,7 +380,7 @@ public class DriverWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -384,7 +417,7 @@ public class DriverWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -421,7 +454,7 @@ public class DriverWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -458,7 +491,7 @@ public class DriverWebServices {
 					Boolean result = false;
 					
 					try {
-						result = object.getBoolean("result");
+						result = object.getBoolean("data");
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -495,7 +528,7 @@ public class DriverWebServices {
 					DriverTrip trip = null;
 					
 					try {
-						trip = new DriverTrip(object.getJSONObject("trip"));
+						trip = new DriverTrip(object.getJSONObject("data"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -534,7 +567,7 @@ public class DriverWebServices {
 					DriverTripOccurence tripoccurence = null;
 					
 					try {
-						tripoccurence = new DriverTripOccurence(object.getJSONObject("tripoccurence"));
+						tripoccurence = new DriverTripOccurence(object.getJSONObject("data"));
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
