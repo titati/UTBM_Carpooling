@@ -26,6 +26,7 @@ public class TripsDriverFragment extends Fragment {
 
     private ListView mListView = null;
     private TaskHandler<ArrayList<DriverTripOccurenceShort>> mHandler = null;
+	protected boolean mLoading;
     
     private static Date lastUpdate;
     private static ArrayList<DriverTripOccurenceShort> data;
@@ -105,7 +106,8 @@ public class TripsDriverFragment extends Fragment {
 	}
 
 	private void refreshData() {
-        getActivity().setProgressBarIndeterminateVisibility(true);
+        if (getUserVisibleHint()) getActivity().setProgressBarIndeterminateVisibility(true);
+        mLoading = true;
         DriverWebServices.getNextTripsShort(mHandler);
     }
     
@@ -120,12 +122,14 @@ public class TripsDriverFragment extends Fragment {
 		        lastUpdate = new Date();
 
                 getActivity().setProgressBarIndeterminateVisibility(false);
+                mLoading = false;
 			}
 			
 			@Override
 			public void taskFailed() {
-				if (getUserVisibleHint()) Toast.makeText(getActivity().getApplicationContext(), "Error while fetching content", Toast.LENGTH_LONG).show();
+				if (getUserVisibleHint()) Toast.makeText(getActivity().getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
                 getActivity().setProgressBarIndeterminateVisibility(false);
+                mLoading = false;
 			}
 		};
 	}
@@ -135,6 +139,8 @@ public class TripsDriverFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.trips_driver, menu);
         super.onCreateOptionsMenu(menu, inflater);
+        
+        if (mLoading) getActivity().setProgressBarIndeterminateVisibility(true);
     }
     
     @Override

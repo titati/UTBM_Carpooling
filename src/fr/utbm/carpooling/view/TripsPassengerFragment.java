@@ -24,6 +24,7 @@ public class TripsPassengerFragment extends Fragment {
 
     private ListView mListView = null;
     private TaskHandler<ArrayList<PassengerTripShort>> mHandler = null;
+	protected boolean mLoading;
 
     private static Date lastUpdate;
     private static ArrayList<PassengerTripShort> data;
@@ -80,7 +81,8 @@ public class TripsPassengerFragment extends Fragment {
     }
 
     private void refreshData() {
-        getActivity().setProgressBarIndeterminateVisibility(true);
+        if (getUserVisibleHint()) getActivity().setProgressBarIndeterminateVisibility(true);
+        mLoading = true;
         PassengerWebServices.getNextTripsShort(mHandler);
     }
 
@@ -94,6 +96,7 @@ public class TripsPassengerFragment extends Fragment {
                 data = object;
                 lastUpdate = new Date();
                 getActivity().setProgressBarIndeterminateVisibility(false);
+                mLoading = false;
             }
 
             @Override
@@ -101,6 +104,7 @@ public class TripsPassengerFragment extends Fragment {
                 if (getUserVisibleHint())
                     Toast.makeText(getActivity().getApplicationContext(), "Error while fetching content", Toast.LENGTH_LONG).show();
                 getActivity().setProgressBarIndeterminateVisibility(false);
+                mLoading = false;
             }
         };
     }
@@ -132,6 +136,8 @@ public class TripsPassengerFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.trips_passenger, menu);
         super.onCreateOptionsMenu(menu, inflater);
+        
+        if (mLoading) getActivity().setProgressBarIndeterminateVisibility(true);
     }
 
     @Override

@@ -144,7 +144,7 @@ public class UserWebServices {
 		params.add(new BasicNameValuePair("email", user.getEmail()));
 		params.add(new BasicNameValuePair("phone", user.getPhone()));
 		
-		HttpConnection con = new HttpConnection(cat + "createUser", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+		HttpConnection con = new HttpConnection(cat + "updateUser", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
 			@Override
 			public void taskSuccessful(String jsonString) {
@@ -182,7 +182,7 @@ public class UserWebServices {
 		params.add(new BasicNameValuePair("userId", Resources.getUser().getUserId()));
 		params.add(new BasicNameValuePair("apiToken", Resources.getUser().getApiToken()));
 		
-		HttpConnection con = new HttpConnection(cat + "createUser", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
+		HttpConnection con = new HttpConnection(cat + "getStatistics", params, REQUEST_TYPE.POST, new HttpTaskHandler() {
 			
 			@Override
 			public void taskSuccessful(String jsonString) {

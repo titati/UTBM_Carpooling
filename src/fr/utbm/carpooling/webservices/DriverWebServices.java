@@ -7,8 +7,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import fr.utbm.carpooling.model.*;
 import fr.utbm.carpooling.utils.HttpConnection;
 import fr.utbm.carpooling.utils.JSONValidator;
@@ -74,7 +72,6 @@ public class DriverWebServices {
 				JSONValidator jv = new JSONValidator(jsonString);
 				
 				if (jv.isValid()) {
-					Log.i("JSONValidator", "valid");
 					JSONObject object = jv.getObject();
 					ArrayList<DriverTripOccurenceShort> listTrip = new ArrayList<DriverTripOccurenceShort>();
 

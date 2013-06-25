@@ -2,10 +2,10 @@ package fr.utbm.carpooling.view.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import fr.utbm.carpooling.model.PassengerTrip;
+import fr.utbm.carpooling.model.BasePassengerTrip;
 import fr.utbm.carpooling.utils.Resources;
 
-public class TripDetailsPassengerBlock extends TripDetailBlock<PassengerTrip> {
+public class TripDetailsPassengerBlock extends TripDetailBlock<BasePassengerTrip> {
 	
 	protected TripDriverBlock mDriver = null;
 	
@@ -47,10 +47,10 @@ public class TripDetailsPassengerBlock extends TripDetailBlock<PassengerTrip> {
 		if (mTrunkSize != null) {
 			mTrunkSize.setText(Resources.getTrunk(mData.getCar().getTrunkId()).getName());
 		}
-		
-		if (mDriver != null) {
-			mDriver.setFeedbackVisibility((mData.isFeedbackGiven()) ? GONE : VISIBLE);
-		}
+	}
+	
+	public void setFeedbackVisibility(int visibility) {
+		mDriver.setFeedbackVisibility(visibility);
 	}
 
 }

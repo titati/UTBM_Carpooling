@@ -5,8 +5,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ public class TripsAlertsFragment extends Fragment {
 
     private ListView mListView = null;
     private TaskHandler<ArrayList<Alert>> mHandler;
+	protected boolean mLoading;
 
     private static Date lastUpdate;
     private static ArrayList<Alert> data;
@@ -82,7 +84,8 @@ public class TripsAlertsFragment extends Fragment {
     }
 
     private void refreshData() {
-        getActivity().setProgressBarIndeterminateVisibility(true);
+        if (getUserVisibleHint()) getActivity().setProgressBarIndeterminateVisibility(true);
+        mLoading = true;
         PassengerWebServices.getAlerts(mHandler);
     }
 
@@ -97,6 +100,7 @@ public class TripsAlertsFragment extends Fragment {
                 lastUpdate = new Date();
 
                 getActivity().setProgressBarIndeterminateVisibility(false);
+                mLoading = false;
             }
 
             @Override
@@ -104,12 +108,12 @@ public class TripsAlertsFragment extends Fragment {
                 if (getUserVisibleHint())
                     Toast.makeText(getActivity().getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
                 getActivity().setProgressBarIndeterminateVisibility(false);
+                mLoading = false;
             }
         };
     }
 
     private void initView(ArrayList<Alert> object) {
-        Log.i("checkTo", "" + object.get(0).getToSiteId());
         AlertAdapter adapter = new AlertAdapter(getActivity(), R.id.trips_passenger_listview_trips, object);
 
         mListView.setAdapter(adapter);
@@ -121,6 +125,13 @@ public class TripsAlertsFragment extends Fragment {
                 return false;
             }
         });
+    }
+    
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    	super.onCreateOptionsMenu(menu, inflater);
+    	
+    	if (mLoading) getActivity().setProgressBarIndeterminateVisibility(true);
     }
 
     @Override

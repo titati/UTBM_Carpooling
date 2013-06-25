@@ -1,7 +1,6 @@
 package fr.utbm.carpooling.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,8 +12,8 @@ public class Statistics extends JSONParsableObject {
 	private int driverTrips;
 	private int passengerTrips;
 	private int peopleCarried;
-	private int rating;
-	private List<Comment> comments;
+	private double rating;
+	private ArrayList<Comment> comments;
 	
 	public Statistics() {}
 	
@@ -46,49 +45,49 @@ public class Statistics extends JSONParsableObject {
 		this.peopleCarried = peopleCarried;
 	}
 	
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
 	
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 	
-	public List<Comment> getComments() {
+	public ArrayList<Comment> getComments() {
 		return comments;
 	}
 	
-	public void setComments(List<Comment> comments) {
+	public void setComments(ArrayList<Comment> comments) {
 		this.comments = comments;
 	}
 	
 	@Override
 	protected void deserializeJSON(JSONObject object) {
 		try {
-			setDriverTrips(object.getInt("driverTrips"));
+			setDriverTrips(object.getInt("drivertrips"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			setPassengerTrips(object.getInt("passengerTrips"));
+			setPassengerTrips(object.getInt("passengertrips"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			setPeopleCarried(object.getInt("passengerCarried"));
+			setPeopleCarried(object.getInt("passengercarried"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			setRating(object.getInt("rating"));
+			setRating(object.getDouble("rating"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
-		ArrayList<Comment> comments = new ArrayList<Comment>();
+		comments = new ArrayList<Comment>();
 		
 		try {
 			for(int i = 0; i < object.getJSONArray("comments").length(); ++i) {
@@ -97,8 +96,6 @@ public class Statistics extends JSONParsableObject {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
-		setComments(comments);
 	}
 
 }
