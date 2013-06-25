@@ -128,12 +128,12 @@ public class ProfileCarsFragment extends Fragment {
 
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
                 CharSequence items[] = new CharSequence[2];
                 items[0] = getResources().getString(R.string.profile_cars_option_make_default);
-                items[1] =getResources().getString(R.string.profile_cars_option_delete);
+                items[1] = getResources().getString(R.string.profile_cars_option_delete);
 
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
@@ -141,12 +141,12 @@ public class ProfileCarsFragment extends Fragment {
 
                         switch (which) {
                             case 0:
-                                if (!adapter.getItem(which).isDefaultCar()) {
+                                if (!adapter.getItem(position).isDefaultCar()) {
                                 	makeAsDefault(adapter.getItem(which).getId());
                                 }
                                 break;
                             case 1:
-                                deleteCar(adapter.getItem(which).getId());
+                                deleteCar(adapter.getItem(position).getId());
                                 break;
                         }
                     }
