@@ -12,10 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/profile_stats_caption_trips"
-        android:textAllCaps="true"
+        android:textAllCaps="false"
         style="?android:attr/textAppearanceLarge"
         android:layout_marginBottom="10dp"
-        android:gravity="center_horizontal|left"/>
+        android:gravity="center_horizontal|left"
+        android:fontFamily="sans-serif-light"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/holo_blue_dark"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +41,8 @@
                 android:text="@string/profile_stats_caption_driver_trips"
                 style="?android:attr/textAppearanceSmall"
                 android:enabled="false"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textAllCaps="false"/>
 
             <TextView
                 android:id="@+id/profile_stats_textview_driver_trips"
@@ -65,7 +69,8 @@
                 android:text="@string/profile_stats_caption_passenger_trips"
                 style="?android:attr/textAppearanceSmall"
                 android:enabled="false"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textAllCaps="false"/>
 
             <TextView
                 android:id="@+id/profile_stats_textview_passenger_trips"
@@ -92,7 +97,8 @@
                 android:text="@string/profile_stats_caption_people_carried"
                 style="?android:attr/textAppearanceSmall"
                 android:enabled="false"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textAllCaps="false"/>
 
             <TextView
                 android:id="@+id/profile_stats_textview_people_carried"
@@ -112,17 +118,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="30dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/profile_stats_caption_reputation"
-            android:textAllCaps="true"
             style="?android:attr/textAppearanceLarge"
             android:gravity="center_horizontal|left"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/holo_blue_dark"/>
 
 
         <RatingBar
@@ -144,6 +152,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:listSelector="@android:color/transparent"
         android:id="@+id/profile_stats_listview_comments"/>
 
 </LinearLayout>

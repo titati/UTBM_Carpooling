@@ -10,8 +10,6 @@ import fr.utbm.carpooling.R;
 
 public class LoadingDialog extends Dialog {
 
-    private TextView mTextView;
-
     public LoadingDialog(Context context) {
         super(context);
 
@@ -20,27 +18,13 @@ public class LoadingDialog extends Dialog {
     
     protected void initDialog(Context context) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+
     	LayoutInflater li = LayoutInflater.from(context);
         View content = li.inflate(R.layout.dialog_progress_loading, null);
 
-
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
         setContentView(content);
         setCancelable(true);
-    }
-
-    public void setText(String text) {
-
-        if (mTextView == null)
-            mTextView = (TextView) findViewById(R.id.dialog_progress_loading_textview);
-
-        if (text == null) {
-            mTextView.setVisibility(View.GONE);
-            mTextView.clearComposingText();
-        }
-        else {
-            mTextView.setVisibility(View.VISIBLE);
-            mTextView.setText(text);
-        }
     }
 }

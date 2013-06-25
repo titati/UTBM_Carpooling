@@ -83,7 +83,6 @@ public class LoginActivity extends Activity {
 					Resources.initUser(object.getUserId(), object.getApiToken());
 					
 					if (object.isUserExist()) {
-                        mLoader.setText(getString(R.string.info_gathering_info));
                         mLoader.show();
 						
 						mGatheringTask = new TaskHandler<UserInfos>() {
@@ -101,7 +100,6 @@ public class LoginActivity extends Activity {
 							public void taskFailed() {
 								++mNbTry;
 								if (mNbTry > 10) {
-                                    mLoader.setText(getString(R.string.login_progress_signing_in));
 									Toast.makeText(getApplicationContext(), R.string.error_fetching_data, Toast.LENGTH_LONG).show();
 									mNbTry = 0;
 								} else {
@@ -116,8 +114,6 @@ public class LoginActivity extends Activity {
 						Intent intent = new Intent(LoginActivity.this, CreateUserActivity.class);
 			            startActivityForResult(intent, 0);
 					}
-				} else {
-                    mLoader.setText(null);
 				}
 			}
 
@@ -170,7 +166,6 @@ public class LoginActivity extends Activity {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
             mLoader.show();
-			mLoader.setText(getString(R.string.login_progress_signing_in));
 
 			UserWebServices.login(mLogin, mPassword, mAuthTask);
 		}
