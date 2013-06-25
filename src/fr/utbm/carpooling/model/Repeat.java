@@ -26,6 +26,10 @@ public class Repeat extends JSONParsableObject {
 	public Repeat(JSONObject object) {
 		super(object);
 	}
+
+    public Repeat() {
+        super();
+    }
 	
 	public boolean isSunday() {
 		return sunday;

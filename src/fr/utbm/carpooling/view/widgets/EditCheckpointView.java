@@ -13,6 +13,8 @@ public class EditCheckpointView extends LinearLayout {
 
     private Spinner mSiteSpinner = null;
     private ImageButton mDelButton = null;
+    private DatePickerSpinner mDateSpinner = null;
+    private TimePickerSpinner mTimeSpinner = null;
 
     public EditCheckpointView(Context context) {
         super(context);
@@ -30,6 +32,8 @@ public class EditCheckpointView extends LinearLayout {
 
         mSiteSpinner = (Spinner) findViewById(R.id.edit_trip_spinner_checkpoint_site);
         mDelButton = (ImageButton) findViewById(R.id.edit_trip_button_del);
+        mDateSpinner = (DatePickerSpinner) findViewById(R.id.edit_trip_spinner_checkpoint_date);
+        mTimeSpinner = (TimePickerSpinner) findViewById(R.id.edit_trip_spinner_checkpoint_time);
 
     }
 
@@ -40,6 +44,14 @@ public class EditCheckpointView extends LinearLayout {
 
     public Spinner getSiteSpinner() {
         return mSiteSpinner;
+    }
+
+    public DatePickerSpinner getDateSpinner() {
+        return mDateSpinner;
+    }
+
+    public TimePickerSpinner getTimeSpinner() {
+        return mTimeSpinner;
     }
 
 
