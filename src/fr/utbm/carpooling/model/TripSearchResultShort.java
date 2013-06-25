@@ -64,19 +64,19 @@ public class TripSearchResultShort extends BaseTrip {
 		}
 
 		try {
-			setRemainingSeats(object.getInt("remainingSeats"));
+			setRemainingSeats(object.getInt("remainingseats"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
 		try {
-			setTrunkId(object.getInt("trunkId"));
+			setTrunkId(object.getInt("trunkid"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
 		try {
-			setArrivalIsEnd(object.getBoolean("arrivalIsEnd"));
+			setArrivalIsEnd(object.getBoolean("arrivalisend"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

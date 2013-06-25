@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.*;
-import android.widget.TextView;
 import fr.utbm.carpooling.R;
 
 

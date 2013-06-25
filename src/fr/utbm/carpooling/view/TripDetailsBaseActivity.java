@@ -4,7 +4,6 @@ import java.util.Date;
 
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.BasePassengerTrip;
-import fr.utbm.carpooling.model.PassengerTrip;
 import fr.utbm.carpooling.utils.TaskHandler;
 import fr.utbm.carpooling.view.widgets.LoadingDialog;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import android.view.Menu;
 
 public abstract class TripDetailsBaseActivity<E extends BasePassengerTrip> extends Activity {
 
-    protected TaskHandler<PassengerTrip> mHandler;
+    protected TaskHandler<E> mHandler;
     protected LoadingDialog mLoader;
     protected E mData;
     protected Menu mMenu;

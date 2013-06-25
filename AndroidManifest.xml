@@ -48,22 +48,31 @@
         </activity>
         <activity
             android:name="fr.utbm.carpooling.view.CreateCarActivity"
-            android:label="@string/edit_car_title" />
+            android:label="@string/edit_car_title"
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name="fr.utbm.carpooling.view.EditInfoActivity"
-            android:label="@string/profile_info_title_edit" />
+            android:label="@string/profile_info_title_edit"
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name="fr.utbm.carpooling.view.EditTripActivity"
-            android:label="@string/edit_trip_title" />
+            android:label="@string/edit_trip_title"
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name="fr.utbm.carpooling.view.TripSearchResultsActivity"
-            android:label="@string/search_results_title" />
+            android:label="@string/search_results_title"
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name="fr.utbm.carpooling.view.TripSearchActivity"
             android:label="@string/trip_search_title" />
         <activity
+            android:name="fr.utbm.carpooling.view.TripDetailsSearchActivity"
+            android:label="@string/trips_details_title"
+            android:configChanges="orientation|screenSize" />
+        <activity
             android:name="fr.utbm.carpooling.view.TripDetailsDriverActivity"
-            android:label="@string/trips_details_title" />
+            android:label="@string/trips_details_title"
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name="fr.utbm.carpooling.view.TripDetailsPassengerActivity"
             android:label="@string/trips_details_title"
@@ -71,7 +80,8 @@
         </activity>
         <activity
             android:name="fr.utbm.carpooling.view.CreateUserActivity"
-            android:label="@string/title_activity_create_user" >
+            android:label="@string/title_activity_create_user"
+            android:configChanges="orientation|screenSize" >
         </activity>
     </application>
 

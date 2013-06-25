@@ -10,7 +10,7 @@
         android:id="@+id/result_item_trippathview"
         android:layout_height="match_parent"
         android:layout_width="30dp"
-        custom:surroundBounds="false"
+        custom:surroundBounds="true"
         android:layout_gravity="fill_vertical"/>
 
     <TableLayout

@@ -100,7 +100,7 @@ public class TripSearchActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.trip_search_menuitem_go:
-            	Intent intent = new Intent(this, TripSearchResultsActivity.class);
+            	Intent intent = new Intent(TripSearchActivity.this, TripSearchResultsActivity.class);
             	TripSearch search = new TripSearch();
             	Date date = new Date();
             	date.setTime(mArrivalDateSpinner.getDate().getTimeInMillis() + mArrivalTimeSpinner.getTime().getTimeInMillis());

@@ -1,9 +1,11 @@
 package fr.utbm.carpooling.view.widgets;
 
 import java.text.DateFormat;
+import java.util.Date;
 
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.TripSearchResultShort;
+import fr.utbm.carpooling.model.wrapper.TripSearch;
 import fr.utbm.carpooling.utils.Resources;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -54,10 +56,6 @@ public class ResultTripItem extends LinearLayout {
 			pathView.setCheckpoints(data.getCheckpoints(), data.getArrivalIsEnd());
 		}
 		
-		if (departurePoint != null) {
-			departurePoint.setText(Resources.getSite(0).getName());
-		}
-		
 		if (departureTime != null) {
 			departureTime.setText(TIME_FORMAT.format(data.getCheckpoints().get(0).getDate()));
 		}
@@ -66,16 +64,30 @@ public class ResultTripItem extends LinearLayout {
 			nbSeats.setText(data.getRemainingSeats() + "/" + data.getSeats());
 		}
 		
-		if (arrivalPoint != null) {
-			arrivalPoint.setText(Resources.getSite(0).getName());
-		}
-		
 		if (arrivalTime != null) {
 			arrivalTime.setText(TIME_FORMAT.format(data.getCheckpoints().get(0).getDate()));
 		}
 		
 		if (trunkSize != null) {
 			trunkSize.setText(Resources.getTrunk(data.getTrunkId()).getName());
+		}
+	}
+
+	public int getAbstractTripId() {
+		return data.getAbstractTripId();
+	}
+
+	public Date getTripId() {
+		return data.getTripId();
+	}
+
+	public void setSearchInfo(TripSearch mSearch) {
+		if (departurePoint != null) {
+			departurePoint.setText(Resources.getSite(mSearch.getFromSiteId()).getName());
+		}
+		
+		if (arrivalPoint != null) {
+			arrivalPoint.setText(Resources.getSite(mSearch.getToSiteId()).getName());
 		}
 	}
 }
