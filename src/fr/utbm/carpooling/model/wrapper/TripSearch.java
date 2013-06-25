@@ -51,8 +51,8 @@ public class TripSearch implements Serializable {
 	public ArrayList<BasicNameValuePair> toParam() {
 		ArrayList<BasicNameValuePair> list = new ArrayList<BasicNameValuePair>();
 
-		list.add(new BasicNameValuePair("startSiteId", String.valueOf(getToSiteId())));
-		list.add(new BasicNameValuePair("endSiteId", String.valueOf(getFromSiteId())));
+		list.add(new BasicNameValuePair("arrivalSiteId", String.valueOf(getToSiteId())));
+		list.add(new BasicNameValuePair("departureSiteId", String.valueOf(getFromSiteId())));
 		list.add(new BasicNameValuePair("arrivalDate", ResourcesWebServices.getStandardDateFormat().format(getArrivalDate())));
 		list.add(new BasicNameValuePair("minTrunk", String.valueOf(getMinTrunkId())));
 		
