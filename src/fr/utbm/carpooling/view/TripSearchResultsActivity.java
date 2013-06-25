@@ -132,10 +132,6 @@ public class TripSearchResultsActivity extends Activity {
             builder.setTitle(R.string.search_results_no_results);
             builder.setMessage(R.string.search_results_message_create_alert);
             builder.create().show();
-
-
         }
-
-
 	}
 }

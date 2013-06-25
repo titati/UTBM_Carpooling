@@ -69,8 +69,11 @@ public class CarAdapter extends ArrayAdapter<DriverCar> {
         DriverCar item = getItem(position);
         String brand = Resources.getBrand(item.getBrandId()).getName();
         String model = Resources.getModel(item.getBrandId(), item.getModelId()).getName();
+        String def = "";
+        if (item.isDefaultCar())
+            def = " (default)";
 
-        label.setText(brand + " " + model);
+        label.setText(brand + " " + model + def);
 
         return label;
     }

@@ -12,6 +12,10 @@ public class DriverTrip extends BaseTrip {
 	protected String mDescription;
 	private Repeat mRepeat;
 
+    public DriverTrip() {
+        super();
+    }
+
 	public DriverTrip(JSONObject object) {
 		super(object);
 	}

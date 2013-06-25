@@ -41,6 +41,9 @@
 
     <string name="edit_trip_caption_seats">(driver not included)</string>
 
+    <string name="edit_trip_error_seats">You must provide a number of seats</string>
+    <string name="edit_trip_error_periodicity">You must provide a periodicity</string>
+
 
 
 </resources>
