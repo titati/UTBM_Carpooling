@@ -47,29 +47,29 @@ public class TripSearchActivity extends Activity {
         mArrivalSiteSpinner.setAdapter(adapterTo);
         mArrivalSiteSpinner.setSelection(1);
 
-        mDepartureSiteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                adapterTo.enableItems();
-                adapterTo.disableItem(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        mArrivalSiteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                adapterFrom.enableItems();
-                adapterFrom.disableItem(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+//        mDepartureSiteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                adapterTo.enableItems();
+//                adapterTo.disableItem(position);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
+//
+//        mArrivalSiteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                adapterFrom.enableItems();
+//                adapterFrom.disableItem(position);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
 
         final LinearLayout advancedBlock = (LinearLayout) findViewById(R.id.trip_search_llayout_advanced);
         final LinearLayout moreBlock = (LinearLayout) findViewById(R.id.trip_search_llayout_more);
