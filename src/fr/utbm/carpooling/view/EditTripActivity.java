@@ -161,7 +161,7 @@ public class EditTripActivity extends Activity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    EditTripActivity.this.updateSiteSpinners();
+//                    EditTripActivity.this.updateSiteSpinners();
                 }
 
                 @Override
@@ -241,16 +241,16 @@ public class EditTripActivity extends Activity {
 
         mSiteSpinners.add(siteSpinner);
 
-        siteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                EditTripActivity.this.updateSiteSpinners();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+//        siteSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                EditTripActivity.this.updateSiteSpinners();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
 
         if (mSiteSpinners.size() == mSitesShort.size())
             mAddButton.setVisibility(View.INVISIBLE);
@@ -276,31 +276,31 @@ public class EditTripActivity extends Activity {
         mMainLayout.removeView(checkpointView);
         mCheckpointViews.remove(checkpointView);
         mSiteSpinners.remove(checkpointView.getSiteSpinner());
-        updateSiteSpinners();
+//        updateSiteSpinners();
 
         if (mAddButton.getVisibility() == View.INVISIBLE)
             mAddButton.setVisibility(View.VISIBLE);
 
     }
 
-    private void updateSiteSpinners() {
-
-        for (Spinner sp : mSiteSpinners) {
-            ((SiteShortAdapter) sp.getAdapter()).enableItems();
-        }
-
-        for (Spinner sp : mSiteSpinners) {
-
-            int selected = sp.getSelectedItemPosition();
-
-            for (Spinner sp0 : mSiteSpinners) {
-                if (sp == sp0)
-                    continue;
-
-                ((SiteShortAdapter) sp0.getAdapter()).disableItem(selected);
-            }
-        }
-    }
+//    private void updateSiteSpinners() {
+//
+//        for (Spinner sp : mSiteSpinners) {
+//            ((SiteShortAdapter) sp.getAdapter()).enableItems();
+//        }
+//
+//        for (Spinner sp : mSiteSpinners) {
+//
+//            int selected = sp.getSelectedItemPosition();
+//
+//            for (Spinner sp0 : mSiteSpinners) {
+//                if (sp == sp0)
+//                    continue;
+//
+//                ((SiteShortAdapter) sp0.getAdapter()).disableItem(selected);
+//            }
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
