@@ -34,8 +34,9 @@ public class TripDriverBlock extends LinearLayout {
         initItems();
     }
 
-    public void setData(UserShort driver) {
+    public void setData(UserShort driver, float rating) {
         mDriver = driver;
+        mRating.setRating(rating);
         initView();
     }
 
@@ -51,8 +52,7 @@ public class TripDriverBlock extends LinearLayout {
     protected void initView() {
 
         mName.setText(mDriver.getFirstname() + " " + mDriver.getLastname());
-        mRating.setMax(5);
-        mRating.setStepSize((float) 0.5);
+        
         mPhone.setOnClickListener(new OnClickListener() {
 
             @Override

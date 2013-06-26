@@ -62,7 +62,13 @@ public class ProfileStatsFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
     	super.onCreateOptionsMenu(menu, inflater);
-    	if (mLoading) getActivity().setProgressBarIndeterminateVisibility(true);
+    }
+    
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+    	super.setUserVisibleHint(isVisibleToUser);
+    	
+    	if (isVisibleToUser && mLoading) getActivity().setProgressBarIndeterminateVisibility(true);
     }
 
 	private void initHandler() {

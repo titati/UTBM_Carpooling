@@ -61,7 +61,7 @@ public class ResultTripItem extends LinearLayout {
 		}
 		
 		if (nbSeats != null) {
-			nbSeats.setText(data.getRemainingSeats() + "/" + data.getSeats());
+			nbSeats.setText(data.getSeats() - data.getRemainingSeats() + "/" + data.getSeats());
 		}
 		
 		if (arrivalTime != null) {

@@ -16,12 +16,16 @@ public class TripDetailsPassengerBlock extends TripDetailBlock<BasePassengerTrip
 	@Override
 	protected void finishBuildView() {
 		mDriver = new TripDriverBlock(getContext());
-		mDriver.setData(mData.getDriver());
+		mDriver.setData(mData.getDriver(), (float) mData.getRating());
 		addView(mDriver, 2);
 	}
 
 	@Override
 	protected void initView() {
+		if (mDesc != null) {
+			mDesc.setText(mData.getDescription());
+		}
+		
 		if (mTripPath != null) {
 			mTripPath.setCheckpoints(mData.getCheckpoints());
 		}
