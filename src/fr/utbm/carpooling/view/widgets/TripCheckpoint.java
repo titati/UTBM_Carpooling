@@ -1,11 +1,14 @@
 package fr.utbm.carpooling.view.widgets;
 
 import java.text.DateFormat;
+import java.util.Locale;
 
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.Checkpoint;
 import fr.utbm.carpooling.utils.Resources;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -51,8 +54,12 @@ public class TripCheckpoint extends TableRow {
 				
 				@Override
 				public void onClick(View v) {
-                    // todo: open maps
-					//Resources.getSite(mCheckpoint.getSiteId()).getCoords();
+					float latitude = (float) Resources.getSite(mCheckpoint.getSiteId()).getLocation().getLatitude();
+					float longitude = (float) Resources.getSite(mCheckpoint.getSiteId()).getLocation().getLongitude();
+					String desc = Resources.getSite(mCheckpoint.getSiteId()).getName() + ", " + Resources.getSite(mCheckpoint.getSiteId()).getTown();
+					String uri = String.format(Locale.ENGLISH, "geo:%f,%f?q=%f,%f (%s)", latitude, longitude, latitude, longitude, desc);
+					Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+					getContext().startActivity(intent);
 				}
 			});
 		}

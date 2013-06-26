@@ -4,6 +4,8 @@ import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.UserShort;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -57,8 +59,9 @@ public class TripDriverBlock extends LinearLayout {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-
+				Intent callIntent = new Intent(Intent.ACTION_CALL);
+				callIntent.setData(Uri.parse("tel:" + mDriver.getPhone()));
+				getContext().startActivity(callIntent);
             }
         });
 
@@ -66,8 +69,9 @@ public class TripDriverBlock extends LinearLayout {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-
+				Intent callIntent = new Intent(Intent.ACTION_VIEW);
+				callIntent.setData(Uri.parse("sms:" + mDriver.getPhone()));
+				getContext().startActivity(callIntent);
             }
         });
 
@@ -75,7 +79,7 @@ public class TripDriverBlock extends LinearLayout {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+                // TODO : call email intent
 
             }
         });

@@ -296,8 +296,4 @@ public class Resources {
 		
 		return list;
 	}
-
-	public static void init() {
-
-	}
 }

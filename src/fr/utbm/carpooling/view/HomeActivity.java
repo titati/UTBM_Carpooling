@@ -52,8 +52,6 @@ public class HomeActivity extends Activity {
 						startActivity(intent);
 					}
 				});
-		
-        Resources.init();
 	}
 	
 	@Override

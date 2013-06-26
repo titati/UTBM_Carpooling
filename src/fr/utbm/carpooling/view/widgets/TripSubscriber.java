@@ -4,6 +4,8 @@ import android.widget.ImageButton;
 import fr.utbm.carpooling.R;
 import fr.utbm.carpooling.model.UserShort;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -52,8 +54,9 @@ public class TripSubscriber extends TableRow {
 			
 			@Override
 			public void onClick(View v) {
-				// todo: call driver
-				
+				Intent callIntent = new Intent(Intent.ACTION_CALL);
+				callIntent.setData(Uri.parse("tel:" + mUser.getPhone()));
+				getContext().startActivity(callIntent);
 			}
 		});
 
@@ -61,8 +64,9 @@ public class TripSubscriber extends TableRow {
 			
 			@Override
 			public void onClick(View v) {
-				// todo: chat with driver
-				
+				Intent callIntent = new Intent(Intent.ACTION_VIEW);
+				callIntent.setData(Uri.parse("sms:" + mUser.getPhone()));
+				getContext().startActivity(callIntent);
 			}
 		});
 
@@ -70,8 +74,7 @@ public class TripSubscriber extends TableRow {
 			
 			@Override
 			public void onClick(View v) {
-				// todo: mail to driver
-				
+				//TODO : call email intent
 			}
 		});
 
